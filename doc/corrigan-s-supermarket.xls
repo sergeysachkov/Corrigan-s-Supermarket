@@ -1,0 +1,1183 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<Workbook xmlns:html='http://www.w3.org/TR/REC-html40'
+          xmlns:o='urn:schemas-microsoft-com:office:office'
+          xmlns:ss='urn:schemas-microsoft-com:office:spreadsheet'
+          xmlns:x='urn:schemas-microsoft-com:office:excel'
+          xmlns='urn:schemas-microsoft-com:office:spreadsheet'>
+  <DocumentProperties xmlns='urn:schemas-microsoft-com:office:office'>
+    <LastAuthor>Adrian Danila</LastAuthor>
+    <Created>2016-10-05 12:33:21 UTC</Created>
+    <LastSaved>%= Time.now.utc %></LastSaved>
+    <Version>1.0</Version>
+  </DocumentProperties>
+  <OfficeDocumentSettings xmlns='urn:schemas-microsoft-com:office:office'>
+    <AllowPNG />
+  </OfficeDocumentSettings>
+  <ExcelWorkbook xmlns='urn:schemas-microsoft-com:office:excel'>
+    <ProtectStructure>False</ProtectStructure>
+    <ProtectWindows>False</ProtectWindows>
+  </ExcelWorkbook>
+  <Styles>
+    <Style ss:ID='Default' ss:Name='Normal'>
+      <Alignment ss:Vertical='Top' ss:WrapText='1' />
+      <Borders />
+      <Font ss:Color='#000000' ss:FontName='Calibri' ss:Size='12' x:Family='Swiss' />
+      <Interior />
+      <NumberFormat />
+      <Protection />
+    </Style>
+    <Style ss:ID='title'>
+      <Alignment ss:Vertical='Bottom' ss:WrapText='1' />
+      <Font ss:Bold='1' ss:Color='#000000' ss:FontName='Calibri' ss:Size='15' />
+    </Style>
+    <Style ss:ID='top-base-stats'>
+      <Alignment ss:Horizontal='Right' ss:Vertical='Center' ss:WrapText='1' />
+      <Font ss:Bold='0' ss:Color='#000000' ss:FontName='Calibri' ss:Size='11' />
+    </Style>
+    <Style ss:ID='table-header'>
+      <Alignment ss:Horizontal='Center' ss:Vertical='Center' ss:WrapText='1' />
+      <Font ss:Bold='1' ss:Color='#000000' ss:FontName='Calibri' ss:Size='12' />
+      <Interior ss:Color='#CCFFFF' ss:Pattern='Solid' />
+    </Style>
+    <Style ss:ID='numeric'>
+      <Alignment ss:Horizontal='Right' ss:Vertical='Top'/>
+      <Font ss:Bold='0' ss:Color='#000000' ss:FontName='Calibri' ss:Size='12' />
+    </Style>
+    <Style ss:ID='theme-summary'>
+      <Alignment ss:Horizontal='Left' ss:Vertical='Top' ss:WrapText='1' />
+      <Font ss:Color='#000000' ss:FontName='Calibri' ss:Size='12' />
+      <Interior ss:Color='#C0C0C0' ss:Pattern='Solid' />
+    </Style>
+    <Style ss:ID='theme-total'>
+      <Alignment ss:Horizontal='Right' ss:Vertical='Bottom' ss:WrapText='1' />
+      <Font ss:Bold='1' ss:Color='#000000' ss:FontName='Calibri' ss:Size='12' />
+      <Interior ss:Color='#C0C0C0' ss:Pattern='Solid' />
+    </Style>
+    <Style ss:ID='theme-cell'>
+      <Alignment ss:Vertical='Top' ss:WrapText='1' />
+      <Font ss:Bold='1' ss:Color='#000000' ss:FontName='Calibri' ss:Size='12' />
+    </Style>
+    <Style ss:ID='backlog-summary'>
+      <Alignment ss:Horizontal='Left' ss:Vertical='Top' ss:WrapText='1' />
+      <Font ss:Bold='1' ss:Color='#000000' ss:FontName='Calibri' ss:Size='14' />
+      <Interior ss:Color='#CCFFFF' ss:Pattern='Solid' />
+    </Style>
+    <Style ss:ID='backlog-total'>
+      <Alignment ss:Horizontal='Right' ss:Vertical='Bottom' ss:WrapText='1' />
+      <Font ss:Bold='1' ss:Color='#000000' ss:FontName='Calibri' ss:Size='14' />
+      <Interior ss:Color='#CCFFFF' ss:Pattern='Solid' />
+    </Style>
+          <Style ss:ID='story-color-0'>
+        <Borders>
+          <Border ss:Position='Left' ss:Color='#d5a6bd' ss:Weight='3' ss:LineStyle='Continuous' />
+        </Borders>
+      </Style>
+
+      <Style ss:ID='story-color-1'>
+        <Borders>
+          <Border ss:Position='Left' ss:Color='#93c47d' ss:Weight='3' ss:LineStyle='Continuous' />
+        </Borders>
+      </Style>
+
+  </Styles>
+  <Worksheet ss:Name='Backlog Report'>
+  <Table>
+    <Column ss:AutoFitWidth="1" ss:Width="90" /> <!--Theme-->
+    <Column ss:AutoFitWidth="1" ss:Width="45" /> <!--ID-->
+    <Column ss:AutoFitWidth="1" ss:Width="240" /> <!--User Story-->
+    <Column ss:AutoFitWidth="1" ss:Width="240" /> <!--Acceptance Criteria-->
+    <Column ss:AutoFitWidth="1" ss:Width="240" /> <!--Comments-->
+    <Column ss:AutoFitWidth="1" ss:Width="50" /> <!--Sprint-->
+    <Column ss:AutoFitWidth="1" ss:Width="90" /> <!--Status-->
+      <Column ss:AutoFitWidth="1" ss:Width="45" /> <!--Score -->
+    <Row ss:AutoFitHeight='0' ss:Height='18'>
+      <Cell ss:MergeAcross='3' ss:StyleID='title'>
+        <Data ss:Type='String'>Corrigan&#x27;s Supermarket</Data>
+      </Cell>
+      <Cell ss:MergeAcross='4' ss:StyleID='top-base-stats'>
+        <Data ss:Type='String'></Data>
+      </Cell>
+    </Row>
+    <Row>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>Theme</Data>
+      </Cell>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>ID</Data>
+      </Cell>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>User Story</Data>
+      </Cell>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>Acceptance Criteria</Data>
+      </Cell>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>Comments</Data>
+      </Cell>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>Sprint</Data>
+      </Cell>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>Status</Data>
+      </Cell>
+        <Cell ss:StyleID='table-header'>
+          <Data ss:Type='String'><span class="translation_missing" title="translation missing: en.backlog.points">Points</span></Data>
+        </Cell>
+    </Row>
+        <Row>
+      <Cell ss:MergeDown='9' ss:StyleID='theme-cell'>
+        <Data ss:Type='String'>Customer</Data>
+      </Cell>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>CUS2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> A customer
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> create a user account
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> add my personal details and payment details</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Requirement &quot;CUS9&quot; must be completed</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>CUS3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> A customer 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> View the full online catalogue of items available
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> order the selected quantity (if available)</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Each item will have barcode, description, availability, price saved in catalogue database</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>CUS4</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> A customer
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> add selected items to a shopping basket
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> checkout and pay for my order when I have selected everything I want</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) user must be able to select quantity and click &#x27;add to basket&#x27; (only if in stock)</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>CUS6</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> A customer
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> select my pre-saved payment details
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> pay for my shopping securely and hassle free</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) User will be shown visa drop down selection box with saved details (with last 4 numbers of card visible) or can select to &#x27;add new card&#x27;</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>CUS5</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> A customer 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> view an order summary (shopping basket) 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> make any changes and selected &#x27;continue to payment&#x27; or &#x27;continue shopping&#x27;</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) order summary (list of items in shopping basket) with options to remove items on the list, and to either continue to payment page or continue shopping</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>CUS8</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> A customer
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> have a certain amount of time to cancel my order
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> cancel an order that I do not want anymore</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) user should be able to enter their order reference number and will be shown the option to cancel with details of any penalties they have to pay&#10;&#13;b) A customer cannot cancel their order if their order has already left the depot to be delivered. </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>CUS7</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> A customer
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> view a list of available timeslots for delivery
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> choose a timeslot for delivery that suits me</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Timeslots will be based on system order cutoff deadlines </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>CUS1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> A customer
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> be able to receive/send emails/electronic communications to the supermarket
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> get promotional material, make a complaint, contact customer services</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) User should be provided with a contact email address and an option to send a message on a dedicated &#x27;contact us&#x27; section on the website</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>CUS9</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> A customer 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> provide a username, password, email address, full name and payment details 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> Create a user account </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) username&#10;&#13;b) password&#10;&#13;c) date of birth&#10;&#13;d) full name&#10;&#13;e) email address</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+  <Row>
+    <Cell ss:Index='2' ss:MergeAcross='2' ss:StyleID='theme-summary'>
+      <Data ss:Type='String'>Total for theme &#x27;Customer&#x27;</Data>
+    </Cell>
+    <Cell ss:MergeAcross='4' ss:StyleID='theme-total'>
+      <Data ss:Type='String'>0.0 points</Data>
+    </Cell>
+  </Row>
+  <Row ss:AutoFitHeight='0' ss:Height='5'>
+    <Cell ss:MergeAcross='7' />
+  </Row>
+    <Row>
+      <Cell ss:MergeDown='4' ss:StyleID='theme-cell'>
+        <Data ss:Type='String'>Delivery Driver</Data>
+      </Cell>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>DED1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a delivery driver 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> see the list of orders assigned to me 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> deliver them</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) each order in the list will have the following:&#10;&#13;b) order Id&#10;&#13;c) price amount&#10;&#13;d) name of customer&#10;&#13;e) address of order</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>DED2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a delivery driver 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> change the status of each order
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> keep track of each delivery</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) each order will have an option to mark it as delivered or pending</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>DED3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a delivery driver 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> be notified of cancelled orders
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> avoid unnecessary trips</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) each delivery will be marked as cancelled when the customer cancels it</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>DED4</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a delivery driver
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+  <Row>
+    <Cell ss:Index='2' ss:MergeAcross='2' ss:StyleID='theme-summary'>
+      <Data ss:Type='String'>Total for theme &#x27;Delivery Driver&#x27;</Data>
+    </Cell>
+    <Cell ss:MergeAcross='4' ss:StyleID='theme-total'>
+      <Data ss:Type='String'>0.0 points</Data>
+    </Cell>
+  </Row>
+  <Row ss:AutoFitHeight='0' ss:Height='5'>
+    <Cell ss:MergeAcross='7' />
+  </Row>
+    <Row>
+      <Cell ss:MergeDown='3' ss:StyleID='theme-cell'>
+        <Data ss:Type='String'>Stock Control</Data>
+      </Cell>
+      <Cell ss:Index='2' ss:StyleID=&#x27;story-color-0&#x27;>
+  <Data ss:Type='String'>STC1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a Stock Control Manager
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> Enter items tothe stock table of the Database
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> keep the stock table up to date</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Secure Login&#10;&#13;b) Interface to enter &amp; remove stock to &amp; from database </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>STC2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a Stock Control Manager
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font>  Remove items from the stock table of the Database
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> keep the stock table up to date</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>STC3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a Stock Control Manager
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> be notified when the stock level of a item is below a certain value
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> organize purchasing</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+  <Row>
+    <Cell ss:Index='2' ss:MergeAcross='2' ss:StyleID='theme-summary'>
+      <Data ss:Type='String'>Total for theme &#x27;Stock Control&#x27;</Data>
+    </Cell>
+    <Cell ss:MergeAcross='4' ss:StyleID='theme-total'>
+      <Data ss:Type='String'>0.0 points</Data>
+    </Cell>
+  </Row>
+  <Row ss:AutoFitHeight='0' ss:Height='5'>
+    <Cell ss:MergeAcross='7' />
+  </Row>
+    <Row>
+      <Cell ss:MergeDown='1' ss:StyleID='theme-cell'>
+        <Data ss:Type='String'>Management</Data>
+      </Cell>
+      <Cell ss:Index='2' ss:StyleID=&#x27;story-color-1&#x27;>
+  <Data ss:Type='String'>MAN1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a Management Stuff member
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> have access to all areas of the system
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> change bills, orders, totals and charges</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Possibility to access to the system from anywhere&#10;&#13;b) After any changes I will be asking for confirmation&#10;&#13;c) Lack of confirmation will be end with no affect for dataabse&#10;&#13;d) System will be autonomously correcting input errors&#10;&#13;e) If error occur will suggesting proper input &#10;&#13;f) System will send security e-mail if Management Stuff member will log-in first time every new day &#10;&#13;g) If not confirmed, will block management stuff user from any access to the system, and marked as unauthorized access.</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+  <Row>
+    <Cell ss:Index='2' ss:MergeAcross='2' ss:StyleID='theme-summary'>
+      <Data ss:Type='String'>Total for theme &#x27;Management&#x27;</Data>
+    </Cell>
+    <Cell ss:MergeAcross='4' ss:StyleID='theme-total'>
+      <Data ss:Type='String'>0.0 points</Data>
+    </Cell>
+  </Row>
+  <Row ss:AutoFitHeight='0' ss:Height='5'>
+    <Cell ss:MergeAcross='7' />
+  </Row>
+
+    <Row ss:AutoFitHeight='0' ss:Height='18'>
+      <Cell ss:MergeAcross='3' ss:StyleID='backlog-summary'>
+        <Data ss:Type='String'>Total for backlog &#x27;Corrigan&#x27;s Supermarket&#x27;</Data>
+      </Cell>
+      <Cell ss:MergeAcross='4' ss:StyleID='backlog-total'>
+        <Data ss:Type='String'>0.0 points</Data>
+      </Cell>
+    </Row>
+  </Table>
+  <WorksheetOptions xmlns='urn:schemas-microsoft-com:office:excel'>
+    <PageLayoutZoom>0</PageLayoutZoom>
+    <Selected />
+    <Panes />
+    <ProtectObjects>False</ProtectObjects>
+    <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+</Worksheet>
+  <Worksheet ss:Name='Story List'>
+  <Table>
+    <Column ss:AutoFitWidth="1" ss:Width="90" /> <!--Theme-->
+    <Column ss:AutoFitWidth="1" ss:Width="45" /> <!--ID-->
+    <Column ss:AutoFitWidth="1" ss:Width="240" /> <!--User Story-->
+    <Column ss:AutoFitWidth="1" ss:Width="240" /> <!--Acceptance Criteria-->
+    <Column ss:AutoFitWidth="1" ss:Width="240" /> <!--Comments-->
+    <Column ss:AutoFitWidth="1" ss:Width="50" /> <!--Sprint-->
+    <Column ss:AutoFitWidth="1" ss:Width="50" /> <!--Status-->
+      <Column ss:AutoFitWidth="1" ss:Width="45" /> <!--Score -->
+    <Row>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>Theme</Data>
+      </Cell>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>ID</Data>
+      </Cell>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>User Story</Data>
+      </Cell>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>Acceptance Criteria</Data>
+      </Cell>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>Comments</Data>
+      </Cell>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>Sprint</Data>
+      </Cell>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>Status</Data>
+      </Cell>
+        <Cell ss:StyleID='table-header'>
+          <Data ss:Type='String'><span class="translation_missing" title="translation missing: en.backlog.points">Points</span></Data>
+        </Cell>
+    </Row>
+        <Row>
+      <Cell>
+  <Data ss:Type='String'>Customer</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>CUS2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> A customer
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> create a user account
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> add my personal details and payment details</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Requirement &quot;CUS9&quot; must be completed</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Customer</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>CUS3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> A customer 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> View the full online catalogue of items available
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> order the selected quantity (if available)</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Each item will have barcode, description, availability, price saved in catalogue database</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Customer</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>CUS4</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> A customer
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> add selected items to a shopping basket
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> checkout and pay for my order when I have selected everything I want</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) user must be able to select quantity and click &#x27;add to basket&#x27; (only if in stock)</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Customer</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>CUS6</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> A customer
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> select my pre-saved payment details
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> pay for my shopping securely and hassle free</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) User will be shown visa drop down selection box with saved details (with last 4 numbers of card visible) or can select to &#x27;add new card&#x27;</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Customer</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>CUS5</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> A customer 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> view an order summary (shopping basket) 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> make any changes and selected &#x27;continue to payment&#x27; or &#x27;continue shopping&#x27;</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) order summary (list of items in shopping basket) with options to remove items on the list, and to either continue to payment page or continue shopping</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Customer</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>CUS8</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> A customer
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> have a certain amount of time to cancel my order
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> cancel an order that I do not want anymore</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) user should be able to enter their order reference number and will be shown the option to cancel with details of any penalties they have to pay&#10;&#13;b) A customer cannot cancel their order if their order has already left the depot to be delivered. </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Customer</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>CUS7</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> A customer
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> view a list of available timeslots for delivery
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> choose a timeslot for delivery that suits me</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Timeslots will be based on system order cutoff deadlines </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Customer</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>CUS1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> A customer
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> be able to receive/send emails/electronic communications to the supermarket
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> get promotional material, make a complaint, contact customer services</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) User should be provided with a contact email address and an option to send a message on a dedicated &#x27;contact us&#x27; section on the website</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Customer</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>CUS9</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> A customer 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> provide a username, password, email address, full name and payment details 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> Create a user account </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) username&#10;&#13;b) password&#10;&#13;c) date of birth&#10;&#13;d) full name&#10;&#13;e) email address</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Delivery Driver</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>DED1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a delivery driver 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> see the list of orders assigned to me 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> deliver them</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) each order in the list will have the following:&#10;&#13;b) order Id&#10;&#13;c) price amount&#10;&#13;d) name of customer&#10;&#13;e) address of order</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Delivery Driver</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>DED2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a delivery driver 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> change the status of each order
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> keep track of each delivery</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) each order will have an option to mark it as delivered or pending</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Delivery Driver</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>DED3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a delivery driver 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> be notified of cancelled orders
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> avoid unnecessary trips</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) each delivery will be marked as cancelled when the customer cancels it</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Delivery Driver</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>DED4</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a delivery driver
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Stock Control</Data>
+</Cell>
+<Cell ss:Index='2' ss:StyleID=&#x27;story-color-0&#x27;>
+  <Data ss:Type='String'>STC1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a Stock Control Manager
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> Enter items tothe stock table of the Database
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> keep the stock table up to date</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Secure Login&#10;&#13;b) Interface to enter &amp; remove stock to &amp; from database </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Stock Control</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>STC2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a Stock Control Manager
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font>  Remove items from the stock table of the Database
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> keep the stock table up to date</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Stock Control</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>STC3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a Stock Control Manager
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> be notified when the stock level of a item is below a certain value
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> organize purchasing</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Management</Data>
+</Cell>
+<Cell ss:Index='2' ss:StyleID=&#x27;story-color-1&#x27;>
+  <Data ss:Type='String'>MAN1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a Management Stuff member
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> have access to all areas of the system
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> change bills, orders, totals and charges</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Possibility to access to the system from anywhere&#10;&#13;b) After any changes I will be asking for confirmation&#10;&#13;c) Lack of confirmation will be end with no affect for dataabse&#10;&#13;d) System will be autonomously correcting input errors&#10;&#13;e) If error occur will suggesting proper input &#10;&#13;f) System will send security e-mail if Management Stuff member will log-in first time every new day &#10;&#13;g) If not confirmed, will block management stuff user from any access to the system, and marked as unauthorized access.</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+
+  </Table>
+  <WorksheetOptions xmlns='urn:schemas-microsoft-com:office:excel'>
+    <PageLayoutZoom>0</PageLayoutZoom>
+    <Selected />
+    <Panes />
+    <ProtectObjects>False</ProtectObjects>
+    <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+  <AutoFilter x:Range='R1C1:R1C8' xmlns='urn:schemas-microsoft-com:office:excel'></AutoFilter>
+</Worksheet>
+</Workbook>
