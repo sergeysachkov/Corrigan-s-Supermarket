@@ -6,7 +6,7 @@
           xmlns='urn:schemas-microsoft-com:office:spreadsheet'>
   <DocumentProperties xmlns='urn:schemas-microsoft-com:office:office'>
     <LastAuthor>Adrian Danila</LastAuthor>
-    <Created>2016-10-05 12:33:21 UTC</Created>
+    <Created>2016-10-13 11:46:13 UTC</Created>
     <LastSaved>%= Time.now.utc %></LastSaved>
     <Version>1.0</Version>
   </DocumentProperties>
@@ -69,13 +69,7 @@
     </Style>
           <Style ss:ID='story-color-0'>
         <Borders>
-          <Border ss:Position='Left' ss:Color='#d5a6bd' ss:Weight='3' ss:LineStyle='Continuous' />
-        </Borders>
-      </Style>
-
-      <Style ss:ID='story-color-1'>
-        <Borders>
-          <Border ss:Position='Left' ss:Color='#93c47d' ss:Weight='3' ss:LineStyle='Continuous' />
+          <Border ss:Position='Left' ss:Color='#00ff00' ss:Weight='3' ss:LineStyle='Continuous' />
         </Borders>
       </Style>
 
@@ -126,7 +120,7 @@
     </Row>
         <Row>
       <Cell ss:MergeDown='9' ss:StyleID='theme-cell'>
-        <Data ss:Type='String'>Customer</Data>
+        <Data ss:Type='String'>                   Customer</Data>
       </Cell>
       <Cell ss:Index='2'>
   <Data ss:Type='String'>CUS2</Data>
@@ -293,7 +287,7 @@
 &#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> choose a timeslot for delivery that suits me</Data>
 </Cell>
 <Cell>
-  <Data ss:Type='String'>a) Timeslots will be based on system order cutoff deadlines </Data>
+  <Data ss:Type='String'>a) View list of 2 hour timesots available for delivery&#10;&#13;b) If the order is placed 20 minutes before the beginning of the next timeslot the customer cannot pick that timeslot&#10;&#13;c) if the current time has gone past a timeslot, the timeslot will be marker &quot;next day&quot;&#10;&#13;d) if the current time is inside a timeslot, this slot can&#x27;t be picked&#10;&#13;e) cannot pick a timeslot if the number of orders for that slot are over 20</Data>
 </Cell>
 <Cell>
   <Data ss:Type='String'></Data>
@@ -363,7 +357,7 @@
     </Row>
   <Row>
     <Cell ss:Index='2' ss:MergeAcross='2' ss:StyleID='theme-summary'>
-      <Data ss:Type='String'>Total for theme &#x27;Customer&#x27;</Data>
+      <Data ss:Type='String'>Total for theme &#x27;                   Customer&#x27;</Data>
     </Cell>
     <Cell ss:MergeAcross='4' ss:StyleID='theme-total'>
       <Data ss:Type='String'>0.0 points</Data>
@@ -373,7 +367,7 @@
     <Cell ss:MergeAcross='7' />
   </Row>
     <Row>
-      <Cell ss:MergeDown='4' ss:StyleID='theme-cell'>
+      <Cell ss:MergeDown='5' ss:StyleID='theme-cell'>
         <Data ss:Type='String'>Delivery Driver</Data>
       </Cell>
       <Cell ss:Index='2'>
@@ -385,7 +379,7 @@
 &#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> deliver them</Data>
 </Cell>
 <Cell>
-  <Data ss:Type='String'>a) each order in the list will have the following:&#10;&#13;b) order Id&#10;&#13;c) price amount&#10;&#13;d) name of customer&#10;&#13;e) address of order</Data>
+  <Data ss:Type='String'>a) each order in the list will have the following:&#10;&#13;b) order Id&#10;&#13;c) price amount&#10;&#13;d) name of customer&#10;&#13;e) address of order&#10;&#13;f) cannot be more than 20 orders in a 2 hour delivery timeslot</Data>
 </Cell>
 <Cell>
   <Data ss:Type='String'></Data>
@@ -407,11 +401,11 @@
 </Cell>
 <Cell>
   <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a delivery driver 
-&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> change the status of each order
-&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> keep track of each delivery</Data>
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> see my delivery route based on nearest to furthest 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> use the best possible route to deliver everything</Data>
 </Cell>
 <Cell>
-  <Data ss:Type='String'>a) each order will have an option to mark it as delivered or pending</Data>
+  <Data ss:Type='String'>a) gps co-ordinates or address info on a map app&#10;&#13;b) order details</Data>
 </Cell>
 <Cell>
   <Data ss:Type='String'></Data>
@@ -433,11 +427,11 @@
 </Cell>
 <Cell>
   <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a delivery driver 
-&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> be notified of cancelled orders
-&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> avoid unnecessary trips</Data>
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> have a gps location tracker
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> use a map to deliver my orders</Data>
 </Cell>
 <Cell>
-  <Data ss:Type='String'>a) each delivery will be marked as cancelled when the customer cancels it</Data>
+  <Data ss:Type='String'>a) gps device</Data>
 </Cell>
 <Cell>
   <Data ss:Type='String'></Data>
@@ -459,11 +453,37 @@
 </Cell>
 <Cell>
   <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a delivery driver
-&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> 
-&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> </Data>
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> go back to the depot once my truck is empty
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> collect more orders to deliver</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) truck is empty/all orders have been delivered</Data>
 </Cell>
 <Cell>
   <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>DED5</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a delivery driver
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> have a delivery schedule of 2 hour for each delivery
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> manage deliveries selected by customers for each timeslot</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) deliveries for morning slot go from 9 to 3&#10;&#13;b) deliveries for evening slot from 4-6, 6-8, 9-11</Data>
 </Cell>
 <Cell>
   <Data ss:Type='String'></Data>
@@ -491,19 +511,19 @@
     <Cell ss:MergeAcross='7' />
   </Row>
     <Row>
-      <Cell ss:MergeDown='3' ss:StyleID='theme-cell'>
+      <Cell ss:MergeDown='5' ss:StyleID='theme-cell'>
         <Data ss:Type='String'>Stock Control</Data>
       </Cell>
-      <Cell ss:Index='2' ss:StyleID=&#x27;story-color-0&#x27;>
+      <Cell ss:Index='2'>
   <Data ss:Type='String'>STC1</Data>
 </Cell>
 <Cell>
   <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a Stock Control Manager
-&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> Enter items tothe stock table of the Database
-&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> keep the stock table up to date</Data>
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> login to the system
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> get access to the stock management part of the system</Data>
 </Cell>
 <Cell>
-  <Data ss:Type='String'>a) Secure Login&#10;&#13;b) Interface to enter &amp; remove stock to &amp; from database </Data>
+  <Data ss:Type='String'>a) username&#10;&#13;b) password&#10;&#13;c) can only be logged in from the Intranet of the Corrigan&#x27;s Supermarket&#10;&#13;d) login operation is logged</Data>
 </Cell>
 <Cell>
   <Data ss:Type='String'></Data>
@@ -525,11 +545,11 @@
 </Cell>
 <Cell>
   <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a Stock Control Manager
-&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font>  Remove items from the stock table of the Database
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> Enter or update items in the stock table of the Database
 &#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> keep the stock table up to date</Data>
 </Cell>
 <Cell>
-  <Data ss:Type='String'></Data>
+  <Data ss:Type='String'>a) following attributes are required for an item:&#10;&#13;b) catagory&#10;&#13;c) name&#10;&#13;d) price&#10;&#13;e) quantity</Data>
 </Cell>
 <Cell>
   <Data ss:Type='String'></Data>
@@ -551,11 +571,63 @@
 </Cell>
 <Cell>
   <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a Stock Control Manager
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font>  Remove items from the stock table of the Database
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> keep the stock table up to date</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) confirmation from management before performing the actual delete&#10;&#13;b) reason for removing the item </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>STC4</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a Stock Control Manager
 &#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> be notified when the stock level of a item is below a certain value
 &#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> organize purchasing</Data>
 </Cell>
 <Cell>
+  <Data ss:Type='String'>a) the critical stock level can be set</Data>
+</Cell>
+<Cell>
   <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>STC5</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a Stock Control Manager
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> keep track of every change I made on the stock table
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> review the change of stock level</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) results can be filtered by starting and ending date</Data>
 </Cell>
 <Cell>
   <Data ss:Type='String'></Data>
@@ -583,10 +655,10 @@
     <Cell ss:MergeAcross='7' />
   </Row>
     <Row>
-      <Cell ss:MergeDown='1' ss:StyleID='theme-cell'>
+      <Cell ss:MergeDown='6' ss:StyleID='theme-cell'>
         <Data ss:Type='String'>Management</Data>
       </Cell>
-      <Cell ss:Index='2' ss:StyleID=&#x27;story-color-1&#x27;>
+      <Cell ss:Index='2'>
   <Data ss:Type='String'>MAN1</Data>
 </Cell>
 <Cell>
@@ -596,6 +668,136 @@
 </Cell>
 <Cell>
   <Data ss:Type='String'>a) Possibility to access to the system from anywhere&#10;&#13;b) After any changes I will be asking for confirmation&#10;&#13;c) Lack of confirmation will be end with no affect for dataabse&#10;&#13;d) System will be autonomously correcting input errors&#10;&#13;e) If error occur will suggesting proper input &#10;&#13;f) System will send security e-mail if Management Stuff member will log-in first time every new day &#10;&#13;g) If not confirmed, will block management stuff user from any access to the system, and marked as unauthorized access.</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2' ss:StyleID=&#x27;story-color-0&#x27;>
+  <Data ss:Type='String'>MAN2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a Management Stuff member
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> have an account to login to this system
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> access to all areas of the system</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) username &#10;&#13;b) verify Password  consist with the format(Min 7 characters &amp; 1 Capital letter)&#10;&#13;c) full name&#10;&#13;d) email address</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2' ss:StyleID=&#x27;story-color-0&#x27;>
+  <Data ss:Type='String'>MAN3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a Management Stuff member
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> change bills for customer
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> give the customer an correct bills when bills is wrong</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) verify the bills exist&#10;&#13;b) verify the bills wrong&#10;&#13;c) verify the management stuff member can access the customer system</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2' ss:StyleID=&#x27;story-color-0&#x27;>
+  <Data ss:Type='String'>MAN4</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a Management Stuff member
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> change orders for customer
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> alter the wrong order and give the customer an right orders</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) verify the orders exist&#10;&#13;b) if error appear in the orders&#10;&#13;c) if the customer want to add some new item in his orders</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2' ss:StyleID=&#x27;story-color-0&#x27;>
+  <Data ss:Type='String'>MAN5</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a Management Stuff member
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> change totals for Stock Control manager 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> know how many goods are left in time</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) verify the totals exist&#10;&#13;b) when the totals appear error &#10;&#13;c) if the stock control manager didn&#x27;t update the totals information timely </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2' ss:StyleID=&#x27;story-color-0&#x27;>
+  <Data ss:Type='String'>MAN6</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a Management Stuff member
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> change charges
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> know how much delivery fee the customer should be pay </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) verify the charges exist&#10;&#13;b) verify the delivery fee depend on the distance&#10;&#13;c) when the customer address are incorrect</Data>
 </Cell>
 <Cell>
   <Data ss:Type='String'></Data>
@@ -678,7 +880,7 @@
     </Row>
         <Row>
       <Cell>
-  <Data ss:Type='String'>Customer</Data>
+  <Data ss:Type='String'>                   Customer</Data>
 </Cell>
 <Cell ss:Index='2'>
   <Data ss:Type='String'>CUS2</Data>
@@ -707,7 +909,7 @@
     </Row>
     <Row>
       <Cell>
-  <Data ss:Type='String'>Customer</Data>
+  <Data ss:Type='String'>                   Customer</Data>
 </Cell>
 <Cell ss:Index='2'>
   <Data ss:Type='String'>CUS3</Data>
@@ -736,7 +938,7 @@
     </Row>
     <Row>
       <Cell>
-  <Data ss:Type='String'>Customer</Data>
+  <Data ss:Type='String'>                   Customer</Data>
 </Cell>
 <Cell ss:Index='2'>
   <Data ss:Type='String'>CUS4</Data>
@@ -765,7 +967,7 @@
     </Row>
     <Row>
       <Cell>
-  <Data ss:Type='String'>Customer</Data>
+  <Data ss:Type='String'>                   Customer</Data>
 </Cell>
 <Cell ss:Index='2'>
   <Data ss:Type='String'>CUS6</Data>
@@ -794,7 +996,7 @@
     </Row>
     <Row>
       <Cell>
-  <Data ss:Type='String'>Customer</Data>
+  <Data ss:Type='String'>                   Customer</Data>
 </Cell>
 <Cell ss:Index='2'>
   <Data ss:Type='String'>CUS5</Data>
@@ -823,7 +1025,7 @@
     </Row>
     <Row>
       <Cell>
-  <Data ss:Type='String'>Customer</Data>
+  <Data ss:Type='String'>                   Customer</Data>
 </Cell>
 <Cell ss:Index='2'>
   <Data ss:Type='String'>CUS8</Data>
@@ -852,7 +1054,7 @@
     </Row>
     <Row>
       <Cell>
-  <Data ss:Type='String'>Customer</Data>
+  <Data ss:Type='String'>                   Customer</Data>
 </Cell>
 <Cell ss:Index='2'>
   <Data ss:Type='String'>CUS7</Data>
@@ -863,7 +1065,7 @@
 &#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> choose a timeslot for delivery that suits me</Data>
 </Cell>
 <Cell>
-  <Data ss:Type='String'>a) Timeslots will be based on system order cutoff deadlines </Data>
+  <Data ss:Type='String'>a) View list of 2 hour timesots available for delivery&#10;&#13;b) If the order is placed 20 minutes before the beginning of the next timeslot the customer cannot pick that timeslot&#10;&#13;c) if the current time has gone past a timeslot, the timeslot will be marker &quot;next day&quot;&#10;&#13;d) if the current time is inside a timeslot, this slot can&#x27;t be picked&#10;&#13;e) cannot pick a timeslot if the number of orders for that slot are over 20</Data>
 </Cell>
 <Cell>
   <Data ss:Type='String'></Data>
@@ -881,7 +1083,7 @@
     </Row>
     <Row>
       <Cell>
-  <Data ss:Type='String'>Customer</Data>
+  <Data ss:Type='String'>                   Customer</Data>
 </Cell>
 <Cell ss:Index='2'>
   <Data ss:Type='String'>CUS1</Data>
@@ -910,7 +1112,7 @@
     </Row>
     <Row>
       <Cell>
-  <Data ss:Type='String'>Customer</Data>
+  <Data ss:Type='String'>                   Customer</Data>
 </Cell>
 <Cell ss:Index='2'>
   <Data ss:Type='String'>CUS9</Data>
@@ -950,7 +1152,7 @@
 &#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> deliver them</Data>
 </Cell>
 <Cell>
-  <Data ss:Type='String'>a) each order in the list will have the following:&#10;&#13;b) order Id&#10;&#13;c) price amount&#10;&#13;d) name of customer&#10;&#13;e) address of order</Data>
+  <Data ss:Type='String'>a) each order in the list will have the following:&#10;&#13;b) order Id&#10;&#13;c) price amount&#10;&#13;d) name of customer&#10;&#13;e) address of order&#10;&#13;f) cannot be more than 20 orders in a 2 hour delivery timeslot</Data>
 </Cell>
 <Cell>
   <Data ss:Type='String'></Data>
@@ -975,11 +1177,11 @@
 </Cell>
 <Cell>
   <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a delivery driver 
-&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> change the status of each order
-&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> keep track of each delivery</Data>
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> see my delivery route based on nearest to furthest 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> use the best possible route to deliver everything</Data>
 </Cell>
 <Cell>
-  <Data ss:Type='String'>a) each order will have an option to mark it as delivered or pending</Data>
+  <Data ss:Type='String'>a) gps co-ordinates or address info on a map app&#10;&#13;b) order details</Data>
 </Cell>
 <Cell>
   <Data ss:Type='String'></Data>
@@ -1004,11 +1206,11 @@
 </Cell>
 <Cell>
   <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a delivery driver 
-&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> be notified of cancelled orders
-&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> avoid unnecessary trips</Data>
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> have a gps location tracker
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> use a map to deliver my orders</Data>
 </Cell>
 <Cell>
-  <Data ss:Type='String'>a) each delivery will be marked as cancelled when the customer cancels it</Data>
+  <Data ss:Type='String'>a) gps device</Data>
 </Cell>
 <Cell>
   <Data ss:Type='String'></Data>
@@ -1033,11 +1235,40 @@
 </Cell>
 <Cell>
   <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a delivery driver
-&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> 
-&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> </Data>
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> go back to the depot once my truck is empty
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> collect more orders to deliver</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) truck is empty/all orders have been delivered</Data>
 </Cell>
 <Cell>
   <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Delivery Driver</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>DED5</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a delivery driver
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> have a delivery schedule of 2 hour for each delivery
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> manage deliveries selected by customers for each timeslot</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) deliveries for morning slot go from 9 to 3&#10;&#13;b) deliveries for evening slot from 4-6, 6-8, 9-11</Data>
 </Cell>
 <Cell>
   <Data ss:Type='String'></Data>
@@ -1057,16 +1288,16 @@
       <Cell>
   <Data ss:Type='String'>Stock Control</Data>
 </Cell>
-<Cell ss:Index='2' ss:StyleID=&#x27;story-color-0&#x27;>
+<Cell ss:Index='2'>
   <Data ss:Type='String'>STC1</Data>
 </Cell>
 <Cell>
   <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a Stock Control Manager
-&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> Enter items tothe stock table of the Database
-&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> keep the stock table up to date</Data>
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> login to the system
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> get access to the stock management part of the system</Data>
 </Cell>
 <Cell>
-  <Data ss:Type='String'>a) Secure Login&#10;&#13;b) Interface to enter &amp; remove stock to &amp; from database </Data>
+  <Data ss:Type='String'>a) username&#10;&#13;b) password&#10;&#13;c) can only be logged in from the Intranet of the Corrigan&#x27;s Supermarket&#10;&#13;d) login operation is logged</Data>
 </Cell>
 <Cell>
   <Data ss:Type='String'></Data>
@@ -1091,11 +1322,11 @@
 </Cell>
 <Cell>
   <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a Stock Control Manager
-&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font>  Remove items from the stock table of the Database
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> Enter or update items in the stock table of the Database
 &#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> keep the stock table up to date</Data>
 </Cell>
 <Cell>
-  <Data ss:Type='String'></Data>
+  <Data ss:Type='String'>a) following attributes are required for an item:&#10;&#13;b) catagory&#10;&#13;c) name&#10;&#13;d) price&#10;&#13;e) quantity</Data>
 </Cell>
 <Cell>
   <Data ss:Type='String'></Data>
@@ -1120,11 +1351,69 @@
 </Cell>
 <Cell>
   <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a Stock Control Manager
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font>  Remove items from the stock table of the Database
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> keep the stock table up to date</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) confirmation from management before performing the actual delete&#10;&#13;b) reason for removing the item </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Stock Control</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>STC4</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a Stock Control Manager
 &#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> be notified when the stock level of a item is below a certain value
 &#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> organize purchasing</Data>
 </Cell>
 <Cell>
+  <Data ss:Type='String'>a) the critical stock level can be set</Data>
+</Cell>
+<Cell>
   <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Stock Control</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>STC5</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a Stock Control Manager
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> keep track of every change I made on the stock table
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> review the change of stock level</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) results can be filtered by starting and ending date</Data>
 </Cell>
 <Cell>
   <Data ss:Type='String'></Data>
@@ -1144,7 +1433,7 @@
       <Cell>
   <Data ss:Type='String'>Management</Data>
 </Cell>
-<Cell ss:Index='2' ss:StyleID=&#x27;story-color-1&#x27;>
+<Cell ss:Index='2'>
   <Data ss:Type='String'>MAN1</Data>
 </Cell>
 <Cell>
@@ -1154,6 +1443,151 @@
 </Cell>
 <Cell>
   <Data ss:Type='String'>a) Possibility to access to the system from anywhere&#10;&#13;b) After any changes I will be asking for confirmation&#10;&#13;c) Lack of confirmation will be end with no affect for dataabse&#10;&#13;d) System will be autonomously correcting input errors&#10;&#13;e) If error occur will suggesting proper input &#10;&#13;f) System will send security e-mail if Management Stuff member will log-in first time every new day &#10;&#13;g) If not confirmed, will block management stuff user from any access to the system, and marked as unauthorized access.</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Management</Data>
+</Cell>
+<Cell ss:Index='2' ss:StyleID=&#x27;story-color-0&#x27;>
+  <Data ss:Type='String'>MAN2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a Management Stuff member
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> have an account to login to this system
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> access to all areas of the system</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) username &#10;&#13;b) verify Password  consist with the format(Min 7 characters &amp; 1 Capital letter)&#10;&#13;c) full name&#10;&#13;d) email address</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Management</Data>
+</Cell>
+<Cell ss:Index='2' ss:StyleID=&#x27;story-color-0&#x27;>
+  <Data ss:Type='String'>MAN3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a Management Stuff member
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> change bills for customer
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> give the customer an correct bills when bills is wrong</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) verify the bills exist&#10;&#13;b) verify the bills wrong&#10;&#13;c) verify the management stuff member can access the customer system</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Management</Data>
+</Cell>
+<Cell ss:Index='2' ss:StyleID=&#x27;story-color-0&#x27;>
+  <Data ss:Type='String'>MAN4</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a Management Stuff member
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> change orders for customer
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> alter the wrong order and give the customer an right orders</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) verify the orders exist&#10;&#13;b) if error appear in the orders&#10;&#13;c) if the customer want to add some new item in his orders</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Management</Data>
+</Cell>
+<Cell ss:Index='2' ss:StyleID=&#x27;story-color-0&#x27;>
+  <Data ss:Type='String'>MAN5</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a Management Stuff member
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> change totals for Stock Control manager 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> know how many goods are left in time</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) verify the totals exist&#10;&#13;b) when the totals appear error &#10;&#13;c) if the stock control manager didn&#x27;t update the totals information timely </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Management</Data>
+</Cell>
+<Cell ss:Index='2' ss:StyleID=&#x27;story-color-0&#x27;>
+  <Data ss:Type='String'>MAN6</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a Management Stuff member
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> change charges
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> know how much delivery fee the customer should be pay </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) verify the charges exist&#10;&#13;b) verify the delivery fee depend on the distance&#10;&#13;c) when the customer address are incorrect</Data>
 </Cell>
 <Cell>
   <Data ss:Type='String'></Data>
