@@ -6,7 +6,7 @@
           xmlns='urn:schemas-microsoft-com:office:spreadsheet'>
   <DocumentProperties xmlns='urn:schemas-microsoft-com:office:office'>
     <LastAuthor>Adrian Danila</LastAuthor>
-    <Created>2016-10-13 11:46:13 UTC</Created>
+    <Created>2016-10-14 10:31:42 UTC</Created>
     <LastSaved>%= Time.now.utc %></LastSaved>
     <Version>1.0</Version>
   </DocumentProperties>
@@ -119,7 +119,7 @@
         </Cell>
     </Row>
         <Row>
-      <Cell ss:MergeDown='9' ss:StyleID='theme-cell'>
+      <Cell ss:MergeDown='10' ss:StyleID='theme-cell'>
         <Data ss:Type='String'>                   Customer</Data>
       </Cell>
       <Cell ss:Index='2'>
@@ -157,7 +157,7 @@
 &#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> order the selected quantity (if available)</Data>
 </Cell>
 <Cell>
-  <Data ss:Type='String'>a) Each item will have barcode, description, availability, price saved in catalogue database</Data>
+  <Data ss:Type='String'>a) Each item will have barcode, description, availability, price saved in catalogue database&#10;&#13;b) Customer can see items &#10;&#13;c) Customer can apply filters and sorting to items</Data>
 </Cell>
 <Cell>
   <Data ss:Type='String'></Data>
@@ -355,6 +355,32 @@
   </Cell>
 
     </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>CUS10</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a Customer
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> receive notification on unsuccessful delivery of my order 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> reschedule or cancel order</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Customer receives email notification on unsuccessful order delivery&#10;&#13;b) Customer has option to cancel order&#10;&#13;c) Customer has option to reschedule the order </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
   <Row>
     <Cell ss:Index='2' ss:MergeAcross='2' ss:StyleID='theme-summary'>
       <Data ss:Type='String'>Total for theme &#x27;                   Customer&#x27;</Data>
@@ -367,7 +393,7 @@
     <Cell ss:MergeAcross='7' />
   </Row>
     <Row>
-      <Cell ss:MergeDown='5' ss:StyleID='theme-cell'>
+      <Cell ss:MergeDown='4' ss:StyleID='theme-cell'>
         <Data ss:Type='String'>Delivery Driver</Data>
       </Cell>
       <Cell ss:Index='2'>
@@ -423,58 +449,6 @@
     </Row>
     <Row>
       <Cell ss:Index='2'>
-  <Data ss:Type='String'>DED3</Data>
-</Cell>
-<Cell>
-  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a delivery driver 
-&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> have a gps location tracker
-&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> use a map to deliver my orders</Data>
-</Cell>
-<Cell>
-  <Data ss:Type='String'>a) gps device</Data>
-</Cell>
-<Cell>
-  <Data ss:Type='String'></Data>
-</Cell>
-<Cell>
-  <Data ss:Type='String'></Data>
-</Cell>
-<Cell>
-  <Data ss:Type='String'></Data>
-</Cell>
-  <Cell ss:StyleID='numeric'>
-    <Data ss:Type='String'></Data>
-  </Cell>
-
-    </Row>
-    <Row>
-      <Cell ss:Index='2'>
-  <Data ss:Type='String'>DED4</Data>
-</Cell>
-<Cell>
-  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a delivery driver
-&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> go back to the depot once my truck is empty
-&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> collect more orders to deliver</Data>
-</Cell>
-<Cell>
-  <Data ss:Type='String'>a) truck is empty/all orders have been delivered</Data>
-</Cell>
-<Cell>
-  <Data ss:Type='String'></Data>
-</Cell>
-<Cell>
-  <Data ss:Type='String'></Data>
-</Cell>
-<Cell>
-  <Data ss:Type='String'></Data>
-</Cell>
-  <Cell ss:StyleID='numeric'>
-    <Data ss:Type='String'></Data>
-  </Cell>
-
-    </Row>
-    <Row>
-      <Cell ss:Index='2'>
   <Data ss:Type='String'>DED5</Data>
 </Cell>
 <Cell>
@@ -484,6 +458,32 @@
 </Cell>
 <Cell>
   <Data ss:Type='String'>a) deliveries for morning slot go from 9 to 3&#10;&#13;b) deliveries for evening slot from 4-6, 6-8, 9-11</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>DED3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a delivery driver
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> log undelivered orders
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> management stuff could contact customer for another delivery slot</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) delivery driver mark order as unsuccessful delivery&#10;&#13;b) driver can state the reason of unsuccessful delivery</Data>
 </Cell>
 <Cell>
   <Data ss:Type='String'></Data>
@@ -523,7 +523,7 @@
 &#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> get access to the stock management part of the system</Data>
 </Cell>
 <Cell>
-  <Data ss:Type='String'>a) username&#10;&#13;b) password&#10;&#13;c) can only be logged in from the Intranet of the Corrigan&#x27;s Supermarket&#10;&#13;d) login operation is logged</Data>
+  <Data ss:Type='String'>a) Stock Control Manager provides username,password &#10;&#13;b) can only be logged in from the Intranet of the Corrigan&#x27;s Supermarket&#10;&#13;c) login operation is logged&#10;&#13;d) &quot;Unrecognised user name, please try again&quot; message shown when no Stock Control manager is registered with  given username&#10;&#13;e) &quot;Incorrect password, please try again&quot; message shown when password of given Stock Control manager doesn&#x27;t coincide with one in input field</Data>
 </Cell>
 <Cell>
   <Data ss:Type='String'></Data>
@@ -575,7 +575,7 @@
 &#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> keep the stock table up to date</Data>
 </Cell>
 <Cell>
-  <Data ss:Type='String'>a) confirmation from management before performing the actual delete&#10;&#13;b) reason for removing the item </Data>
+  <Data ss:Type='String'>a) reason for removing the item </Data>
 </Cell>
 <Cell>
   <Data ss:Type='String'></Data>
@@ -601,7 +601,7 @@
 &#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> organize purchasing</Data>
 </Cell>
 <Cell>
-  <Data ss:Type='String'>a) the critical stock level can be set</Data>
+  <Data ss:Type='String'>a) the critical stock level can be set&#10;&#13;b) Stock Control manager receives email, with item information that is running out of stock </Data>
 </Cell>
 <Cell>
   <Data ss:Type='String'></Data>
@@ -655,7 +655,7 @@
     <Cell ss:MergeAcross='7' />
   </Row>
     <Row>
-      <Cell ss:MergeDown='6' ss:StyleID='theme-cell'>
+      <Cell ss:MergeDown='9' ss:StyleID='theme-cell'>
         <Data ss:Type='String'>Management</Data>
       </Cell>
       <Cell ss:Index='2'>
@@ -670,7 +670,7 @@
   <Data ss:Type='String'>a) Possibility to access to the system from anywhere&#10;&#13;b) After any changes I will be asking for confirmation&#10;&#13;c) Lack of confirmation will be end with no affect for dataabse&#10;&#13;d) System will be autonomously correcting input errors&#10;&#13;e) If error occur will suggesting proper input &#10;&#13;f) System will send security e-mail if Management Stuff member will log-in first time every new day &#10;&#13;g) If not confirmed, will block management stuff user from any access to the system, and marked as unauthorized access.</Data>
 </Cell>
 <Cell>
-  <Data ss:Type='String'></Data>
+  <Data ss:Type='String'>EPIC</Data>
 </Cell>
 <Cell>
   <Data ss:Type='String'></Data>
@@ -798,6 +798,84 @@
 </Cell>
 <Cell>
   <Data ss:Type='String'>a) verify the charges exist&#10;&#13;b) verify the delivery fee depend on the distance&#10;&#13;c) when the customer address are incorrect</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>MAN7</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a Management Stuff member 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> generate report for stock control manager activity
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> see the changes made to stock</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a)  Management Stuff member can generate report for specific stock manager activity&#10;&#13;&#10;&#13;b)  Management Stuff member can generate report for all stock managers&#10;&#13;&#10;&#13;c)  Management Stuff member can filter reports by start/end date, specific stock manager or product&#10;&#13;</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>MAN8</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a Management Stuff member 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> generate report for orders
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> review orders history </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Management Stuff member generates report of all orders from/to selected  dates &#10;&#13;b) Management Stuff member selects specific order in generated report and recieves order details&#10;&#13;c) Management Stuff member generates report for selected Customers</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>MAN9</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a Management Stuff member
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> receive notification of unsuccessful delivery 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> contact Customer to reschedule the delivery slot</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) email notification of unsuccessful delivery with order link received&#10;&#13;b) Management Stuff member see the order status, was it canceled or rescheduled&#10;&#13;c) Management Stuff member changes the delivery slot after contacting Customer for order in notification if not canceled</Data>
 </Cell>
 <Cell>
   <Data ss:Type='String'></Data>
@@ -920,7 +998,7 @@
 &#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> order the selected quantity (if available)</Data>
 </Cell>
 <Cell>
-  <Data ss:Type='String'>a) Each item will have barcode, description, availability, price saved in catalogue database</Data>
+  <Data ss:Type='String'>a) Each item will have barcode, description, availability, price saved in catalogue database&#10;&#13;b) Customer can see items &#10;&#13;c) Customer can apply filters and sorting to items</Data>
 </Cell>
 <Cell>
   <Data ss:Type='String'></Data>
@@ -1141,6 +1219,35 @@
     </Row>
     <Row>
       <Cell>
+  <Data ss:Type='String'>                   Customer</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>CUS10</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a Customer
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> receive notification on unsuccessful delivery of my order 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> reschedule or cancel order</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Customer receives email notification on unsuccessful order delivery&#10;&#13;b) Customer has option to cancel order&#10;&#13;c) Customer has option to reschedule the order </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
   <Data ss:Type='String'>Delivery Driver</Data>
 </Cell>
 <Cell ss:Index='2'>
@@ -1202,64 +1309,6 @@
   <Data ss:Type='String'>Delivery Driver</Data>
 </Cell>
 <Cell ss:Index='2'>
-  <Data ss:Type='String'>DED3</Data>
-</Cell>
-<Cell>
-  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a delivery driver 
-&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> have a gps location tracker
-&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> use a map to deliver my orders</Data>
-</Cell>
-<Cell>
-  <Data ss:Type='String'>a) gps device</Data>
-</Cell>
-<Cell>
-  <Data ss:Type='String'></Data>
-</Cell>
-<Cell>
-  <Data ss:Type='String'></Data>
-</Cell>
-<Cell>
-  <Data ss:Type='String'></Data>
-</Cell>
-  <Cell ss:StyleID='numeric'>
-    <Data ss:Type='String'></Data>
-  </Cell>
-
-    </Row>
-    <Row>
-      <Cell>
-  <Data ss:Type='String'>Delivery Driver</Data>
-</Cell>
-<Cell ss:Index='2'>
-  <Data ss:Type='String'>DED4</Data>
-</Cell>
-<Cell>
-  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a delivery driver
-&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> go back to the depot once my truck is empty
-&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> collect more orders to deliver</Data>
-</Cell>
-<Cell>
-  <Data ss:Type='String'>a) truck is empty/all orders have been delivered</Data>
-</Cell>
-<Cell>
-  <Data ss:Type='String'></Data>
-</Cell>
-<Cell>
-  <Data ss:Type='String'></Data>
-</Cell>
-<Cell>
-  <Data ss:Type='String'></Data>
-</Cell>
-  <Cell ss:StyleID='numeric'>
-    <Data ss:Type='String'></Data>
-  </Cell>
-
-    </Row>
-    <Row>
-      <Cell>
-  <Data ss:Type='String'>Delivery Driver</Data>
-</Cell>
-<Cell ss:Index='2'>
   <Data ss:Type='String'>DED5</Data>
 </Cell>
 <Cell>
@@ -1269,6 +1318,35 @@
 </Cell>
 <Cell>
   <Data ss:Type='String'>a) deliveries for morning slot go from 9 to 3&#10;&#13;b) deliveries for evening slot from 4-6, 6-8, 9-11</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Delivery Driver</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>DED3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a delivery driver
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> log undelivered orders
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> management stuff could contact customer for another delivery slot</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) delivery driver mark order as unsuccessful delivery&#10;&#13;b) driver can state the reason of unsuccessful delivery</Data>
 </Cell>
 <Cell>
   <Data ss:Type='String'></Data>
@@ -1297,7 +1375,7 @@
 &#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> get access to the stock management part of the system</Data>
 </Cell>
 <Cell>
-  <Data ss:Type='String'>a) username&#10;&#13;b) password&#10;&#13;c) can only be logged in from the Intranet of the Corrigan&#x27;s Supermarket&#10;&#13;d) login operation is logged</Data>
+  <Data ss:Type='String'>a) Stock Control Manager provides username,password &#10;&#13;b) can only be logged in from the Intranet of the Corrigan&#x27;s Supermarket&#10;&#13;c) login operation is logged&#10;&#13;d) &quot;Unrecognised user name, please try again&quot; message shown when no Stock Control manager is registered with  given username&#10;&#13;e) &quot;Incorrect password, please try again&quot; message shown when password of given Stock Control manager doesn&#x27;t coincide with one in input field</Data>
 </Cell>
 <Cell>
   <Data ss:Type='String'></Data>
@@ -1355,7 +1433,7 @@
 &#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> keep the stock table up to date</Data>
 </Cell>
 <Cell>
-  <Data ss:Type='String'>a) confirmation from management before performing the actual delete&#10;&#13;b) reason for removing the item </Data>
+  <Data ss:Type='String'>a) reason for removing the item </Data>
 </Cell>
 <Cell>
   <Data ss:Type='String'></Data>
@@ -1384,7 +1462,7 @@
 &#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> organize purchasing</Data>
 </Cell>
 <Cell>
-  <Data ss:Type='String'>a) the critical stock level can be set</Data>
+  <Data ss:Type='String'>a) the critical stock level can be set&#10;&#13;b) Stock Control manager receives email, with item information that is running out of stock </Data>
 </Cell>
 <Cell>
   <Data ss:Type='String'></Data>
@@ -1445,7 +1523,7 @@
   <Data ss:Type='String'>a) Possibility to access to the system from anywhere&#10;&#13;b) After any changes I will be asking for confirmation&#10;&#13;c) Lack of confirmation will be end with no affect for dataabse&#10;&#13;d) System will be autonomously correcting input errors&#10;&#13;e) If error occur will suggesting proper input &#10;&#13;f) System will send security e-mail if Management Stuff member will log-in first time every new day &#10;&#13;g) If not confirmed, will block management stuff user from any access to the system, and marked as unauthorized access.</Data>
 </Cell>
 <Cell>
-  <Data ss:Type='String'></Data>
+  <Data ss:Type='String'>EPIC</Data>
 </Cell>
 <Cell>
   <Data ss:Type='String'></Data>
@@ -1588,6 +1666,93 @@
 </Cell>
 <Cell>
   <Data ss:Type='String'>a) verify the charges exist&#10;&#13;b) verify the delivery fee depend on the distance&#10;&#13;c) when the customer address are incorrect</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Management</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>MAN7</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a Management Stuff member 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> generate report for stock control manager activity
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> see the changes made to stock</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a)  Management Stuff member can generate report for specific stock manager activity&#10;&#13;&#10;&#13;b)  Management Stuff member can generate report for all stock managers&#10;&#13;&#10;&#13;c)  Management Stuff member can filter reports by start/end date, specific stock manager or product&#10;&#13;</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Management</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>MAN8</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a Management Stuff member 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> generate report for orders
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> review orders history </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Management Stuff member generates report of all orders from/to selected  dates &#10;&#13;b) Management Stuff member selects specific order in generated report and recieves order details&#10;&#13;c) Management Stuff member generates report for selected Customers</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'></Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'></Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Management</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>MAN9</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">As</Font> a Management Stuff member
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">I want to</Font> receive notification of unsuccessful delivery 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">So I can</Font> contact Customer to reschedule the delivery slot</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) email notification of unsuccessful delivery with order link received&#10;&#13;b) Management Stuff member see the order status, was it canceled or rescheduled&#10;&#13;c) Management Stuff member changes the delivery slot after contacting Customer for order in notification if not canceled</Data>
 </Cell>
 <Cell>
   <Data ss:Type='String'></Data>
