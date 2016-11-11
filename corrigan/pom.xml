@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.ait.corrigan</groupId>
-    <artifactId>corrigan</artifactId>
-    <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>corrigan-api</module>
-        <module>corrigan-impl</module>
-        <module>corigan-app</module>
-        <module>corrigan-models</module>
-    </modules>
-
+	<groupId>com.ait.corrigan</groupId>
+	<artifactId>corrigan</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<modules>
+		<module>corrigan-api</module>
+		<module>corrigan-impl</module>
+		<module>corigan-app</module>
+		<module>corrigan-models</module>
+	</modules>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.8</source> <!-- solves compiler level mismatch -->
+					<target>1.8</target> <!-- solves compiler level mismatch -->
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>
