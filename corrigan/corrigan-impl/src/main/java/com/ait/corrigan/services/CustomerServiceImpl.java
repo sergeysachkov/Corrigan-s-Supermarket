@@ -5,6 +5,8 @@ import com.ait.corrigan.dao.CustomerDaoImpl;
 import com.ait.corrigan.models.user.Customer;
 import com.ait.corrigan.models.user.PaymentDetails;
 
+import java.sql.SQLException;
+
 public class CustomerServiceImpl implements CustomerService{
     CustomerDao customerDao = new CustomerDaoImpl();
 
@@ -30,7 +32,13 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     public void addPaymentDetails(long customerId, PaymentDetails paymentDetails){
-        customerDao.addPaymentDetails(customerId, paymentDetails);
+        try {
+            customerDao.addPaymentDetails(customerId, paymentDetails);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
     public void updatePaymentDetails(long customerId, PaymentDetails paymentDetails){
         customerDao.updatePaymentDetails(customerId, paymentDetails);

@@ -3,7 +3,7 @@ package com.ait.corrigan.models.user;
 import java.util.Date;
 
 public class PaymentDetails {
-    enum CardType{VISA, VISADEBIT, MASTERCARD}
+    public enum CardType{VISA, VISADEBIT, MASTERCARD}
     private long id;
     private CardType type;
     private String cardNo;
@@ -59,6 +59,9 @@ public class PaymentDetails {
         this.cardHolder = cardHolder;
     }
 
+    public CardType[] getTypes(){
+        return CardType.values();
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
