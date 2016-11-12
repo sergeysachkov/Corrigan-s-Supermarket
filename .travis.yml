@@ -2,7 +2,9 @@ language: java
 sudo: false
 before_script: cd corrigan
 script: mvn clean verify
-
+jdk:
+  - oraclejdk8
+      
 notifications:
   email:
     - serhiy.sachkov@gmail.com
