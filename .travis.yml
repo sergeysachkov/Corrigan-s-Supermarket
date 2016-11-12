@@ -2,3 +2,11 @@ language: java
 sudo: false
 before_script: cd corrigan
 script: mvn clean verify
+
+notifications:
+  email:
+    - serhiy.sachkov@gmail.com
+    - iyezi@hotmail.com
+    - jhandy92@gmail.com
+    - adriandi17@gmail.com
+    - a00215442@studentait.onmicrosoft.com
