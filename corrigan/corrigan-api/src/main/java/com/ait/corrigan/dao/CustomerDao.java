@@ -4,6 +4,7 @@ import com.ait.corrigan.models.user.Customer;
 import com.ait.corrigan.models.user.PaymentDetails;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public interface CustomerDao {
 
@@ -14,6 +15,6 @@ public interface CustomerDao {
     boolean checkCustomer(String user, String password);
 
     void addPaymentDetails(long customerId, PaymentDetails paymentDetails) throws SQLException, ClassNotFoundException;
-    void updatePaymentDetails(long customerId, PaymentDetails paymentDetails);
     void deletePaymentDetails(long customerId, long paymentDetailsId);
+    List<PaymentDetails> getPaymentDetails(long customerId);
 }

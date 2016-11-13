@@ -4,11 +4,24 @@ import com.ait.corrigan.dao.CustomerDao;
 import com.ait.corrigan.dao.CustomerDaoImpl;
 import com.ait.corrigan.models.user.Customer;
 import com.ait.corrigan.models.user.PaymentDetails;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.SQLException;
+import java.util.List;
+
 
 public class CustomerServiceImpl implements CustomerService{
-    CustomerDao customerDao = new CustomerDaoImpl();
+    private Logger logger = LoggerFactory.getLogger(CustomerServiceImpl.class);
+    private CustomerDao customerDao;
+
+    public CustomerServiceImpl() {
+        customerDao = new CustomerDaoImpl();
+    }
+
+    public CustomerServiceImpl(CustomerDao customerDao) {
+        this.customerDao = customerDao;
+    }
 
     public long addCustomer(Customer customer){
         return customerDao.addCustomer(customer);
@@ -34,15 +47,15 @@ public class CustomerServiceImpl implements CustomerService{
     public void addPaymentDetails(long customerId, PaymentDetails paymentDetails){
         try {
             customerDao.addPaymentDetails(customerId, paymentDetails);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+        } catch (SQLException | ClassNotFoundException e) {
+            logger.error("Error occurred!", e);
+            throw new RuntimeException(e.getMessage());
         }
     }
-    public void updatePaymentDetails(long customerId, PaymentDetails paymentDetails){
-        customerDao.updatePaymentDetails(customerId, paymentDetails);
+    public List<PaymentDetails> getPaymentDetails(long customerId){
+        return customerDao.getPaymentDetails(customerId);
     }
+
     public void deletePaymentDetails(long customerId, long paymentDetailsId){
         customerDao.deletePaymentDetails(customerId, paymentDetailsId);
     }

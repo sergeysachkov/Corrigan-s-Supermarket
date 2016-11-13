@@ -4,6 +4,7 @@ import com.ait.corrigan.models.user.Customer;
 import com.ait.corrigan.models.user.PaymentDetails;
 
 import java.sql.*;
+import java.util.List;
 
 public class CustomerDaoImpl implements CustomerDao{
 
@@ -37,6 +38,8 @@ public class CustomerDaoImpl implements CustomerDao{
     }
 
 
-    public void updatePaymentDetails(long customerId, PaymentDetails paymentDetails){}
+    public List<PaymentDetails> getPaymentDetails(long customerId){
+        return null;
+    }
     public void deletePaymentDetails(long customerId, long paymentDetailsId){}
 }

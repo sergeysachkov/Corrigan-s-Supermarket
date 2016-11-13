@@ -7,44 +7,49 @@
 <h:body>
     <h:outputLabel value="Payment Details"/>
     <h:form>
-        <h:inputHidden id="customerId" value="#{payment.customerId}" required="true" />
+        <h:inputHidden id="customerId" value="#{payment.customerId}" required="true"/>
         <ul>
             <li>
-        <h:outputLabel id="cardtypeLabel" for="cardtype"
-                       value="Card Type" />
-        <h:selectOneMenu id="cardtype" value="#{payment.type}" required="true">
-            <f:selectItems value="#{payment.types}" />
-        </h:selectOneMenu>
+                <h:outputLabel id="cardtypeLabel" for="cardtype"
+                               value="Card Type" size="20"/>
+                <h:selectOneMenu id="cardtype"  value="#{payment.type}" required="true">
+                    <f:selectItems value="#{payment.types}"/>
+                </h:selectOneMenu>
             </li>
             <li>
-        <h:outputLabel id="cardnoLabel" for="cardno" value="Card Number" />
-        <h:inputText id="cardno" value="#{payment.cardNo}" required="true">
-            <f:validateLength minimum="16" maximum="16" />
-            <f:convertNumber integerOnly="true" type="number" />
-        </h:inputText>
-            </li>
-            <li>
-        <h:outputLabel id="ccv2Label" for="ccv2" value="CCV2" />
-        <h:inputText id="ccv2" value="#{payment.cvv2}" required="true" >
-            <f:validateLength minimum="3" maximum="3" />
+                <h:outputLabel id="cardnoLabel" for="cardno" value="Card Number" size="20"/>
+                <h:inputText id="cardno" value="#{payment.cardNo}" required="true"
+                             validatorMessage="please enter 16 gigit long numeric only value">
+                    <f:validateLength minimum="16" maximum="16"/>
+                    <f:convertNumber integerOnly="true" type="number"/>
                 </h:inputText>
+                <h:message for="cardno" style="color:red"/>
             </li>
             <li>
-        <h:outputLabel id="cardholderLabel" for="cardholder" value="Card Holder" />
-        <h:inputText id="cardholder" value="#{payment.cardHolder}" required="true"
-                     label="Card Holder"/>
+                <h:outputLabel id="ccv2Label" for="ccv2" value="CCV2" size="20"/>
+                <h:inputText id="ccv2" value="#{payment.cvv2}" required="true" validatorMessage="please enter 3 gigit long numeric only value">
+                    <f:validateLength minimum="3" maximum="3"/>
+                </h:inputText>
+                <h:message for="ccv2" style="color:red"/>
             </li>
             <li>
-        <h:outputLabel id="expirydateLabel" for="expirydate" value="Expiry Date" />
-        <h:inputText id="expirydate" value="#{payment.date}" required="true"
-                     label="Expiry Date" >
+                <h:outputLabel id="cardholderLabel" for="cardholder" value="Card Holder" size="20"/>
+                <h:inputText id="cardholder" value="#{payment.cardHolder}" required="true" label="Card Holder"
+                             validatorMessage="value is required"/>
+                <h:message for="cardholder" style="color:red"/>
+            </li>
+            <li>
+                <h:outputLabel id="expirydateLabel" for="expirydate" value="Expiry Date" size="20" />
+                <h:inputText id="expirydate" value="#{payment.date}" required="true" label="Expiry Date"
+                             validatorMessage="please enter date value in a dd-MM-yyyy format">
 
-            <f:convertDateTime pattern="dd-MM-yyyy" />
-        </h:inputText>
+                    <f:convertDateTime pattern="dd-MM-yyyy"/>
+                </h:inputText>
+                <h:message for="expirydate" style="color:red"/>
             </li>
             <li>
-        <h:commandButton value="Save" action="#{payment.submit()}"/>
-        <h:commandButton value="Cancel" action="#{payment.cancel()}" immediate="true" />
+                <h:commandButton value="Save" action="#{payment.submit()}"/>
+                <h:commandButton value="Cancel" action="#{payment.cancel()}" immediate="true"/>
             </li>
         </ul>
     </h:form>
