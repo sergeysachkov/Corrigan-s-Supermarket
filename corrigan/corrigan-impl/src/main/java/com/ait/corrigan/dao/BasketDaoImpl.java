@@ -1,5 +1,7 @@
 package com.ait.corrigan.dao;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,7 +22,19 @@ public class BasketDaoImpl implements BasketDao {
 
 	@Override
 	public long addBasket(Basket basket) {
+		String sql="INSERT INTO `basket` (`userID`, `itemID`, `quantity`) VALUES ( ?, ?, ?)";
+		PreparedStatement pstmt=null;
+//		List<Map<Item, Integer>> itemsMap=basket.getBasketItem();
 		// TODO Auto-generated method stub
+		try {
+			
+			pstmt=con.prepareStatement(sql);
+			pstmt.setLong(1, basket.getCustomer().getCustomerId());
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return 0;
 	}
 
