@@ -25,15 +25,15 @@ public class BasketDaoImpl implements BasketDao {
 	}
 
 	@Override
-	public Basket updateBasket(long basketId, Basket basket) {
+	public Basket updateBasket(Basket basket) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean deleteBasket(long basketId) {
+	public void deleteBasket(long basketId) {
 		// TODO Auto-generated method stub
-		return false;
+		
 	}
 
 	@Override
@@ -43,21 +43,23 @@ public class BasketDaoImpl implements BasketDao {
 	}
 
 	@Override
-	public boolean addItem(long basketId, long itemId, int quantity) {
+	public void addItem(long basketId, long itemId, int quantity) {
 		// TODO Auto-generated method stub
-		return false;
+		
 	}
 
 	@Override
-	public boolean updateItem(long basketId, long itemId, int quantity) {
+	public void updateItem(long basketId, long itemId, int quantity) {
 		// TODO Auto-generated method stub
-		return false;
+		
 	}
 
 	@Override
-	public boolean deleteItem(long basketId, long itemId) {
+	public void deleteItem(long basketId, long itemId) {
 		// TODO Auto-generated method stub
-		return false;
+		
 	}
+
+	
 
 }
