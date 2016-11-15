@@ -4,9 +4,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html">
+<h:head></h:head>
 <h:body>
-    <h:outputLabel value="Payment Details"/>
-    <h:form>
+    <h:outputStylesheet library="css" name="corrigan.css"  />
+    <h3>Payment Details</h3>
+
+    <h:form id="payment_form">
         <h:inputHidden id="customerId" value="#{payment.customerId}" required="true"/>
         <ul>
             <li>
@@ -29,6 +32,7 @@
                 <h:outputLabel id="ccv2Label" for="ccv2" value="CCV2" size="20"/>
                 <h:inputText id="ccv2" value="#{payment.cvv2}" required="true" validatorMessage="please enter 3 gigit long numeric only value">
                     <f:validateLength minimum="3" maximum="3"/>
+                    <f:convertNumber integerOnly="true" type="number"/>
                 </h:inputText>
                 <h:message for="ccv2" style="color:red"/>
             </li>
