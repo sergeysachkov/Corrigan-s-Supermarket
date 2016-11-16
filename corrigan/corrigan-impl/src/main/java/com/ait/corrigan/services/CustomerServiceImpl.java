@@ -4,6 +4,7 @@ import com.ait.corrigan.dao.CustomerDao;
 import com.ait.corrigan.dao.CustomerDaoImpl;
 import com.ait.corrigan.models.user.Customer;
 import com.ait.corrigan.models.user.PaymentDetails;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -46,6 +47,16 @@ public class CustomerServiceImpl implements CustomerService{
 
     public void addPaymentDetails(long customerId, PaymentDetails paymentDetails){
         try {
+            if(paymentDetails.getCardNo() != null
+                    && (paymentDetails.getCardNo().length() != 16 || !StringUtils.isNumeric(paymentDetails.getCardNo()))){
+                throw new RuntimeException("Card Number should be 16 digits long and be numeric only");
+            }
+
+            if(paymentDetails.getCardNo() != null
+                    && (paymentDetails.getCvv2().length() != 3 || !StringUtils.isNumeric(paymentDetails.getCardNo()))){
+                throw new RuntimeException("CCV2 should be 3 digits long and be numeric only");
+            }
+
             customerDao.addPaymentDetails(customerId, paymentDetails);
         } catch (SQLException | ClassNotFoundException e) {
             logger.error("Error occurred!", e);
