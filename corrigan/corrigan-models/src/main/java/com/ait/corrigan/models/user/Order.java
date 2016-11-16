@@ -15,4 +15,28 @@ public class Order {
 		this.customer = customer;
 		this.basket = basket;
 	}
+
+	public Basket getBasket() {
+		return basket;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public long getOrderID() {
+		return orderID;
+	}
+
+	public void setBasket(Basket basket) {
+		this.basket = basket;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	public void setOrderID(long orderID) {
+		this.orderID = orderID;
+	}
 }
