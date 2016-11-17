@@ -10,22 +10,12 @@ import java.util.List;
  * Created by root on 11/17/2016.
  */
 public class PaymentDaoImpl implements PaymentDao{
-    private Connection getConnection() throws SQLException{
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            //return DriverManager.getConnection("jdbc:mysql://localhost:3306/corrigan","admin","admin");
-            return DriverManager.getConnection("jdbc:mysql://localhost:3306/corrigan","root","2585");
-        } catch (ClassNotFoundException | SQLException e) {
-            throw new SQLException(e);
-        }
-
-    }
 
     public void addPaymentDetails(long customerId, PaymentDetails paymentDetails) throws SQLException {
         if(getPaymentDetailByCardNo(paymentDetails.getCardNo()) != null){
             throw new SQLException("Record with card number {} already exists", paymentDetails.getCardNo());
         }
-        try(Connection connection = getConnection();
+        try(Connection connection = DaoUtil.getConnection();
             PreparedStatement stmt=connection.prepareStatement("INSERT INTO payment (customer, card_type,card_no,exp_date, cvv2, card_holder) " +
                     "VALUES (?, ?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS)) {
             stmt.setLong(1, customerId);
@@ -41,7 +31,7 @@ public class PaymentDaoImpl implements PaymentDao{
 
     public List<PaymentDetails> getPaymentDetails(long customerId) throws SQLException {
         List<PaymentDetails> paymentDetails = new ArrayList<>();
-        try(Connection connection = getConnection();
+        try(Connection connection = DaoUtil.getConnection();
             PreparedStatement stmt=connection.prepareStatement("select * from paymet where customer=?")) {
             stmt.setLong(1, customerId);
             ResultSet resultSet = stmt.executeQuery();
@@ -60,7 +50,7 @@ public class PaymentDaoImpl implements PaymentDao{
 
     public PaymentDetails getPaymentDetail(long id) throws SQLException {
         PaymentDetails paymentDetail = new PaymentDetails();
-        try(Connection connection = getConnection();
+        try(Connection connection = DaoUtil.getConnection();
             PreparedStatement stmt=connection.prepareStatement("select * from payment where idpayment=?")) {
             stmt.setLong(1, id);
             ResultSet resultSet = stmt.executeQuery();
@@ -77,7 +67,7 @@ public class PaymentDaoImpl implements PaymentDao{
     }
 
     public PaymentDetails getPaymentDetailByCardNo(String cardNo) throws SQLException {
-        try(Connection connection = getConnection();
+        try(Connection connection = DaoUtil.getConnection();
             PreparedStatement stmt=connection.prepareStatement("select * from payment where card_no=?")) {
             stmt.setString(1, cardNo);
             ResultSet resultSet = stmt.executeQuery();
