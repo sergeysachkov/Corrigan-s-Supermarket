@@ -37,3 +37,32 @@ ALTER TABLE `Items` ADD CONSTRAINT `Items_fk0` FOREIGN KEY (`category`) REFERENC
 ALTER TABLE `basket` ADD CONSTRAINT `basket_fk0` FOREIGN KEY (`itemID`) REFERENCES `Items`(`itemID`);
 
 ALTER TABLE `orders` ADD CONSTRAINT `orders_fk0` FOREIGN KEY (`basketID`) REFERENCES `basket`(`basketID`);
+
+CREATE TABLE `customer` (
+  `idcustomer` int(11) NOT NULL AUTO_INCREMENT,
+  `customer_name` varchar(45) DEFAULT NULL,
+  `customer_surname` varchar(45) DEFAULT NULL,
+  `customer_login` varchar(45) DEFAULT NULL,
+  `password` varchar(45) DEFAULT NULL,
+  `phone_number` varchar(45) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `date_of_birth` date DEFAULT NULL,
+  PRIMARY KEY (`idcustomer`),
+  UNIQUE KEY `customer_login_UNIQUE` (`customer_login`),
+  UNIQUE KEY `phone_number_UNIQUE` (`phone_number`),
+  UNIQUE KEY `email_UNIQUE` (`email`)
+);
+
+CREATE TABLE `payment` (
+  `idpayment` int(11) NOT NULL AUTO_INCREMENT,
+  `card_type` varchar(45) DEFAULT NULL,
+  `card_no` varchar(45) DEFAULT NULL,
+  `exp_date` date DEFAULT NULL,
+  `cvv2` varchar(45) DEFAULT NULL,
+  `card_holder` varchar(45) DEFAULT NULL,
+  `customer` int(11) NOT NULL,
+  PRIMARY KEY (`idpayment`),
+  UNIQUE KEY `card_no_UNIQUE` (`card_no`),
+  KEY `payment_customer_idx` (`customer`),
+  CONSTRAINT `payment_customer` FOREIGN KEY (`customer`) REFERENCES `customer` (`idcustomer`) ON DELETE NO ACTION ON UPDATE NO ACTION
+);
