@@ -10,7 +10,20 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>corrigan-impl</artifactId>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
+<<<<<<< HEAD
     <dependencies>
         <dependency>
             <groupId>com.ait.corrigan</groupId>
@@ -30,4 +43,18 @@
 		</dependency>
         
     </dependencies>
+=======
+        <dependencies>
+            <dependency>
+                <groupId>com.ait.corrigan</groupId>
+                <artifactId>corrigan-api</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>6.0.5</version>
+            </dependency>
+        </dependencies>
+>>>>>>> refs/remotes/origin/master
 </project>

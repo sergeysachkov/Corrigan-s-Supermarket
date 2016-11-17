@@ -9,6 +9,7 @@ public interface ItemDao {
     long updateItem(Item item);
     long deleteItem(long itemId);
 
+    Item getItem(long itemId);
     List<Item> getAllItems();
     List<Item> getItemsByCategory(String category);
 }
