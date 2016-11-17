@@ -6,6 +6,9 @@ import com.ait.corrigan.models.user.PaymentDetails;
 import java.sql.*;
 import java.util.List;
 
+/**
+ * Class is used for DB operation on Customers and their data
+ */
 public class CustomerDaoImpl implements CustomerDao{
 
     private Connection getConnection() throws ClassNotFoundException, SQLException {
@@ -23,6 +26,13 @@ public class CustomerDaoImpl implements CustomerDao{
 
     public boolean checkCustomer(String user, String password){return false;}
 
+    /**
+     * Add payment details for specific customer
+     * @param customerId
+     * @param paymentDetails
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void addPaymentDetails(long customerId, PaymentDetails paymentDetails) throws SQLException, ClassNotFoundException {
         try(Connection connection = getConnection();
         PreparedStatement stmt=connection.prepareStatement("INSERT INTO payment (customer, card_type,card_no,exp_date, cvv2, card_holder) " +
