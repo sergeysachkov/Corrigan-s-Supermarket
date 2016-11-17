@@ -13,8 +13,4 @@ public interface CustomerDao {
     void deleteCustomer(long customerId);
     Customer getCustomer(long customerId);
     boolean checkCustomer(String user, String password);
-
-    void addPaymentDetails(long customerId, PaymentDetails paymentDetails) throws SQLException, ClassNotFoundException;
-    void deletePaymentDetails(long customerId, long paymentDetailsId);
-    List<PaymentDetails> getPaymentDetails(long customerId);
 }

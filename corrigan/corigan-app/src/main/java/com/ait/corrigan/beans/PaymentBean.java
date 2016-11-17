@@ -3,6 +3,8 @@ package com.ait.corrigan.beans;
 import com.ait.corrigan.models.user.PaymentDetails;
 import com.ait.corrigan.services.CustomerService;
 import com.ait.corrigan.services.CustomerServiceImpl;
+import com.ait.corrigan.services.PaymentService;
+import com.ait.corrigan.services.PaymentServiceImpl;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -19,6 +21,27 @@ public class PaymentBean {
 
     @ManagedProperty(value = "#{param.customerId}")
     private long customerId;
+
+    @ManagedProperty(value = "#{param.id}")
+    private long id;
+
+    private boolean disabled = false;
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+        if(id != 0){
+            PaymentService paymentService = new PaymentServiceImpl();
+            this.paymentDetails = paymentService.getPaymentDetail(this.id);
+            this.disabled = true;
+        }
+    }
+
+    public boolean isDisabled() {
+        return disabled;
+    }
 
     public long getCustomerId() {
         return customerId;
@@ -84,12 +107,15 @@ public class PaymentBean {
     }
 
     public String submit(){
-        CustomerService customerService = new CustomerServiceImpl();
-        customerService.addPaymentDetails(customerId, paymentDetails);
+        PaymentService paymentService = new PaymentServiceImpl();
+        paymentService.addPaymentDetails(customerId, paymentDetails);
         return "/home.xhtml?faces-redirect=true";
     }
 
     public String cancel(){
+        this.disabled =false;
+        this.paymentDetails = new PaymentDetails();
+        this.id = 0;
         return "/home.xhtml";
     }
 }
