@@ -14,4 +14,8 @@ public interface CustomerDao {
     void addPaymentDetails(long customerId, PaymentDetails paymentDetails);
     void updatePaymentDetails(long customerId, PaymentDetails paymentDetails);
     void deletePaymentDetails(long customerId, long paymentDetailsId);
+    
+    
+    
+    
 }
