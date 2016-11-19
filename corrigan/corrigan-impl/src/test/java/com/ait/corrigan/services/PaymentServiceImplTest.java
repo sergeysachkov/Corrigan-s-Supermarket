@@ -5,9 +5,11 @@ import com.ait.corrigan.models.user.PaymentDetails;
 import org.junit.Before;
 import org.junit.Test;
 
+import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.fail;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 /**
  * Created by root on 11/17/2016.
@@ -27,8 +29,9 @@ public class PaymentServiceImplTest {
             PaymentDetails paymentDetails = new PaymentDetails();
             paymentDetails.setCardNo("1111111111111111");
             paymentDetails.setCvv2("111");
-            doNothing().when(dao).addPaymentDetails(1, paymentDetails);
-            service.addPaymentDetails(1, paymentDetails);
+            when(dao.addPaymentDetails(1, paymentDetails)).thenReturn(1l);
+            long id = service.addPaymentDetails(1, paymentDetails);
+            assertEquals(id, 1);
         }catch (Exception e){
             fail();
         }
@@ -69,8 +72,9 @@ public class PaymentServiceImplTest {
             PaymentDetails paymentDetails = new PaymentDetails();
             paymentDetails.setCardNo("1111111111111111");
             paymentDetails.setCvv2("111");
-            doNothing().when(dao).addPaymentDetails(1, paymentDetails);
-            service.addPaymentDetails(1, paymentDetails);
+            when(dao.addPaymentDetails(1, paymentDetails)).thenReturn(1l);
+            long id = service.addPaymentDetails(1, paymentDetails);
+            assertEquals(id, 1);
         }catch (Exception e){
             fail();
         }
@@ -113,8 +117,9 @@ public class PaymentServiceImplTest {
             PaymentDetails paymentDetails = new PaymentDetails();
             paymentDetails.setCardNo("1111111111111111");
             paymentDetails.setCvv2("123");
-            doNothing().when(dao).addPaymentDetails(1, paymentDetails);
-            service.addPaymentDetails(1, paymentDetails);
+            when(dao.addPaymentDetails(1, paymentDetails)).thenReturn(1l);
+            long id = service.addPaymentDetails(1, paymentDetails);
+            assertEquals(id, 1);
         }catch (Exception e){
             fail();
         }
