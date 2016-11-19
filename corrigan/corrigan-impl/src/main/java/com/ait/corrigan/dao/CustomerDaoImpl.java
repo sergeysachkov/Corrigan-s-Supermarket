@@ -24,7 +24,19 @@ public class CustomerDaoImpl implements CustomerDao{
         return null;
     }
 
-    public boolean checkCustomer(String user, String password){return false;}
+    public boolean checkCustomer(String user, String password)throws SQLException {
+    	 try(Connection connection = getConnection();
+    			 PreparedStatement psmt = connection
+    		               .prepareStatement("SELECT * FROM USER WHERE CUSTOMER_NAME = ? AND PASSWORD = ?"£©
+    		               psmt.setString(1, name);
+    		               psmt.setString(2, password);
+    			           stmt.executeUpdate();
+    	                   
+    			 catch (SQLException e) {
+    		         e.printStackTrace();
+    		      }
+    	 return false;
+    	 }
 
     /**
      * Add payment details for specific customer
