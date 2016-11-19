@@ -66,3 +66,7 @@ CREATE TABLE `payment` (
   KEY `payment_customer_idx` (`customer`),
   CONSTRAINT `payment_customer` FOREIGN KEY (`customer`) REFERENCES `customer` (`idcustomer`) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
+
+insert into corrigan.customer (customer_name, customer_surname, customer_login, password, phone_number, email, date_of_birth)
+values("Some", "Client", "admin", "admin", "123654", "ss@net.ie", "1988-11-12");
+

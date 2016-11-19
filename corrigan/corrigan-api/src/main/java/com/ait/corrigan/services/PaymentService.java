@@ -8,7 +8,7 @@ import java.util.List;
  * Created by root on 11/17/2016.
  */
 public interface PaymentService {
-    void addPaymentDetails(long customerId, PaymentDetails paymentDetails);
+    long addPaymentDetails(long customerId, PaymentDetails paymentDetails);
     public List<PaymentDetails> getPaymentDetails(long customerId);
     void deletePaymentDetails(long customerId, long  paymentDetailsId);
     PaymentDetails getPaymentDetail(long id);
