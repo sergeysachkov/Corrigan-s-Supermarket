@@ -13,8 +13,4 @@ public interface CustomerService {
     Customer getCustomer(long customerId);
 
     void login(String user, String password);
-
-    void addPaymentDetails(long customerId, PaymentDetails paymentDetails);
-    public List<PaymentDetails> getPaymentDetails(long customerId);
-    void deletePaymentDetails(long customerId, long  paymentDetailsId);
 }

@@ -15,14 +15,14 @@
             <li>
                 <h:outputLabel id="cardtypeLabel" for="cardtype"
                                value="Card Type" size="20"/>
-                <h:selectOneMenu id="cardtype"  value="#{payment.type}" required="true">
+                <h:selectOneMenu id="cardtype"  value="#{payment.type}" required="true" disabled="#{payment.disabled}">
                     <f:selectItems value="#{payment.types}"/>
                 </h:selectOneMenu>
             </li>
             <li>
                 <h:outputLabel id="cardnoLabel" for="cardno" value="Card Number" size="20"/>
                 <h:inputText id="cardno" value="#{payment.cardNo}" required="true"
-                             validatorMessage="please enter 16 gigit long numeric only value">
+                             validatorMessage="please enter 16 gigit long numeric only value" disabled="#{payment.disabled}">
                     <f:validateLength minimum="16" maximum="16"/>
                     <f:convertNumber integerOnly="true" type="number"/>
                 </h:inputText>
@@ -30,7 +30,7 @@
             </li>
             <li>
                 <h:outputLabel id="ccv2Label" for="ccv2" value="CCV2" size="20"/>
-                <h:inputText id="ccv2" value="#{payment.cvv2}" required="true" validatorMessage="please enter 3 gigit long numeric only value">
+                <h:inputText id="ccv2" value="#{payment.cvv2}" required="true" validatorMessage="please enter 3 gigit long numeric only value" disabled="#{payment.disabled}">
                     <f:validateLength minimum="3" maximum="3"/>
                     <f:convertNumber integerOnly="true" type="number"/>
                 </h:inputText>
@@ -39,20 +39,20 @@
             <li>
                 <h:outputLabel id="cardholderLabel" for="cardholder" value="Card Holder" size="20"/>
                 <h:inputText id="cardholder" value="#{payment.cardHolder}" required="true" label="Card Holder"
-                             validatorMessage="value is required"/>
+                             validatorMessage="value is required" disabled="#{payment.disabled}"/>
                 <h:message for="cardholder" style="color:red"/>
             </li>
             <li>
                 <h:outputLabel id="expirydateLabel" for="expirydate" value="Expiry Date" size="20" />
                 <h:inputText id="expirydate" value="#{payment.date}" required="true" label="Expiry Date"
-                             validatorMessage="please enter date value in a dd-MM-yyyy format">
+                             validatorMessage="please enter date value in a dd-MM-yyyy format" disabled="#{payment.disabled}">
 
                     <f:convertDateTime pattern="dd-MM-yyyy"/>
                 </h:inputText>
                 <h:message for="expirydate" style="color:red"/>
             </li>
             <li>
-                <h:commandButton value="Save" action="#{payment.submit()}"/>
+                <h:commandButton value="Save" action="#{payment.submit()}" disabled="#{payment.disabled}"/>
                 <h:commandButton value="Cancel" action="#{payment.cancel()}" immediate="true"/>
             </li>
         </ul>
