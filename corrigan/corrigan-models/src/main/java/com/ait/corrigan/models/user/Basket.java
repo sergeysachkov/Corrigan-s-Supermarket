@@ -5,83 +5,89 @@ import java.util.Map;
 import com.ait.corrigan.models.shop.Item;
 
 public class Basket {
-	private long basketID;
-	private Customer customer;
-	private Map<Item, Integer> basketItems;
+	private long basketId;
+	private long userId;
+	private long itemId;
+        private int quantity;
 	
 	public Basket() {
 		super();
 	}
 
-	public Basket(long basketID, Customer customer, Map<Item, Integer> basketItems) {
-		super();
-		this.basketID = basketID;
-		this.customer = customer;
-		this.basketItems = basketItems;
-	}
+    public Basket(long basketId, long userId, long itemId, int quantity) {
+        this.basketId = basketId;
+        this.userId = userId;
+        this.itemId = itemId;
+        this.quantity = quantity;
+    }
 
-	public Basket(Customer customer, Map<Item, Integer> basketItems) {
-		super();
-		this.customer = customer;
-		this.basketItems = basketItems;
-	}
+    public long getBasketId() {
+        return basketId;
+    }
 
-	public long getBasketID() {
-		return basketID;
-	}
+    public void setBasketId(long basketId) {
+        this.basketId = basketId;
+    }
 
-	public void setBasketID(long basketID) {
-		this.basketID = basketID;
-	}
+    public long getUserId() {
+        return userId;
+    }
 
-	public Customer getCustomer() {
-		return customer;
-	}
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
+    public long getItemId() {
+        return itemId;
+    }
 
-	public Map<Item, Integer> getBasketItems() {
-		return basketItems;
-	}
+    public void setItemId(long itemId) {
+        this.itemId = itemId;
+    }
 
-	public void setBasketItems(Map<Item, Integer> basketItems) {
-		this.basketItems = basketItems;
-	}
+    public int getQuantity() {
+        return quantity;
+    }
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + (int) (basketID ^ (basketID >>> 32));
-		result = prime * result + ((basketItems == null) ? 0 : basketItems.hashCode());
-		result = prime * result + ((customer == null) ? 0 : customer.hashCode());
-		return result;
-	}
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Basket other = (Basket) obj;
-		if (basketID != other.basketID)
-			return false;
-		if (basketItems == null) {
-			if (other.basketItems != null)
-				return false;
-		} else if (!basketItems.equals(other.basketItems))
-			return false;
-		if (customer == null) {
-			if (other.customer != null)
-				return false;
-		} else if (!customer.equals(other.customer))
-			return false;
-		return true;
-	}
-	
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Basket other = (Basket) obj;
+        if (this.basketId != other.basketId) {
+            return false;
+        }
+        if (this.userId != other.userId) {
+            return false;
+        }
+        if (this.itemId != other.itemId) {
+            return false;
+        }
+        if (this.quantity != other.quantity) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Basket{" + "basketId=" + basketId + ", userId=" + userId + ", itemId=" + itemId + ", quantity=" + quantity + '}';
+    }
 }
