@@ -12,7 +12,6 @@ public class Customer {
   private String phoneNumber;
   private String email;
   private Date customerDateOfBirth;
-<<<<<<< HEAD
   private long addressId;
   private Set<PaymentDetails> paymentDetailsSet;
 
@@ -162,7 +161,7 @@ public class Customer {
                 ", email='" + email + '\'' +
                 ", customerDateOfBirth=" + customerDateOfBirth +
                 ", adressId=" + addressId +
-=======
+                    '}'
   private long adressId;
   private Set<PaymentDetails> paymentDetailsSet;
 
@@ -298,7 +297,6 @@ public class Customer {
                 ", email='" + email + '\'' +
                 ", customerDateOfBirth=" + customerDateOfBirth +
                 ", adressId=" + adressId +
->>>>>>> refs/remotes/origin/master
                 ", paymentDetailsSet=" + paymentDetailsSet +
                 '}';
     }
