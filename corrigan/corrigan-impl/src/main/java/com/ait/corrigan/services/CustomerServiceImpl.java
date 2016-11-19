@@ -3,10 +3,22 @@ package com.ait.corrigan.services;
 import com.ait.corrigan.dao.CustomerDao;
 import com.ait.corrigan.dao.CustomerDaoImpl;
 import com.ait.corrigan.models.user.Customer;
-import com.ait.corrigan.models.user.PaymentDetails;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
 
 public class CustomerServiceImpl implements CustomerService{
-    CustomerDao customerDao = new CustomerDaoImpl();
+    private Logger logger = LoggerFactory.getLogger(CustomerServiceImpl.class);
+    private CustomerDao customerDao;
+
+    public CustomerServiceImpl() {
+        customerDao = new CustomerDaoImpl();
+    }
+
+    public CustomerServiceImpl(CustomerDao customerDao) {
+        this.customerDao = customerDao;
+    }
 
     public long addCustomer(Customer customer){
         return customerDao.addCustomer(customer);
@@ -27,15 +39,5 @@ public class CustomerServiceImpl implements CustomerService{
         if(customerDao.checkCustomer(user, password)){
             throw new SecurityException("User name or Password incorrect ");
         }
-    }
-
-    public void addPaymentDetails(long customerId, PaymentDetails paymentDetails){
-        customerDao.addPaymentDetails(customerId, paymentDetails);
-    }
-    public void updatePaymentDetails(long customerId, PaymentDetails paymentDetails){
-        customerDao.updatePaymentDetails(customerId, paymentDetails);
-    }
-    public void deletePaymentDetails(long customerId, long paymentDetailsId){
-        customerDao.deletePaymentDetails(customerId, paymentDetailsId);
     }
 }

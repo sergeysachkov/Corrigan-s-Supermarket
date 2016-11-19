@@ -1,7 +1,6 @@
 package com.ait.corrigan.dao;
 
 import com.ait.corrigan.models.user.Customer;
-import com.ait.corrigan.models.user.PaymentDetails;
 
 public class CustomerDaoImpl implements CustomerDao{
 
@@ -14,7 +13,5 @@ public class CustomerDaoImpl implements CustomerDao{
 
     public boolean checkCustomer(String user, String password){return false;}
 
-    public void addPaymentDetails(long customerId, PaymentDetails paymentDetails){}
-    public void updatePaymentDetails(long customerId, PaymentDetails paymentDetails){}
-    public void deletePaymentDetails(long customerId, long paymentDetailsId){}
+
 }

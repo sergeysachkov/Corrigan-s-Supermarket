@@ -1,0 +1,6 @@
+ul{list-style-type: none; margin: 0; padding: 0;}
+li{padding: 8px 0px 8px 25px;}
+label{color:#2d2d2d; font-size: 17px; font-family: Arial;  width: 150px; float:left;}
+input[type=text]{width: 350px; height: 25px;}
+input[type=password]{width: 350px; height: 25px;}
+select[name=dob]{width: 116px;}

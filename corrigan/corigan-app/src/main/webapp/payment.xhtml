@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+<h:head></h:head>
+<h:body>
+    <h:outputStylesheet library="css" name="corrigan.css"  />
+    <h3>Payment Details</h3>
+
+    <h:form id="payment_form">
+        <h:inputHidden id="customerId" value="#{payment.customerId}" required="true"/>
+        <ul>
+            <li>
+                <h:outputLabel id="cardtypeLabel" for="cardtype"
+                               value="Card Type" size="20"/>
+                <h:selectOneMenu id="cardtype"  value="#{payment.type}" required="true" disabled="#{payment.disabled}">
+                    <f:selectItems value="#{payment.types}"/>
+                </h:selectOneMenu>
+            </li>
+            <li>
+                <h:outputLabel id="cardnoLabel" for="cardno" value="Card Number" size="20"/>
+                <h:inputText id="cardno" value="#{payment.cardNo}" required="true"
+                             validatorMessage="please enter 16 gigit long numeric only value" disabled="#{payment.disabled}">
+                    <f:validateLength minimum="16" maximum="16"/>
+                    <f:convertNumber integerOnly="true" type="number"/>
+                </h:inputText>
+                <h:message for="cardno" style="color:red"/>
+            </li>
+            <li>
+                <h:outputLabel id="ccv2Label" for="ccv2" value="CCV2" size="20"/>
+                <h:inputText id="ccv2" value="#{payment.cvv2}" required="true" validatorMessage="please enter 3 gigit long numeric only value" disabled="#{payment.disabled}">
+                    <f:validateLength minimum="3" maximum="3"/>
+                    <f:convertNumber integerOnly="true" type="number"/>
+                </h:inputText>
+                <h:message for="ccv2" style="color:red"/>
+            </li>
+            <li>
+                <h:outputLabel id="cardholderLabel" for="cardholder" value="Card Holder" size="20"/>
+                <h:inputText id="cardholder" value="#{payment.cardHolder}" required="true" label="Card Holder"
+                             validatorMessage="value is required" disabled="#{payment.disabled}"/>
+                <h:message for="cardholder" style="color:red"/>
+            </li>
+            <li>
+                <h:outputLabel id="expirydateLabel" for="expirydate" value="Expiry Date" size="20" />
+                <h:inputText id="expirydate" value="#{payment.date}" required="true" label="Expiry Date"
+                             validatorMessage="please enter date value in a dd-MM-yyyy format" disabled="#{payment.disabled}">
+
+                    <f:convertDateTime pattern="dd-MM-yyyy"/>
+                </h:inputText>
+                <h:message for="expirydate" style="color:red"/>
+            </li>
+            <li>
+                <h:commandButton value="Save" action="#{payment.submit()}" disabled="#{payment.disabled}"/>
+                <h:commandButton value="Cancel" action="#{payment.cancel()}" immediate="true"/>
+            </li>
+        </ul>
+    </h:form>
+</h:body>
+</html>

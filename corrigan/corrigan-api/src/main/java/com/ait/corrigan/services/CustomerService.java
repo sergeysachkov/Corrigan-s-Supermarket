@@ -3,6 +3,8 @@ package com.ait.corrigan.services;
 import com.ait.corrigan.models.user.Customer;
 import com.ait.corrigan.models.user.PaymentDetails;
 
+import java.util.List;
+
 public interface CustomerService {
 
     long addCustomer(Customer customer);
@@ -11,8 +13,4 @@ public interface CustomerService {
     Customer getCustomer(long customerId);
 
     void login(String user, String password);
-
-    void addPaymentDetails(long customerId, PaymentDetails paymentDetails);
-    void updatePaymentDetails(long customerId, PaymentDetails paymentDetails);
-    void deletePaymentDetails(long customerId, long  paymentDetailsId);
 }
