@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+ <h:head>
+    	<h:outputStylesheet library="css" name="corrigan.css"  />
+    </h:head>
+<body>
+
+	<h1>Corrigans Catalog</h1>
+
+	<h:dataTable value="#{catalog.items}" var="c">
+
+		<h:column>
+			<!-- column header -->
+			<f:facet name="header">Item ID</f:facet>
+			<!-- row record -->
+    		#{c.itemID}
+    	</h:column>
+    	
+    	<h:column>
+			<!-- column header -->
+			<f:facet name="header">name</f:facet>
+			<!-- row record -->
+    		#{c.name}
+    	</h:column>
+    	
+    	<h:column>
+			<!-- column header -->
+			<f:facet name="header">stok_q</f:facet>
+			<!-- row record -->
+    		#{c.stock_q}
+    	</h:column>
+    	
+    	<h:column>
+			<!-- column header -->
+			<f:facet name="header">unit_of_measure</f:facet>
+			<!-- row record -->
+    		#{c.unit_of_measure}
+    	</h:column>
+    	
+    	<h:column>
+			<!-- column header -->
+			<f:facet name="header">description</f:facet>
+			<!-- row record -->
+    		#{c.description}
+    	</h:column>
+    	
+    	<h:column>
+			<!-- column header -->
+			<f:facet name="header">category</f:facet>
+			<!-- row record -->
+    		#{c.cateID}
+    	</h:column>
+
+	</h:dataTable>
+
+
+</body>
+
+</html>

@@ -1,5 +1,6 @@
 package com.ait.corrigan.services;
 
+import com.ait.corrigan.dao.ItemDaoImpl;
 import com.ait.corrigan.models.shop.Item;
 
 import java.util.List;
@@ -22,7 +23,8 @@ public class ItemServiceImpl implements ItemService{
     }
 
     public List<Item> getCatalogue() {
-        return null;
+       ItemDaoImpl c=new ItemDaoImpl();
+       return c.getAllItems();
     }
 
     public List<Item> getCategory(String category) {
