@@ -54,12 +54,15 @@ public class CustomerDaoImpl implements CustomerDao{
         return customers;
     }
 
-    public boolean checkCustomer(String user, String password){
+    public  static boolean checkCustomer (String customerLogin, String password){
     	 try(Connection connection = DaoUtil.getConnection();
-    	 PreparedStatement stmt=connection.prepareStatement("SELECT * FROM USER WHERE CUSTOMER_NAME = ? AND PASSWORD = ?")){
-    		 stmt.setString(1, user);
+    	 PreparedStatement stmt=connection.prepareStatement("SELECT * FROM CUSTOMER WHERE CUSTOMER_LOGIN = ? AND PASSWORD = ?")){
+    		 stmt.setString(1, customerLogin);
              stmt.setString(2, password);
-             stmt.executeUpdate();
+             ResultSet result = stmt.executeQuery();
+             if(result.next()){
+            	 return true;
+             }
     	 }
              catch (SQLException e) {
 		         e.printStackTrace();

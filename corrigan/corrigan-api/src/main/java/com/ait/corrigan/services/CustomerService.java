@@ -13,6 +13,6 @@ public interface CustomerService {
     Customer getCustomer(long customerId);
     List<Customer> getCustomers();
 
-    void login(String user, String password);
+    void login(String customerLogin, String password);
    
 }

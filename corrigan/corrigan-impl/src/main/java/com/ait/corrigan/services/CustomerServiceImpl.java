@@ -49,9 +49,11 @@ public class CustomerServiceImpl implements CustomerService{
             throw new CorriganException(e.getMessage());
         }
     }
-    public void login(String user, String password){
-        if(customerDao.checkCustomer(user, password)){
-            throw new SecurityException("User name or Password incorrect ");
-        }
+    public void login(String customerLogin, String password){
+     //   if(customerDao.checkCustomer(customerLogin, password)){
+       //     throw new SecurityException("User name or Password incorrect ");
+       // }
     }
+
+	
 }
