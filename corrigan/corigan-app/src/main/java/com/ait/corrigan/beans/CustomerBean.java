@@ -3,11 +3,7 @@ package com.ait.corrigan.beans;
 import com.ait.corrigan.models.user.Customer;
 import com.ait.corrigan.models.user.PaymentDetails;
 import com.ait.corrigan.services.CustomerService;
-<<<<<<< HEAD
-=======
 import com.ait.corrigan.services.CustomerServiceImpl;
->>>>>>> refs/remotes/origin/master
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
