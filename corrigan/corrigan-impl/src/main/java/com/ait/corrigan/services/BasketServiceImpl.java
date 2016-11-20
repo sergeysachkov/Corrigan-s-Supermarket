@@ -3,10 +3,8 @@ package com.ait.corrigan.services;
 import com.ait.corrigan.dao.BasketDaoImpl;
 import com.ait.corrigan.dao.DaoUtil;
 import com.ait.corrigan.exception.CorriganException;
-import com.ait.corrigan.models.shop.Item;
 import com.ait.corrigan.models.user.Basket;
 import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +18,8 @@ import java.util.logging.Logger;
 public class BasketServiceImpl implements BasketService {
 
     BasketDaoImpl basketDao = new BasketDaoImpl();
-    private static final Logger LOG = Logger.getLogger(BasketServiceImpl.class.getName());
+    private static final Logger LOG = 
+            Logger.getLogger(BasketServiceImpl.class.getName());
 
     @Override
     public Basket createBasket(long customerId) {
@@ -35,8 +34,9 @@ public class BasketServiceImpl implements BasketService {
      * @param quantity the actual quantity of item to insert
      */
     @Override
-    public void addItemToBasket(Basket basket, Item item, int quantity) {
-        basket.setItemId(item.getItemID());
+    public void addItemToBasket(Basket basket, long itemId, int quantity) {
+        //TODO add verification of quantity
+        basket.setItemId(itemId);
         basket.setQuantity(quantity);
         try {
             basketDao.addBasket(basket);
@@ -58,22 +58,22 @@ public class BasketServiceImpl implements BasketService {
     }
 
     @Override
-    public void updateItemInBasket(Basket basket) {
+    public void updateItemInBasket(long basketIdOld,long itemIdOld, Basket basketNew) {
         try {
-            basketDao.updateBasket(basket);
+            basketDao.updateBasket(basketIdOld,itemIdOld,basketNew);
         } catch (SQLException ex) {
-            LOG.log(Level.SEVERE, "Fail to update" + basket.toString());
+            LOG.log(Level.SEVERE, "Fail to update" + basketNew.toString(),ex);
             throw new CorriganException("Fail to update item in shopping basket.");
         }
     }
 
     @Override
-    public void addItemsToBasket(Basket basket, Map<Item, Integer> basketItems) {
-        Iterator<Item> it = basketItems.keySet().iterator();
+    public void addItemsToBasket(Basket basket, Map<Long, Integer> basketItems) {
+        Iterator<Long> it = basketItems.keySet().iterator();
         while (it.hasNext()) {
-            Item item = it.next();
-            int quantity = basketItems.get(item);
-            addItemToBasket(basket, item, quantity);
+            long itemId = it.next();
+            int quantity = basketItems.get(itemId);
+            addItemToBasket(basket, itemId, quantity);
         }
     }
 
@@ -110,6 +110,7 @@ public class BasketServiceImpl implements BasketService {
     @Override
     public List<Basket> getCompleteBasket(Basket basket) {
         long basketId=basket.getBasketId();
+        
         List<Basket> completeBasket=null;
         try {
             completeBasket=basketDao.getCompleteBasket(basketId);
