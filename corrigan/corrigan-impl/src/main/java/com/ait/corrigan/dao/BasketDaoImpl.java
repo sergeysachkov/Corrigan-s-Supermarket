@@ -8,6 +8,8 @@ import java.util.logging.Logger;
 
 import com.ait.corrigan.models.user.Basket;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Database operations on shopping baskets. Note that a basket object contains
@@ -30,7 +32,7 @@ public class BasketDaoImpl implements BasketDao {
 
     @Override
     public void addBasket(Basket basket) throws SQLException {
-        String sql = "INSERT INTO basket (basketID,userID,itemID,quantity) VALUES (?,?,?)";
+        String sql = "INSERT INTO basket (basketID,userID,itemID,quantity) VALUES (?,?,?,?)";
         PreparedStatement pstmt = con.prepareStatement(sql);
         pstmt.setLong(1, basket.getBasketId());
         pstmt.setLong(2, basket.getUserId());
@@ -40,20 +42,21 @@ public class BasketDaoImpl implements BasketDao {
     }
 
     @Override
-    public void updateBasket(Basket basket) throws SQLException {
+    public void updateBasket(long basketIdOld,long itemIdOld, Basket basketNew) throws SQLException {
         String sql = "UPDATE basket SET userID=?, itemID=?, quantity=? WHERE (basketID=? and itemID=?)";
         PreparedStatement pstmt = con.prepareStatement(sql);
-        pstmt.setLong(1, basket.getUserId());
-        pstmt.setLong(2, basket.getItemId());
-        pstmt.setInt(3, basket.getQuantity());
-        pstmt.setLong(4, basket.getBasketId());
-        pstmt.setLong(5, basket.getItemId());
+        pstmt.setLong(1, basketNew.getUserId());
+        pstmt.setLong(2, basketNew.getItemId());
+        pstmt.setInt(3, basketNew.getQuantity());
+        pstmt.setLong(4, basketIdOld);
+        pstmt.setLong(5, itemIdOld);
+        System.out.println(pstmt);
         pstmt.executeUpdate();
     }
 
     @Override
     public void deleteBasket(long basketId, long itemId) throws SQLException {
-        String sql = "DELETE FROM basket WHERE (baksetID=? and itemID=?)";
+        String sql = "DELETE FROM basket WHERE (basketID=? and itemID=?)";
         PreparedStatement pstmt = con.prepareStatement(sql);
         pstmt.setLong(1, basketId);
         pstmt.setLong(2, itemId);
@@ -68,12 +71,36 @@ public class BasketDaoImpl implements BasketDao {
         pstmt.setLong(1, basketId);
         pstmt.setLong(2, itemId);
         ResultSet rs = pstmt.executeQuery();
-        if (!rs.next()) {
+        if (rs.next()) {
             basketResult.setBasketId(basketId);
             basketResult.setItemId(itemId);
             basketResult.setUserId(rs.getLong("userID"));
             basketResult.setQuantity(rs.getInt("quantity"));
         }
         return basketResult;
+    }
+
+    @Override
+    public List<Basket> getCompleteBasket(long basketId) throws SQLException {
+        List<Basket> completeBasket=new ArrayList<>();
+        String sql="SELECT * FROM basket WHERE (basketID=?)";
+        PreparedStatement pstmt=con.prepareStatement(sql);
+        pstmt.setLong(1, basketId);
+        ResultSet rs=pstmt.executeQuery();
+        while(rs.next()){
+            long userId=rs.getLong("userID");
+            long itemId=rs.getLong("itemID");
+            int quantity=rs.getInt("quantity");
+            completeBasket.add(new Basket(basketId, userId, itemId, quantity));
+        }
+        return completeBasket;
+    }
+
+    @Override
+    public void deleteOneCompleteBasket(long basketId) throws SQLException {
+        String sql="DELETE FROM basket WHERE (basketID=?)";
+        PreparedStatement pstmt=con.prepareStatement(sql);
+        pstmt.setLong(1, basketId);
+        pstmt.executeUpdate();
     }
 }
