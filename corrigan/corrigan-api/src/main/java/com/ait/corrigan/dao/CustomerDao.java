@@ -11,6 +11,7 @@ public interface CustomerDao {
     long addCustomer(Customer customer);
     long updateCustomer(Customer customer);
     void deleteCustomer(long customerId);
-    Customer getCustomer(long customerId);
+    Customer getCustomer(long customerId) throws SQLException;
+    List<Customer> getCustomers() throws SQLException;
     boolean checkCustomer(String user, String password);
 }

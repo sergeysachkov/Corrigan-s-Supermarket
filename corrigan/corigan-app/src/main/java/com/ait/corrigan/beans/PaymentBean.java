@@ -108,14 +108,14 @@ public class PaymentBean {
 
     public String submit(){
         PaymentService paymentService = new PaymentServiceImpl();
-        paymentService.addPaymentDetails(customerId, paymentDetails);
-        return "/home.xhtml?faces-redirect=true";
+        long id  = paymentService.addPaymentDetails(customerId, paymentDetails);
+        return "/payment.xhtml?id=" + id + "faces-redirect=true";
     }
 
     public String cancel(){
         this.disabled =false;
         this.paymentDetails = new PaymentDetails();
         this.id = 0;
-        return "/home.xhtml";
+        return "/home.xhtml?faces-redirect=true";
     }
 }

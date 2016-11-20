@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class PaymentDaoImpl implements PaymentDao{
 
-    public void addPaymentDetails(long customerId, PaymentDetails paymentDetails) throws SQLException {
+    public long addPaymentDetails(long customerId, PaymentDetails paymentDetails) throws SQLException {
         if(getPaymentDetailByCardNo(paymentDetails.getCardNo()) != null){
             throw new SQLException("Record with card number {} already exists", paymentDetails.getCardNo());
         }
@@ -26,6 +26,7 @@ public class PaymentDaoImpl implements PaymentDao{
             stmt.setString(6, paymentDetails.getCardHolder());
             stmt.executeUpdate();
         }
+        return getPaymentDetailByCardNo(paymentDetails.getCardNo()).getId();
     }
 
 
@@ -73,6 +74,7 @@ public class PaymentDaoImpl implements PaymentDao{
             ResultSet resultSet = stmt.executeQuery();
             if(resultSet.next()){
                 PaymentDetails paymentDetail = new PaymentDetails();
+                paymentDetail.setId(resultSet.getLong("idpayment"));
                 paymentDetail.setType(PaymentDetails.CardType.valueOf(resultSet.getString("card_type")));
                 paymentDetail.setCardHolder(resultSet.getString("card_holder"));
                 paymentDetail.setCardNo(resultSet.getString("card_no"));

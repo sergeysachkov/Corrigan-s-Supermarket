@@ -2,10 +2,13 @@ package com.ait.corrigan.services;
 
 import com.ait.corrigan.dao.CustomerDao;
 import com.ait.corrigan.dao.CustomerDaoImpl;
+import com.ait.corrigan.exception.CorriganException;
 import com.ait.corrigan.models.user.Customer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.sql.SQLException;
+import java.util.List;
 
 
 public class CustomerServiceImpl implements CustomerService{
@@ -32,9 +35,20 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     public Customer getCustomer(long customerId){
-        return customerDao.getCustomer(customerId);
+        try {
+            return customerDao.getCustomer(customerId);
+        } catch (SQLException e) {
+            throw new CorriganException(e.getMessage());
+        }
     }
 
+    public List<Customer> getCustomers(){
+        try {
+            return customerDao.getCustomers();
+        } catch (SQLException e) {
+            throw new CorriganException(e.getMessage());
+        }
+    }
     public void login(String user, String password){
         if(customerDao.checkCustomer(user, password)){
             throw new SecurityException("User name or Password incorrect ");

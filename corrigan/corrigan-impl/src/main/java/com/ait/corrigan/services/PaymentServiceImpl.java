@@ -26,7 +26,7 @@ public class PaymentServiceImpl implements PaymentService{
         this.paymentDao = paymentDao;
     }
 
-    public void addPaymentDetails(long customerId, PaymentDetails paymentDetails){
+    public long addPaymentDetails(long customerId, PaymentDetails paymentDetails){
         try {
             if(paymentDetails.getCardNo() != null
                     && (paymentDetails.getCardNo().length() != 16 || !StringUtils.isNumeric(paymentDetails.getCardNo()))){
@@ -38,7 +38,7 @@ public class PaymentServiceImpl implements PaymentService{
                 throw new CorriganException("CCV2 should be 3 digits long and be numeric only");
             }
 
-            paymentDao.addPaymentDetails(customerId, paymentDetails);
+            return paymentDao.addPaymentDetails(customerId, paymentDetails);
         } catch (SQLException e) {
             logger.error("Error occurred!", e);
             throw new CorriganException(e.getMessage());
