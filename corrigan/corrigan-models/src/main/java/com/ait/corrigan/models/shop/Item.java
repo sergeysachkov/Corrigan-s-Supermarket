@@ -8,6 +8,7 @@ public class Item {
 	private String description;
 	private double price;
 	private int cateID;
+	private String cate_name;
 	public Item() {
 		super();
 	}
@@ -21,8 +22,21 @@ public class Item {
         this.price=price;
         this.cateID = cateID;
     }
+    
 
-    public long getItemID() {
+    public Item(long itemID, String name, int stock_q, String unit_of_measure, String description, Double price,
+			String cate_name) {
+		super();
+		this.itemID = itemID;
+		this.name = name;
+		this.stock_q = stock_q;
+		this.unit_of_measure = unit_of_measure;
+		this.description = description;
+		this.price = price;
+		this.cate_name = cate_name;
+	}
+
+	public long getItemID() {
         return itemID;
     }
 
@@ -77,12 +91,21 @@ public class Item {
     public void setCateID(int cateID) {
         this.cateID = cateID;
     }
+    
+	public String getCate_name() {
+		return cate_name;
+	}
+
+	public void setCate_name(String cate_name) {
+		this.cate_name = cate_name;
+	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + cateID;
+		result = prime * result + ((cate_name == null) ? 0 : cate_name.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + (int) (itemID ^ (itemID >>> 32));
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
@@ -104,6 +127,11 @@ public class Item {
 			return false;
 		Item other = (Item) obj;
 		if (cateID != other.cateID)
+			return false;
+		if (cate_name == null) {
+			if (other.cate_name != null)
+				return false;
+		} else if (!cate_name.equals(other.cate_name))
 			return false;
 		if (description == null) {
 			if (other.description != null)
@@ -128,6 +156,8 @@ public class Item {
 			return false;
 		return true;
 	}
+
+	
 
 
 

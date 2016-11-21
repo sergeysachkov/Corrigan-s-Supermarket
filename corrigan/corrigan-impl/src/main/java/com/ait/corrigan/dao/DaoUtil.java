@@ -15,7 +15,7 @@ public class DaoUtil {
         try {
             Class.forName("com.mysql.jdbc.Driver");
 
-            return DriverManager.getConnection("jdbc:mysql://localhost:3306/storage","root","admin");
+            return DriverManager.getConnection("jdbc:mysql://localhost:3306/Corrigan","root","admin");
 
         } catch (ClassNotFoundException | SQLException e) {
             throw new SQLException(e);
