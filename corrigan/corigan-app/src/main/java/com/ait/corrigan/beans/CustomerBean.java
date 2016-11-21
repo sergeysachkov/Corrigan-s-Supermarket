@@ -44,7 +44,7 @@ public class CustomerBean {
     	return customerLogin;
     }
     public void setCustomerLogin(String cutomerLogin){
-    	this.customerLogin= customerLogin;
+    	this.customerLogin= cutomerLogin;
     }
   
     public  CustomerBean(){
@@ -63,7 +63,7 @@ public class CustomerBean {
       
     	}    
     public String checkCustomer(){
-		boolean login = CustomerDaoImpl.checkCustomer(customerLogin, password);
+    	boolean login = CustomerDaoImpl.checkCustomer(customerLogin, password);
 		if (login) {
 			HttpSession session = SessionUtils.getSession();
 			session.setAttribute("customerLogin", customer);

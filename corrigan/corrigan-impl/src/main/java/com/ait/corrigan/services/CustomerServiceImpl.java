@@ -50,9 +50,9 @@ public class CustomerServiceImpl implements CustomerService{
         }
     }
     public void login(String customerLogin, String password){
-     //   if(customerDao.checkCustomer(customerLogin, password)){
-       //     throw new SecurityException("User name or Password incorrect ");
-       // }
+        if(CustomerDao.checkCustomer(customerLogin, password)){
+            throw new SecurityException("User name or Password incorrect ");
+        }
     }
 
 	

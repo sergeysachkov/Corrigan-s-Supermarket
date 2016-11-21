@@ -2,6 +2,8 @@ package com.ait.corrigan.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -13,7 +15,9 @@ public class DaoUtil {
     
     public static Connection getConnection() throws SQLException{
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+//            Class.forName("com.mysql.jdbc.Driver");
+        	Class.forName("com.mysql.cj.jdbc.Driver");
+            
             return DriverManager.getConnection("jdbc:mysql://localhost:3306/corrigan?serverTimezone=UTC","root","admin");
         } catch (Exception ex) {
 			System.out.println("Database.getConnection() Error -->"
@@ -38,4 +42,7 @@ public class DaoUtil {
             }
         }
     }
+    
+    
+    
 }
