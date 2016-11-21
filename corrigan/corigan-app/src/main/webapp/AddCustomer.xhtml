@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+<h:head></h:head>
+<h:body>
+    <h:outputStylesheet library="css" name="corrigan.css"  />
+    <h3>Add Customer</h3>
+
+    <h:form id="add_cust_form">
+        <h:inputHidden id="customerId" value="#{payment.customerId}" required="true"/>
+        <ul>
+            <li>
+			<h:outputLabel id="custLoginLabel" for="customerLogin" value="Customer Login" size="20"/>
+                <h:inputText id="customerLogin" value="#{customer.customerLogin}" required="true" 
+                             validatorMessage="please enter a username with upto 20 characters alphanumeric" disabled="#{customer.disabled}">
+                </h:inputText>
+                <h:message for="customerLogin" style="color:red"/>
+            </li>
+            <li>
+                <h:outputLabel id="PasswordLabel" for="password" value="Password" size="15"/>
+                <h:inputText id="password" value="#{customer.password}" required="true"
+                             validatorMessage="please enter 15 digit password with 1 uppercase letter and one numeric value" disabled="#{customer.disabled}" >
+                    <f:validateLength minimum="15" maximum="15"/>
+                </h:inputText>
+                <h:message for="PasswordLabel" style="color:red"/>
+            </li>
+            <li>
+                <h:outputLabel id="AdressLine1Label" for="adressline1" value="Address Line 1" size="15"/>
+                <h:inputText id="adressline1" value="#{customer.adressLine1}" required="true" validatorMessage="please enter a value" disabled="#{customer.disabled}">
+                </h:inputText>
+                <h:message for="AdressLine1Label" style="color:red"/>
+            </li>
+            <li>
+                <h:outputLabel id="AddressLine2Label" for="addressline2" value="Address Line 2"/>
+                <h:inputText id="addressline2" value="#{customer.adressLine2}" required="false" label="Address Line 2" disabled="#{customer.disabled}" >
+                                      </h:inputText>       
+                <h:message for="cardholder" style="color:red"/>
+            </li>
+            <li>
+                <h:outputLabel id="Town" for="town" value="Town"/>
+                <h:inputText id="town" value="#{customer.town}" required="true" label="Town"
+                             validatorMessage="please enter date value in a dd-MM-yyyy format" disabled="#{customer.disabled}">
+
+                    <f:convertDateTime pattern="dd-MM-yyyy"/>
+                </h:inputText>
+                <h:message for="expirydate" style="color:red"/>
+            </li>
+                       <li>
+                <h:outputLabel id="County" for="county" value="County"/>
+                <h:inputText id="county" value="#{customer.county}" required="true" label="County"
+                             validatorMessage="please enter a county" disabled="#{customer.disabled}">
+
+
+
+                </h:inputText>
+                <h:message for="expirydate" style="color:red"/>
+            </li>
+                       <li>
+                <h:outputLabel id="Eircode" for="eircode" value="Eircode"/>
+                <h:inputText id="eircode" value="#{customer.eircode}" label="Eircode" disabled="#{customer.disabled}">
+
+                </h:inputText>
+                <h:message for="eircode" style="color:red"/>
+            </li>
+            <li>
+                <h:outputLabel id="DOB" for="dob" value="DOB"/>
+                <h:inputText id="dob" value="#{customer.customerDateOfBirth}" required="true" label="DOB"
+                             validatorMessage="please enter date value in a dd-MM-yyyy format" disabled="#{customer.disabled}">
+
+                    <f:convertDateTime pattern="dd-MM-yyyy"/>
+                </h:inputText>
+                <h:message for="dob" style="color:red"/>
+            </li>
+			<li>
+                <h:outputLabel id="EmailAddress" for="email" value="EmailAddress"/>
+                <h:inputText id="email" value="#{customer.email}" required="true" label="Town"
+                             validatorMessage="please enter email address in format www.joebloggs@example.com" disabled="#{customer.disabled}">
+
+                </h:inputText>
+                <h:message for="email" style="color:red"/>
+            </li>
+            <li>
+                <h:commandButton value="Save" action="#{customer.submit()}"/>
+                <h:commandButton value="Cancel" action="#{customer.cancel()}" immediate="true"/>
+            </li>
+        </ul>
+    </h:form>
+</h:body>
+</html>

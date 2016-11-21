@@ -67,6 +67,15 @@ CREATE TABLE `payment` (
   CONSTRAINT `payment_customer` FOREIGN KEY (`customer`) REFERENCES `customer` (`idcustomer`) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
+CREATE TABLE `address` (
+  `adress_line_1` varchar(45) DEFAULT NULL,
+  `adress_line_2` varchar(45) DEFAULT NULL,
+  `town` varchar(45) DEFAULT NULL,
+  `county` varchar DEFAULT NULL,
+  `eircode` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`address`)
+);
+
 insert into corrigan.customer (customer_name, customer_surname, customer_login, password, phone_number, email, date_of_birth)
 values("Some", "Client", "admin", "admin", "123654", "ss@net.ie", "1988-11-12");
 

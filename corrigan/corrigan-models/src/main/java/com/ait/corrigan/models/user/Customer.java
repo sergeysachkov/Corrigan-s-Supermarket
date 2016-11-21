@@ -3,6 +3,8 @@ package com.ait.corrigan.models.user;
 import java.util.Date;
 import java.util.Set;
 
+
+
 public class Customer {
   private long customerId;
   private String customerName;
