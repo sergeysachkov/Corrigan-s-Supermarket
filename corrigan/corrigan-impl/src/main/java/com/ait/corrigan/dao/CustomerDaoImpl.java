@@ -13,12 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerDaoImpl implements CustomerDao{
-public long addCustomer(long customerID, Customer customer) throws SQLException { 
+public long addCustomer(long customerID, Customer customer) { 
     	
-
-    	        if(customer.getCustomerName() != null){
-    	            throw new SQLException("Record with name {} already exists", customer.getCustomerName());
-    	        }
     	        try(Connection connection = DaoUtil.getConnection();
     	            PreparedStatement stmt=connection.prepareStatement("INSERT INTO customer (idcustomer, customer_name , customer_surname, customer_login, password, phone_number, email, date_of_birth) " +
     	                    "VALUES (?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS)) {
@@ -27,11 +23,14 @@ public long addCustomer(long customerID, Customer customer) throws SQLException 
     	            stmt.setString(3, customer.getCustomerSurname());
     	            stmt.setString (4, customer.getCustomerLogin());
     	            stmt.setString(5, customer.getPassword());
-    	            //stmt.setString(6, customer.getPhoneNumber());
-    	            stmt.setString(6, customer.getEmail());
-    	            stmt.setDate(7, new Date(customer.getCustomerDateOfBirth().getTime()));
+    	            stmt.setString(6, customer.getPhoneNumber());
+    	            stmt.setString(7, customer.getEmail());
+    	            stmt.setDate(8, new Date(customer.getCustomerDateOfBirth().getTime()));
     	            stmt.executeUpdate();
-    	        }
+    	        } catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
     	        return 1;
     			}
     public long updateCustomer(Customer customer){return 0;}

@@ -26,16 +26,8 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     public long addCustomer(long customerID, Customer customer){
-    	try{
-    		if(customer.getPhoneNumber() != null
-                 && (customer.getCustomerSurname() != null)) {
-             throw new CorriganException("Card Number should be 16 digits long and be numeric only");}
-        return customerDao.addCustomer(customerID, customer);
 
-        } catch (SQLException e) {
-            logger.error("Error occurred!", e);
-            throw new CorriganException(e.getMessage());
-        }
+        return customerDao.addCustomer(customerID, customer);
     
     }
 

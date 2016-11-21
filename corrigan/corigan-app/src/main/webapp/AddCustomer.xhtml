@@ -43,7 +43,7 @@
             <li>
                 <h:outputLabel id="PhoneNumber" for="phonenumber" value="PhoneNumber" size = "12"/>
                 <h:inputText id="phoneNumber" value="#{customer.phoneNumber}" 
-                             validatorMessage="please enter phone number in format 087-2384824" disabled="#{customer.disabled}">
+                              disabled="#{customer.disabled}">
 						<f:validateLength minimum="12" maximum="12"/>
                 </h:inputText>
                 <h:message for="phonenumber" style="color:red"/>
