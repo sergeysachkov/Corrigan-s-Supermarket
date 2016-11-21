@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 
 /**
@@ -47,12 +48,6 @@ public class BasketBean {
         return basketId;
     }
 
-//    public long getBasketId(long customerId) {
-//        if (basketId == 0) {
-//            basketId = bsktService.createBasket(customerId).getBasketId();
-//        }
-//        return basketId;
-//    }
 
     public String addToBasket(Item item) {
         //TODO validate fields of Basket item2Add
@@ -60,22 +55,25 @@ public class BasketBean {
             if (b.getItemId() == item.getItemID()) {
                 // already in the basket   
                 b.setQuantity(b.getQuantity() + 1);
-                return "basket";
+                return "basket?faces-redirect=true";
             }
         }
         //TODO user id
         Basket tmpBasket=new Basket(basketId, 0, item.getItemID(), 1);
         LOG.log(Level.INFO,tmpBasket.toString());
         basketItems.add(tmpBasket);
-                return "basket";
+                return "basket?faces-redirect=true";
     }
-
+    public String deleteFromBasket(Basket basket){
+        basketItems.remove(basket);
+        return "basket";
+        
+    }
     public List<Basket> getBasketItems() {
         return basketItems;
     }
 
     public String getItemName(long itemId) {
-        LOG.log(Level.SEVERE, "ItemId="+Long.toString(itemId));
         ItemService iservice = new ItemServiceImpl();
         return iservice.getItem(itemId).getName();
     }
@@ -85,7 +83,9 @@ public class BasketBean {
 
         return 0;
     }
-
+    public void update(){
+        
+    }
     public static void main(String[] args) {
         BasketBean bb = new BasketBean();
         System.out.println("basket uuid=" + bb.getBasketId());

@@ -32,10 +32,17 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header">Quantity</f:facet>
-                        #{i.quantity}
+                    <h:inputText value="#{i.quantity}" style="width:2em;">
+                    </h:inputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Action</f:facet>
+                    <h:commandButton value="detete" action="#{basketBean.deleteFromBasket(i)}"></h:commandButton>
                 </h:column>
             </h:dataTable>
+            <h:commandButton value="update basket" action="#{basketBean.update()}"></h:commandButton>
         </h:form>
+        
         <ul>
             <li>
                 <h:link value="Continue Shopping" outcome="catalog"></h:link>
