@@ -7,7 +7,8 @@ CREATE TABLE `Items` (
 	`stock_q` INT(20) NOT NULL,
 	`unit_of_measure` varchar(10) NOT NULL,
 	`description` varchar(200) NOT NULL,
-	`category` INT(20) NOT NULL,
+	`price` double(10,2) NOT NULL,
+	`category` BIGINT(20) NOT NULL,
 	PRIMARY KEY (`itemID`)
 );
 
