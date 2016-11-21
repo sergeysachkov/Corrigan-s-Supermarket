@@ -1,17 +1,39 @@
 package com.ait.corrigan.dao;
 
 import com.ait.corrigan.models.user.Customer;
+import com.ait.corrigan.models.user.PaymentDetails;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerDaoImpl implements CustomerDao{
+public long addCustomer(long customerID, Customer customer) throws SQLException { 
+    	
 
-    public long addCustomer(Customer customer){return 0;}
+    	        if(customer.getCustomerName() != null){
+    	            throw new SQLException("Record with name {} already exists", customer.getCustomerName());
+    	        }
+    	        try(Connection connection = DaoUtil.getConnection();
+    	            PreparedStatement stmt=connection.prepareStatement("INSERT INTO customer (idcustomer, customer_name , customer_surname, customer_login, password, phone_number, email, date_of_birth) " +
+    	                    "VALUES (?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS)) {
+    	            stmt.setLong(1, customerID);
+    	            stmt.setString(2, customer.getCustomerName());
+    	            stmt.setString(3, customer.getCustomerSurname());
+    	            stmt.setString (4, customer.getCustomerLogin());
+    	            stmt.setString(5, customer.getPassword());
+    	            //stmt.setString(6, customer.getPhoneNumber());
+    	            stmt.setString(6, customer.getEmail());
+    	            stmt.setDate(7, new Date(customer.getCustomerDateOfBirth().getTime()));
+    	            stmt.executeUpdate();
+    	        }
+    	        return 1;
+    			}
     public long updateCustomer(Customer customer){return 0;}
     public void deleteCustomer(long customerId){}
     public Customer getCustomer(long customerId) throws SQLException {
