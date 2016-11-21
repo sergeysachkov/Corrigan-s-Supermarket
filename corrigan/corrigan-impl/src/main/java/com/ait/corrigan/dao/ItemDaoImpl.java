@@ -23,20 +23,19 @@ public class ItemDaoImpl implements ItemDao {
         return 0;
     }
 
-    //=======ADRIAN=======
     public List<Item> getAllItems() {
         List<Item> allItems = new ArrayList<Item>();
         Item item = null;
 
         try {
             Connection con = DaoUtil.getConnection();
-
-            String sql = "SELECT * FROM ITEMS";
+            //String sql = "SELECT * FROM ITEMS";
+            String sql = "SELECT Items.itemID, Items.name, Items.stock_q, Items.unit_of_measure, Items.description, Items.price, Categories.cate_name from Items left join Categories on Items.category=Categories.cateID;";
             PreparedStatement pstmt = con.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 item = new Item(rs.getLong(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5),
-                        rs.getDouble(6), rs.getInt(7));
+                        rs.getDouble(6), rs.getString(7));
                 allItems.add(item);
             }
 
