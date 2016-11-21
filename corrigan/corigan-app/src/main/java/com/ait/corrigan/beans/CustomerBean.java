@@ -46,7 +46,6 @@ public class CustomerBean {
     public void setCustomerLogin(String cutomerLogin){
     	this.customerLogin= cutomerLogin;
     }
-  
     public  CustomerBean(){
     	
     }
