@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <style>
+        .basket-header{
+            padding: 10px 20px;
+            text-align: left;
+        }
+        .basket-column{
+            padding: 10px 20px;
+            text-align: left;
+        }
+    </style>
+    <h:body>
+        #{basketBean.getBasketId()}
+        <h:form>
+            <h:dataTable value="#{basketBean.basketItems}" var="i"
+                         headerClass="basket-header"
+                         columnClasses="basket-column,basket-column,basket-column">
+                <h:column>
+                    <f:facet name="header">Product</f:facet>
+                        #{basketBean.getItemName(i.itemId)}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Price</f:facet>
+                        #{basketBean.getItemPrice(i.itemId)}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Quantity</f:facet>
+                        #{i.quantity}
+                </h:column>
+            </h:dataTable>
+        </h:form>
+        <ul>
+            <li>
+                <h:link value="Continue Shopping" outcome="catalog"></h:link>
+            </li>
+            <li>
+                <h:link value="Home" outcome="home"></h:link>
+            </li>
+        </ul>
+    </h:body>
+</html>
+
