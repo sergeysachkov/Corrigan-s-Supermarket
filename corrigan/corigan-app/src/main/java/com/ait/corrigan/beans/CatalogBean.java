@@ -25,7 +25,6 @@ public class CatalogBean {
 		 items= c.getCatalogue();
 	 }
 
-
 	public List<Item> getItems() {
 		return items;
 	}
@@ -33,7 +32,4 @@ public class CatalogBean {
 	public void setItems(List<Item> items) {
 		this.items = items;
 	}
-
-	 
-	 
 }

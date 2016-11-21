@@ -22,6 +22,7 @@ public class ItemServiceImpl implements ItemService{
         return null;
     }
 
+    //===========ADRIAN============
     public List<Item> getCatalogue() {
        ItemDaoImpl c=new ItemDaoImpl();
        return c.getAllItems();

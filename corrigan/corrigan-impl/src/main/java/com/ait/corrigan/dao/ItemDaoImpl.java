@@ -36,7 +36,7 @@ public class ItemDaoImpl implements ItemDao {
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				item = new Item(rs.getLong(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5),
-						rs.getInt(6));
+						rs.getDouble(6), rs.getInt(7));
 				allItems.add(item);
 			}
 
@@ -52,10 +52,12 @@ public class ItemDaoImpl implements ItemDao {
 		return null;
 	}
 
-	// ========Adrian========
+	
+	
+	// ========ADRIAN========
 	@Override
 	public Item getItem(long itemId) {
-		Item item=null;
+		/*	Item item=null;
 		try {
 			Connection con = DaoUtil.getConnection();
 
@@ -69,12 +71,13 @@ public class ItemDaoImpl implements ItemDao {
 			}
 
 			 item = new Item(rs.getLong(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5),
-					rs.getInt(6));
+					rs.getDouble(6),rs.getInt(7));
 
 		} catch (SQLException e) {
 
 			e.printStackTrace();
-		}
-		return item;
-	}
+		} */
+		return null;  
+	}  
+	
 }

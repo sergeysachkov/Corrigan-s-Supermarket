@@ -52,6 +52,8 @@ public class ItemDaoImplTest {
 		}
 	}
 	
+	//=====test get all items====
+	
 	@Test
 	public void testGetAllItems(){
 		ItemDaoImpl i=new ItemDaoImpl();
