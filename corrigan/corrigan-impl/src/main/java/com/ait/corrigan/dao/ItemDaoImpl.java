@@ -11,70 +11,71 @@ import java.util.List;
 
 public class ItemDaoImpl implements ItemDao {
 
-	public long addItem(Item item) {
-		return 0;
-	}
+    public long addItem(Item item) {
+        return 0;
+    }
 
-	public long updateItem(Item item) {
-		return 0;
-	}
+    public long updateItem(Item item) {
+        return 0;
+    }
 
-	public long deleteItem(long itemId) {
-		return 0;
-	}
+    public long deleteItem(long itemId) {
+        return 0;
+    }
 
-	//=======ADRIAN=======
-	public List<Item> getAllItems() {
-		List<Item> allItems=new ArrayList<Item>();
-		Item item=null;
-		
-		try {
-			Connection con = DaoUtil.getConnection();
+    //=======ADRIAN=======
+    public List<Item> getAllItems() {
+        List<Item> allItems = new ArrayList<Item>();
+        Item item = null;
 
-			String sql = "SELECT * FROM ITEMS";
-			PreparedStatement pstmt = con.prepareStatement(sql);
-			ResultSet rs = pstmt.executeQuery();
-			while (rs.next()) {
-				item = new Item(rs.getLong(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5),
-						rs.getInt(6));
-				allItems.add(item);
-			}
+        try {
+            Connection con = DaoUtil.getConnection();
 
-		} catch (SQLException e) {
+            String sql = "SELECT * FROM ITEMS";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                item = new Item(rs.getLong(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5),
+                        rs.getDouble(6), rs.getInt(7));
+                allItems.add(item);
+            }
 
-			e.printStackTrace();
-		}
-		return allItems;
-	
-	}
+        } catch (SQLException e) {
 
-	public List<Item> getItemsByCategory(String category) {
-		return null;
-	}
+            e.printStackTrace();
+        }
+        return allItems;
 
-	// ========Adrian========
-	@Override
-	public Item getItem(long itemId) {
-		Item item=null;
-		try {
-			Connection con = DaoUtil.getConnection();
+    }
 
-			String sql = "SELECT * FROM ITEMS WHERE itemID=?";
-			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setLong(1, itemId);
-			ResultSet rs = pstmt.executeQuery();
+    public List<Item> getItemsByCategory(String category) {
+        return null;
+    }
 
-			if (!rs.next()) {
-				return null;
-			}
+    // ========ADRIAN========
+    @Override
+    public Item getItem(long itemId) {
+        Item item = null;
+        try {
+            Connection con = DaoUtil.getConnection();
 
-			 item = new Item(rs.getLong(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5),
-					rs.getInt(6));
+            String sql = "SELECT * FROM ITEMS WHERE itemID=?";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.setLong(1, itemId);
+            ResultSet rs = pstmt.executeQuery();
 
-		} catch (SQLException e) {
+            if (!rs.next()) {
+                return null;
+            }
 
-			e.printStackTrace();
-		}
-		return item;
-	}
+            item = new Item(rs.getLong(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5),
+                    rs.getDouble(6), rs.getInt(7));
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
+        return item;
+    }
+
 }

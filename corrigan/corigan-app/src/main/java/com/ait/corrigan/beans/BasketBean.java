@@ -38,7 +38,6 @@ public class BasketBean {
     private static final Logger LOG = Logger.getLogger(BasketBean.class.getName());
 
     public BasketBean() {
-//        LOG.log(Level.INFO, "constructor called.");
         bsktService = new BasketServiceImpl();
         basketId = bsktService.createBasket(0).getBasketId();
         basketItems=new ArrayList<>();
@@ -83,11 +82,10 @@ public class BasketBean {
 
         return 0;
     }
+    
     public void update(){
-        
+        // just leave this method blank
+        // it refreshes the page
     }
-    public static void main(String[] args) {
-        BasketBean bb = new BasketBean();
-        System.out.println("basket uuid=" + bb.getBasketId());
-    }
+
 }
