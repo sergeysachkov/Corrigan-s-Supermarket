@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <style>
+        .catalog-header{
+            padding: 10px 20px;
+            text-align: left;
+        }
+        .catalog-column{
+            padding: 10px 20px;
+            text-align: left;
+        }
+    </style>
+    <body>
+
+        <h1>Corrigans Catalog</h1>
+        <h:form>
+            <h:dataTable value="#{catalog.items}" var="c" 
+                         headerClass="catalog-header"
+                         columnClasses="catalog-column,catalog-column,catalog-column,catalog-column,catalog-column,catalog-column">
+
+                <h:column>
+                    <!-- column header -->
+                    <f:facet name="header">Item ID</f:facet>
+                    <!-- row record -->
+                    #{c.itemID}
+                </h:column>
+
+                <h:column>
+                    <!-- column header -->
+                    <f:facet name="header">name</f:facet>
+                    <!-- row record -->
+                    #{c.name}
+                </h:column>
+
+                <h:column>
+                    <!-- column header -->
+                    <f:facet name="header">stok_q</f:facet>
+                    <!-- row record -->
+                    #{c.stock_q}
+                </h:column>
+
+                <h:column>
+                    <!-- column header -->
+                    <f:facet name="header">unit_of_measure</f:facet>
+                    <!-- row record -->
+                    #{c.unit_of_measure}
+                </h:column>
+
+                <h:column>
+                    <!-- column header -->
+                    <f:facet name="header">description</f:facet>
+                    <!-- row record -->
+                    #{c.description}
+                </h:column>
+
+                <h:column>
+                    <!-- column header -->
+                    <f:facet name="header">price</f:facet>
+                    <!-- row record -->
+                    #{c.price}
+                </h:column>
+
+                <h:column>
+                    <!-- column header -->
+                    <f:facet name="header">category</f:facet>
+                    <!-- row record -->
+                    #{c.cate_name}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Action</f:facet>
+                    <h:commandButton value="Add to basket" action="#{basketBean.addToBasket(c)}"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+        <ul>
+            <li>
+                <h:link value="Home" outcome="home"></h:link>
+            </li>
+            <li>
+                <h:link value="View Basket" outcome="basket"></h:link>
+            </li>
+        </ul>
+    </body>
+
+</html>

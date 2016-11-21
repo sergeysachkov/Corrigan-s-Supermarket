@@ -5,6 +5,7 @@ import com.ait.corrigan.dao.DaoUtil;
 import com.ait.corrigan.exception.CorriganException;
 import com.ait.corrigan.models.user.Basket;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -18,8 +19,8 @@ import java.util.logging.Logger;
 public class BasketServiceImpl implements BasketService {
 
     BasketDaoImpl basketDao = new BasketDaoImpl();
-    private static final Logger LOG = 
-            Logger.getLogger(BasketServiceImpl.class.getName());
+    private static final Logger LOG
+            = Logger.getLogger(BasketServiceImpl.class.getName());
 
     @Override
     public Basket createBasket(long customerId) {
@@ -34,12 +35,19 @@ public class BasketServiceImpl implements BasketService {
      * @param quantity the actual quantity of item to insert
      */
     @Override
-    public void addItemToBasket(Basket basket, long itemId, int quantity) {
+    public void addItemToBasket(Basket basket) {
         //TODO add verification of quantity
-        basket.setItemId(itemId);
-        basket.setQuantity(quantity);
+        long basketId = basket.getBasketId();
+        long itemId = basket.getItemId();
+        int quantity = basket.getQuantity();
         try {
-            basketDao.addBasket(basket);
+            Basket tmpBasket = basketDao.getBasket(basketId, itemId);
+            if (tmpBasket != null) {
+                tmpBasket.setQuantity(tmpBasket.getQuantity() + quantity);
+                basketDao.updateBasket(basketId, itemId, basket);
+            } else {
+                basketDao.addBasket(basket);
+            }
         } catch (SQLException ex) {
             LOG.log(Level.SEVERE, "Fail to add item into basket", ex);
             throw new CorriganException("Fail to add item into basket.");
@@ -58,11 +66,11 @@ public class BasketServiceImpl implements BasketService {
     }
 
     @Override
-    public void updateItemInBasket(long basketIdOld,long itemIdOld, Basket basketNew) {
+    public void updateItemInBasket(long basketIdOld, long itemIdOld, Basket basketNew) {
         try {
-            basketDao.updateBasket(basketIdOld,itemIdOld,basketNew);
+            basketDao.updateBasket(basketIdOld, itemIdOld, basketNew);
         } catch (SQLException ex) {
-            LOG.log(Level.SEVERE, "Fail to update" + basketNew.toString(),ex);
+            LOG.log(Level.SEVERE, "Fail to update" + basketNew.toString(), ex);
             throw new CorriganException("Fail to update item in shopping basket.");
         }
     }
@@ -73,7 +81,9 @@ public class BasketServiceImpl implements BasketService {
         while (it.hasNext()) {
             long itemId = it.next();
             int quantity = basketItems.get(itemId);
-            addItemToBasket(basket, itemId, quantity);
+            basket.setItemId(itemId);
+            basket.setQuantity(quantity);
+            addItemToBasket(basket);
         }
     }
 
@@ -87,37 +97,35 @@ public class BasketServiceImpl implements BasketService {
         }
     }
 
-    //==== couldn't be done because of heavy reliance on Item dao ====
-//    @Override
-//    public Map<Item, Integer> getItemsFromBasket(Basket basket) {
-//        long basketId = basket.getBasketId();
-//        Map<Item, Integer> resultMap = new HashMap<>();
-//        List<Basket> completeBasket = null;
-//        try {
-//            completeBasket = basketDao.getCompleteBasket(basketId);
-//        } catch (SQLException ex) {
-//            LOG.log(Level.SEVERE, "Fail to get complete basket, id=" + basketId, ex);
-//            throw new CorriganException("Fail to get basket from database.");
-//        }
-//        Iterator<Basket> it=completeBasket.iterator();
-//        while(it.hasNext()){
-//            Basket curBasket=it.next();
-//            resultMap.put(curBasket.getItemId(), curBasket.getQuantity());
-//        }
-//        return resultMap;
-//    }
-
     @Override
     public List<Basket> getCompleteBasket(Basket basket) {
-        long basketId=basket.getBasketId();
-        
-        List<Basket> completeBasket=null;
+        long basketId = basket.getBasketId();
+
+        List<Basket> completeBasket = null;
         try {
-            completeBasket=basketDao.getCompleteBasket(basketId);
+            completeBasket = basketDao.getCompleteBasket(basketId);
         } catch (SQLException ex) {
-            LOG.log(Level.SEVERE, "fail to get complete basket, id="+basketId, ex);
+            LOG.log(Level.SEVERE, "fail to get complete basket, id=" + basketId, ex);
         }
         return completeBasket;
     }
 
+    public static void main(String[] args) {
+        BasketServiceImpl bservice = new BasketServiceImpl();
+        Basket basket = bservice.createBasket(2);
+        long basketId = basket.getBasketId();
+        long itemId1 = 99990001;
+        long itemId2 = 99990002;
+        System.out.println(basketId);
+        basket.setItemId(itemId1);
+        basket.setQuantity(114514);
+        bservice.addItemToBasket(basket);
+        
+        bservice.addItemsToBasket(basket, new HashMap<Long, Integer>() {
+            {
+                put(itemId1, 114);
+                put(itemId2, 514);
+            }
+        });
+    }
 }

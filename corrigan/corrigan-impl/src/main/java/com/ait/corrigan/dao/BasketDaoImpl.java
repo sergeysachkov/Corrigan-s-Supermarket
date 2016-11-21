@@ -66,7 +66,7 @@ public class BasketDaoImpl implements BasketDao {
     @Override
     public Basket getBasket(long basketId, long itemId) throws SQLException {
         Basket basketResult = new Basket();
-        String sql = "SELECT * FROM basket WHERE (basketID=? and itemID?)";
+        String sql = "SELECT * FROM basket WHERE (basketID=? and itemID=?)";
         PreparedStatement pstmt = con.prepareStatement(sql);
         pstmt.setLong(1, basketId);
         pstmt.setLong(2, itemId);
