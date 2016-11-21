@@ -1,9 +1,13 @@
 package com.ait.corrigan.services;
 
+import com.ait.corrigan.dao.ItemDao;
 import com.ait.corrigan.dao.ItemDaoImpl;
 import com.ait.corrigan.models.shop.Item;
+import java.sql.SQLException;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ItemServiceImpl implements ItemService{
 
@@ -19,7 +23,14 @@ public class ItemServiceImpl implements ItemService{
     }
 
     public Item getItem(long itemId) {
-        return null;
+        Item item=null;
+        ItemDao c=new ItemDaoImpl();
+        try {
+            item = c.getItem(itemId);
+        } catch (SQLException ex) {
+            Logger.getLogger(ItemServiceImpl.class.getName()).log(Level.SEVERE, "Fail to get item "+itemId+" from db", ex);
+        }
+        return item;
     }
 
     public List<Item> getCatalogue() {

@@ -12,7 +12,7 @@ import java.util.Map;
  */
 public interface BasketService {
     public Basket createBasket(long customerId);
-    public void addItemToBasket(Basket basket,long itemId,int quantity);
+    public void addItemToBasket(Basket basket);
     public void deleteItemFromBasket(Basket basket);
     public void updateItemInBasket(long basketIdOld,long itemIdOld, Basket basketNew);
     public void addItemsToBasket(Basket basket, Map<Long,Integer> basketItems);
