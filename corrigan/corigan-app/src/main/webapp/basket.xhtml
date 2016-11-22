@@ -38,7 +38,8 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header">Quantity</f:facet>
-                    <h:inputText id="quantity" value="#{i.quantity}" style="width:2em;" validatorMessage="Please check quantity number.">
+                    <h:inputText id="quantity" value="#{i.quantity}" style="width:2em;" converterMessage="Please enter digits only." validatorMessage="Please check quantity number.">
+                        <f:convertNumber integerOnly="true" type="number" />
                         <f:validateLongRange minimum="1" maximum="200" />
                     </h:inputText>
                     <h:message for="quantity" styleClass="quantity-msg"/>
