@@ -11,6 +11,8 @@ import com.ait.corrigan.services.CustomerServiceImpl;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
@@ -85,6 +87,18 @@ public class CustomerBean {
             return "";
     }
         
+        public void setphoneNumber(String phonenumber){
+            customer1.setPhoneNumber(phonenumber);
+    }
+        
+        public String getphoneNumber(){
+        	if(customer1.getPhoneNumber() != null){
+                return customer1.getPhoneNumber();
+            }
+            return "";
+    }
+        
+        
         public void setAdressLine1(String adressLine1){
             address.setAdressLine1(adressLine1);
     }
@@ -141,7 +155,9 @@ public class CustomerBean {
     }
         public String submit(){
             CustomerService customerService = new CustomerServiceImpl();
-            long id  = customerService.addCustomer(customer1);
+            AddressService addressService = new AddressServiceImpl();
+            long id  = customerService.addCustomer(customerId, customer1);
+            long id1 = addressService.addAddress(address);
             return "/AddCustomer.xhtml?id=" + id + "faces-redirect=true";
         }
 

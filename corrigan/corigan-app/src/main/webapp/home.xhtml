@@ -18,8 +18,14 @@
             </h:link>
         </li>
         <li>
+
+            <h:link value="Add Customer" outcome="AddCustomer">
+                <f:param name="customerId" value="#{customer.customerId}"/>
+			</h:link>
             <h:link value="Catalog" outcome="catalog">
             </h:link>
+
+            
         </li>
     </ul>
 </f:view>

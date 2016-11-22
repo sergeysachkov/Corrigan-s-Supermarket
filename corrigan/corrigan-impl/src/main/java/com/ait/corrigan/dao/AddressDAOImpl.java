@@ -1,6 +1,7 @@
 package com.ait.corrigan.dao;
 
 import com.ait.corrigan.models.user.Customer;
+import com.ait.corrigan.models.user.PaymentDetails;
 import com.ait.corrigan.models.user.Address;
 
 import java.sql.Connection;
@@ -17,7 +18,7 @@ public class AddressDAOImpl implements AddressDAO{
     public long addAddress(Address address){
 
     try(Connection connection = DaoUtil.getConnection();
-        PreparedStatement stmt=connection.prepareStatement("INSERT INTO address (adress_line1, adress_line2, town, county, eircode) " +
+        PreparedStatement stmt=connection.prepareStatement("INSERT INTO address (adress_line_1, adress_line_2, town, county, eircode) " +
                 "VALUES (?, ?,?,?,?)", Statement.RETURN_GENERATED_KEYS)) {
         stmt.setString(1, address.getAdressLine1());
         stmt.setString(2, address.getAdressLine2());
@@ -84,6 +85,25 @@ public class AddressDAOImpl implements AddressDAO{
             }
         }
         return addresses;
+    }
+    
+    public Address getAddressbyLine1(String addressLine1) throws SQLException {
+        try(Connection connection = DaoUtil.getConnection();
+            PreparedStatement stmt=connection.prepareStatement("select * from address where adress_line_1=?")) {
+            stmt.setString(1, addressLine1);
+            ResultSet resultSet = stmt.executeQuery();
+            if(resultSet.next()){
+                Address address = new Address();
+                address.setAdressLine1(resultSet.getString("adress_line_1"));
+                address.setAdressLine2(resultSet.getString("adress_line_2"));
+                address.setTown(resultSet.getString("town"));
+                address.setCounty(resultSet.getString("county"));
+                address.setEircode(resultSet.getString("eircode"));
+                return address;
+
+            }
+        }
+        return null;
     }
 
 

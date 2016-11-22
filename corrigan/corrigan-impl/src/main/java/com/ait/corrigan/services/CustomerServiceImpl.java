@@ -4,6 +4,8 @@ import com.ait.corrigan.dao.CustomerDao;
 import com.ait.corrigan.dao.CustomerDaoImpl;
 import com.ait.corrigan.exception.CorriganException;
 import com.ait.corrigan.models.user.Customer;
+
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,12 +21,14 @@ public class CustomerServiceImpl implements CustomerService{
         customerDao = new CustomerDaoImpl();
     }
 
-    public CustomerServiceImpl(CustomerDao customerDao) {
+    public CustomerServiceImpl(long customerID, CustomerDao customerDao) {
         this.customerDao = customerDao;
     }
 
-    public long addCustomer(Customer customer){
-        return customerDao.addCustomer(customer);
+    public long addCustomer(long customerID, Customer customer){
+
+        return customerDao.addCustomer(customerID, customer);
+    
     }
 
     public long updateCustomer(Customer customer){
