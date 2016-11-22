@@ -15,6 +15,12 @@
             padding: 10px 20px;
             text-align: left;
         }
+        .quantity-msg{
+            position: fixed;
+            left: 14em;
+            top: 0.5em;
+            color: red;
+        }
     </style>
     <h:body>
         #{basketBean.getBasketId()}
@@ -32,17 +38,20 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header">Quantity</f:facet>
-                    <h:inputText value="#{i.quantity}" style="width:2em;">
+                    <h:inputText id="quantity" value="#{i.quantity}" style="width:2em;" validatorMessage="Please check quantity number.">
+                        <f:validateLongRange minimum="1" maximum="200" />
                     </h:inputText>
+                    <h:message for="quantity" styleClass="quantity-msg"/>
                 </h:column>
                 <h:column>
                     <f:facet name="header">Action</f:facet>
                     <h:commandButton value="detete" action="#{basketBean.deleteFromBasket(i)}"></h:commandButton>
                 </h:column>
+                <f:facet name="footer">Total: €#{basketBean.total} </f:facet>
             </h:dataTable>
             <h:commandButton value="update basket" action="#{basketBean.update()}"></h:commandButton>
         </h:form>
-        
+
         <ul>
             <li>
                 <h:link value="Continue Shopping" outcome="catalog"></h:link>

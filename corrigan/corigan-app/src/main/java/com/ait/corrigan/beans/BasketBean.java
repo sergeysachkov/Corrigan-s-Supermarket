@@ -16,7 +16,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 
 /**
@@ -30,7 +29,8 @@ public class BasketBean {
     /**
      * Creates a new instance of basketBean
      */
-    private long basketId = 0;
+    private static final long ID_UNASSIGNED = -1l;
+    private long basketId = ID_UNASSIGNED;
     private List<Basket> basketItems;
     private double total;
 
@@ -40,34 +40,37 @@ public class BasketBean {
     public BasketBean() {
         bsktService = new BasketServiceImpl();
         basketId = bsktService.createBasket(0).getBasketId();
-        basketItems=new ArrayList<>();
+        basketItems = new ArrayList<>();
     }
 
     public long getBasketId() {
         return basketId;
     }
 
-
     public String addToBasket(Item item) {
+        String basketUrl = "basket?faces-redirect=true";
         //TODO validate fields of Basket item2Add
         for (Basket b : basketItems) {
             if (b.getItemId() == item.getItemID()) {
                 // already in the basket   
                 b.setQuantity(b.getQuantity() + 1);
-                return "basket?faces-redirect=true";
+                return basketUrl;
             }
         }
         //TODO user id
-        Basket tmpBasket=new Basket(basketId, 0, item.getItemID(), 1);
-        LOG.log(Level.INFO,tmpBasket.toString());
+        Basket tmpBasket = new Basket(basketId, 0, item.getItemID(), 1);
+        LOG.log(Level.INFO, tmpBasket.toString());
         basketItems.add(tmpBasket);
-                return "basket?faces-redirect=true";
+        return basketUrl;
     }
-    public String deleteFromBasket(Basket basket){
+
+    public String deleteFromBasket(Basket basket) {
+        String basketUrl = "basket?faces-redirect=true";
         basketItems.remove(basket);
-        return "basket";
-        
+        return basketUrl;
+
     }
+
     public List<Basket> getBasketItems() {
         return basketItems;
     }
@@ -78,12 +81,24 @@ public class BasketBean {
     }
 
     public double getItemPrice(long itemId) {
-        //unfortunately for now we're selling everything for free
-
-        return 0;
+        ItemService iservice = new ItemServiceImpl();
+        return iservice.getItem(itemId).getPrice();
     }
-    
-    public void update(){
+
+    public double getTotal() {
+        total = 0;
+        for (Basket b : basketItems) {
+            long id = b.getItemId();
+            if (id == ID_UNASSIGNED) {
+                total += 0;
+            } else {
+                total += getItemPrice(id) * b.getQuantity();
+            }
+        }
+        return total;
+    }
+
+    public void update() {
         // just leave this method blank
         // it refreshes the page
     }
