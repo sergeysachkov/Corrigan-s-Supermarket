@@ -7,6 +7,7 @@ import com.ait.corrigan.models.user.PaymentDetails;
 import com.ait.corrigan.services.CustomerService;
 import com.ait.corrigan.services.CustomerServiceImpl;
 
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -41,6 +42,9 @@ public class CustomerBean {
         this.password = password;
     }
     public String getCustomerLogin(){
+    	HttpSession session = SessionUtils.getSession();
+		if (session != null)
+			customerLogin = (String) session.getAttribute("customerLogin");
     	return customerLogin;
     }
     public void setCustomerLogin(String cutomerLogin){
@@ -65,7 +69,7 @@ public class CustomerBean {
     	boolean login = CustomerDaoImpl.checkCustomer(customerLogin, password);
 		if (login) {
 			HttpSession session = SessionUtils.getSession();
-			session.setAttribute("customerLogin", customer);
+			session.setAttribute("customerLogin", customerLogin);
 			return "/home.xhtml?faces-redirect=true";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(
