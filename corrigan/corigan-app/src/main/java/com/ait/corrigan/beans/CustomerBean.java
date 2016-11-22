@@ -192,7 +192,7 @@ public class CustomerBean {
         public String submit(){
             CustomerService customerService = new CustomerServiceImpl();
             AddressService addressService = new AddressServiceImpl();
-            long id  = customerService.addCustomer(customerId, customer1);
+            long id  = customerService.addCustomer(customer1);
             long id1 = addressService.addAddress(address);
             return "/AddCustomer.xhtml?customerId=" + customerId + "faces-redirect=true";
         }

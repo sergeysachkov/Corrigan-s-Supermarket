@@ -13,12 +13,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerDaoImpl implements CustomerDao{
-public long addCustomer(long customerID, Customer customer) { 
+public long addCustomer(Customer customer) { 
     	
     	        try(Connection connection = DaoUtil.getConnection();
     	            PreparedStatement stmt=connection.prepareStatement("INSERT INTO customer (idcustomer, customer_name , customer_surname, customer_login, password, phone_number, email, date_of_birth) " +
     	                    "VALUES (?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS)) {
-    	            stmt.setLong(1, customerID);
+    	            stmt.setLong(1, customer.getCustomerId());
     	            stmt.setString(2, customer.getCustomerName());
     	            stmt.setString(3, customer.getCustomerSurname());
     	            stmt.setString (4, customer.getCustomerLogin());

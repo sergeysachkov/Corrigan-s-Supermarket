@@ -19,7 +19,7 @@ public class AddressDAOImpl implements AddressDAO{
 
     try(Connection connection = DaoUtil.getConnection();
         PreparedStatement stmt=connection.prepareStatement("INSERT INTO address (adress_line_1, adress_line_2, town, county, eircode) " +
-                "VALUES (?, ?,?,?,?)", Statement.RETURN_GENERATED_KEYS)) {
+                "VALUES ( ?, ?,?,?,?)", Statement.RETURN_GENERATED_KEYS)) {
         stmt.setString(1, address.getAdressLine1());
         stmt.setString(2, address.getAdressLine2());
         stmt.setString(3, address.getTown());

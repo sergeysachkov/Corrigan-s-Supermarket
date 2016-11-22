@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface CustomerDao {
 
-    long addCustomer(long customerID, Customer customer);
+    long addCustomer(Customer customer);
     long updateCustomer(Customer customer);
     void deleteCustomer(long customerId);
     Customer getCustomer(long customerId) throws SQLException;

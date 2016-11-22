@@ -21,13 +21,13 @@ public class CustomerServiceImpl implements CustomerService{
         customerDao = new CustomerDaoImpl();
     }
 
-    public CustomerServiceImpl(long customerID, CustomerDao customerDao) {
+    public CustomerServiceImpl(CustomerDao customerDao) {
         this.customerDao = customerDao;
     }
 
-    public long addCustomer(long customerID, Customer customer){
+    public long addCustomer(Customer customer){
 
-        return customerDao.addCustomer(customerID, customer);
+        return customerDao.addCustomer(customer);
     
     }
 
