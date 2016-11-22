@@ -36,13 +36,16 @@
             <li>
                 <h:outputLabel id="PasswordLabel" for="password" value="*Password:" size="15"/>
                 <h:inputSecret id="password" value="#{customer.password}" required="true"
-  							 disabled="#{customer.disabled}"  >
+  							validatorMessage="please enter a password between 6 -15 characters with 1 uppercase letter" disabled="#{customer.disabled}"  >
+  							<f:validateRegex
+							pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15})" />
                 </h:inputSecret>
                 <h:message for="PasswordLabel" style="color:red"/>
             </li>
             <li>
 				<h:outputLabel for="confirmPassword" value="*Confirm password: " />
 				<h:inputSecret id="confirmPassword" required="true"
+				
 					requiredMessage="Please enter confirm password" />
 				<h:message for="confirmPassword" style="color: red;" />
                 <h:message for="PasswordLabel" style="color:red"/>
