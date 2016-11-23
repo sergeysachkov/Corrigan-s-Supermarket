@@ -7,7 +7,8 @@ CREATE TABLE `Items` (
 	`stock_q` INT(20) NOT NULL,
 	`unit_of_measure` varchar(10) NOT NULL,
 	`description` varchar(200) NOT NULL,
-	`category` INT(20) NOT NULL,
+	`price` double(10,2) NOT NULL,
+	`category` BIGINT(20) NOT NULL,
 	PRIMARY KEY (`itemID`)
 );
 
@@ -65,6 +66,15 @@ CREATE TABLE `payment` (
   UNIQUE KEY `card_no_UNIQUE` (`card_no`),
   KEY `payment_customer_idx` (`customer`),
   CONSTRAINT `payment_customer` FOREIGN KEY (`customer`) REFERENCES `customer` (`idcustomer`) ON DELETE NO ACTION ON UPDATE NO ACTION
+);
+
+CREATE TABLE `address` (
+  `adress_line_1` varchar(45) DEFAULT NULL,
+  `adress_line_2` varchar(45) DEFAULT NULL,
+  `town` varchar(45) DEFAULT NULL,
+  `county` varchar DEFAULT NULL,
+  `eircode` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`address`)
 );
 
 insert into corrigan.customer (customer_name, customer_surname, customer_login, password, phone_number, email, date_of_birth)

@@ -3,6 +3,7 @@ package com.ait.corrigan.services;
 import com.ait.corrigan.models.user.Customer;
 import com.ait.corrigan.models.user.PaymentDetails;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface CustomerService {

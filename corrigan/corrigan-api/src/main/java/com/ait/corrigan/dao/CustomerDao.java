@@ -1,7 +1,7 @@
 package com.ait.corrigan.dao;
 
 import com.ait.corrigan.models.user.Customer;
-import com.ait.corrigan.models.user.PaymentDetails;
+
 
 import java.sql.SQLException;
 import java.util.List;

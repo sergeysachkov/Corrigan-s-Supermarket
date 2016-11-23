@@ -9,4 +9,9 @@
             com.ait.corrigan.exception.CustomExceptionHandlerFactory
         </exception-handler-factory>
     </factory>
+    <managed-bean>
+    	<managed-bean-name>catalogBean</managed-bean-name>
+    	<managed-bean-class>com.ait.corrigan.beans.CatalogBean</managed-bean-class>
+    	<managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
 </faces-config>
