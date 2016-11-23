@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import org.junit.Test;
 
 public class CustomerDaoImplTest {
+	/*
 	//========test connection=====
 		@Test
 		public  void testGetConnection(){
@@ -54,5 +55,5 @@ public class CustomerDaoImplTest {
 			 
 		
 		
-		
+		*/
 }
