@@ -13,5 +13,7 @@ public interface CustomerDao {
     void deleteCustomer(long customerId);
     Customer getCustomer(long customerId) throws SQLException;
     List<Customer> getCustomers() throws SQLException;
-    boolean checkCustomer(String user, String password);
+   // boolean checkCustomer(String customerLogin, String password);
+    static boolean checkCustomer(String customerLogin, String password){
+		return true;};
 }

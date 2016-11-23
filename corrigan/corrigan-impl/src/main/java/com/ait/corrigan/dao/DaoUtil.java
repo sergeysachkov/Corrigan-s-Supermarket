@@ -2,6 +2,8 @@ package com.ait.corrigan.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -10,19 +12,23 @@ import java.util.concurrent.atomic.AtomicLong;
  */
 public class DaoUtil {
 
-    public static final AtomicLong LAST_TIME = new AtomicLong();
-
-    public static Connection getConnection() throws SQLException {
-        try {																//?serverTimezone=UTC
-            Class.forName("com.mysql.jdbc.Driver");
-//            return DriverManager.getConnection("jdbc:mysql://localhost:3306/corrigan","root","admin");
-            return DriverManager.getConnection("jdbc:mysql://localhost:3306/corrigan?serverTimezone=UTC", "root", "admin");
-        } catch (ClassNotFoundException | SQLException e) {
+    public static final AtomicLong LAST_TIME=new AtomicLong();
+    
+    public static Connection getConnection() throws SQLException{
+        try {
+//            Class.forName("com.mysql.jdbc.Driver");
+        	Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            return DriverManager.getConnection("jdbc:mysql://localhost:3306/corrigan?serverTimezone=UTC","root","admin");
+        }  catch (ClassNotFoundException | SQLException e) {
             throw new SQLException(e);
         }
+	
     }
-
-    /**
+    
+    
+   
+     /**
      * Get a unique id that is close to current time in milliseconds
      *
      * @return a unique long integer
@@ -39,4 +45,7 @@ public class DaoUtil {
             }
         }
     }
+    
+    
+    
 }
