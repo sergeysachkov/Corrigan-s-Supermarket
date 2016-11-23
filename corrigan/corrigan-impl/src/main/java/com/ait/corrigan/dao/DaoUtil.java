@@ -20,12 +20,14 @@ public class DaoUtil {
         	Class.forName("com.mysql.cj.jdbc.Driver");
             
             return DriverManager.getConnection("jdbc:mysql://localhost:3306/corrigan?serverTimezone=UTC","root","admin");
-        } catch (Exception ex) {
-			System.out.println("Database.getConnection() Error -->"
-					+ ex.getMessage());
-			return null;
-		}
+        }  catch (ClassNotFoundException | SQLException e) {
+            throw new SQLException(e);
+        }
+	
     }
+    
+    
+   
      /**
      * Get a unique id that is close to current time in milliseconds
      *
