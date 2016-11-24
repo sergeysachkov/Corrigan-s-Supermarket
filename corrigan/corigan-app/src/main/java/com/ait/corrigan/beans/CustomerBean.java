@@ -92,7 +92,11 @@ public class CustomerBean {
 }
 
     
-
+    public String logout() {
+		HttpSession session = SessionUtils.getSession();
+		session.invalidate();
+		return  "/login.xhtml?faces-redirect=true";
+	}
 
 
         
