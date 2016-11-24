@@ -5,12 +5,15 @@ import static org.junit.Assert.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class AddressDaoImplTest {
 	
 	//========test connection=====
+	@Ignore
 	@Test
+	
 	public  void testGetConnection(){
 		Connection con=null;
 		try {
@@ -22,7 +25,7 @@ public class AddressDaoImplTest {
 		}
 		
 	}
-	
+	@Ignore
 	//======test address is present=======
 	@Test
 	public  void testGetAddress(){

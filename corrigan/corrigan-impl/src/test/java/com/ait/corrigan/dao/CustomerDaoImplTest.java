@@ -5,10 +5,11 @@ import static org.junit.Assert.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class CustomerDaoImplTest {
-	
+	@Ignore
 	//========test connection=====
 	@Test
 	public  void testGetConnection(){
@@ -22,7 +23,7 @@ public class CustomerDaoImplTest {
 		}
 		
 	}
-	
+	@Ignore
 	//======test customer is present=======
 	@Test
 	public  void testGetCustomer(){
@@ -37,7 +38,7 @@ public class CustomerDaoImplTest {
 
 	
 	//=====test get all items====
-	
+	@Ignore
 	@Test
 	public void testGetAllCustomer(){
 		CustomerDaoImpl i=new CustomerDaoImpl();
