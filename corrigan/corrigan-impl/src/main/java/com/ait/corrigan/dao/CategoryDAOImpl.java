@@ -33,6 +33,7 @@ public class CategoryDAOImpl implements CategoryDao {
 	public Category getCategory(int categoryId) throws SQLException {
 		return null;
 	}
+
 	/*
 	@Override
 	public List<Category> getAllCategories() throws SQLException {
@@ -59,4 +60,32 @@ public class CategoryDAOImpl implements CategoryDao {
 
 	}
 */
+
+	
+	@Override
+	public List<Category> getAllCategories() throws SQLException {
+		
+		 List<Category> allCategories = new ArrayList<Category>();
+		 Category cat = null;
+
+	        try {
+	            Connection con = DaoUtil.getConnection();
+	            String sql = "select cate_name from Categories";
+	           
+	            PreparedStatement pstmt = con.prepareStatement(sql);
+	            ResultSet rs = pstmt.executeQuery();
+	            while (rs.next()) {
+	            	cat = new Category(rs.getString(1));
+	            	allCategories.add(cat);
+	            }
+
+	        } catch (SQLException e) {
+
+	            e.printStackTrace();
+	        }
+	        return allCategories;
+
+	}
+
+
 }
