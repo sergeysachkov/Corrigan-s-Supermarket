@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ItemDaoImpl implements ItemDao {
-
+/*
     public long addItem(Item item) {
         return 0;
     }
@@ -47,9 +47,36 @@ public class ItemDaoImpl implements ItemDao {
 
     }
 
+    
+    // ========ADRIAN========
     public List<Item> getItemsByCategory(String category) {
-        return null;
-    }
+    	
+    	 List<Item> allItems = new ArrayList<Item>();
+         Item item = null;
+
+
+         try {
+             Connection con = DaoUtil.getConnection();
+             //String sql = "SELECT * FROM ITEMS";
+             // String sql = "SELECT Items.itemID, Items.name, Items.stock_q, Items.unit_of_measure, Items.description, Items.price, Categories.cate_name from Items left join Categories on Items.category=Categories.cateID where Categories.cate_name=?";
+
+             PreparedStatement pstmt = con.prepareStatement("SELECT Items.itemID, Items.name, Items.stock_q, Items.unit_of_measure, Items.description, Items.price, Categories.cate_name from Items left join Categories on Items.category=Categories.cateID where Categories.cate_name=?");
+             pstmt.setString(1, category);
+             ResultSet rs = pstmt.executeQuery();
+             while (rs.next()) {
+                 item = new Item(rs.getLong(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5),
+                         rs.getDouble(6), rs.getString(7));
+                 allItems.add(item);
+             }
+
+         } catch (SQLException e) {
+
+             e.printStackTrace();
+         }
+         return allItems;
+
+     }
+  
 
     // ========ADRIAN========
     @Override
@@ -76,5 +103,5 @@ public class ItemDaoImpl implements ItemDao {
         }
         return item;
     }
-
+*/
 }

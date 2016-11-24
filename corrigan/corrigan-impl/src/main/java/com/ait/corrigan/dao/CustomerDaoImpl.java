@@ -1,5 +1,9 @@
 package com.ait.corrigan.dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 import com.ait.corrigan.models.user.Customer;
 import com.ait.corrigan.models.user.PaymentDetails;
 
@@ -97,7 +101,23 @@ public long addCustomer(Customer customer) {
         return customers;
     }
 
-    public boolean checkCustomer(String user, String password){return false;}
-
+    public  static boolean checkCustomer (String customerLogin, String password){
+    	try(Connection connection = DaoUtil.getConnection();
+    			
+    	 PreparedStatement stmt=connection.prepareStatement("SELECT * FROM CUSTOMER WHERE CUSTOMER_LOGIN = ? AND PASSWORD = ?")){
+    		 stmt.setString(1, customerLogin);
+             stmt.setString(2, password);
+             System.out.println(stmt);
+             ResultSet result = stmt.executeQuery();
+             if(result.next()){
+            	 return true;
+             }
+    	 }
+    	catch (SQLException ex) {
+			System.out.println("Login error -->" + ex.getMessage());
+			return false;
+		      }
+	 return false;
+	 }
 
 }

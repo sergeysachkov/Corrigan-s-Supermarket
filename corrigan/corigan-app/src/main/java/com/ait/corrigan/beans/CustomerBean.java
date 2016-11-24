@@ -1,5 +1,7 @@
 package com.ait.corrigan.beans;
 
+import com.ait.corrigan.dao.CustomerDao;
+import com.ait.corrigan.dao.CustomerDaoImpl;
 import com.ait.corrigan.models.user.Customer;
 import com.ait.corrigan.models.user.Address;
 import com.ait.corrigan.services.AddressServiceImpl;
@@ -11,6 +13,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
@@ -28,8 +32,35 @@ import java.util.regex.Pattern;
 @ManagedBean(name = "customer", eager = true)
 @RequestScoped
 public class CustomerBean {
+    private Customer customer;
+    private String customerName;
+    private String password; 
+    private String customerLogin;
+    private boolean disabled = false;
     private Customer customer1 = new Customer();
     private Address address = new Address();
+
+    
+  
+    public void setCustomerName(Customer customer) {
+        this.customer = customer;
+    }
+
+    public String getCustomerLogin(){
+    	HttpSession session = SessionUtils.getSession();
+		if (session != null)
+			customerLogin = (String) session.getAttribute("customerLogin");
+    	return customerLogin;
+    }
+    public void setCustomerLogin(String cutomerLogin){
+    	this.customerLogin= cutomerLogin;
+    }
+    public  CustomerBean(){
+    	
+    }
+    
+  
+
 
     @ManagedProperty(value = "#{param.customerId}")
     private long customerId;
@@ -55,11 +86,29 @@ public class CustomerBean {
             return 0;
         }
         return customers.get(0).getCustomerId();
-    }
+      
+    	}    
+    public String checkCustomer(){
+    	boolean login = CustomerDaoImpl.checkCustomer(customerLogin, password);
+		if (login) {
+			HttpSession session = SessionUtils.getSession();
+			session.setAttribute("customerLogin", customerLogin);
+			return "/home.xhtml?faces-redirect=true";
+		} else {
+			FacesContext.getCurrentInstance().addMessage(
+					null,
+					new FacesMessage(FacesMessage.SEVERITY_WARN,
+							"Incorrect CustomerLogin and Passowrd",
+							"Please enter correct CustomerLogin and Password"));
+			return "/login.xhtml?faces-redirect=true";
+		}   
+}
+
+    
 
 
 
-        private boolean disabled = false;
+        
 
 
         public boolean isDisabled() {
@@ -84,24 +133,16 @@ public class CustomerBean {
         public String getcustomerSurname(){
             return customer1.getCustomerSurname();
     }
-        public void setcustomerLogin(String customerLogin){
-            customer1.setCustomerLogin(customerLogin);
-    }
-            
-        public String getcustomerLogin(){
-        	if(customer1.getCustomerLogin() != null){
-                return customer1.getCustomerLogin();
-            }
-                return "";
-    }
         public void setPassword(String password){
-            customer1.setPassword(password);
+           this.password = password;
     }
         public String getPassword(){
-        	if(customer1.getPassword() != null){
-                return customer1.getPassword();
-            }
-            return "";
+        	
+        	return  password;
+        //	if(customer1.getPassword() != null){
+          //      return customer1.getPassword();
+           // }
+           // return "";
     }
         public void validatePassword(ComponentSystemEvent event) {
 
@@ -215,4 +256,5 @@ public class CustomerBean {
             this.customer1 = new Customer();
             return "/home.xhtml?faces-redirect=true";
         }
+
 }
