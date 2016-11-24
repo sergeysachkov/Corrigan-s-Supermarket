@@ -13,7 +13,7 @@
     <h:form id="add_cust_form">
         <h:inputHidden id="customerId" value="#{customer.customerId}" required="true"/>
         <ul>
-
+			<f:event listener="#{customer.validatePassword}" type="postValidate" />
             <li>
                 <h:outputLabel id="CustomerNameLabel" for="customername" value="*First Name:" size="15"/>
                 <h:inputText id="customername" value="#{customer.customerName}" required="true" validatorMessage="please enter a value" disabled="#{customer.disabled}">
@@ -35,8 +35,9 @@
             </li>
             <li>
                 <h:outputLabel id="PasswordLabel" for="password" value="*Password:" size="15"/>
-                <h:inputSecret id="password" value="#{customer.password}" required="true"
-  							validatorMessage="please enter a password between 6 -15 characters with 1 uppercase letter" disabled="#{customer.disabled}"  >
+                <h:inputSecret id="password" value="#{customer.password}"
+  							 disabled="#{customer.disabled}" 
+  							 validatorMessage="please enter a password between 6 and 20 characters long with an uppercase letter and a number" >
   							<f:validateRegex
 							pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15})" />
                 </h:inputSecret>
@@ -44,11 +45,8 @@
             </li>
             <li>
 				<h:outputLabel for="confirmPassword" value="*Confirm password: " />
-				<h:inputSecret id="confirmPassword" required="true"
-				
+				<h:inputSecret id="confirmPassword"
 					requiredMessage="Please enter confirm password" >
-					<f:validateRegex
-							pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15})" />
 				</h:inputSecret>	
 				<h:message for="confirmPassword" style="color: red;" />
    
@@ -120,7 +118,7 @@
 
 
             <li>
-                <h:commandButton value="Save" action="#{customer.submit()}"/>
+                <h:commandButton value="Save" action="#{customer.submit()}" disabled="#{customer.disabled}"/>
                 <h:commandButton value="Cancel" action="#{customer.cancel()}" immediate="true"/>
             </li>
         </ul>
