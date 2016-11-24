@@ -72,11 +72,21 @@
                     #{c.cate_name}
                 </h:column>
 
-                <h:column>
+		
+
+				<h:column>
                     <f:facet name="header">Action</f:facet>
                     <h:commandButton value="Add to basket" action="#{basketBean.addToBasket(c)}"/>
                 </h:column>
             </h:dataTable>
+            
+       <!--			
+			<h:selectOneMenu value="#{catalog.name}">
+					<f:selectItem itemLabel="Select One" itemValue="#{null}" noSelectionOption="true" /> 	
+			 		<f:selectItems value="#{catalog.categories}" var="category" itemvalue="#{Category.cat_name}"/>  
+			</h:selectOneMenu>     
+-->
+      
         </h:form>
         <ul>
             <li>
