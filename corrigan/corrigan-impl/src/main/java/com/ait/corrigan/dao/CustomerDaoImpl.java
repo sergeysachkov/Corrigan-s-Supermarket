@@ -60,7 +60,7 @@ public long addCustomer(Customer customer) {
         public Customer getCustomerByID(long id) throws SQLException {
             Customer customer = new Customer();
             try(Connection connection = DaoUtil.getConnection();
-                PreparedStatement stmt=connection.prepareStatement("select * from customer where idpayment=?")) {
+                PreparedStatement stmt=connection.prepareStatement("select * from customer where idcustomer=?")) {
                 stmt.setLong(1, id);
                 ResultSet resultSet = stmt.executeQuery();
                 while (resultSet.next()){

@@ -55,7 +55,7 @@ public class AddressDAOImpl implements AddressDAO{
     public Address getAddress(long customerId) throws SQLException {
         Address address = new Address();
         try(Connection connection = DaoUtil.getConnection();
-            PreparedStatement stmt=connection.prepareStatement("select * from customer where customerId=?")) {
+            PreparedStatement stmt=connection.prepareStatement("select * from address where adress_id=?")) {
             stmt.setLong(1, customerId);
             ResultSet resultSet = stmt.executeQuery();
             while (resultSet.next()){
@@ -90,7 +90,7 @@ public class AddressDAOImpl implements AddressDAO{
     
     public Address getAddressByID(String ID) throws SQLException {
         try(Connection connection = DaoUtil.getConnection();
-            PreparedStatement stmt=connection.prepareStatement("select * from address where adress_line_1=?")) {
+            PreparedStatement stmt=connection.prepareStatement("select * from address where adress_id=?")) {
             stmt.setString(1, ID);
             ResultSet resultSet = stmt.executeQuery();
             if(resultSet.next()){

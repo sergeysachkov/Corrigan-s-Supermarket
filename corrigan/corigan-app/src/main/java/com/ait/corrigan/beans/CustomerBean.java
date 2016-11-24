@@ -6,8 +6,6 @@ import com.ait.corrigan.services.AddressServiceImpl;
 import com.ait.corrigan.services.AddressService;
 import com.ait.corrigan.services.CustomerService;
 import com.ait.corrigan.services.CustomerServiceImpl;
-import com.ait.corrigan.services.PaymentService;
-import com.ait.corrigan.services.PaymentServiceImpl;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -32,17 +30,9 @@ import java.util.regex.Pattern;
 public class CustomerBean {
     private Customer customer1 = new Customer();
     private Address address = new Address();
-    private boolean disabled = false;
 
     @ManagedProperty(value = "#{param.customerId}")
     private long customerId;
-    
-    @ManagedProperty(value = "#{param.id}")
-    private long id;
-    
-    public void setid(long id) {
-        this.id = id;
-    }
 
 
     public long getCustomerId(){
@@ -53,17 +43,10 @@ public class CustomerBean {
         }
         return customers.get(0).getCustomerId();
     }
-    
-    public void setId(long id) {
-        this.id = id;
-        if(id != 0){
-            CustomerService customerService = new CustomerServiceImpl();
-            this.customer1 = customerService.getCustomerByID(this.id);
-            this.disabled = true;
-        }
-    }
 
 
+
+        private boolean disabled = false;
 
 
         public boolean isDisabled() {
@@ -211,8 +194,7 @@ public class CustomerBean {
             AddressService addressService = new AddressServiceImpl();
             long id  = customerService.addCustomer(customer1);
             long id1 = addressService.addAddress(address);
-            FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Success!", null);
-            return "/AddCustomer.xhtml?id=" + id + "faces-redirect=true";
+            return "/AddCustomer.xhtml?customerId=" + customerId + "faces-redirect=true";
         }
 
         public String cancel(){
