@@ -33,6 +33,19 @@ public class CustomerBean {
 
     @ManagedProperty(value = "#{param.customerId}")
     private long customerId;
+    
+    public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
+
+	@ManagedProperty(value = "#{param.id}")
+    private long id;
 
 
     public long getCustomerId(){
@@ -194,7 +207,7 @@ public class CustomerBean {
             AddressService addressService = new AddressServiceImpl();
             long id  = customerService.addCustomer(customer1);
             long id1 = addressService.addAddress(address);
-            return "/AddCustomer.xhtml?customerId=" + customerId + "faces-redirect=true";
+            return "/AddCustomer.xhtml?id=" + id + "faces-redirect=true";
         }
 
         public String cancel(){
