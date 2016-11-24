@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ItemDaoImpl implements ItemDao {
-/*
+
     public long addItem(Item item) {
         return 0;
     }
@@ -103,5 +103,5 @@ public class ItemDaoImpl implements ItemDao {
         }
         return item;
     }
-*/
+
 }
