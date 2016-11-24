@@ -58,7 +58,7 @@ public class CategoryDAOImplTest {
 			e.printStackTrace();
 		}
 	}
-*/
+
 
 	// assert size of array with the number of cat in the db = PASS
 	@Test
@@ -105,5 +105,5 @@ public class CategoryDAOImplTest {
 		}
 	}
 
-
+*/
 }

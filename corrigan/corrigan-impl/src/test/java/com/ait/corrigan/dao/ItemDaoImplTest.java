@@ -14,7 +14,7 @@ import com.ait.corrigan.models.shop.Item;
 public class ItemDaoImplTest {
 
 	
-
+/*
 	//========test connection=====
 	@Test
 	public  void testGetConnection(){
@@ -97,5 +97,5 @@ public class ItemDaoImplTest {
 		}
 	}
 	
-
+*/
 }
