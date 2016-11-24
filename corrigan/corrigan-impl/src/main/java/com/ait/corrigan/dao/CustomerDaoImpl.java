@@ -57,6 +57,7 @@ public long addCustomer(Customer customer) {
         return customer;
     }
 
+<<<<<<< HEAD
     public List<Customer> getCustomers() throws SQLException {
         List<Customer> customers = new ArrayList<>();
         try(Connection connection = DaoUtil.getConnection();
@@ -74,6 +75,21 @@ public long addCustomer(Customer customer) {
         }
         return customers;
     }
+=======
+    public boolean checkCustomer(String user, String password)throws SQLException {
+    	 try(Connection connection = getConnection();
+    			 PreparedStatement psmt = connection
+    		               .prepareStatement("SELECT * FROM USER WHERE CUSTOMER_NAME = ? AND PASSWORD = ?"£©
+    		               psmt.setString(1, name);
+    		               psmt.setString(2, password);
+    			           stmt.executeUpdate();
+    	                   
+    			 catch (SQLException e) {
+    		         e.printStackTrace();
+    		      }
+    	 return false;
+    	 }
+>>>>>>> refs/remotes/origin/CUS2
 
     public  static boolean checkCustomer (String customerLogin, String password){
     	try(Connection connection = DaoUtil.getConnection();
