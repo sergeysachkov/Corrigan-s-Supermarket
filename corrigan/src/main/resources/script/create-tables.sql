@@ -69,12 +69,13 @@ CREATE TABLE `payment` (
 );
 
 CREATE TABLE `address` (
+	`adress_id` int(11) NOT NULL AUTO_INCREMENT,
   `adress_line_1` varchar(45) DEFAULT NULL,
   `adress_line_2` varchar(45) DEFAULT NULL,
   `town` varchar(45) DEFAULT NULL,
   `county` varchar DEFAULT NULL,
   `eircode` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`address`)
+  PRIMARY KEY (`address_id`)
 );
 
 insert into corrigan.customer (customer_name, customer_surname, customer_login, password, phone_number, email, date_of_birth)
