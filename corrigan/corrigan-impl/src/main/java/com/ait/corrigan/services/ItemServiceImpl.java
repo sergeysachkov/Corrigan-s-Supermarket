@@ -38,8 +38,11 @@ public class ItemServiceImpl implements ItemService{
        ItemDaoImpl c=new ItemDaoImpl();
        return c.getAllItems();
     }
+    
+  //===========ADRIAN============
 
     public List<Item> getCategory(String category) {
-        return null;
-    }
+    	ItemDaoImpl c=new ItemDaoImpl();
+        return c.getItemsByCategory(category);  
+        }
 }
