@@ -75,7 +75,7 @@ CREATE TABLE `address` (
   `town` varchar(45) DEFAULT NULL,
   `county` varchar DEFAULT NULL,
   `eircode` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`address_id`)
+  PRIMARY KEY (`adress_id`)
 );
 
 insert into corrigan.customer (customer_name, customer_surname, customer_login, password, phone_number, email, date_of_birth)

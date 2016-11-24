@@ -59,6 +59,17 @@ public class CustomerBean {
     	
     }
     
+    public void setcustomerLogin(String customerLogin){
+        customer1.setCustomerLogin(customerLogin);
+}
+        
+    public String getcustomerLogin(){
+    	if(customer1.getCustomerLogin() != null){
+            return customer1.getCustomerLogin();
+        }
+            return "";
+}
+    
   
 
 
