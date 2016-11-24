@@ -15,7 +15,7 @@ public class DaoUtil {
         try {																//?serverTimezone=UTC
             Class.forName("com.mysql.jdbc.Driver");
 
-            return DriverManager.getConnection("jdbc:mysql://localhost:3306/corrigan","root","admin");
+            return DriverManager.getConnection("jdbc:mysql://localhost:3306/AddCustomer","root","admin");
 
         } catch (ClassNotFoundException | SQLException e) {
             throw new SQLException(e);
