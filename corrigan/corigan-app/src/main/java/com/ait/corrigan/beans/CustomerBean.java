@@ -32,19 +32,15 @@ import java.util.regex.Pattern;
 @ManagedBean(name = "customer", eager = true)
 @RequestScoped
 public class CustomerBean {
-    private Customer customer;
+    //private Customer customer;
     //private String customerName;
     //private String password; 
-    //private String customerLogin;
+    private String customerLogin;
     private boolean disabled = false;
     private Customer customer1 = new Customer();
     private Address address = new Address();
 
-    
-  
-    public void setCustomerName(Customer customer) {
-        this.customer = customer;
-    }
+   
 
     //This functionality should go in method "getcustomerLogin" below
     public String getCustomerLogin(){
@@ -77,6 +73,19 @@ public class CustomerBean {
     @ManagedProperty(value = "#{param.customerId}")
     private long customerId;
     
+
+    public void setCustomerId(long customerId) {
+        this.customerId = customerId;
+    }
+    
+    public long getCustomerId(){
+        return customer1.getCustomerId();
+}
+
+
+	@ManagedProperty(value = "#{param.id}")
+    private long id;
+    
     public long getId() {
 		return id;
 	}
@@ -86,20 +95,15 @@ public class CustomerBean {
 	}
 
 
-
-	@ManagedProperty(value = "#{param.id}")
-    private long id;
-
-
-    public long getCustomerId(){
-        CustomerService customerService = new CustomerServiceImpl();
-        List<Customer> customers = customerService.getCustomers();
-        if(customers.isEmpty()){
-            return 0;
-        }
-        return customers.get(0).getCustomerId();
+    //public long getCustomerId(){
+      //  CustomerService customerService = new CustomerServiceImpl();
+        //List<Customer> customers = customerService.getCustomers();
+        //if(customers.isEmpty()){
+          //  return 0;
+        //}
+        //return customers.get(0).getCustomerId();
       
-    	}
+    	//}
     
     //This code should use the 
     public String checkCustomer(){
@@ -119,19 +123,10 @@ public class CustomerBean {
 }
 
     
-
-
-
-        
-
-
         public boolean isDisabled() {
             return disabled;
         }
 
-        public void setCustomerId(long customerId) {
-            this.customerId = customerId;
-        }
 
         public void setCustomerName(String name){
                 customer1.setCustomerName(name);
