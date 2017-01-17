@@ -59,5 +59,11 @@ public class CustomerServiceImpl implements CustomerService{
         }
     }
 
+	@Override
+	public Customer getCustomerByID(long arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }

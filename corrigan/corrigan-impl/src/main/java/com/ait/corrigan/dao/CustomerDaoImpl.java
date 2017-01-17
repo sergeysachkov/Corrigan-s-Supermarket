@@ -93,5 +93,10 @@ public long addCustomer(Customer customer) {
 		      }
 	 return false;
 	 }
+	@Override
+	public Customer getCustomerByID(long arg0) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
