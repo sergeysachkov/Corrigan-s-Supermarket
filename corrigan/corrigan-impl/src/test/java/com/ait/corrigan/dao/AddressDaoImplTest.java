@@ -11,7 +11,7 @@ import org.junit.Test;
 public class AddressDaoImplTest {
 	
 	//========test connection=====
-	@Ignore
+	//@Ignore
 	@Test
 	
 	public  void testGetConnection(){
@@ -25,7 +25,7 @@ public class AddressDaoImplTest {
 		}
 		
 	}
-	@Ignore
+	//@Ignore
 	//======test address is present=======
 	@Test
 	public  void testGetAddress(){
