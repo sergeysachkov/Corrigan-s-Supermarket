@@ -36,5 +36,36 @@ public class CustomerServiceImplTest {
         }catch (Exception e){
             fail();
         }
-}
+    }
+
+ public void testCheckCustomer(){
+	 CustomerDao first = mock(CustomerDao.class);
+	 
+	 try {
+
+	       CustomerDao.checkCustomer("A123","loginin");
+
+          } catch (Exception e) {
+
+	  fail();
+    
+ }
+ }
+	 public void testCheckCustomer2(){
+		 CustomerDao first = mock(CustomerDao.class);
+		 
+		 try {
+
+		       CustomerDao.checkCustomer(" ","loginin");
+		       fail();
+
+	          } catch (Exception e) {	  
+	    
+	 }
+	 
+	 
+	 
+ 
+ }
+
 }

@@ -6,10 +6,16 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import org.junit.Ignore;
+
 import org.junit.Test;
 
 public class CustomerDaoImplTest {
+<<<<<<< HEAD
+
+	@Ignore
+=======
 	//@Ignore
+>>>>>>> refs/remotes/origin/CUS_1
 	//========test connection=====
 	@Test
 	public  void testGetConnection(){
@@ -49,4 +55,52 @@ public class CustomerDaoImplTest {
 			e.printStackTrace();
 		}
 	}
+
+	/*
+	//========test connection=====
+		@Test
+		public  void testGetConnection(){
+			Connection con=null;
+			try {
+				con=DaoUtil.getConnection();
+				assertNotNull(con);
+			} catch (SQLException e) {
+				fail("No Exception expected .....");
+				e.printStackTrace();
+			}
+			
+		}
+		
+		public void testCheckCustomer(){
+			 CustomerDaoImpl first = new CustomerDaoImpl();
+			 
+			 try {
+
+			       CustomerDao.checkCustomer("A123","loginin");
+
+		          } catch (Exception e) {
+
+		        	 assertSame("Invild value", e.getMessage());
+		    
+		 }
+		 }
+			 public void testCheckCustomer2(){
+				 CustomerDao first = mock(CustomerDao.class);
+				 
+				 try {
+
+				       CustomerDao.checkCustomer(" ","loginin");
+				       fail();
+
+			          } catch (Exception e) {	 
+			        	  assertNotSame("Invild value", e.getMessage());
+			          }
+			    
+			 }
+			 
+			 
+		
+		
+		*/
+
 }

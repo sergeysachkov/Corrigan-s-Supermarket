@@ -4,7 +4,7 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Shopping Basket - Corrigan's</title>
     </h:head>
     <style>
         .basket-header{
@@ -23,7 +23,7 @@
         }
     </style>
     <h:body>
-        #{basketBean.getBasketId()}
+        <!--#{basketBean.getBasketId()}-->
         <h:form>
             <h:dataTable value="#{basketBean.basketItems}" var="i"
                          headerClass="basket-header"
@@ -38,7 +38,8 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header">Quantity</f:facet>
-                    <h:inputText id="quantity" value="#{i.quantity}" style="width:2em;" validatorMessage="Please check quantity number.">
+                    <h:inputText id="quantity" value="#{i.quantity}" style="width:2em;" converterMessage="Please enter digits only." validatorMessage="Please check quantity number.">
+                        <f:convertNumber integerOnly="true" type="number" />
                         <f:validateLongRange minimum="1" maximum="200" />
                     </h:inputText>
                     <h:message for="quantity" styleClass="quantity-msg"/>

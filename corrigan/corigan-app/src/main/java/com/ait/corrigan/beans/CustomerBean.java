@@ -40,7 +40,11 @@ public class CustomerBean {
     private Customer customer1 = new Customer();
     private Address address = new Address();
 
-   
+    
+  
+    public void setCustomerName(Customer customer) {
+        this.customer = customer;
+    }
 
     //This functionality should go in method "getcustomerLogin" below
     public String getCustomerLogin(){
@@ -122,7 +126,8 @@ public class CustomerBean {
 		}   
 }
 
-    
+
+
         public boolean isDisabled() {
             return disabled;
         }
