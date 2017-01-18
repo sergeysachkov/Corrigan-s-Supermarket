@@ -35,16 +35,14 @@ public class CustomerBean {
     //private Customer customer;
     //private String customerName;
     //private String password; 
-    private String customerLogin;
+    //private String customerLogin;
     private boolean disabled = false;
     private Customer customer1 = new Customer();
     private Address address = new Address();
-
     
-  
-    public void setCustomerName(Customer customer) {
-        this.customer = customer;
-    }
+    private String customerLogin;
+    private String loginPassword;
+
 
     //This functionality should go in method "getcustomerLogin" below
     public String getCustomerLogin(){
@@ -69,8 +67,14 @@ public class CustomerBean {
             return customer1.getCustomerLogin();
         }
             return "";
-}
+} 
+    public void setLoginPassword(String loginPassword){
+    	this.loginPassword = loginPassword;
+    }
     
+    public String getLoginPassword(){
+    	return loginPassword;
+    }
   
 
 
@@ -111,7 +115,7 @@ public class CustomerBean {
     
     //This code should use the 
     public String checkCustomer(){
-    	boolean login = CustomerDaoImpl.checkCustomer(customerId, password);
+    	boolean login = CustomerDaoImpl.checkCustomer(customerLogin, loginPassword);
 		if (login) {
 			HttpSession session = SessionUtils.getSession();
 			session.setAttribute("customerLogin", customerLogin);

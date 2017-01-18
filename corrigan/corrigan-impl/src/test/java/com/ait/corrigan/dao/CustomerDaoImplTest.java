@@ -10,14 +10,12 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 public class CustomerDaoImplTest {
-<<<<<<< HEAD
+
 
 	@Ignore
-=======
-	//@Ignore
->>>>>>> refs/remotes/origin/CUS_1
+
 	//========test connection=====
-	@Test
+	//@Test
 	public  void testGetConnection(){
 		Connection con=null;
 		try {
@@ -29,9 +27,9 @@ public class CustomerDaoImplTest {
 		}
 		
 	}
-	//@Ignore
+	@Ignore
 	//======test customer is present=======
-	@Test
+	//@Test
 	public  void testGetCustomer(){
 		CustomerDaoImpl i=new CustomerDaoImpl();
 		try{
@@ -43,9 +41,9 @@ public class CustomerDaoImplTest {
 	}
 
 	
-	//=====test get all items====
-	//@Ignore
-	@Test
+	//=====test get all customers====
+	@Ignore
+	//@Test
 	public void testGetAllCustomer(){
 		CustomerDaoImpl i=new CustomerDaoImpl();
 		try{
