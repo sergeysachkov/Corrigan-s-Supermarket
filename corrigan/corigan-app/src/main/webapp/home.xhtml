@@ -4,33 +4,34 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html">
-<f:view>
-    <h4>Corrigan</h4>
-    <ul>
-        <li>
-            <h:link value="Add Card" outcome="payment">
-                <f:param name="customerId" value="#{customer.customerId}"/>
-            </h:link>
-        </li>
-        <li>
-            <h:link value="Get Card" outcome="payment">
-                <f:param name="id" value="5"/>
-            </h:link>
-        </li>
-        <li>
+    <f:view>
+        <h4>Corrigan</h4>
+        <ul>
+            <li>
+                <h:link value="Add Card" outcome="payment">
+                    <f:param name="customerId" value="#{customer.customerId}"/>
+                </h:link>
+            </li>
+            <li>
+                <h:link value="Get Card" outcome="payment">
+                    <f:param name="id" value="5"/>
+                </h:link>
+            </li>
+            <li>
 
-            <h:link value="Add Customer" outcome="AddCustomer">
-                <f:param name="customerId" value="#{customer.customerId}"/>
-			</h:link>
-			
-			<h:link value="Get Customer" outcome="AddCustomer">
-                <f:param name="id" value="1"/>
-			</h:link>
-            <h:link value="Catalog" outcome="catalog">
-            </h:link>
-
-            
-        </li>
-    </ul>
-</f:view>
+                <h:link value="Add Customer" outcome="AddCustomer">
+                    <f:param name="customerId" value="#{customer.customerId}"/>
+                </h:link>
+            </li>
+            <li>
+                <h:link value="Get Customer" outcome="AddCustomer">
+                    <f:param name="id" value="1"/>
+                </h:link>
+            </li>
+            <li>
+                <h:link value="Catalog" outcome="catalog">
+                </h:link>
+            </li>
+        </ul>
+    </f:view>
 </html>
