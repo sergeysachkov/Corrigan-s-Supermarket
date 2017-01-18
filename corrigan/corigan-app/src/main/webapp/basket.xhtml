@@ -23,6 +23,7 @@
         }
     </style>
     <h:body>
+        <h1>Order Summary</h1>
         <!--#{basketBean.getBasketId()}-->
         <h:form>
             <h:dataTable value="#{basketBean.basketItems}" var="i"
@@ -58,8 +59,12 @@
                 <h:link value="Continue Shopping" outcome="catalog"></h:link>
             </li>
             <li>
+                <h:link value="Continue to delivery schedule" outcome="deliverySchedule"></h:link>
+            </li>
+            <li>
                 <h:link value="Home" outcome="home"></h:link>
             </li>
+
         </ul>
     </h:body>
 </html>

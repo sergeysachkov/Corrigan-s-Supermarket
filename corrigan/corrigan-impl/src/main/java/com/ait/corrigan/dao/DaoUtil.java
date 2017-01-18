@@ -13,10 +13,8 @@ public class DaoUtil {
     
     public static Connection getConnection() throws SQLException{
         try {																//?serverTimezone=UTC
-            Class.forName("com.mysql.jdbc.Driver");
-
-            return DriverManager.getConnection("jdbc:mysql://localhost:3306/corrigan","root","admin");
-
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            return DriverManager.getConnection("jdbc:mysql://localhost:3306/corrigan?serverTimezone=UTC","root","admin");
         } catch (ClassNotFoundException | SQLException e) {
             throw new SQLException(e);
         }

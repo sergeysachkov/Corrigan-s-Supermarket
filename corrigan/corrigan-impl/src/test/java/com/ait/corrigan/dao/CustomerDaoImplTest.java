@@ -11,9 +11,11 @@ import org.junit.Test;
 
 public class CustomerDaoImplTest {
 
+
 	@Ignore
+
 	//========test connection=====
-	@Test
+	//@Test
 	public  void testGetConnection(){
 		Connection con=null;
 		try {
@@ -27,7 +29,7 @@ public class CustomerDaoImplTest {
 	}
 	@Ignore
 	//======test customer is present=======
-	@Test
+	//@Test
 	public  void testGetCustomer(){
 		CustomerDaoImpl i=new CustomerDaoImpl();
 		try{
@@ -39,9 +41,9 @@ public class CustomerDaoImplTest {
 	}
 
 	
-	//=====test get all items====
+	//=====test get all customers====
 	@Ignore
-	@Test
+	//@Test
 	public void testGetAllCustomer(){
 		CustomerDaoImpl i=new CustomerDaoImpl();
 		try{

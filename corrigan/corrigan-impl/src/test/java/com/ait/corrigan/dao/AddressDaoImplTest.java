@@ -12,7 +12,7 @@ public class AddressDaoImplTest {
 	
 	//========test connection=====
 	@Ignore
-	@Test
+	//@Test
 	
 	public  void testGetConnection(){
 		Connection con=null;
@@ -27,7 +27,7 @@ public class AddressDaoImplTest {
 	}
 	@Ignore
 	//======test address is present=======
-	@Test
+	//@Test
 	public  void testGetAddress(){
 		AddressDAOImpl i=new AddressDAOImpl();
 		try{
