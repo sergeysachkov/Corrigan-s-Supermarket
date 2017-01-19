@@ -47,16 +47,43 @@ public long addCustomer(Customer customer) {
             ResultSet resultSet = stmt.executeQuery();
             while (resultSet.next()){
                 customer.setCustomerId(resultSet.getLong("idcustomer"));
-                customer.setCustomerDateOfBirth(resultSet.getDate("date_of_birth"));
                 customer.setCustomerName(resultSet.getString("customer_name"));
                 customer.setCustomerSurname(resultSet.getString("customer_surname"));
+                customer.setCustomerLogin(resultSet.getString("customer_login"));
+                customer.setPassword(resultSet.getString("password"));
+                customer.setPhoneNumber(resultSet.getString("phone_number"));
                 customer.setEmail(resultSet.getString("email"));
+                customer.setCustomerDateOfBirth(resultSet.getDate("date_of_birth"));
+               
 
             }
         }
         return customer;
     }
+        
+        public Customer getCustomerByID(long id) throws SQLException {
+            Customer customer = new Customer();
+            try(Connection connection = DaoUtil.getConnection();
+                PreparedStatement stmt=connection.prepareStatement("select * from customer where idcustomer=?")) {
+                stmt.setLong(1, id);
+                ResultSet resultSet = stmt.executeQuery();
+                while (resultSet.next()){
+                    customer.setCustomerId(resultSet.getLong("idcustomer"));
+                    customer.setCustomerName(resultSet.getString("customer_name"));
+                    customer.setCustomerSurname(resultSet.getString("customer_surname"));
+                    customer.setCustomerLogin(resultSet.getString("customer_login"));
+                    customer.setPassword(resultSet.getString("password"));
+                    customer.setPhoneNumber(resultSet.getString("phone_number"));
+                    customer.setEmail(resultSet.getString("email"));
+                    customer.setCustomerDateOfBirth(resultSet.getDate("date_of_birth"));
+                   
 
+                }
+            }
+            return customer;
+    }
+
+<<<<<<< HEAD
     public List<Customer> getCustomers() throws SQLException {
         List<Customer> customers = new ArrayList<>();
         try(Connection connection = DaoUtil.getConnection();
@@ -74,6 +101,21 @@ public long addCustomer(Customer customer) {
         }
         return customers;
     }
+=======
+    public boolean checkCustomer(String user, String password)throws SQLException {
+    	 try(Connection connection = getConnection();
+    			 PreparedStatement psmt = connection
+    		               .prepareStatement("SELECT * FROM USER WHERE CUSTOMER_NAME = ? AND PASSWORD = ?"£©
+    		               psmt.setString(1, name);
+    		               psmt.setString(2, password);
+    			           stmt.executeUpdate();
+    	                   
+    			 catch (SQLException e) {
+    		         e.printStackTrace();
+    		      }
+    	 return false;
+    	 }
+>>>>>>> refs/remotes/origin/CUS2
 
     public  static boolean checkCustomer (String customerLogin, String password){
     	try(Connection connection = DaoUtil.getConnection();

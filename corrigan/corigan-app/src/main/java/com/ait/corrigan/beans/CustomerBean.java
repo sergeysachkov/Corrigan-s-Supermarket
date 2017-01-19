@@ -32,20 +32,19 @@ import java.util.regex.Pattern;
 @ManagedBean(name = "customer", eager = true)
 @RequestScoped
 public class CustomerBean {
-    private Customer customer;
-    private String customerName;
-    private String password; 
-    private String customerLogin;
+    //private Customer customer;
+    //private String customerName;
+    //private String password; 
+    //private String customerLogin;
     private boolean disabled = false;
     private Customer customer1 = new Customer();
     private Address address = new Address();
-
     
-  
-    public void setCustomerName(Customer customer) {
-        this.customer = customer;
-    }
+    private String customerLogin;
+    private String loginPassword;
 
+
+    //This functionality should go in method "getcustomerLogin" below
     public String getCustomerLogin(){
     	HttpSession session = SessionUtils.getSession();
 		if (session != null)
@@ -59,24 +58,64 @@ public class CustomerBean {
     	
     }
     
+    public void setcustomerLogin(String customerLogin){
+        customer1.setCustomerLogin(customerLogin);
+}
+        
+    public String getcustomerLogin(){
+    	if(customer1.getCustomerLogin() != null){
+            return customer1.getCustomerLogin();
+        }
+            return "";
+} 
+    public void setLoginPassword(String loginPassword){
+    	this.loginPassword = loginPassword;
+    }
+    
+    public String getLoginPassword(){
+    	return loginPassword;
+    }
   
 
 
     @ManagedProperty(value = "#{param.customerId}")
     private long customerId;
+    
 
-
+    public void setCustomerId(long customerId) {
+        this.customerId = customerId;
+    }
+    
     public long getCustomerId(){
-        CustomerService customerService = new CustomerServiceImpl();
-        List<Customer> customers = customerService.getCustomers();
-        if(customers.isEmpty()){
-            return 0;
-        }
-        return customers.get(0).getCustomerId();
+        return customer1.getCustomerId();
+}
+
+
+	@ManagedProperty(value = "#{param.id}")
+    private long id;
+    
+    public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
+    //public long getCustomerId(){
+      //  CustomerService customerService = new CustomerServiceImpl();
+        //List<Customer> customers = customerService.getCustomers();
+        //if(customers.isEmpty()){
+          //  return 0;
+        //}
+        //return customers.get(0).getCustomerId();
       
-    	}    
+    	//}
+    
+    //This code should use the 
     public String checkCustomer(){
-    	boolean login = CustomerDaoImpl.checkCustomer(customerLogin, password);
+    	boolean login = CustomerDaoImpl.checkCustomer(customerLogin, loginPassword);
 		if (login) {
 			HttpSession session = SessionUtils.getSession();
 			session.setAttribute("customerLogin", customerLogin);
@@ -91,24 +130,12 @@ public class CustomerBean {
 		}   
 }
 
-    
-    public String logout() {
-		HttpSession session = SessionUtils.getSession();
-		session.invalidate();
-		return  "/login.xhtml?faces-redirect=true";
-	}
-
-
-        
 
 
         public boolean isDisabled() {
             return disabled;
         }
 
-        public void setCustomerId(long customerId) {
-            this.customerId = customerId;
-        }
 
         public void setCustomerName(String name){
                 customer1.setCustomerName(name);
@@ -125,15 +152,15 @@ public class CustomerBean {
             return customer1.getCustomerSurname();
     }
         public void setPassword(String password){
-           this.password = password;
+             customer1.setPassword(password);
     }
         public String getPassword(){
         	
-        	return  password;
-        //	if(customer1.getPassword() != null){
-          //      return customer1.getPassword();
-           // }
-           // return "";
+        	//return  password;
+        	if(customer1.getPassword() != null){
+                return customer1.getPassword();
+            }
+           return "";
     }
         public void validatePassword(ComponentSystemEvent event) {
 
@@ -239,7 +266,7 @@ public class CustomerBean {
             AddressService addressService = new AddressServiceImpl();
             long id  = customerService.addCustomer(customer1);
             long id1 = addressService.addAddress(address);
-            return "/AddCustomer.xhtml?customerId=" + customerId + "faces-redirect=true";
+            return "/AddCustomer.xhtml?id=" + id + "faces-redirect=true";
         }
 
         public String cancel(){

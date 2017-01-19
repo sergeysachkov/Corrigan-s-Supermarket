@@ -15,11 +15,29 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class CustomerServiceImplTest {
+
 	CustomerDao dao;
- public void setUp(){
-	        dao = mock(CustomerDao.class);
-	      
-}
+	
+    @Before
+    public void setUp(){
+        dao = mock(CustomerDao.class);
+    }
+    @Test
+    public void testAddCustomer(){
+        try {
+            CustomerDao dao = mock(CustomerDao.class);
+            CustomerService service = new CustomerServiceImpl(dao);
+            Customer customer = new Customer();
+            customer.setCustomerName("John");
+            customer.setCustomerSurname("Handy");
+            when(dao.addCustomer(customer)).thenReturn(1l);
+            long id = service.addCustomer(customer);
+            assertEquals(id, 1);
+        }catch (Exception e){
+            fail();
+        }
+    }
+
  public void testCheckCustomer(){
 	 CustomerDao first = mock(CustomerDao.class);
 	 
@@ -49,4 +67,5 @@ public class CustomerServiceImplTest {
 	 
  
  }
+
 }
