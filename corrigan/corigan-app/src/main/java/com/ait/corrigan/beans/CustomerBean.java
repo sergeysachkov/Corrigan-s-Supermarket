@@ -56,8 +56,8 @@ public class CustomerBean {
     public String getCustomerLogin(){
     	HttpSession session = SessionUtils.getSession();
 		if (session != null)
-			loginUsername = (String) session.getAttribute("customerLogin");
-    	return loginUsername;
+			return (String) session.getAttribute("customerLogin");
+    	return "guest";
     }
     public void setCustomerLogin(String cutomerLogin){
     	this.loginUsername= cutomerLogin;
