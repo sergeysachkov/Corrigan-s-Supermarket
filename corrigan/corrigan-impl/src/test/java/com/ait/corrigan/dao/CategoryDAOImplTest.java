@@ -14,6 +14,7 @@ import com.ait.corrigan.models.shop.Category;
 public class CategoryDAOImplTest {
 
 
+
 /*	// assert size of array with the number of cat in the db = PASS
 	@Test
 	public void testGetAllCategories() {
@@ -60,6 +61,9 @@ public class CategoryDAOImplTest {
 	}
 
 
+
+/*
+
 	// assert size of array with the number of cat in the db = PASS
 	@Test
 	public void testGetAllCategories() {
@@ -105,5 +109,4 @@ public class CategoryDAOImplTest {
 		}
 	}
 
-*/
 }

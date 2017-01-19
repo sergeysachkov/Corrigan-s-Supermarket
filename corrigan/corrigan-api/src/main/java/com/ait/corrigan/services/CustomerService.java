@@ -12,6 +12,7 @@ public interface CustomerService {
     long updateCustomer(Customer customer);
     void deleteCustomer(long customerId);
     Customer getCustomer(long customerId);
+    Customer getCustomerByID(long id);
     List<Customer> getCustomers();
 
     void login(String customerLogin, String password);

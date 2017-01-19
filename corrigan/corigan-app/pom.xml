@@ -9,9 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>corrigan-app</artifactId>
-    <packaging>war</packaging>
-
+   
     <dependencies>
         <dependency>
             <groupId>com.ait.corrigan</groupId>
