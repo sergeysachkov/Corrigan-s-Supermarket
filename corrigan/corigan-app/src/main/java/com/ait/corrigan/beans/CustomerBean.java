@@ -40,19 +40,27 @@ public class CustomerBean {
     private Customer customer1 = new Customer();
     private Address address = new Address();
     
-    private String customerLogin;
+    private String usernameLogin;
+    
+    private String loginUsername;
     private String loginPassword;
 
 
-    //This functionality should go in method "getcustomerLogin" below
+    public String getLoginUsername() {
+		return loginUsername;
+	}
+	public void setLoginUsername(String loginUsername) {
+		this.loginUsername = loginUsername;
+	}
+	//This functionality should go in method "getcustomerLogin" below
     public String getCustomerLogin(){
     	HttpSession session = SessionUtils.getSession();
 		if (session != null)
-			customerLogin = (String) session.getAttribute("customerLogin");
-    	return customerLogin;
+			loginUsername = (String) session.getAttribute("customerLogin");
+    	return loginUsername;
     }
     public void setCustomerLogin(String cutomerLogin){
-    	this.customerLogin= cutomerLogin;
+    	this.loginUsername= cutomerLogin;
     }
     public  CustomerBean(){
     	
@@ -115,10 +123,11 @@ public class CustomerBean {
     
     //This code should use the 
     public String checkCustomer(){
-    	boolean login = CustomerDaoImpl.checkCustomer(customerLogin, loginPassword);
+    	System.out.println("username="+loginUsername);
+    	boolean login = CustomerDaoImpl.checkCustomer(loginUsername, loginPassword);
 		if (login) {
 			HttpSession session = SessionUtils.getSession();
-			session.setAttribute("customerLogin", customerLogin);
+			session.setAttribute("customerLogin", loginUsername);
 			return "/home.xhtml?faces-redirect=true";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(
