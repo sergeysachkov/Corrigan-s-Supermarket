@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<h:body>
+    <style>
+        .catalog-header{
+            padding: 10px 20px;
+            text-align: left;
+        }
+        .catalog-column{
+            padding: 10px 20px;
+            text-align: left;
+        }
+    </style>
+    <h3>Get Customer</h3>
+  
+			<h:form>
+            <h:dataTable value="#{customer.customer1}" var="c" 
+                         headerClass="catalog-header"
+                         columnClasses="catalog-column,catalog-column,catalog-column,catalog-column,catalog-column,catalog-column">
+
+				 <h:column>
+                    <!-- column header -->
+                    <f:facet name="header">ID</f:facet>
+                    <!-- row record -->
+                    <h:inputText value="#{c.customerId}" size="20" rendered="#{customer.editable}" />
+					<h:outputText value="#{c.customerId}" rendered="#{not customer.editable}" />
+                </h:column>
+                <h:column>
+                    <!-- column header -->
+                    <f:facet name="header">name</f:facet>
+                    <!-- row record -->
+                    <h:inputText value="#{c.customerName}" size="20" rendered="#{customer.editable}" />
+					<h:outputText value="#{c.customerName}" rendered="#{not customer.editable}" />
+                </h:column>
+                <h:column>
+                    <!-- column header -->
+                    <f:facet name="header">Surname</f:facet>
+                    <!-- row record -->
+                    <h:inputText value="#{c.customerSurname}" size="20" rendered="#{customer.editable}" />
+					<h:outputText value="#{c.customerSurname}" rendered="#{not customer.editable}" />
+                </h:column>
+                <h:column>
+                    <!-- column header -->
+                    <f:facet name="header">login</f:facet>
+                    <!-- row record -->
+                    <h:inputText value="#{c.customerLogin}" size="20" rendered="#{customer.editable}" />
+					<h:outputText value="#{c.customerLogin}" rendered="#{not customer.editable}" />
+                </h:column>
+
+                <h:column>
+                    <!-- column header -->
+                    <f:facet name="header">password</f:facet>
+                    <!-- row record -->
+                    <h:inputText value="#{c.password}" size="20" rendered="#{customer.editable}" />
+					<h:outputText value="#{c.password}" rendered="#{not customer.editable}" />
+                </h:column>
+
+                <h:column>
+                    <!-- column header -->
+                    <f:facet name="header">phone number</f:facet>
+                    <!-- row record -->
+                    <h:inputText value="#{c.phoneNumber}" size="20" rendered="#{customer.editable}" />
+					<h:outputText value="#{c.phoneNumber}" rendered="#{not customer.editable}" />
+                </h:column>
+
+                <h:column>
+                    <!-- column header -->
+                    <f:facet name="header">email</f:facet>
+                    <!-- row record -->
+                    <h:inputText value="#{c.email}" size="20" rendered="#{customer.editable}" />
+					<h:outputText value="#{c.email}" rendered="#{not customer.editable}" />
+                </h:column>
+
+                <h:column>
+                    <!-- column header -->
+                    <f:facet name="header">DOB</f:facet>
+                    <!-- row record -->
+					<h:inputText value="#{c.customerDateOfBirth}" size="20" rendered="#{customer.editable}" />
+					<h:outputText value="#{c.customerDateOfBirth}" rendered="#{not customer.editable}" />
+                </h:column>
+				    	     <h:column>
+
+    		<f:facet name="header">Action</f:facet>
+
+    		<h:commandLink value="Edit" action="#{customer.editAction()}"
+                                       rendered="#{not customer.editable}" />
+
+    	     </h:column>
+            </h:dataTable>
+            
+            <h:dataTable value="#{customer.address}" var="a" 
+                         headerClass="catalog-header"
+                         columnClasses="catalog-column,catalog-column,catalog-column,catalog-column,catalog-column,catalog-column">
+
+				 <h:column>
+                    <!-- column header -->
+                    <f:facet name="header">ID</f:facet>
+                    <!-- row record -->
+                    <h:inputText value="#{a.adressId}" size="20" rendered="#{customer.editable}" />
+					<h:outputText value="#{a.adressId}" rendered="#{not customer.editable}" />
+                </h:column>
+                <h:column>
+                    <!-- column header -->
+                    <f:facet name="header">Address Line 2</f:facet>
+                    <!-- row record -->
+                    <h:inputText value="#{a.adressLine1}" size="20" rendered="#{customer.editable}" />
+					<h:outputText value="#{a.adressLine1}" rendered="#{not customer.editable}" />
+                </h:column>
+                <h:column>
+                    <!-- column header -->
+                    <f:facet name="header">Address Line 1</f:facet>
+                    <!-- row record -->
+                    <h:inputText value="#{a.adressLine2}" size="20" rendered="#{customer.editable}" />
+					<h:outputText value="#{a.adressLine2}" rendered="#{not customer.editable}" />
+                </h:column>
+                <h:column>
+                    <!-- column header -->
+                    <f:facet name="header">town</f:facet>
+                    <!-- row record -->
+                    <h:inputText value="#{a.town}" size="20" rendered="#{customer.editable}" />
+					<h:outputText value="#{a.town}" rendered="#{not customer.editable}" />
+                </h:column>
+
+                <h:column>
+                    <!-- column header -->
+                    <f:facet name="header">county</f:facet>
+                    <!-- row record -->
+                    <h:inputText value="#{a.county}" size="20" rendered="#{customer.editable}" />
+					<h:outputText value="#{a.county}" rendered="#{not customer.editable}" />
+                </h:column>
+
+                <h:column>
+                    <!-- column header -->
+                    <f:facet name="header">phone number</f:facet>
+                    <!-- row record -->
+                    <h:inputText value="#{a.eircode}" size="20" rendered="#{customer.editable}" />
+					<h:outputText value="#{a.eircode}" rendered="#{not customer.editable}" />
+                </h:column>
+                <h:column>
+
+    		<f:facet name="header">Action</f:facet>
+
+    		<h:commandLink value="Edit" action="#{customer.editAction()}"
+                                       rendered="#{not customer.editable}" />
+
+    	     </h:column>
+            </h:dataTable>
+            <h:commandButton value="Get Customer" action="#{customer.getCustomer11}" />
+				<h:commandButton value="Save Changes" action="#{customer.saveAction}" />
+				</h:form>
+</h:body>
+</html>
