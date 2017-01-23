@@ -6,7 +6,7 @@
 package com.ait.corrigan.beans;
 
 import com.ait.corrigan.models.shop.Item;
-import com.ait.corrigan.models.user.Basket;
+import com.ait.corrigan.models.user.BasketItem;
 import com.ait.corrigan.services.BasketService;
 import com.ait.corrigan.services.BasketServiceImpl;
 import com.ait.corrigan.services.ItemService;
@@ -31,7 +31,7 @@ public class BasketBean {
      */
     private static final long ID_UNASSIGNED = -1l;
     private long basketId = ID_UNASSIGNED;
-    private List<Basket> basketItems;
+    private List<BasketItem> basketItems;
     private double total;
 
     private BasketService bsktService;
@@ -50,7 +50,7 @@ public class BasketBean {
     public String addToBasket(Item item) {
         String basketUrl = "basket?faces-redirect=true";
         //TODO validate fields of Basket item2Add
-        for (Basket b : basketItems) {
+        for (BasketItem b : basketItems) {
             if (b.getItemId() == item.getItemID()) {
                 // already in the basket   
                 b.setQuantity(b.getQuantity() + 1);
@@ -58,20 +58,20 @@ public class BasketBean {
             }
         }
         //TODO user id
-        Basket tmpBasket = new Basket(basketId, 0, item.getItemID(), 1);
+        BasketItem tmpBasket = new BasketItem(basketId, 0, item.getItemID(), 1);
         LOG.log(Level.INFO, tmpBasket.toString());
         basketItems.add(tmpBasket);
         return basketUrl;
     }
 
-    public String deleteFromBasket(Basket basket) {
+    public String deleteFromBasket(BasketItem basket) {
         String basketUrl = "basket?faces-redirect=true";
         basketItems.remove(basket);
         return basketUrl;
 
     }
 
-    public List<Basket> getBasketItems() {
+    public List<BasketItem> getBasketItems() {
         return basketItems;
     }
 
@@ -87,7 +87,7 @@ public class BasketBean {
 
     public double getTotal() {
         total = 0;
-        for (Basket b : basketItems) {
+        for (BasketItem b : basketItems) {
             long id = b.getItemId();
             if (id == ID_UNASSIGNED) {
                 total += 0;
