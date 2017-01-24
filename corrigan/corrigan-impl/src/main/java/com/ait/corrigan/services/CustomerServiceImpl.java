@@ -53,6 +53,14 @@ public class CustomerServiceImpl implements CustomerService{
             throw new CorriganException(e.getMessage());
         }
     }
+    
+    public Customer getCustomerByLogin(String login){
+        try {
+            return customerDao.getCustomerByLogin(login);
+        } catch (SQLException e) {
+            throw new CorriganException(e.getMessage());
+        }
+    }
 
     public List<Customer> getCustomers(){
         try {
