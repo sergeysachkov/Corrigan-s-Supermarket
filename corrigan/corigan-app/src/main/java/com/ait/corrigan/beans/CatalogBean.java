@@ -28,9 +28,11 @@ public class CatalogBean {
 
 	 
 	 @PostConstruct
-	 public void getAllItems(){
-		 ItemServiceImpl c=new ItemServiceImpl();
-		 this.items= c.getCatalogue();
+	 public void getAllItemsAndCategories(){
+		 ItemServiceImpl isi=new ItemServiceImpl();
+		 this.items= isi.getCatalogue();
+                CategoryServicesImpl csi= new CategoryServicesImpl();
+		this.categories=csi.getAllCategories();
 	 }
 
 	public List<Item> getItems() {
@@ -41,11 +43,11 @@ public class CatalogBean {
 		this.items = items;
 	}
 	
-	 @PostConstruct
-	public void getAllCat(){
-		CategoryServicesImpl c= new CategoryServicesImpl();
-		this.categories=c.getAllCategories();
-	}
+//	 @PostConstruct
+//	public void getAllCat(){
+//		CategoryServicesImpl c= new CategoryServicesImpl();
+//		this.categories=c.getAllCategories();
+//	}
 
 	public List<Category> getCategories() {
 		return categories;
