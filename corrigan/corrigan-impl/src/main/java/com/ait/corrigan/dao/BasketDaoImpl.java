@@ -60,22 +60,20 @@ public class BasketDaoImpl implements BasketDao {
         PreparedStatement pstmt = con.prepareStatement(sql);
         pstmt.setLong(1, basketId);
         pstmt.setLong(2, itemId);
+//        System.out.println(pstmt);
         pstmt.executeUpdate();
     }
 
     @Override
     public BasketItem getBasket(long basketId, long itemId) throws SQLException {
-        BasketItem basketResult = new BasketItem();
+        BasketItem basketResult = null;
         String sql = "SELECT * FROM basket WHERE (basketID=? and itemID=?)";
         PreparedStatement pstmt = con.prepareStatement(sql);
         pstmt.setLong(1, basketId);
         pstmt.setLong(2, itemId);
         ResultSet rs = pstmt.executeQuery();
         if (rs.next()) {
-            basketResult.setBasketId(basketId);
-            basketResult.setItemId(itemId);
-            basketResult.setUserId(rs.getLong("userID"));
-            basketResult.setQuantity(rs.getInt("quantity"));
+            basketResult=new BasketItem(basketId, itemId, rs.getLong("userID"), rs.getInt("quantity"));
         }
         return basketResult;
     }

@@ -39,7 +39,7 @@ public class BasketBean {
 
     public BasketBean() {
         bsktService = new BasketServiceImpl();
-        basketId = bsktService.createBasket(0).getBasketId();
+        basketId = bsktService.getNewBasketId();
         basketItems = new ArrayList<>();
     }
 
