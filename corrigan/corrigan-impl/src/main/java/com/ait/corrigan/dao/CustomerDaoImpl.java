@@ -76,11 +76,25 @@ public long addCustomer(Customer customer) {
                     customer.setPhoneNumber(resultSet.getString("phone_number"));
                     customer.setEmail(resultSet.getString("email"));
                     customer.setCustomerDateOfBirth(resultSet.getDate("date_of_birth"));
-                   
+
 
                 }
             }
             return customer;
+    }
+
+    public long getCustomerIdByLogin(String login) throws SQLException {
+        try(Connection connection = DaoUtil.getConnection();
+            PreparedStatement stmt=connection.prepareStatement("select * from customer where customer_login=?")) {
+            stmt.setString(1, login);
+            ResultSet resultSet = stmt.executeQuery();
+            if(resultSet.next()){
+                return resultSet.getLong("idcustomer");
+
+
+            }
+        }
+        return 0;
     }
 
     public List<Customer> getCustomers() throws SQLException {

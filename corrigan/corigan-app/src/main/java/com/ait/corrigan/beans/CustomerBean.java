@@ -88,7 +88,6 @@ public class CustomerBean {
 
     @ManagedProperty(value = "#{param.customerId}")
     private long customerId;
-    
 
     public void setCustomerId(long customerId) {
         this.customerId = customerId;
@@ -98,8 +97,18 @@ public class CustomerBean {
         return customer1.getCustomerId();
 }
 
+@ManagedProperty(value = "#{param.basketId}")
+    private long basketId;
 
-	@ManagedProperty(value = "#{param.id}")
+    public long getBasketId() {
+        return basketId;
+    }
+
+    public void setBasketId(long basketId) {
+        this.basketId = basketId;
+    }
+
+    @ManagedProperty(value = "#{param.id}")
     private long id;
     
     public long getId() {
@@ -128,7 +137,12 @@ public class CustomerBean {
 		if (login) {
 			HttpSession session = SessionUtils.getSession();
 			session.setAttribute("customerLogin", loginUsername);
-			return "/home.xhtml?faces-redirect=true";
+			session.setAttribute("idCustomer", new CustomerServiceImpl().getCustomerIdByLogin(loginUsername));
+			if(basketId != 0){
+                return "/pay.xhtml?faces-redirect=true&basketId=" + basketId;
+            }else {
+			    return "/home.xhtml?faces-redirect=true";
+            }
 		} else {
 			FacesContext.getCurrentInstance().addMessage(
 					null,
