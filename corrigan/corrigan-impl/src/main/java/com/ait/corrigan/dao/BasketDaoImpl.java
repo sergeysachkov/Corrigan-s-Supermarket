@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.ait.corrigan.models.user.Basket;
+import com.ait.corrigan.models.user.BasketItem;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +31,7 @@ public class BasketDaoImpl implements BasketDao {
     }
 
     @Override
-    public void addBasket(Basket basket) throws SQLException {
+    public void addBasket(BasketItem basket) throws SQLException {
         String sql = "INSERT INTO basket (basketID,userID,itemID,quantity) VALUES (?,?,?,?)";
         PreparedStatement pstmt = con.prepareStatement(sql);
         pstmt.setLong(1, basket.getBasketId());
@@ -42,7 +42,7 @@ public class BasketDaoImpl implements BasketDao {
     }
 
     @Override
-    public void updateBasket(long basketIdOld,long itemIdOld, Basket basketNew) throws SQLException {
+    public void updateBasket(long basketIdOld,long itemIdOld, BasketItem basketNew) throws SQLException {
         String sql = "UPDATE basket SET userID=?, itemID=?, quantity=? WHERE (basketID=? and itemID=?)";
         PreparedStatement pstmt = con.prepareStatement(sql);
         pstmt.setLong(1, basketNew.getUserId());
@@ -60,29 +60,27 @@ public class BasketDaoImpl implements BasketDao {
         PreparedStatement pstmt = con.prepareStatement(sql);
         pstmt.setLong(1, basketId);
         pstmt.setLong(2, itemId);
+//        System.out.println(pstmt);
         pstmt.executeUpdate();
     }
 
     @Override
-    public Basket getBasket(long basketId, long itemId) throws SQLException {
-        Basket basketResult = new Basket();
+    public BasketItem getBasket(long basketId, long itemId) throws SQLException {
+        BasketItem basketResult = null;
         String sql = "SELECT * FROM basket WHERE (basketID=? and itemID=?)";
         PreparedStatement pstmt = con.prepareStatement(sql);
         pstmt.setLong(1, basketId);
         pstmt.setLong(2, itemId);
         ResultSet rs = pstmt.executeQuery();
         if (rs.next()) {
-            basketResult.setBasketId(basketId);
-            basketResult.setItemId(itemId);
-            basketResult.setUserId(rs.getLong("userID"));
-            basketResult.setQuantity(rs.getInt("quantity"));
+            basketResult=new BasketItem(basketId, itemId, rs.getLong("userID"), rs.getInt("quantity"));
         }
         return basketResult;
     }
 
     @Override
-    public List<Basket> getCompleteBasket(long basketId) throws SQLException {
-        List<Basket> completeBasket=new ArrayList<>();
+    public List<BasketItem> getCompleteBasket(long basketId) throws SQLException {
+        List<BasketItem> completeBasket=new ArrayList<>();
         String sql="SELECT * FROM basket WHERE (basketID=?)";
         PreparedStatement pstmt=con.prepareStatement(sql);
         pstmt.setLong(1, basketId);
@@ -91,7 +89,7 @@ public class BasketDaoImpl implements BasketDao {
             long userId=rs.getLong("userID");
             long itemId=rs.getLong("itemID");
             int quantity=rs.getInt("quantity");
-            completeBasket.add(new Basket(basketId, userId, itemId, quantity));
+            completeBasket.add(new BasketItem(basketId, userId, itemId, quantity));
         }
         return completeBasket;
     }

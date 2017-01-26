@@ -1,24 +1,38 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.ait.corrigan.models.user;
 
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import javafx.util.Pair;
 
-import com.ait.corrigan.models.shop.Item;
-
+/**
+ *
+ * @author kfbb
+ */
 public class Basket {
-	private long basketId;
-	private long userId;
-	private long itemId;
-        private int quantity;
-	
-	public Basket() {
-		super();
-	}
+   private long basketId;
+   private long userId;
+   // Pair<Item ID, Quantitiy of item>
+   private List<Pair<Long, Integer>> items;
+   
+   public void addItem(long itemId, int quantity){
+       Pair<Long,Integer> p=new Pair<>(itemId,quantity);
+       this.items.add(p);
+   }
 
-    public Basket(long basketId, long userId, long itemId, int quantity) {
+    public Basket() {
+        items=new ArrayList<>();
+    }
+
+    public Basket(long basketId, long userId, List<Pair<Long, Integer>> items) {
         this.basketId = basketId;
         this.userId = userId;
-        this.itemId = itemId;
-        this.quantity = quantity;
+        this.items = items;
     }
 
     public long getBasketId() {
@@ -37,25 +51,20 @@ public class Basket {
         this.userId = userId;
     }
 
-    public long getItemId() {
-        return itemId;
+    public List<Pair<Long, Integer>> getItems() {
+        return items;
     }
 
-    public void setItemId(long itemId) {
-        this.itemId = itemId;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setItems(List<Pair<Long, Integer>> items) {
+        this.items = items;
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
+        int hash = 3;
+        hash = 31 * hash + (int) (this.basketId ^ (this.basketId >>> 32));
+        hash = 31 * hash + (int) (this.userId ^ (this.userId >>> 32));
+        hash = 31 * hash + Objects.hashCode(this.items);
         return hash;
     }
 
@@ -77,10 +86,7 @@ public class Basket {
         if (this.userId != other.userId) {
             return false;
         }
-        if (this.itemId != other.itemId) {
-            return false;
-        }
-        if (this.quantity != other.quantity) {
+        if (!Objects.equals(this.items, other.items)) {
             return false;
         }
         return true;
@@ -88,6 +94,8 @@ public class Basket {
 
     @Override
     public String toString() {
-        return "Basket{" + "basketId=" + basketId + ", userId=" + userId + ", itemId=" + itemId + ", quantity=" + quantity + '}';
+        return "Basket{" + "basketId=" + basketId + ", userId=" + userId + ", items=" + items + '}';
     }
+   
 }
+
