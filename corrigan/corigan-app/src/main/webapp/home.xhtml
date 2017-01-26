@@ -34,6 +34,11 @@
                 <h:link value="Catalog" outcome="catalog">
                 </h:link>
             </li>
+            <li>
+                <h:link value="stockControlLogin" outcome="stockControllogin">
+                    <f:param name="stockCID" value="#{stockControl.stockCID}"/>
+                </h:link>
+               </li> 
         </ul>
         </h:form>
     </f:view>
