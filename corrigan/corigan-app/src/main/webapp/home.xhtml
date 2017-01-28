@@ -7,11 +7,16 @@
     <f:view>
     <h:form>
         <h4>Corrigan</h4>
-        <p>Welcome #{customer.customerLogin}</p>
+        <p >Welcome #{customer.customerLogin}</p>
         <ul>
             <li>
                 <h:link value="Login" outcome="login">
                     <f:param name="customerId" value="#{customer.customerId}"/>
+                </h:link>
+            </li>
+             <li>
+                <h:link value="Login Management">
+                  <!-- TO BE IMPLEMENTED -->
                 </h:link>
             </li>
             <li>
@@ -34,12 +39,18 @@
                 <h:link value="Catalog" outcome="catalog">
                 </h:link>
             </li>
-            <li>
+             <li>
+                <h:link value="Contast Us" outcome="ContactUs">
+                </h:link>
+            </li>
+             <li>
                 <h:link value="stockControlLogin" outcome="stockControllogin">
                     <f:param name="stockCID" value="#{stockControl.stockCID}"/>
                 </h:link>
-               </li> 
+             </li> 
         </ul>
         </h:form>
     </f:view>
+
 </html>
+
