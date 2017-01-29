@@ -22,6 +22,10 @@ import java.util.Set;
 public class PayBean {
     @ManagedProperty(value = "#{param.basketId}")
     private long basketId;
+
+    @ManagedProperty(value = "#{basketBean}")
+    private BasketBean basketBean;
+
     private Set<PaymentDetails> paymentDetails;
 
     private long payId;
@@ -36,6 +40,13 @@ public class PayBean {
     }
 
 
+    public BasketBean getBasketBean() {
+        return basketBean;
+    }
+
+    public void setBasketBean(BasketBean basketBean) {
+        this.basketBean = basketBean;
+    }
 
     public long getCustomerId() {
         return SessionUtils.getCustomerId();
