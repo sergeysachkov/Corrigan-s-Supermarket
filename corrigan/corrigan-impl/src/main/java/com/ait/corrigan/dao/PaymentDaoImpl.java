@@ -33,7 +33,7 @@ public class PaymentDaoImpl implements PaymentDao{
     public List<PaymentDetails> getPaymentDetails(long customerId) throws SQLException {
         List<PaymentDetails> paymentDetails = new ArrayList<>();
         try(Connection connection = DaoUtil.getConnection();
-            PreparedStatement stmt=connection.prepareStatement("select * from paymet where customer=?")) {
+            PreparedStatement stmt=connection.prepareStatement("select * from payment where customer=?")) {
             stmt.setLong(1, customerId);
             ResultSet resultSet = stmt.executeQuery();
             while (resultSet.next()){
@@ -44,6 +44,19 @@ public class PaymentDaoImpl implements PaymentDao{
                 paymentDetail.setCvv2(resultSet.getString("cvv2"));
                 paymentDetail.setExpireDate(resultSet.getDate("exp_date"));
                 paymentDetails.add(paymentDetail);
+            }
+        }
+        return paymentDetails;
+    }
+
+    public List<String> getPaymentCards(long customerId) throws SQLException{
+        List<String> paymentDetails = new ArrayList<>();
+        try(Connection connection = DaoUtil.getConnection();
+            PreparedStatement stmt=connection.prepareStatement("select card_no from payment where customer=?")) {
+            stmt.setLong(1, customerId);
+            ResultSet resultSet = stmt.executeQuery();
+            while (resultSet.next()){
+                paymentDetails.add(resultSet.getString("card_no"));
             }
         }
         return paymentDetails;

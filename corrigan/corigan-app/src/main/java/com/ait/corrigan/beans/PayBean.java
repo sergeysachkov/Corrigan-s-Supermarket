@@ -10,6 +10,7 @@ import com.ait.corrigan.services.PaymentServiceImpl;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -19,16 +20,19 @@ import java.util.Set;
 @ManagedBean(name = "pay", eager = true)
 @RequestScoped
 public class PayBean {
-    private long customerId;
     @ManagedProperty(value = "#{param.basketId}")
     private long basketId;
     private Set<PaymentDetails> paymentDetails;
 
     private long payId;
 
-    public List<PaymentDetails> getPaymentDetails() {
+    public List<String> getPaymentDetails() {
+        long customerId = getCustomerId();
+        if(customerId == 0){
+            return new ArrayList<>();
+        }
         PaymentService service = new PaymentServiceImpl();
-        return service.getPaymentDetails(customerId);
+        return service.getPaymentCards(customerId);
     }
 
 
@@ -45,10 +49,6 @@ public class PayBean {
         this.payId = payId;
     }
 
-    public void setCustomerId(long customerId) {
-        this.customerId = customerId;
-    }
-
     public long getBasketId() {
         return basketId;
     }
@@ -59,8 +59,12 @@ public class PayBean {
 
     public String submit(){
         PayService service = new PayServiceImpl();
-        long order = service.createOrderAndPay(new Order(0,customerId, basketId ));
+        long order = service.createOrderAndPay(new Order(0,getCustomerId(), basketId ));
         return "/home.xhtml?faces-redirect=true&orderId=" + order;
+    }
+
+    public String addCard(){
+        return "/payment.xhtml?faces-redirect=true&customerId=" + getCustomerId() + "&basketId=" + basketId;
     }
     public String login() {
             return "/login.xhtml?faces-redirect=true&basketId=" + basketId;

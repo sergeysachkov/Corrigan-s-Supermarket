@@ -17,8 +17,9 @@ public class PayServiceImpl implements PayService{
 
     public long createOrderAndPay(Order order){
         try {
+            //todo pay for order here need to decide on payment system.
             long orderId = dao.addOrder(order);
-            //todo pay for order here
+
             return orderId;
         } catch (SQLException e) {
             logger.error("Error occurred!", e);

@@ -53,7 +53,8 @@ public class CustomerBean {
 	public Customer getCustomer1() {
 		return customer1;
 	}
-
+    @ManagedProperty(value = "#{param.basketId}")
+    private long basketId;
 	private Address address = new Address();
 
 
@@ -91,7 +92,12 @@ public class CustomerBean {
 		if (login) {
 			HttpSession session = SessionUtils.getSession();
 			session.setAttribute("customerLogin", loginUsername);
-			return "/home.xhtml?faces-redirect=true";
+            session.setAttribute("idCustomer", new CustomerServiceImpl().getCustomerIdByLogin(loginUsername));
+            if(basketId != 0){
+                return "/pay.xhtml?faces-redirect=true&basketId=" + basketId;
+            }else {
+                return "/home.xhtml?faces-redirect=true";
+            }
 		} else {
 			FacesContext.getCurrentInstance().addMessage(
 					null,
@@ -151,9 +157,6 @@ public class CustomerBean {
     public long getCustomerId(){
         return customer1.getCustomerId();
 }
-
-@ManagedProperty(value = "#{param.basketId}")
-    private long basketId;
 
     public long getBasketId() {
         return basketId;

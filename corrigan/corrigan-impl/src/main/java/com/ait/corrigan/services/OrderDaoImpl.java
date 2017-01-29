@@ -14,14 +14,14 @@ public class OrderDaoImpl implements OrderDao {
     @Override
     public long addOrder(Order order) throws SQLException {
         try(Connection connection = DaoUtil.getConnection();
-            PreparedStatement stmt=connection.prepareStatement("INSERT INTO order (userID, basketID) " +
+            PreparedStatement stmt=connection.prepareStatement("INSERT INTO orders (userID, basketID) " +
                     "VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS)) {
             stmt.setLong(1, order.getUserId());
             stmt.setLong(2, order.getBasketId());
             stmt.executeUpdate();
             ResultSet r = stmt.getGeneratedKeys();
             if(r.next()){
-                return stmt.getGeneratedKeys().getLong(1);
+                return r.getLong(1);
             }
 
         }
