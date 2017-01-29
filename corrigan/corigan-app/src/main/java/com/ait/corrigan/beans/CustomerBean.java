@@ -3,11 +3,13 @@ package com.ait.corrigan.beans;
 import com.ait.corrigan.dao.CustomerDao;
 import com.ait.corrigan.dao.CustomerDaoImpl;
 import com.ait.corrigan.models.user.Customer;
+import com.ait.corrigan.models.shop.Item;
 import com.ait.corrigan.models.user.Address;
 import com.ait.corrigan.services.AddressServiceImpl;
 import com.ait.corrigan.services.AddressService;
 import com.ait.corrigan.services.CustomerService;
 import com.ait.corrigan.services.CustomerServiceImpl;
+import com.ait.corrigan.services.ItemServiceImpl;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -21,6 +23,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ComponentSystemEvent;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -32,16 +35,32 @@ import java.util.regex.Pattern;
 @ManagedBean(name = "customer", eager = true)
 @RequestScoped
 public class CustomerBean {
-    //private Customer customer;
-    //private String customerName;
-    //private String password; 
-    //private String customerLogin;
+
+
     private boolean disabled = false;
+    private boolean editable = false;
+    //@ManagedProperty(value="#{param.customer1}")
     private Customer customer1 = new Customer();
-    private Address address = new Address();
+    public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+	public void setCustomer1(Customer customer1) {
+		this.customer1 = customer1;
+	}
+	public Customer getCustomer1() {
+		return customer1;
+	}
+
+	private Address address = new Address();
+
+
+
     
-    private String usernameLogin;
-    
+    //------Peng-------
+	//@ManagedProperty(value="#{param.customer1}")
     private String loginUsername;
     private String loginPassword;
 
@@ -52,7 +71,7 @@ public class CustomerBean {
 	public void setLoginUsername(String loginUsername) {
 		this.loginUsername = loginUsername;
 	}
-	//This functionality should go in method "getcustomerLogin" below
+
     public String getCustomerLogin(){
     	HttpSession session = SessionUtils.getSession();
 		if (session != null)
@@ -66,13 +85,51 @@ public class CustomerBean {
     	
     }
     
+    public String checkCustomer(){
+    	System.out.println("username="+loginUsername);
+    	boolean login = CustomerDaoImpl.checkCustomer(loginUsername, loginPassword);
+		if (login) {
+			HttpSession session = SessionUtils.getSession();
+			session.setAttribute("customerLogin", loginUsername);
+			return "/home.xhtml?faces-redirect=true";
+		} else {
+			FacesContext.getCurrentInstance().addMessage(
+					null,
+					new FacesMessage(FacesMessage.SEVERITY_WARN,
+							"Incorrect CustomerLogin and Passowrd",
+							"Please enter correct CustomerLogin and Password"));
+			return "/login.xhtml?faces-redirect=true";
+		}
+}
+
+    //----------John-----------
+
+
+	public boolean isEditable() {
+		return editable;
+	}
+
+	public String editAction() {
+
+		this.editable = true;
+		return "/editCustomer.xhtml?id=" + id + "faces-redirect=true";
+	}
+
+	public String saveAction() {
+
+		this.editable = false;
+
+		return null;
+
+	}
+
     public void setcustomerLogin(String customerLogin){
         customer1.setCustomerLogin(customerLogin);
 }
         
     public String getcustomerLogin(){
     	if(customer1.getCustomerLogin() != null){
-            return customer1.getCustomerLogin();
+           return customer1.getCustomerLogin();
         }
             return "";
 } 
@@ -83,8 +140,6 @@ public class CustomerBean {
     public String getLoginPassword(){
     	return loginPassword;
     }
-  
-
 
     @ManagedProperty(value = "#{param.customerId}")
     private long customerId;
@@ -118,42 +173,6 @@ public class CustomerBean {
 	public void setId(long id) {
 		this.id = id;
 	}
-
-
-    //public long getCustomerId(){
-      //  CustomerService customerService = new CustomerServiceImpl();
-        //List<Customer> customers = customerService.getCustomers();
-        //if(customers.isEmpty()){
-          //  return 0;
-        //}
-        //return customers.get(0).getCustomerId();
-      
-    	//}
-    
-    //This code should use the 
-    public String checkCustomer(){
-    	System.out.println("username="+loginUsername);
-    	boolean login = CustomerDaoImpl.checkCustomer(loginUsername, loginPassword);
-		if (login) {
-			HttpSession session = SessionUtils.getSession();
-			session.setAttribute("customerLogin", loginUsername);
-			session.setAttribute("idCustomer", new CustomerServiceImpl().getCustomerIdByLogin(loginUsername));
-			if(basketId != 0){
-                return "/pay.xhtml?faces-redirect=true&basketId=" + basketId;
-            }else {
-			    return "/home.xhtml?faces-redirect=true";
-            }
-		} else {
-			FacesContext.getCurrentInstance().addMessage(
-					null,
-					new FacesMessage(FacesMessage.SEVERITY_WARN,
-							"Incorrect CustomerLogin and Passowrd",
-							"Please enter correct CustomerLogin and Password"));
-			return "/login.xhtml?faces-redirect=true";
-		}   
-}
-
-
 
         public boolean isDisabled() {
             return disabled;
@@ -292,10 +311,37 @@ public class CustomerBean {
             return "/AddCustomer.xhtml?id=" + id + "faces-redirect=true";
         }
 
+        public String update(){
+            CustomerService customerService = new CustomerServiceImpl();
+            AddressService addressService = new AddressServiceImpl();
+            customerService.updateCustomer(customer1);
+            addressService.updateAddress(address);
+            return "/home.xhtml?id=" + id + "faces-redirect=true";
+        }
+
+
         public String cancel(){
             this.disabled =false;
             this.customer1 = new Customer();
             return "/home.xhtml?faces-redirect=true";
         }
+	        public void getCustomer11(){
+
+
+	        	CustomerService custServ = new CustomerServiceImpl();
+	        	Customer cus = new Customer();
+	        	String login = getCustomerLogin();
+	        	cus = custServ.getCustomerByLogin(login);
+	        	customer1 = cus;
+	        	AddressService adServ = new AddressServiceImpl();
+	        	Address Ad = new Address();
+	        	Ad = adServ.getAddress(2);
+	        	address = Ad;
+	        }
+
+
+
+
+
 
 }

@@ -7,7 +7,7 @@
 <h:head></h:head>
 <h:body>
     <h:outputStylesheet library="css" name="corrigan.css"  />
-    <h3>Add Customer</h3>
+    <h3>Update Customer Information</h3>
         <h3>All fields marked * are mandatory</h3>
 
     <h:form id="add_cust_form">
@@ -118,7 +118,7 @@
 
 
             <li>
-                <h:commandButton value="Save" action="#{customer.submit()}" disabled="#{customer.disabled}"/>
+                <h:commandButton value="Save" action="#{customer.update()}" disabled="#{customer.disabled}"/>
                 <h:commandButton value="Cancel" action="#{customer.cancel()}" immediate="true"/>
             </li>
         </ul>

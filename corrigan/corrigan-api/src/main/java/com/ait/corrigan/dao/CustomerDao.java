@@ -12,6 +12,7 @@ public interface CustomerDao {
     long updateCustomer(Customer customer);
     void deleteCustomer(long customerId);
     Customer getCustomer(long customerId) throws SQLException;
+    Customer getCustomerByLogin(String login) throws SQLException;
     Customer getCustomerByID(long id) throws SQLException;
     public long getCustomerIdByLogin(String login) throws SQLException;
     List<Customer> getCustomers() throws SQLException;

@@ -37,12 +37,31 @@ public long addCustomer(Customer customer) {
 				}
     	        return 1;
     			}
-    public long updateCustomer(Customer customer){return 0;}
+    public long updateCustomer(Customer customer){
+        try(Connection connection = DaoUtil.getConnection();
+	            PreparedStatement stmt=connection.prepareStatement("UPDATE customer SET customer_name = ? , customer_surname = ?, customer_login = ?, password = ?, phone_number = ?, email = ?, date_of_birth =? where customer_login =?"
+	                    ,Statement.RETURN_GENERATED_KEYS)) {
+	            stmt.setString(1, customer.getCustomerName());
+	            stmt.setString(2, customer.getCustomerSurname());
+	            stmt.setString (3, customer.getCustomerLogin());
+	            stmt.setString(4, customer.getPassword());
+	            stmt.setString(5, customer.getPhoneNumber());
+	            stmt.setString(6, customer.getEmail());
+	            stmt.setDate(7, new Date(customer.getCustomerDateOfBirth().getTime()));
+	            stmt.setString(8, customer.getCustomerLogin());
+	            stmt.executeUpdate();
+	        } catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	        return 1;
+			}
+    
     public void deleteCustomer(long customerId){}
     public Customer getCustomer(long customerId) throws SQLException {
         Customer customer = new Customer();
         try(Connection connection = DaoUtil.getConnection();
-            PreparedStatement stmt=connection.prepareStatement("select * from customer where idpayment=?")) {
+            PreparedStatement stmt=connection.prepareStatement("select * from customer where idcustomer=?")) {
             stmt.setLong(1, customerId);
             ResultSet resultSet = stmt.executeQuery();
             while (resultSet.next()){
@@ -77,6 +96,28 @@ public long addCustomer(Customer customer) {
                     customer.setEmail(resultSet.getString("email"));
                     customer.setCustomerDateOfBirth(resultSet.getDate("date_of_birth"));
 
+
+                }
+            }
+            return customer;
+    }
+        
+        public Customer getCustomerByLogin(String login) throws SQLException {
+            Customer customer = new Customer();
+            try(Connection connection = DaoUtil.getConnection();
+                PreparedStatement stmt=connection.prepareStatement("select * from customer where customer_login =?")) {
+                stmt.setString(1, login);
+                ResultSet resultSet = stmt.executeQuery();
+                while (resultSet.next()){
+                    customer.setCustomerId(resultSet.getLong("idcustomer"));
+                    customer.setCustomerName(resultSet.getString("customer_name"));
+                    customer.setCustomerSurname(resultSet.getString("customer_surname"));
+                    customer.setCustomerLogin(resultSet.getString("customer_login"));
+                    customer.setPassword(resultSet.getString("password"));
+                    customer.setPhoneNumber(resultSet.getString("phone_number"));
+                    customer.setEmail(resultSet.getString("email"));
+                    customer.setCustomerDateOfBirth(resultSet.getDate("date_of_birth"));
+                   
 
                 }
             }

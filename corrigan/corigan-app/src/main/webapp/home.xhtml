@@ -5,22 +5,23 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html">
     <f:view>
+    <h:form>
         <h4>Corrigan</h4>
-        <p>Welcome #{customer.customerLogin}</p>
+        <p >Welcome #{customer.customerLogin}</p>
         <ul>
             <li>
                 <h:link value="Login" outcome="login">
                     <f:param name="customerId" value="#{customer.customerId}"/>
                 </h:link>
             </li>
-            <li>
-                <h:link value="Add Card" outcome="payment">
-                    <f:param name="customerId" value="#{customer.customerId}"/>
+             <li>
+                <h:link value="Login Management">
+                  <!-- TO BE IMPLEMENTED -->
                 </h:link>
             </li>
             <li>
-                <h:link value="Get Card" outcome="payment">
-                    <f:param name="id" value="5"/>
+                <h:link value="Add Card" outcome="payment">
+                    <f:param name="customerId" value="#{payment.customerId}"/>
                 </h:link>
             </li>
             <li>
@@ -30,8 +31,8 @@
                 </h:link>
             </li>
             <li>
-                <h:link value="Get Customer" outcome="AddCustomer">
-                    <f:param name="id" value="1"/>
+                <h:link value="Account details" outcome="accountDetails">
+                    <f:param name="customerId" value="#{customer.customerId}"/>
                 </h:link>
             </li>
             <li>
@@ -43,6 +44,12 @@
                 </h:link>
             </li>
 
+             <li>
+                <h:link value="Contast Us" outcome="ContactUs">
+                </h:link>
+            </li>
         </ul>
+        </h:form>
     </f:view>
+
 </html>
