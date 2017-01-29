@@ -9,8 +9,6 @@ import java.util.List;
 
 import com.ait.corrigan.models.shop.Category;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class CategoryDAOImpl implements CategoryDao {
 
@@ -21,7 +19,7 @@ public class CategoryDAOImpl implements CategoryDao {
         Statement st = con.createStatement();
         ResultSet rs = st.executeQuery(sql);
         if (rs.next()) {
-            long id=rs.getLong(1);
+            long id = rs.getLong(1);
             con.close();
             return ++id;
         } else {
@@ -57,12 +55,11 @@ public class CategoryDAOImpl implements CategoryDao {
 
     }
 
-
     @Override
     public void addCategory(long id, String name) throws SQLException {
         String sql = "INSERT INTO Categories (cateID, cate_name) VALUES (?,?)";
-        Connection con=DaoUtil.getConnection();
-        PreparedStatement pst=con.prepareStatement(sql);
+        Connection con = DaoUtil.getConnection();
+        PreparedStatement pst = con.prepareStatement(sql);
         pst.setLong(1, id);
         pst.setString(2, name);
         pst.executeUpdate();
