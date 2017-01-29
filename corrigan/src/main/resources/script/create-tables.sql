@@ -30,6 +30,7 @@ CREATE TABLE `orders` (
 	`orderID` BIGINT NOT NULL,
 	`userID` INT(11) NOT NULL,
 	`basketID` BIGINT(50) NOT NULL,
+    `price` DOUBLE NOT NULL,
 	PRIMARY KEY (`orderID`)
 );
 
@@ -73,7 +74,7 @@ CREATE TABLE `address` (
   `adress_line_1` varchar(45) DEFAULT NULL,
   `adress_line_2` varchar(45) DEFAULT NULL,
   `town` varchar(45) DEFAULT NULL,
-  `county` varchar DEFAULT NULL,
+  `county` varchar(45) DEFAULT NULL,
   `eircode` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`adress_id`)
 );
