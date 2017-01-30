@@ -40,8 +40,9 @@ public class CustomerBean {
 	
     private boolean disabled = false;
     private boolean editable = false;
-    //@ManagedProperty(value="#{param.customer1}")
+    
     private Customer customer1 = new Customer();
+    
     public Address getAddress() {
 		return address;
 	}
@@ -57,9 +58,6 @@ public class CustomerBean {
 	
 	private Address address = new Address();
 
-	
-
-    
     //------Peng-------
 	//@ManagedProperty(value="#{param.customer1}")
     private String loginUsername;
@@ -317,6 +315,8 @@ public class CustomerBean {
             this.customer1 = new Customer();
             return "/home.xhtml?faces-redirect=true";
         }
+        
+        
 	        public void getCustomer11(){
 			
 	            

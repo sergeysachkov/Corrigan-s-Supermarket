@@ -30,6 +30,9 @@ CREATE TABLE `orders` (
 	`orderID` BIGINT NOT NULL,
 	`userID` INT(11) NOT NULL,
 	`basketID` BIGINT(50) NOT NULL,
+    `price` DOUBLE NOT NULL,
+    `status` VARCHAR(45) NOT NULL,
+    `time` TIMESTAMP NOT NULL,
 	PRIMARY KEY (`orderID`)
 );
 
@@ -73,9 +76,19 @@ CREATE TABLE `address` (
   `adress_line_1` varchar(45) DEFAULT NULL,
   `adress_line_2` varchar(45) DEFAULT NULL,
   `town` varchar(45) DEFAULT NULL,
-  `county` varchar DEFAULT NULL,
+  `county` varchar(45) DEFAULT NULL,
   `eircode` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`adress_id`)
+  CONSTRAINT `customer` FOREIGN KEY (`customer`) REFERENCES `customer` (`idcustomer`) ON DELETE NO ACTION ON UPDATE NO ACTION
+);
+
+CREATE TABLE `manager` (
+	`idmanager` int(11) NOT NULL AUTO_INCREMENT,
+  `manager_name` varchar(45) DEFAULT NULL,
+  `manager_surname` varchar(45) DEFAULT NULL,
+  `manager_login` varchar(45) DEFAULT NULL,
+  `password` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`idmanager`)
 );
 
 create table stockControl(
