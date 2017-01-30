@@ -31,6 +31,8 @@ CREATE TABLE `orders` (
 	`userID` INT(11) NOT NULL,
 	`basketID` BIGINT(50) NOT NULL,
     `price` DOUBLE NOT NULL,
+    `status` VARCHAR(45) NOT NULL,
+    `time` TIMESTAMP NOT NULL,
 	PRIMARY KEY (`orderID`)
 );
 
