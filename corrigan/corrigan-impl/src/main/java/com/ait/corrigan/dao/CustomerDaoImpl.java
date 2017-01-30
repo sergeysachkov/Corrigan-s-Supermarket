@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import com.ait.corrigan.models.user.Address;
 import com.ait.corrigan.models.user.Customer;
 import com.ait.corrigan.models.user.PaymentDetails;
 
@@ -105,7 +106,8 @@ public long addCustomer(Customer customer) {
         public Customer getCustomerByLogin(String login) throws SQLException {
             Customer customer = new Customer();
             try(Connection connection = DaoUtil.getConnection();
-                PreparedStatement stmt=connection.prepareStatement("select * from customer where customer_login =?")) {
+                PreparedStatement stmt=connection.prepareStatement("select * from customer where customer_login =?"))
+                		{
                 stmt.setString(1, login);
                 ResultSet resultSet = stmt.executeQuery();
                 while (resultSet.next()){
@@ -117,8 +119,7 @@ public long addCustomer(Customer customer) {
                     customer.setPhoneNumber(resultSet.getString("phone_number"));
                     customer.setEmail(resultSet.getString("email"));
                     customer.setCustomerDateOfBirth(resultSet.getDate("date_of_birth"));
-                   
-
+    
                 }
             }
             return customer;
