@@ -5,9 +5,9 @@ import com.ait.corrigan.models.shop.Item;
 import java.util.List;
 
 public interface ItemService {
-    long addItem(Item item);
-    long updateItem(Item item);
-    long deleteItem(long itemId);
+    void addItem(Item item);
+    void updateItem(Item item);
+    void deleteItem(long itemId);
     Item getItem(long itemId);
 
     List<Item> getCatalogue();
