@@ -65,13 +65,13 @@ public class CustomerBean {
 		this.loginUsername = loginUsername;
 	}
 
-    public String getCustomerLogin(){
+    public String getCustomerSessionLogin(){
     	HttpSession session = SessionUtils.getSession();
 		if (session != null)
 			return (String) session.getAttribute("customerLogin");
     	return "guest";
     }
-    public void setCustomerLogin(String cutomerLogin){
+    public void setCustomerSessionLogin(String cutomerLogin){
     	this.loginUsername= cutomerLogin;
     }
     
@@ -79,7 +79,7 @@ public class CustomerBean {
     	HttpSession session = SessionUtils.getSession();
 		if (session != null)
 			return (long) session.getAttribute("idCustomer");
-    	return 1;
+    	return 0;
     }
 
     public  CustomerBean(){
@@ -139,6 +139,8 @@ public class CustomerBean {
         }
             return "";
 } 
+
+
     public void setLoginPassword(String loginPassword){
     	this.loginPassword = loginPassword;
     }
@@ -317,8 +319,9 @@ public class CustomerBean {
         public String update(){
             CustomerService customerService = new CustomerServiceImpl();
             AddressService addressService = new AddressServiceImpl();
-            customerService.updateCustomer(customer1);
-            addressService.updateAddress(address);
+            long cus1 = getIdCustomer();
+            customerService.updateCustomer(cus1, customer1);
+            addressService.updateAddress(cus1, address);
             return "/home.xhtml?id=" + id + "faces-redirect=true";
         }
 

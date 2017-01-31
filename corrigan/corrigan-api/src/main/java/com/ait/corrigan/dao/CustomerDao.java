@@ -9,7 +9,7 @@ import java.util.List;
 public interface CustomerDao {
 
     long addCustomer(Customer customer);
-    long updateCustomer(Customer customer);
+    long updateCustomer(long customerId, Customer customer);
     void deleteCustomer(long customerId);
     Customer getCustomer(long customerId) throws SQLException;
     Customer getCustomerByLogin(String login) throws SQLException;

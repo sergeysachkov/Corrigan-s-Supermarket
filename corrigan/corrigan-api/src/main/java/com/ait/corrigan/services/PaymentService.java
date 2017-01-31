@@ -2,6 +2,7 @@ package com.ait.corrigan.services;
 
 import com.ait.corrigan.models.user.PaymentDetails;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -9,6 +10,7 @@ import java.util.List;
  */
 public interface PaymentService {
     long addPaymentDetails(long customerId, PaymentDetails paymentDetails);
+    long updatePaymentDetails(long customerId, PaymentDetails paymentDetails);
     List<PaymentDetails> getPaymentDetails(long customerId);
     List<String> getPaymentCards(long customerId);
     void deletePaymentDetails(long customerId, long  paymentDetailsId);

@@ -28,6 +28,23 @@ public class PaymentDaoImpl implements PaymentDao{
         }
         return getPaymentDetailByCardNo(paymentDetails.getCardNo()).getId();
     }
+    
+    public long updatePaymentDetails(long customerId, PaymentDetails paymentDetails) throws SQLException{
+        
+        try(Connection connection = DaoUtil.getConnection();
+            PreparedStatement stmt=connection.prepareStatement("UPDATE payment SET card_type=?, card_no=?, exp_date=?, cvv2=?, card_holder=? where idpayment=?"
+                   ,Statement.RETURN_GENERATED_KEYS)) {
+            stmt.setString(1, paymentDetails.getType().name());
+            stmt.setString(2, paymentDetails.getCardNo());
+            stmt.setDate(3, new Date(paymentDetails.getExpireDate().getTime()));
+            stmt.setString(4, paymentDetails.getCvv2());
+            stmt.setString(5, paymentDetails.getCardHolder());
+            stmt.setLong(6, customerId);
+            stmt.executeUpdate();
+		}
+        
+        return getPaymentDetailByCardNo(paymentDetails.getCardNo()).getId();
+    }
 
 
     public List<PaymentDetails> getPaymentDetails(long customerId) throws SQLException {

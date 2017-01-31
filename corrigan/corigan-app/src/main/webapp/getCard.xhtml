@@ -63,12 +63,12 @@
 
     		<f:facet name="header">Action</f:facet>
 
-    		<h:commandLink value="Edit" action="#{customer.editAction()}"
+    		<h:commandLink value="Edit" action="#{payment.editAction()}"
                                        rendered="#{not customer.editable}" />
 
     	     </h:column>
             </h:dataTable>
-            <h:commandButton value="Get Customer" action="#{payment.getCustomerPaymentDetails}" />
+            <h:commandButton value="Get Card Details" action="#{payment.getCustomerPaymentDetails}" />
 				<h:commandButton value="Cancel" action="#{payment.cancel}" />
 				</h:form>
 </h:body>
