@@ -8,7 +8,7 @@ public class BasketItem {
 	private long basketId;
 	private long userId;
 	private long itemId;
-        private int quantity;
+    private int quantity;
 	
 	public BasketItem() {
 		super();

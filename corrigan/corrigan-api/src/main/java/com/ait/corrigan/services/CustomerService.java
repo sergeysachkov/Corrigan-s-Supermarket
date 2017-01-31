@@ -17,5 +17,6 @@ public interface CustomerService {
     List<Customer> getCustomers();
 
     void login(String customerLogin, String password);
+    public long getCustomerIdByLogin(String login);
    
 }

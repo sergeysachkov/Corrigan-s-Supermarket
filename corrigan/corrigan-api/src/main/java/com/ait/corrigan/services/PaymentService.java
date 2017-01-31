@@ -9,7 +9,8 @@ import java.util.List;
  */
 public interface PaymentService {
     long addPaymentDetails(long customerId, PaymentDetails paymentDetails);
-    public List<PaymentDetails> getPaymentDetails(long customerId);
+    List<PaymentDetails> getPaymentDetails(long customerId);
+    List<String> getPaymentCards(long customerId);
     void deletePaymentDetails(long customerId, long  paymentDetailsId);
     PaymentDetails getPaymentDetail(long id);
 }
