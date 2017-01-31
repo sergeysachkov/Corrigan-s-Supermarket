@@ -74,6 +74,14 @@ public class CustomerBean {
     public void setCustomerLogin(String cutomerLogin){
     	this.loginUsername= cutomerLogin;
     }
+    
+    public long getIdCustomer(){
+    	HttpSession session = SessionUtils.getSession();
+		if (session != null)
+			return (long) session.getAttribute("idCustomer");
+    	return 1;
+    }
+
     public  CustomerBean(){
     	
     }
@@ -325,12 +333,12 @@ public class CustomerBean {
 	        public void getCustomer11(){
 	        	CustomerService custServ = new CustomerServiceImpl();
 	        	Customer cus = new Customer();
-	        	String login = getCustomerLogin();
-	        	cus = custServ.getCustomerByLogin(login);
+	        	long cus1 = getIdCustomer();
+	        	cus = custServ.getCustomerByID(cus1);
 	        	customer1 = cus;
 	        	AddressService adServ = new AddressServiceImpl();
 	        	Address Ad = new Address();
-	        	Ad = adServ.getAddress(2);
+	        	Ad = adServ.getAddress(cus1);
 	        	address = Ad;
 	        }
 
