@@ -10,6 +10,7 @@ import java.util.List;
  */
 public interface PaymentDao {
     long addPaymentDetails(long customerId, PaymentDetails paymentDetails) throws SQLException;
+    long updatePaymentDetails(long customerId, PaymentDetails paymentDetails) throws SQLException;
     void deletePaymentDetails(long customerId, long paymentDetailsId);
     List<PaymentDetails> getPaymentDetails(long customerId) throws SQLException;
     List<String> getPaymentCards(long customerId) throws SQLException;

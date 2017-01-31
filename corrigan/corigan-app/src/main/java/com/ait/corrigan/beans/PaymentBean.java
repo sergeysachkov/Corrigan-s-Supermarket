@@ -13,6 +13,8 @@ import com.ait.corrigan.services.PaymentServiceImpl;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.servlet.http.HttpSession;
+
 import java.util.Date;
 
 /**
@@ -22,6 +24,7 @@ import java.util.Date;
 @RequestScoped
 public class PaymentBean {
     private PaymentDetails paymentDetails = new PaymentDetails();
+    private boolean editable = false;
 
     public void setPaymentDetails(PaymentDetails paymentDetails) {
 		this.paymentDetails = paymentDetails;
@@ -133,11 +136,23 @@ public class PaymentBean {
 
     public String submit(){
         PaymentService paymentService = new PaymentServiceImpl();
-        long id  = paymentService.addPaymentDetails(customerId, paymentDetails);
+        long cus1 = getIdCustomer();
+        long id  = paymentService.addPaymentDetails(cus1, paymentDetails);
         if(basketId != 0){
             return "/payment.xhtml?id=" + id + "&faces-redirect=true&basketId=" + basketId;
         }else {
             return "/pay.xhtml?id=" + id + "&faces-redirect=true";
+        }
+    }
+    
+    public String update(){
+        PaymentService paymentService = new PaymentServiceImpl();
+    	long cus1 = getIdCustomer();
+        long id  = paymentService.updatePaymentDetails(cus1, paymentDetails);
+        if(basketId != 0){
+            return "/payment.xhtml?id=" + id + "&faces-redirect=true&basketId=";
+        }else {
+            return "/home.xhtml?id=" + id + "&faces-redirect=true";
         }
     }
 
@@ -157,5 +172,22 @@ public class PaymentBean {
     	long cus1 = bean.getIdCustomer();
     	pay = payServ.getPaymentDetail(cus1);
     	paymentDetails = pay;
+    }
+    
+	public boolean isEditable() {
+		return editable;
+	}
+
+	public String editAction() {
+
+		this.editable = true;
+		return "/updateCard.xhtml?id=" + id + "faces-redirect=true";
+	}
+	
+    public long getIdCustomer(){
+    	HttpSession session = SessionUtils.getSession();
+		if (session != null)
+			return (long) session.getAttribute("idCustomer");
+    	return 1;
     }
 }
