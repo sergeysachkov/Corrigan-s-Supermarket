@@ -1,6 +1,7 @@
 package com.ait.corrigan.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -68,23 +69,48 @@ public class CategoryDAOImpl implements CategoryDao {
 
     @Override
     public void deleteCategory(int categoryId) throws SQLException {
-    	String sql = "DELETE FROM Categories (cateID, cate_name) VALUES (?,?) Where (cateID= ?)";
-    	 Connection con = DaoUtil.getConnection();
-         PreparedStatement pst = con.prepareStatement(sql);
-         pst.setLong(1, categoryId);       
-         pst.executeUpdate();
-         con.close();
+    	//String sql = "DELETE FROM Categories (cateID, cate_name) VALUES (?,?) Where (cateID= ?)";
+    	// Connection con = DaoUtil.getConnection();
+        // PreparedStatement pst = con.prepareStatement(sql);
+        // pst.setLong(1, categoryId);       
+        // pst.executeUpdate();
+         //con.close();
+         Category category = null;
+   	  try(Connection connection = DaoUtil.getConnection();
+ 	            PreparedStatement stmt=connection.prepareStatement("DELETE FROM Categories WHERE cateID=? "
+ 	                    ,Statement.RETURN_GENERATED_KEYS)){
+   		stmt.setLong(1, categoryId); 
+        stmt.executeUpdate();
+      } catch (SQLException ex) {
+        System.err.println("\nSQLException");
+        ex.printStackTrace();
     }
+
+   		  
+   		  
+   	  }
+    
 
     @Override
     public void updateCategory(long id, String name) throws SQLException {
-    	String sql = "UPDATE FROM Categories (cateID, cate_name) VALUES (?,?) Where (cateID= ?)";
-    	 Connection con = DaoUtil.getConnection();
-         PreparedStatement pst = con.prepareStatement(sql);
-         pst.setLong(1, id);
-         pst.setString(2, name);
-         pst.executeUpdate();
-         con.close();
+    	//String sql = "UPDATE FROM Categories (cateID, cate_name) VALUES (?,?) Where (cateID= ?)";
+    	 //Connection con = DaoUtil.getConnection();
+         //PreparedStatement pst = con.prepareStatement(sql);
+         //pst.setLong(1, id);
+         //pst.setString(2, name);
+         //pst.executeUpdate();
+         //con.close();
+    	  Category category = null;
+    	  try(Connection connection = DaoUtil.getConnection();
+  	            PreparedStatement stmt=connection.prepareStatement("UPDATE FROM Categories WHERE cateID=? "
+  	                    ,Statement.RETURN_GENERATED_KEYS)) {
+  	           
+  	            stmt.executeUpdate();
+  	        } catch (SQLException e) {
+  				// TODO Auto-generated catch block
+  				e.printStackTrace();
+  			}
+  	       
     	//To change body of generated methods, choose Tools | Templates.
     }
 
@@ -92,16 +118,20 @@ public class CategoryDAOImpl implements CategoryDao {
     public Category getCategory(int categoryId) throws SQLException {
     	
     	Category category = null;
-    	String sql = "SELECT FROM Categories (cateID, cate_name) VALUES (?,?) Where (cateID= ?)";
-   	    Connection con = DaoUtil.getConnection();
-        PreparedStatement pst = con.prepareStatement(sql);
-        pst.setLong(1, categoryId);
-     
-        pst.executeUpdate();
-        con.close();
-        return category;
-    	
-       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    	//    	    	String sql = "SELECT FROM Categories (cateID, cate_name) VALUES (?,?) Where (cateID= ?)";
+    	        String sql="SELECT * FROM Categories WHERE cateID=?";
+    	   	    Connection con = DaoUtil.getConnection();
+    	        PreparedStatement pst = con.prepareStatement(sql);
+    	        pst.setLong(1, categoryId);
+    
+//    	        pst.executeUpdate();
+//    	        con.close();
+    	        ResultSet rs=pst.executeQuery();
+    	        if(rs.next()){
+    	            category=new Category(rs.getInt(1), rs.getString(2));
+    	        }
+    	        return category;
+    	    	
+    	    }
 
 }
