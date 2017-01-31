@@ -10,6 +10,7 @@ import com.ait.corrigan.services.PaymentServiceImpl;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -70,7 +71,8 @@ public class PayBean {
 
     public String submit(){
         PayService service = new PayServiceImpl();
-        long order = service.createOrderAndPay(new Order(0,getCustomerId(), basketId ));
+        long order = service.createOrderAndPay(new Order(0,getCustomerId(), basketId, basketBean.getTotal(),
+                "PENDING", new Timestamp(System.currentTimeMillis())));
         return "/home.xhtml?faces-redirect=true&orderId=" + order;
     }
 
