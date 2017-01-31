@@ -75,13 +75,5 @@ public class CustomerServiceImpl implements CustomerService{
         }
     }
 
-    public long getCustomerIdByLogin(String login) {
-        try {
-            return customerDao.getCustomerIdByLogin(login);
-        } catch (SQLException e) {
-            throw new CorriganException(e.getMessage());
-        }
-    }
-
-
+	
 }

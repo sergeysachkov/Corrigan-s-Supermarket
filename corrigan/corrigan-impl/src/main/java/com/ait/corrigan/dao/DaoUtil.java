@@ -25,9 +25,9 @@ public class DaoUtil {
             throw new SQLException(e);
         }
     }
-
-
-
+    
+    
+   
      /**
      * Get a unique id that is close to current time in milliseconds
      *
@@ -45,9 +45,9 @@ public class DaoUtil {
             }
         }
     }
-
+    
     public static void main(String [] str) throws IOException {
         System.out.print(new DBPropertyUtil().getProperty("db.connection"));
     }
-
+    
 }

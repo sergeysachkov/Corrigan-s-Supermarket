@@ -20,11 +20,10 @@
                 </h:link>
             </li>
             <li>
-
                 <h:link value="Add Management" outcome="AddManager">
                 </h:link>
             </li>
-             <li>
+            <li>
                 <h:link value="Add Card" outcome="payment">
                     <f:param name="customerId" value="#{payment.customerId}"/>
                 </h:link>
@@ -44,25 +43,12 @@
                 <h:link value="Catalog" outcome="catalog">
                 </h:link>
             </li>
-            <li>
-                <h:link value="proceed to payment" outcome="pay">
-                    <f:param name="basketId" value="1"/>
-                </h:link>
-            </li>
-
              <li>
                 <h:link value="Contast Us" outcome="ContactUs">
                 </h:link>
             </li>
-
-             <li>
-                <h:link value="stockControlLogin" outcome="stockControllogin">
-                    <f:param name="stockCID" value="#{stockControl.stockCID}"/>
-                </h:link>
-             </li> 
         </ul>
         </h:form>
     </f:view>
 
 </html>
-
