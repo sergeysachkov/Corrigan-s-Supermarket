@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>corrigan</title>
+</h:head>
+<h:body>
+   <h:outputStylesheet library="css" name="login.css"  />
+ 	<h:form>
+		<h3>Welcome To StockControl Login</h3>
+		<h:outputText value="username" />
+		<h:inputText id="stockControlLogin" value="#{stockControl.username}"></h:inputText>
+		<h:message for="stockControlLogin"></h:message>
+		<br></br><br></br>
+		
+		<h:outputText value="Password" />
+		<h:inputSecret id="password" value="#{stockControl.password}"></h:inputSecret>
+		<h:message for="password"></h:message>
+		<br></br><br></br>
+		
+		<h:commandButton action="#{stockControl.checkStockControl()}"
+			value="Login"></h:commandButton>
+	</h:form>
+</h:body>
+</html>

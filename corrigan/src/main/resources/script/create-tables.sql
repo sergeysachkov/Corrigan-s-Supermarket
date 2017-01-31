@@ -31,6 +31,8 @@ CREATE TABLE `orders` (
 	`userID` INT(11) NOT NULL,
 	`basketID` BIGINT(50) NOT NULL,
     `price` DOUBLE NOT NULL,
+    `status` VARCHAR(45) NOT NULL,
+    `time` TIMESTAMP NOT NULL,
 	PRIMARY KEY (`orderID`)
 );
 
@@ -77,7 +79,26 @@ CREATE TABLE `address` (
   `county` varchar(45) DEFAULT NULL,
   `eircode` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`adress_id`)
+  CONSTRAINT `customer` FOREIGN KEY (`customer`) REFERENCES `customer` (`idcustomer`) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
+
+CREATE TABLE `manager` (
+	`idmanager` int(11) NOT NULL AUTO_INCREMENT,
+  `manager_name` varchar(45) DEFAULT NULL,
+  `manager_surname` varchar(45) DEFAULT NULL,
+  `manager_login` varchar(45) DEFAULT NULL,
+  `password` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`idmanager`)
+);
+
+create table stockControl(
+`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+	`username` varchar(20) NOT NULL,
+    `password` varchar(20) NOT NULL,
+    `phonenumber` varchar(20) NOT NULL,
+	PRIMARY KEY (`id`)
+);
+insert into stockControl values(1,'chris','admin','0874586756');
 
 insert into corrigan.customer (customer_name, customer_surname, customer_login, password, phone_number, email, date_of_birth)
 values("Some", "Client", "admin", "admin", "123654", "ss@net.ie", "1988-11-12");

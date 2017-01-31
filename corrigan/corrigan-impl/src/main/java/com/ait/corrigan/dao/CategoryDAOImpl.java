@@ -68,17 +68,40 @@ public class CategoryDAOImpl implements CategoryDao {
 
     @Override
     public void deleteCategory(int categoryId) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    	String sql = "DELETE FROM Categories (cateID, cate_name) VALUES (?,?) Where (cateID= ?)";
+    	 Connection con = DaoUtil.getConnection();
+         PreparedStatement pst = con.prepareStatement(sql);
+         pst.setLong(1, categoryId);       
+         pst.executeUpdate();
+         con.close();
     }
 
     @Override
     public void updateCategory(long id, String name) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    	String sql = "UPDATE FROM Categories (cateID, cate_name) VALUES (?,?) Where (cateID= ?)";
+    	 Connection con = DaoUtil.getConnection();
+         PreparedStatement pst = con.prepareStatement(sql);
+         pst.setLong(1, id);
+         pst.setString(2, name);
+         pst.executeUpdate();
+         con.close();
+    	//To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public Category getCategory(int categoryId) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    	
+    	Category category = null;
+    	String sql = "SELECT FROM Categories (cateID, cate_name) VALUES (?,?) Where (cateID= ?)";
+   	    Connection con = DaoUtil.getConnection();
+        PreparedStatement pst = con.prepareStatement(sql);
+        pst.setLong(1, categoryId);
+     
+        pst.executeUpdate();
+        con.close();
+        return category;
+    	
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
