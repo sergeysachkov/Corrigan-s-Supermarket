@@ -1,17 +1,13 @@
 package com.ait.corrigan.beans;
 
-import com.ait.corrigan.dao.CustomerDao;
 import com.ait.corrigan.dao.CustomerDaoImpl;
 import com.ait.corrigan.models.user.Customer;
-import com.ait.corrigan.models.shop.Item;
 import com.ait.corrigan.models.user.Address;
 import com.ait.corrigan.services.AddressServiceImpl;
 import com.ait.corrigan.services.AddressService;
 import com.ait.corrigan.services.CustomerService;
 import com.ait.corrigan.services.CustomerServiceImpl;
-import com.ait.corrigan.services.ItemServiceImpl;
 
-import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -20,15 +16,9 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
-import javax.faces.context.FacesContext;
 import javax.faces.event.ComponentSystemEvent;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Created by root on 11/12/2016.
@@ -36,13 +26,13 @@ import java.util.regex.Pattern;
 @ManagedBean(name = "customer", eager = true)
 @RequestScoped
 public class CustomerBean {
-	
-	
+
+
     private boolean disabled = false;
     private boolean editable = false;
-    
+
     private Customer customer1 = new Customer();
-    
+
     public Address getAddress() {
 		return address;
 	}
@@ -55,8 +45,12 @@ public class CustomerBean {
 	public Customer getCustomer1() {
 		return customer1;
 	}
-	
+    @ManagedProperty(value = "#{param.basketId}")
+    private long basketId;
 	private Address address = new Address();
+
+
+
 
     //------Peng-------
 	//@ManagedProperty(value="#{param.customer1}")
@@ -70,7 +64,7 @@ public class CustomerBean {
 	public void setLoginUsername(String loginUsername) {
 		this.loginUsername = loginUsername;
 	}
-	
+
     public String getCustomerLogin(){
     	HttpSession session = SessionUtils.getSession();
 		if (session != null)
@@ -90,7 +84,12 @@ public class CustomerBean {
 		if (login) {
 			HttpSession session = SessionUtils.getSession();
 			session.setAttribute("customerLogin", loginUsername);
-			return "/home.xhtml?faces-redirect=true";
+            session.setAttribute("idCustomer", new CustomerServiceImpl().getCustomerIdByLogin(loginUsername));
+            if(basketId != 0){
+                return "/pay.xhtml?faces-redirect=true&basketId=" + basketId;
+            }else {
+                return "/home.xhtml?faces-redirect=true";
+            }
 		} else {
 			FacesContext.getCurrentInstance().addMessage(
 					null,
@@ -98,22 +97,22 @@ public class CustomerBean {
 							"Incorrect CustomerLogin and Passowrd",
 							"Please enter correct CustomerLogin and Password"));
 			return "/login.xhtml?faces-redirect=true";
-		}   
+		}
 }
-    
+
     //----------John-----------
-    
+
 
 	public boolean isEditable() {
 		return editable;
 	}
-	
+
 	public String editAction() {
 
 		this.editable = true;
 		return "/editCustomer.xhtml?id=" + id + "faces-redirect=true";
 	}
-	
+
 	public String saveAction() {
 
 		this.editable = false;
@@ -121,7 +120,7 @@ public class CustomerBean {
 		return null;
 
 	}
-    
+
     public void setcustomerLogin(String customerLogin){
         customer1.setCustomerLogin(customerLogin);
 }
@@ -139,10 +138,9 @@ public class CustomerBean {
     public String getLoginPassword(){
     	return loginPassword;
     }
-  
+
     @ManagedProperty(value = "#{param.customerId}")
     private long customerId;
-    
 
     public void setCustomerId(long customerId) {
         this.customerId = customerId;
@@ -152,8 +150,15 @@ public class CustomerBean {
         return customer1.getCustomerId();
 }
 
+    public long getBasketId() {
+        return basketId;
+    }
 
-	@ManagedProperty(value = "#{param.id}")
+    public void setBasketId(long basketId) {
+        this.basketId = basketId;
+    }
+
+    @ManagedProperty(value = "#{param.id}")
     private long id;
     
     public long getId() {
@@ -163,7 +168,7 @@ public class CustomerBean {
 	public void setId(long id) {
 		this.id = id;
 	}
-    
+
         public boolean isDisabled() {
             return disabled;
         }
@@ -300,7 +305,7 @@ public class CustomerBean {
             long id1 = addressService.addAddress(address);
             return "/AddCustomer.xhtml?id=" + id + "faces-redirect=true";
         }
-        
+
         public String update(){
             CustomerService customerService = new CustomerServiceImpl();
             AddressService addressService = new AddressServiceImpl();
@@ -315,11 +320,9 @@ public class CustomerBean {
             this.customer1 = new Customer();
             return "/home.xhtml?faces-redirect=true";
         }
-        
-        
+
+
 	        public void getCustomer11(){
-			
-	            
 	        	CustomerService custServ = new CustomerServiceImpl();
 	        	Customer cus = new Customer();
 	        	String login = getCustomerLogin();
@@ -329,10 +332,7 @@ public class CustomerBean {
 	        	Address Ad = new Address();
 	        	Ad = adServ.getAddress(2);
 	        	address = Ad;
-	        }	
-	        
-		 
-		
+	        }
 
 
 

@@ -27,7 +27,7 @@ CREATE TABLE `basket` (
 );
 
 CREATE TABLE `orders` (
-	`orderID` BIGINT NOT NULL,
+	`orderID` BIGINT NOT NULL AUTO_INCREMENT,
 	`userID` INT(11) NOT NULL,
 	`basketID` BIGINT(50) NOT NULL,
     `price` DOUBLE NOT NULL,
@@ -90,6 +90,15 @@ CREATE TABLE `manager` (
   `password` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idmanager`)
 );
+
+create table stockControl(
+`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+	`username` varchar(20) NOT NULL,
+    `password` varchar(20) NOT NULL,
+    `phonenumber` varchar(20) NOT NULL,
+	PRIMARY KEY (`id`)
+);
+insert into stockControl values(1,'chris','admin','0874586756');
 
 insert into corrigan.customer (customer_name, customer_surname, customer_login, password, phone_number, email, date_of_birth)
 values("Some", "Client", "admin", "admin", "123654", "ss@net.ie", "1988-11-12");

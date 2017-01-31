@@ -52,7 +52,14 @@ public class PaymentServiceImpl implements PaymentService{
             throw new CorriganException(e.getMessage());
         }
     }
-
+    public List<String> getPaymentCards(long customerId){
+        try {
+            return paymentDao.getPaymentCards(customerId);
+        } catch (SQLException e) {
+            logger.error("Error occurred!", e);
+            throw new CorriganException(e.getMessage());
+        }
+    }
     public void deletePaymentDetails(long customerId, long paymentDetailsId){
         paymentDao.deletePaymentDetails(customerId, paymentDetailsId);
     }

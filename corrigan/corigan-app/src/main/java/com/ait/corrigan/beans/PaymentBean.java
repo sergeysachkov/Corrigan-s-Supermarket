@@ -25,6 +25,9 @@ public class PaymentBean {
     @ManagedProperty(value = "#{param.id}")
     private long id;
 
+    @ManagedProperty(value = "#{param.basketId}")
+    private long basketId;
+
     private boolean disabled = false;
     public long getId() {
         return id;
@@ -41,6 +44,14 @@ public class PaymentBean {
 
     public boolean isDisabled() {
         return disabled;
+    }
+
+    public long getBasketId() {
+        return basketId;
+    }
+
+    public void setBasketId(long basketId) {
+        this.basketId = basketId;
     }
 
     public long getCustomerId() {
@@ -109,7 +120,11 @@ public class PaymentBean {
     public String submit(){
         PaymentService paymentService = new PaymentServiceImpl();
         long id  = paymentService.addPaymentDetails(customerId, paymentDetails);
-        return "/payment.xhtml?id=" + id + "faces-redirect=true";
+        if(basketId != 0){
+            return "/payment.xhtml?id=" + id + "&faces-redirect=true&basketId=" + basketId;
+        }else {
+            return "/pay.xhtml?id=" + id + "&faces-redirect=true";
+        }
     }
 
     public String cancel(){
