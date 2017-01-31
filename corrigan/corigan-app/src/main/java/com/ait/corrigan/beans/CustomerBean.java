@@ -1,15 +1,12 @@
 package com.ait.corrigan.beans;
 
-import com.ait.corrigan.dao.CustomerDao;
 import com.ait.corrigan.dao.CustomerDaoImpl;
 import com.ait.corrigan.models.user.Customer;
-import com.ait.corrigan.models.shop.Item;
 import com.ait.corrigan.models.user.Address;
 import com.ait.corrigan.services.AddressServiceImpl;
 import com.ait.corrigan.services.AddressService;
 import com.ait.corrigan.services.CustomerService;
 import com.ait.corrigan.services.CustomerServiceImpl;
-import com.ait.corrigan.services.ItemServiceImpl;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -19,15 +16,9 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
-import javax.faces.context.FacesContext;
 import javax.faces.event.ComponentSystemEvent;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Created by root on 11/12/2016.
