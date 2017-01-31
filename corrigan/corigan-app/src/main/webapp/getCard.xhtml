@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<h:body>
+    <style>
+        .catalog-header{
+            padding: 10px 20px;
+            text-align: left;
+        }
+        .catalog-column{
+            padding: 10px 20px;
+            text-align: left;
+        }
+    </style>
+    <h3>Get Card Details</h3>
+  
+			<h:form>
+            <h:dataTable value="#{payment.paymentDetails}" var="a" 
+                         headerClass="catalog-header"
+                         columnClasses="catalog-column,catalog-column,catalog-column,catalog-column,catalog-column,catalog-column">
+
+                <h:column>
+                    <!-- column header -->
+                    <f:facet name="header">Card Type</f:facet>
+                    <!-- row record -->
+                    <h:inputText value="#{a.type}" size="20" rendered="#{customer.editable}" />
+					<h:outputText value="#{a.type}" rendered="#{not customer.editable}" />
+                </h:column>
+                <h:column>
+                    <!-- column header -->
+                    <f:facet name="header">Card No</f:facet>
+                    <!-- row record -->
+                    <h:inputText value="#{a.cardNo}" size="20" rendered="#{customer.editable}" />
+					<h:outputText value="#{a.cardNo}" rendered="#{not customer.editable}" />
+                </h:column>
+                <h:column>
+                    <!-- column header -->
+                    <f:facet name="header">Expiry Date</f:facet>
+                    <!-- row record -->
+                    <h:inputText value="#{a.expireDate}" size="20" rendered="#{customer.editable}" />
+					<h:outputText value="#{a.expireDate}" rendered="#{not customer.editable}" />
+                </h:column>
+
+                <h:column>
+                    <!-- column header -->
+                    <f:facet name="header">CVV2</f:facet>
+                    <!-- row record -->
+                    <h:inputText value="#{a.cvv2}" size="20" rendered="#{customer.editable}" />
+					<h:outputText value="#{a.cvv2}" rendered="#{not customer.editable}" />
+                </h:column>
+
+                <h:column>
+                    <!-- column header -->
+                    <f:facet name="header">Card Holder</f:facet>
+                    <!-- row record -->
+                    <h:inputText value="#{a.cardHolder}" size="20" rendered="#{customer.editable}" />
+					<h:outputText value="#{a.cardHolder}" rendered="#{not customer.editable}" />
+                </h:column>
+                <h:column>
+
+    		<f:facet name="header">Action</f:facet>
+
+    		<h:commandLink value="Edit" action="#{customer.editAction()}"
+                                       rendered="#{not customer.editable}" />
+
+    	     </h:column>
+            </h:dataTable>
+            <h:commandButton value="Get Customer" action="#{payment.getCustomerPaymentDetails}" />
+				<h:commandButton value="Cancel" action="#{payment.cancel}" />
+				</h:form>
+</h:body>
+</html>
+
