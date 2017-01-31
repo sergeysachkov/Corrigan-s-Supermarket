@@ -1,6 +1,10 @@
 package com.ait.corrigan.beans;
 
+import com.ait.corrigan.models.user.Address;
+import com.ait.corrigan.models.user.Customer;
 import com.ait.corrigan.models.user.PaymentDetails;
+import com.ait.corrigan.services.AddressService;
+import com.ait.corrigan.services.AddressServiceImpl;
 import com.ait.corrigan.services.CustomerService;
 import com.ait.corrigan.services.CustomerServiceImpl;
 import com.ait.corrigan.services.PaymentService;
@@ -19,7 +23,17 @@ import java.util.Date;
 public class PaymentBean {
     private PaymentDetails paymentDetails = new PaymentDetails();
 
-    @ManagedProperty(value = "#{param.customerId}")
+    public void setPaymentDetails(PaymentDetails paymentDetails) {
+		this.paymentDetails = paymentDetails;
+	}
+    
+	public PaymentDetails getPaymentDetails() {
+		return paymentDetails;
+	}
+
+
+
+	@ManagedProperty(value = "#{param.customerId}")
     private long customerId;
 
     @ManagedProperty(value = "#{param.id}")
@@ -132,5 +146,16 @@ public class PaymentBean {
         this.paymentDetails = new PaymentDetails();
         this.id = 0;
         return "/home.xhtml?faces-redirect=true";
+    }
+    
+
+    
+    public void getCustomerPaymentDetails(){
+    	PaymentService payServ = new PaymentServiceImpl();
+    	PaymentDetails pay = new PaymentDetails();
+    	CustomerBean bean = new CustomerBean();
+    	long cus1 = bean.getIdCustomer();
+    	pay = payServ.getPaymentDetail(cus1);
+    	paymentDetails = pay;
     }
 }

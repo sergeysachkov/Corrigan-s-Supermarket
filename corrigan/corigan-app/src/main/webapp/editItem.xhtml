@@ -43,7 +43,9 @@
                 <li>
                     <h:outputLabel id="categoryNameLabel" for="categoryName"
                                    value="Category"/>
-                    <h:inputText disabled="false" value="#{stockManageBean.categoryName}" />
+                    <h:selectOneMenu disabled="false" value="#{stockManageBean.category}">
+                        <f:selectItems value="#{stockManageBean.categoryList}"/>
+                    </h:selectOneMenu>
                 </li>
             </ul>
         </h:form>

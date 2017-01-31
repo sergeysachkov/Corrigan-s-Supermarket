@@ -36,12 +36,13 @@ public class CategoryDAOImpl implements CategoryDao {
         Connection con = null;
         try {
             con = DaoUtil.getConnection();
-            String sql = "select cate_name from Categories";
+            //we may also want the id of the categories
+            String sql = "select * from Categories";
 
             PreparedStatement pstmt = con.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
-                cat = new Category(rs.getString(1));
+                cat = new Category(rs.getInt(1),rs.getString(2));
                 allCategories.add(cat);
             }
 
@@ -85,20 +86,25 @@ public class CategoryDAOImpl implements CategoryDao {
          pst.setString(2, name);
          pst.executeUpdate();
          con.close();
-    	//To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public Category getCategory(long categoryId) throws SQLException {
     	
     	Category category = null;
-    	String sql = "SELECT FROM Categories (cateID, cate_name) VALUES (?,?) Where (cateID= ?)";
+//鹏哥你可以的，你家的查询语句长这样
+//    	String sql = "SELECT FROM Categories (cateID, cate_name) VALUES (?,?) Where (cateID= ?)";
+        String sql="SELECT * FROM Categories WHERE cateID=?";
    	    Connection con = DaoUtil.getConnection();
         PreparedStatement pst = con.prepareStatement(sql);
         pst.setLong(1, categoryId);
-     
-        pst.executeUpdate();
-        con.close();
+//聂鹏我真服了你
+//        pst.executeUpdate();
+//        con.close();
+        ResultSet rs=pst.executeQuery();
+        if(rs.next()){
+            category=new Category(rs.getInt(1), rs.getString(2));
+        }
         return category;
     	
     }

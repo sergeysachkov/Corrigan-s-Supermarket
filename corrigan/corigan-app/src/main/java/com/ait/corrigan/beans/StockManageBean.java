@@ -1,8 +1,14 @@
 package com.ait.corrigan.beans;
 
+import com.ait.corrigan.dao.CategoryDAOImpl;
+import com.ait.corrigan.dao.CategoryDao;
+import com.ait.corrigan.models.shop.Category;
 import com.ait.corrigan.models.shop.Item;
+import com.ait.corrigan.services.CategoryService;
+import com.ait.corrigan.services.CategoryServicesImpl;
 import com.ait.corrigan.services.ItemService;
 import com.ait.corrigan.services.ItemServiceImpl;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -24,6 +30,8 @@ public class StockManageBean {
     @ManagedProperty(value = "#{param.itemId}")
     private long itemId;
     private Item item = null;
+    private Category category=null;
+    
 //    private String name=null;
 //    private int quantity=0;
 //    private String unit=null;
@@ -35,6 +43,23 @@ public class StockManageBean {
         ItemService isrv = new ItemServiceImpl();
         isrv.updateItem(item);
         this.item = isrv.getItem(itemId);
+    }
+    public List<Category> getCategoryList(){
+        CategoryService csrv=new CategoryServicesImpl();
+        return csrv.getAllCategories();
+    }
+
+    public Category getCategory() {
+        ItemService isrv=new ItemServiceImpl();
+        long cateId=isrv.getItem(itemId).getCateID();
+        CategoryService cserv=new CategoryServicesImpl();
+        category=cserv.getCategory(cateId);
+        System.out.println("Category:"+ category);
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public List<Item> getItems() {
@@ -104,12 +129,4 @@ public class StockManageBean {
         updateDb();
     }
 
-    public String getCategoryName() {
-        return this.item.getCate_name();
-    }
-
-    public void setCategory(int categoryId) {
-        this.item.setCateID(categoryId);
-        updateDb();
-    }
 }
