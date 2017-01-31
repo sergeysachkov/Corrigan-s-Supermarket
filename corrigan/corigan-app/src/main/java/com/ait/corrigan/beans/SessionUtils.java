@@ -22,11 +22,15 @@ public class SessionUtils {
 		return session.getAttribute("customerLogin").toString();
 	}
 
-	public static String getCustomerId() {
+	public static long getCustomerId() {
 		HttpSession session = getSession();
-		if (session != null)
-			return (String) session.getAttribute("idCustomer");
-		else
-			return null;
+		if (session != null) {
+			Object idCustomer = session.getAttribute("idCustomer");
+			if (idCustomer != null) {
+				return Long.parseLong(idCustomer.toString());
+			}
+		}
+		return 0;
 	}
+
 }

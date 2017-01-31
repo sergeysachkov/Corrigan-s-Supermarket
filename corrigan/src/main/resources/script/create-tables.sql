@@ -27,7 +27,7 @@ CREATE TABLE `basket` (
 );
 
 CREATE TABLE `orders` (
-	`orderID` BIGINT NOT NULL,
+	`orderID` BIGINT NOT NULL AUTO_INCREMENT,
 	`userID` INT(11) NOT NULL,
 	`basketID` BIGINT(50) NOT NULL,
     `price` DOUBLE NOT NULL,
