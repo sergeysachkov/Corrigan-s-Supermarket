@@ -11,9 +11,39 @@
         <h:form id="item-edit-form">
             <ul>
                 <li>
-                    <h:outputLabel id="itemidLabel" for="itemId"
+                    <h:outputLabel id="itemIdLabel" for="itemId"
                                    value="Item ID"/>
                     <h:inputText disabled="true" value="#{stockManageBean.itemId}" />
+                </li>
+                <li>
+                    <h:outputLabel id="itemNameLable" for="itemName"
+                                   value="Name"/>
+                    <h:inputText disabled="false" value="#{stockManageBean.name}" />
+                </li>
+                <li>
+                    <h:outputLabel id="quantityLable" for="itemQuantity"
+                                   value="Quantity"/>
+                    <h:inputText disabled="false" value="#{stockManageBean.quantity}" />
+                </li>
+                <li>
+                    <h:outputLabel id="unitLable" for="itemUnit"
+                                   value="Unit"/>
+                    <h:inputText disabled="false" value="#{stockManageBean.unit}" />
+                </li>
+                <li>
+                    <h:outputLabel id="descLable" for="itemDesc"
+                                   value="Description"/>
+                    <h:inputTextarea disabled="false" value="#{stockManageBean.description}" />
+                </li>
+                <li>
+                    <h:outputLabel id="priceLabel" for="itemPrice"
+                                   value="Price"/>
+                    <h:inputText disabled="false" value="#{stockManageBean.price}" />
+                </li>
+                <li>
+                    <h:outputLabel id="categoryNameLabel" for="categoryName"
+                                   value="Category"/>
+                    <h:inputText disabled="false" value="#{stockManageBean.categoryName}" />
                 </li>
             </ul>
         </h:form>

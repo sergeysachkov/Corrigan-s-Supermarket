@@ -67,7 +67,7 @@ public class CategoryDAOImpl implements CategoryDao {
     }
 
     @Override
-    public void deleteCategory(int categoryId) throws SQLException {
+    public void deleteCategory(long categoryId) throws SQLException {
     	String sql = "DELETE FROM Categories (cateID, cate_name) VALUES (?,?) Where (cateID= ?)";
     	 Connection con = DaoUtil.getConnection();
          PreparedStatement pst = con.prepareStatement(sql);
@@ -89,7 +89,7 @@ public class CategoryDAOImpl implements CategoryDao {
     }
 
     @Override
-    public Category getCategory(int categoryId) throws SQLException {
+    public Category getCategory(long categoryId) throws SQLException {
     	
     	Category category = null;
     	String sql = "SELECT FROM Categories (cateID, cate_name) VALUES (?,?) Where (cateID= ?)";
@@ -101,7 +101,6 @@ public class CategoryDAOImpl implements CategoryDao {
         con.close();
         return category;
     	
-       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
