@@ -31,8 +31,8 @@ public class CustomerServiceImpl implements CustomerService{
     
     }
 
-    public long updateCustomer(Customer customer){
-        return customerDao.updateCustomer(customer);
+    public long updateCustomer(long customerId, Customer customer){
+        return customerDao.updateCustomer(customerId, customer);
     }
     public void deleteCustomer(long customerId){
         customerDao.deleteCustomer(customerId);
