@@ -1,0 +1,23 @@
+/* 
+    Created on : 01-Feb-2017, 10:16:48
+    Author     : kfbb
+*/
+ul{list-style-type: none; margin: 0; padding: 0;}
+li{padding: 8px 0px 8px 25px;}
+label{color:#2d2d2d; font-size: 17px; font-family: Arial;  width: 150px; float:left;}
+input[type=text]{width: 350px; height: 25px;}
+input[type=password]{width: 350px; height: 25px;}
+input[type=submit]{padding: 10px 30px;}
+select{
+    width: 175px;
+    height: 25px;
+}
+.action-links{width: 500px; text-align: right;}
+textarea{
+    width: 350px;
+    height: 100px;
+}
+.vmsg{
+    color: red;
+    padding-left: 20px;
+}

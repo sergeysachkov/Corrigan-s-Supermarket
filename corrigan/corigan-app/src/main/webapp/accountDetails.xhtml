@@ -10,7 +10,7 @@
         <p>Welcome #{customer.customerLogin}</p>
         <ul>
             <li>
-                <h:link value="Get Card" outcome="payment">
+                <h:link value="Get Card" outcome="getCard">
                     <f:param name="id" value="5"/>
                 </h:link>
             </li>
@@ -20,9 +20,8 @@
                     <f:param name="id" value="1"/>
                 </h:link>
             </li>
-            <li>
-                <h:commandButton value="Cancel" action="#{customer.cancel()}" immediate="true"/>
-            </li>
+                <h:link value="Cancel" outcome="home">
+                </h:link>
         </ul>
     </f:view>
 </body> 

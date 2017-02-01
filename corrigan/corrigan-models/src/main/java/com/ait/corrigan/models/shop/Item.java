@@ -157,6 +157,11 @@ public class Item {
 		return true;
 	}
 
+    @Override
+    public String toString() {
+        return "Item{" + "itemID=" + itemID + ", name=" + name + ", stock_q=" + stock_q + ", unit_of_measure=" + unit_of_measure + ", description=" + description + ", price=" + price + ", cateID=" + cateID + ", cate_name=" + cate_name + '}';
+    }
+
 	
 
 

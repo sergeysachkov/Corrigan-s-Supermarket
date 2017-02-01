@@ -1,27 +1,15 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-
-    <style>
-        .catalog-header{
-            padding: 10px 20px;
-            text-align: left;
-        }
-        .catalog-column{
-            padding: 10px 20px;
-            text-align: left;
-        }
-    </style>
-    <body>
-        <h1>Corrigans Catalog</h1>
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Stock Management</title>
+    </h:head>
+    <h:body>
+        <h1>List of items in stock</h1>
         <h:form>
-            <h:dataTable value="#{catalog.items}" var="c" 
-                         headerClass="catalog-header"
-                         columnClasses="catalog-column">
-
+            <h:dataTable value="#{stockManageBean.items}" var="c" >
                 <h:column>
                     <!-- column header -->
                     <f:facet name="header">Item ID</f:facet>
@@ -38,14 +26,14 @@
 
                 <h:column>
                     <!-- column header -->
-                    <f:facet name="header">stok_q</f:facet>
+                    <f:facet name="header">stock quantity</f:facet>
                     <!-- row record -->
                     #{c.stock_q}
                 </h:column>
 
                 <h:column>
                     <!-- column header -->
-                    <f:facet name="header">unit_of_measure</f:facet>
+                    <f:facet name="header">unit</f:facet>
                     <!-- row record -->
                     #{c.unit_of_measure}
                 </h:column>
@@ -54,7 +42,8 @@
                     <!-- column header -->
                     <f:facet name="header">description</f:facet>
                     <!-- row record -->
-                    #{c.description}
+                    <pre>#{c.description}</pre>
+                    
                 </h:column>
 
                 <h:column>
@@ -72,18 +61,14 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header">Action</f:facet>
-                    <h:commandButton value="Add to basket" action="#{basketBean.addToBasket(c)}"/>
+                    <h:commandButton value="edit" action="editItem" >
+                        <f:param name="itemId" value="#{c.itemID}" />
+                    </h:commandButton>
                 </h:column>
             </h:dataTable>
+            <h:link value="add" outcome="addItem" />
         </h:form>
-        <ul>
-            <li>
-                <h:link value="Home" outcome="home"></h:link>
-            </li>
-            <li>
-                <h:link value="View Basket" outcome="basket"></h:link>
-            </li>
-        </ul>
-    </body>
-
+        <h:link value="home" outcome="home"/>
+    </h:body>
 </html>
+
