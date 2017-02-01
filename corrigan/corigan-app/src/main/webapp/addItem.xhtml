@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Add an item</title>
+    </h:head>
+    <h:body>
+        <h1>Add an item</h1>
+        <h:form>
+
+            <ul>
+                <li>
+                    <h:outputLabel id="itemIdLabel" value="Item ID"/>
+                    <h:inputText id="itemId" value="#{addItemBean.itemId}"/>
+                </li>
+                <li>
+                    <h:outputLabel id="itemNameLabel" value="Item Name"/>
+                    <h:inputText id="itemName" value="#{addItemBean.name}"/>
+                </li>
+                <li>
+                    <h:outputLabel id="quantityLable" for="itemQuantity"
+                                   value="Quantity"/>
+                    <h:inputText disabled="false" value="#{addItemBean.quantity}" />
+                </li>
+                <li>
+                    <h:outputLabel id="unitLable" for="itemUnit"
+                                   value="Unit"/>
+                    <h:inputText disabled="false" value="#{addItemBean.unit}" />
+                </li>
+                <li>
+                    <h:outputLabel id="descLable" for="itemDesc"
+                                   value="Description"/>
+                    <h:inputTextarea disabled="false" value="#{addItemBean.description}" />
+                </li>
+                <li>
+                    <h:outputLabel id="priceLabel" for="itemPrice"
+                                   value="Price"/>
+                    <h:inputText disabled="false" value="#{addItemBean.price}" />
+                </li>
+                <li>
+                    <h:outputLabel id="categoryNameLabel" for="categoryName"
+                                   value="Category"/>
+                    <h:selectOneMenu disabled="false" value="#{addItemBean.category}"
+                                     >
+                        <f:selectItems value="#{addItemBean.categoryList}"/>
+                    </h:selectOneMenu>
+                </li>
+                <li>
+                    <h:commandButton value="&lt; back" action="manageStock">
+                    </h:commandButton>
+                    <h:commandButton value="save &gt;" action="#{addItemBean.submit()}">
+                        <f:param name="itemId" value="#{addItemBean.itemId}" />
+                    </h:commandButton>
+                </li>
+            </ul>    
+        </h:form>
+    </h:body>
+</html>
+

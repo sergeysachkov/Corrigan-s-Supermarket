@@ -7,9 +7,9 @@ import com.ait.corrigan.models.shop.Category;
 
 public interface CategoryService {
 
-	void addCategory(Category category); 
-	void deleteCategory(int categoryId); 
-	void updateCategory(Category category);
-	Category getCategory(int categoryId);
+	long addCategory(String name); 
+	void deleteCategory(long categoryId); 
+	void updateCategory(long id,String name);
+	Category getCategory(long categoryId);
 	List<Category> getAllCategories();
 }

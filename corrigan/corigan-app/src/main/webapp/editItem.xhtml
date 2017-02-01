@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Update Item</title>
+    </h:head>
+    <h:body>
+        <h1>Edit item</h1>
+        <h:form>
+            <ul>
+                <li>
+                    <h:outputLabel id="itemIdLabel" for="itemId"
+                                   value="Item ID"/>
+                    <h:inputText disabled="false" value="#{stockManageBean.itemId}"/>
+                </li>
+                <li>
+                    <h:outputLabel id="itemNameLable" for="itemName"
+                                   value="Name"/>
+                    <h:inputText disabled="false" value="#{stockManageBean.name}" />
+                </li>
+                <li>
+                    <h:outputLabel id="quantityLable" for="itemQuantity"
+                                   value="Quantity"/>
+                    <h:inputText disabled="false" value="#{stockManageBean.quantity}" />
+                </li>
+                <li>
+                    <h:outputLabel id="unitLable" for="itemUnit"
+                                   value="Unit"/>
+                    <h:inputText disabled="false" value="#{stockManageBean.unit}" />
+                </li>
+                <li>
+                    <h:outputLabel id="descLable" for="itemDesc"
+                                   value="Description"/>
+                    <h:inputTextarea disabled="false" value="#{stockManageBean.description}" />
+                </li>
+                <li>
+                    <h:outputLabel id="priceLabel" for="itemPrice"
+                                   value="Price"/>
+                    <h:inputText disabled="false" value="#{stockManageBean.price}" />
+                </li>
+                <li>
+                    <h:outputLabel id="categoryNameLabel" for="categoryName"
+                                   value="Category"/>
+                    <h:selectOneMenu disabled="false" value="#{stockManageBean.category}">
+                        <f:selectItems value="#{stockManageBean.categoryList}"/>
+                    </h:selectOneMenu>
+                </li>
+                <li>
+                    <h:commandButton action="manageStock" value="&lt; back" >
+                        <f:param name="itemId" value="#{stockManageBean.itemId}"/>
+                    </h:commandButton>
+                    <h:commandButton action="#{stockManageBean.doUpdate()}" value="save &gt;" >
+                        <f:param name="itemId" value="#{stockManageBean.itemId}"/>
+                    </h:commandButton>
+                </li>
+            </ul>
+        </h:form>
+    </h:body>
+</html>
+
