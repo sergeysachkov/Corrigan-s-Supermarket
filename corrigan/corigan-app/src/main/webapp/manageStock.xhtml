@@ -19,28 +19,28 @@
 
                 <h:column>
                     <!-- column header -->
-                    <f:facet name="header">name</f:facet>
+                    <f:facet name="header">Name</f:facet>
                     <!-- row record -->
                     #{c.name}
                 </h:column>
 
                 <h:column>
                     <!-- column header -->
-                    <f:facet name="header">stock quantity</f:facet>
+                    <f:facet name="header">Stock Quantity</f:facet>
                     <!-- row record -->
                     #{c.stock_q}
                 </h:column>
 
                 <h:column>
                     <!-- column header -->
-                    <f:facet name="header">unit</f:facet>
+                    <f:facet name="header">Unit</f:facet>
                     <!-- row record -->
                     #{c.unit_of_measure}
                 </h:column>
 
                 <h:column>
                     <!-- column header -->
-                    <f:facet name="header">description</f:facet>
+                    <f:facet name="header">Description</f:facet>
                     <!-- row record -->
                     <pre>#{c.description}</pre>
                     
@@ -48,14 +48,14 @@
 
                 <h:column>
                     <!-- column header -->
-                    <f:facet name="header">price</f:facet>
+                    <f:facet name="header">Price</f:facet>
                     <!-- row record -->
                     #{c.price}
                 </h:column>
 
                 <h:column>
                     <!-- column header -->
-                    <f:facet name="header">category</f:facet>
+                    <f:facet name="header">Category</f:facet>
                     <!-- row record -->
                     #{c.cate_name}
                 </h:column>
@@ -66,9 +66,9 @@
                     </h:commandButton>
                 </h:column>
             </h:dataTable>
-            <h:link value="add" outcome="addItem" />
+            <h:link value="Add" outcome="addItem" />
         </h:form>
-        <h:link value="home" outcome="home"/>
+        <h:link value="Home" outcome="home"/>
     </h:body>
 </html>
 
