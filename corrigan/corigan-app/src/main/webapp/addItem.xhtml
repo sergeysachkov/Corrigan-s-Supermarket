@@ -4,58 +4,57 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html">
     <h:head>
-        <title>Update Item</title>
+        <title>Add an item</title>
     </h:head>
     <h:body>
-        <h1>Edit item</h1>
+        <h1>Add an item</h1>
         <h:form>
+
             <ul>
                 <li>
-                    <h:outputLabel id="itemIdLabel" for="itemId"
-                                   value="Item ID"/>
-                    <h:inputText disabled="false" value="#{stockManageBean.itemId}"/>
+                    <h:outputLabel id="itemIdLabel" value="Item ID"/>
+                    <h:inputText id="itemId" value="#{addItemBean.itemId}"/>
                 </li>
                 <li>
-                    <h:outputLabel id="itemNameLable" for="itemName"
-                                   value="Name"/>
-                    <h:inputText disabled="false" value="#{stockManageBean.name}" />
+                    <h:outputLabel id="itemNameLabel" value="Item Name"/>
+                    <h:inputText id="itemName" value="#{addItemBean.name}"/>
                 </li>
                 <li>
                     <h:outputLabel id="quantityLable" for="itemQuantity"
                                    value="Quantity"/>
-                    <h:inputText disabled="false" value="#{stockManageBean.quantity}" />
+                    <h:inputText disabled="false" value="#{addItemBean.quantity}" />
                 </li>
                 <li>
                     <h:outputLabel id="unitLable" for="itemUnit"
                                    value="Unit"/>
-                    <h:inputText disabled="false" value="#{stockManageBean.unit}" />
+                    <h:inputText disabled="false" value="#{addItemBean.unit}" />
                 </li>
                 <li>
                     <h:outputLabel id="descLable" for="itemDesc"
                                    value="Description"/>
-                    <h:inputTextarea disabled="false" value="#{stockManageBean.description}" />
+                    <h:inputTextarea disabled="false" value="#{addItemBean.description}" />
                 </li>
                 <li>
                     <h:outputLabel id="priceLabel" for="itemPrice"
                                    value="Price"/>
-                    <h:inputText disabled="false" value="#{stockManageBean.price}" />
+                    <h:inputText disabled="false" value="#{addItemBean.price}" />
                 </li>
                 <li>
                     <h:outputLabel id="categoryNameLabel" for="categoryName"
                                    value="Category"/>
-                    <h:selectOneMenu disabled="false" value="#{stockManageBean.category}">
-                        <f:selectItems value="#{stockManageBean.categoryList}"/>
+                    <h:selectOneMenu disabled="false" value="#{addItemBean.category}"
+                                     >
+                        <f:selectItems value="#{addItemBean.categoryList}"/>
                     </h:selectOneMenu>
                 </li>
                 <li>
-                    <h:commandButton action="manageStock" value="&lt; back" >
-                        <f:param name="itemId" value="#{stockManageBean.itemId}"/>
+                    <h:commandButton value="&lt; back" action="manageStock">
                     </h:commandButton>
-                    <h:commandButton action="#{stockManageBean.doUpdate()}" value="save &gt;" >
-                        <f:param name="itemId" value="#{stockManageBean.itemId}"/>
+                    <h:commandButton value="save &gt;" action="#{addItemBean.submit()}">
+                        <f:param name="itemId" value="#{addItemBean.itemId}" />
                     </h:commandButton>
                 </li>
-            </ul>
+            </ul>    
         </h:form>
     </h:body>
 </html>

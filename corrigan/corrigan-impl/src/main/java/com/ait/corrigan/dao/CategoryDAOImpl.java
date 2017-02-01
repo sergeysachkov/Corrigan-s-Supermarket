@@ -105,6 +105,7 @@ public class CategoryDAOImpl implements CategoryDao {
         if(rs.next()){
             category=new Category(rs.getInt(1), rs.getString(2));
         }
+        con.close();
         return category;
     	
     }
