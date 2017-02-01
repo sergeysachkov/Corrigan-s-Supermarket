@@ -7,38 +7,73 @@
         <title>Update Item</title>
     </h:head>
     <h:body>
+        <h:outputStylesheet library="css" name="stockmgmt.css" />
         <h1>Edit item</h1>
         <h:form>
             <ul>
                 <li>
                     <h:outputLabel id="itemIdLabel" for="itemId"
                                    value="Item ID"/>
-                    <h:inputText disabled="false" value="#{stockManageBean.itemId}"/>
+                    <h:inputText id="itemId" disabled="false" 
+                                 value="#{stockManageBean.itemId}"
+                                 required="true"
+                                 requiredMessage="Please enter an ID."
+                                 converterMessage="Plese enter numbers only."/>
+                    <h:message class="vmsg" for="itemId" />
                 </li>
                 <li>
                     <h:outputLabel id="itemNameLable" for="itemName"
                                    value="Name"/>
-                    <h:inputText disabled="false" value="#{stockManageBean.name}" />
+                    <h:inputText id="itemName" disabled="false" value="#{stockManageBean.name}" 
+                                 required="true"
+                                 requiredMessage="Please enter a name."
+                                 validatorMessage="Item name should be no more than 50 characters.">
+                        <f:validateLength maximum="50" />
+                    </h:inputText>
+                    <h:message class="vmsg" for="itemName" />
                 </li>
                 <li>
                     <h:outputLabel id="quantityLable" for="itemQuantity"
                                    value="Quantity"/>
-                    <h:inputText disabled="false" value="#{stockManageBean.quantity}" />
+                    <h:inputText id="itemQuantity" disabled="false" value="#{stockManageBean.quantity}"
+                                 validatorMessage="Please enter a valid (&gt;0) quantity. " required="true" 
+                                 converterMessage="Please enter numbers only."
+                                 requiredMessage="Please enter a quantity.">
+                        <f:convertNumber integerOnly="true" type="number" />
+                        <f:validateLongRange minimum="1" />
+                    </h:inputText>
+                    <h:message class="vmsg" for="itemQuantity"/>
                 </li>
                 <li>
                     <h:outputLabel id="unitLable" for="itemUnit"
                                    value="Unit"/>
-                    <h:inputText disabled="false" value="#{stockManageBean.unit}" />
+                    <h:inputText id="unit" disabled="false" value="#{stockManageBean.unit}" 
+                                 required="true"
+                                 requiredMessage="Please enter a unit."/>
+                    <h:message class="vmsg" for="unit" />
                 </li>
                 <li>
                     <h:outputLabel id="descLable" for="itemDesc"
                                    value="Description"/>
-                    <h:inputTextarea disabled="false" value="#{stockManageBean.description}" />
+                    <h:inputTextarea id="description" disabled="false" 
+                                     value="#{stockManageBean.description}"
+                                     required="true"
+                                     requiredMessage="Please enter description."/>
+                    <h:message class="vmsg" for="description" />
                 </li>
                 <li>
                     <h:outputLabel id="priceLabel" for="itemPrice"
                                    value="Price"/>
-                    <h:inputText disabled="false" value="#{stockManageBean.price}" />
+                    <h:inputText id="price" disabled="false" 
+                                 value="#{stockManageBean.price}"
+                                 required="true"
+                                 requiredMessage="Please enter a price."
+                                 validatorMessage="Please enter a valid price."
+                                 converterMessage="Please enter decimals only.">
+                        <f:convertNumber type="number" />
+                        <f:validateDoubleRange minimum="0.01" />
+                    </h:inputText>
+                    <h:message class="vmsg" for="price" />
                 </li>
                 <li>
                     <h:outputLabel id="categoryNameLabel" for="categoryName"
@@ -47,13 +82,12 @@
                         <f:selectItems value="#{stockManageBean.categoryList}"/>
                     </h:selectOneMenu>
                 </li>
-                <li>
-                    <h:commandButton action="manageStock" value="&lt; back" >
-                        <f:param name="itemId" value="#{stockManageBean.itemId}"/>
-                    </h:commandButton>
-                    <h:commandButton action="#{stockManageBean.doUpdate()}" value="save &gt;" >
-                        <f:param name="itemId" value="#{stockManageBean.itemId}"/>
-                    </h:commandButton>
+                <li class="action-links">
+                    <h:link value="&lt; back" outcome="manageStock">
+                    </h:link>
+                    <h:commandLink value="save &gt;" action="#{stockManageBean.doUpdate()}">
+                        <f:param name="itemId" value="#{stockManageBean.itemId}" />
+                    </h:commandLink>
                 </li>
             </ul>
         </h:form>

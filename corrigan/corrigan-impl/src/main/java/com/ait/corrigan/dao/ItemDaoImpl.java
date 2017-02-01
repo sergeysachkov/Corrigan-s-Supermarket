@@ -66,7 +66,7 @@ public class ItemDaoImpl implements ItemDao {
         try {
             con = DaoUtil.getConnection();
             //String sql = "SELECT * FROM ITEMS";
-            String sql = "SELECT Items.itemID, Items.name, Items.stock_q, Items.unit_of_measure, Items.description, Items.price, Categories.cate_name from Items left join Categories on Items.category=Categories.cateID;";
+            String sql = "SELECT Items.itemID, Items.name, Items.stock_q, Items.unit_of_measure, Items.description, Items.price, Categories.cate_name from Items left join Categories on Items.category=Categories.cateID order by Items.itemID;";
             PreparedStatement pstmt = con.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
