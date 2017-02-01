@@ -31,8 +31,8 @@ public class CustomerServiceImpl implements CustomerService{
     
     }
 
-    public long updateCustomer(long customerId, Customer customer){
-        return customerDao.updateCustomer(customerId, customer);
+    public long updateCustomer(Customer customer){
+        return customerDao.updateCustomer(customer);
     }
     public void deleteCustomer(long customerId){
         customerDao.deleteCustomer(customerId);
@@ -75,13 +75,5 @@ public class CustomerServiceImpl implements CustomerService{
         }
     }
 
-    public long getCustomerIdByLogin(String login) {
-        try {
-            return customerDao.getCustomerIdByLogin(login);
-        } catch (SQLException e) {
-            throw new CorriganException(e.getMessage());
-        }
-    }
-
-
+	
 }

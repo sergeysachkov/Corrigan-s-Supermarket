@@ -35,18 +35,17 @@ public class AddressDAOImpl implements AddressDAO{
     return 1;
 }
     
-    public long updateAddress(long customerId, Address address){
+    public long updateAddress(Address address){
 
     try(Connection connection = DaoUtil.getConnection();
-        PreparedStatement stmt=connection.prepareStatement("UPDATE address SET adress_line_1 = ?, adress_line_2 =?, town = ?, county = ?, eircode =? where adress_id = ?" 
+        PreparedStatement stmt=connection.prepareStatement("UPDATE address SET adress_line_1 = ?, adress_line_2 =?, town = ?, county = ?, eircode =? where eircode = ?" 
         		, Statement.RETURN_GENERATED_KEYS)) {
         stmt.setString(1, address.getAdressLine1());
         stmt.setString(2, address.getAdressLine2());
         stmt.setString(3, address.getTown());
         stmt.setString(4, address.getCounty());
         stmt.setString(5, address.getEircode());
-        stmt.setLong(6, customerId);
-        
+        stmt.setString(6, address.getEircode());
         stmt.executeUpdate();
     } catch (SQLException e) {
 		// TODO Auto-generated catch block

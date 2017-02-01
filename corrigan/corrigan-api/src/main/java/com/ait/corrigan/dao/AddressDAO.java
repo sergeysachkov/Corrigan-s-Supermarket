@@ -10,7 +10,7 @@ import java.util.List;
 public interface AddressDAO {
 
     long addAddress(Address address);
-    long updateAddress(long customerId, Address address);
+    long updateAddress(Address address);
     void deleteAddress(long customerId);
     Address getAddress(long customerId) throws SQLException;
     List<Address> getAddresses() throws SQLException;

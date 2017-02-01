@@ -4,10 +4,8 @@ jdk:
 sudo: false
 before_script: cd corrigan
 script: mvn clean verify
-
-cache:
-  directories:
-  - $HOME/.m2
+jdk:
+  - oraclejdk8
       
 notifications:
   email:

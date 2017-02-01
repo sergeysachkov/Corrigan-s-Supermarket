@@ -28,29 +28,12 @@ public class PaymentDaoImpl implements PaymentDao{
         }
         return getPaymentDetailByCardNo(paymentDetails.getCardNo()).getId();
     }
-    
-    public long updatePaymentDetails(long customerId, PaymentDetails paymentDetails) throws SQLException{
-        
-        try(Connection connection = DaoUtil.getConnection();
-            PreparedStatement stmt=connection.prepareStatement("UPDATE payment SET card_type=?, card_no=?, exp_date=?, cvv2=?, card_holder=? where idpayment=?"
-                   ,Statement.RETURN_GENERATED_KEYS)) {
-            stmt.setString(1, paymentDetails.getType().name());
-            stmt.setString(2, paymentDetails.getCardNo());
-            stmt.setDate(3, new Date(paymentDetails.getExpireDate().getTime()));
-            stmt.setString(4, paymentDetails.getCvv2());
-            stmt.setString(5, paymentDetails.getCardHolder());
-            stmt.setLong(6, customerId);
-            stmt.executeUpdate();
-		}
-        
-        return getPaymentDetailByCardNo(paymentDetails.getCardNo()).getId();
-    }
 
 
     public List<PaymentDetails> getPaymentDetails(long customerId) throws SQLException {
         List<PaymentDetails> paymentDetails = new ArrayList<>();
         try(Connection connection = DaoUtil.getConnection();
-            PreparedStatement stmt=connection.prepareStatement("select * from payment where customer=?")) {
+            PreparedStatement stmt=connection.prepareStatement("select * from paymet where customer=?")) {
             stmt.setLong(1, customerId);
             ResultSet resultSet = stmt.executeQuery();
             while (resultSet.next()){
@@ -61,19 +44,6 @@ public class PaymentDaoImpl implements PaymentDao{
                 paymentDetail.setCvv2(resultSet.getString("cvv2"));
                 paymentDetail.setExpireDate(resultSet.getDate("exp_date"));
                 paymentDetails.add(paymentDetail);
-            }
-        }
-        return paymentDetails;
-    }
-
-    public List<String> getPaymentCards(long customerId) throws SQLException{
-        List<String> paymentDetails = new ArrayList<>();
-        try(Connection connection = DaoUtil.getConnection();
-            PreparedStatement stmt=connection.prepareStatement("select card_no from payment where customer=?")) {
-            stmt.setLong(1, customerId);
-            ResultSet resultSet = stmt.executeQuery();
-            while (resultSet.next()){
-                paymentDetails.add(resultSet.getString("card_no"));
             }
         }
         return paymentDetails;

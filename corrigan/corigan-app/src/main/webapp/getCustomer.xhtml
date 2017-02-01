@@ -96,6 +96,13 @@
                          headerClass="catalog-header"
                          columnClasses="catalog-column,catalog-column,catalog-column,catalog-column,catalog-column,catalog-column">
 
+				 <h:column>
+                    <!-- column header -->
+                    <f:facet name="header">ID</f:facet>
+                    <!-- row record -->
+                    <h:inputText value="#{a.adressId}" size="20" rendered="#{customer.editable}" />
+					<h:outputText value="#{a.adressId}" rendered="#{not customer.editable}" />
+                </h:column>
                 <h:column>
                     <!-- column header -->
                     <f:facet name="header">Address Line 2</f:facet>
@@ -143,7 +150,7 @@
     	     </h:column>
             </h:dataTable>
             <h:commandButton value="Get Customer" action="#{customer.getCustomer11}" />
-				<h:commandButton value="Cancel" action="#{customer.cancel}" />
+				<h:commandButton value="Save Changes" action="#{customer.saveAction}" />
 				</h:form>
 </h:body>
 </html>
