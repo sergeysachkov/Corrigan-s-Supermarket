@@ -28,6 +28,7 @@ public class PayBean {
     private BasketBean basketBean;
 
     private Set<PaymentDetails> paymentDetails;
+    private String cardNo;
 
     private long payId;
 
@@ -40,6 +41,13 @@ public class PayBean {
         return service.getPaymentCards(customerId);
     }
 
+    public String getCardNo() {
+        return cardNo;
+    }
+
+    public void setCardNo(String cardNo) {
+        this.cardNo = cardNo;
+    }
 
     public BasketBean getBasketBean() {
         return basketBean;
@@ -71,7 +79,7 @@ public class PayBean {
 
     public String submit(){
         PayService service = new PayServiceImpl();
-        long order = service.createOrderAndPay(new Order(0,getCustomerId(), basketId, basketBean.getTotal(),
+        long order = service.createOrderAndPay(cardNo, new Order(0,getCustomerId(), basketId, basketBean.getTotal(),
                 "PENDING", new Timestamp(System.currentTimeMillis())));
         return "/home.xhtml?faces-redirect=true&orderId=" + order;
     }

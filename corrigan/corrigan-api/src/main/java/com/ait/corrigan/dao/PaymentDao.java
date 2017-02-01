@@ -15,4 +15,5 @@ public interface PaymentDao {
     List<PaymentDetails> getPaymentDetails(long customerId) throws SQLException;
     List<String> getPaymentCards(long customerId) throws SQLException;
     PaymentDetails getPaymentDetail(long id) throws SQLException;
+    public PaymentDetails getPaymentDetailByCardNo(String cardNo) throws SQLException;
 }
