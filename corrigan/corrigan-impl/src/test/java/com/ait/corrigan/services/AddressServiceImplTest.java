@@ -25,7 +25,7 @@ public class AddressServiceImplTest {
         dao = mock(AddressDAO.class);
     }
     @Test
-    public void testAddCustomer(){
+    public void testAddAddress(){
         try {
             AddressDAO dao = mock(AddressDAO.class);
             AddressService service = new AddressServiceImpl(dao);
