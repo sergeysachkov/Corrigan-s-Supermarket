@@ -36,13 +36,12 @@ public class CategoryDAOImpl implements CategoryDao {
         Connection con = null;
         try {
             con = DaoUtil.getConnection();
-            //we may also want the id of the categories
-            String sql = "select * from Categories";
+            String sql = "select cate_name from Categories";
 
             PreparedStatement pstmt = con.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
-                cat = new Category(rs.getInt(1),rs.getString(2));
+                cat = new Category(rs.getString(1));
                 allCategories.add(cat);
             }
 
@@ -68,46 +67,18 @@ public class CategoryDAOImpl implements CategoryDao {
     }
 
     @Override
-    public void deleteCategory(long categoryId) throws SQLException {
-    	String sql = "DELETE FROM Categories (cateID, cate_name) VALUES (?,?) Where (cateID= ?)";
-    	 Connection con = DaoUtil.getConnection();
-         PreparedStatement pst = con.prepareStatement(sql);
-         pst.setLong(1, categoryId);       
-         pst.executeUpdate();
-         con.close();
+    public void deleteCategory(int categoryId) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void updateCategory(long id, String name) throws SQLException {
-    	String sql = "UPDATE FROM Categories (cateID, cate_name) VALUES (?,?) Where (cateID= ?)";
-    	 Connection con = DaoUtil.getConnection();
-         PreparedStatement pst = con.prepareStatement(sql);
-         pst.setLong(1, id);
-         pst.setString(2, name);
-         pst.executeUpdate();
-         con.close();
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Category getCategory(long categoryId) throws SQLException {
-    	
-    	Category category = null;
-//鹏哥你可以的，你家的查询语句长这样
-//    	String sql = "SELECT FROM Categories (cateID, cate_name) VALUES (?,?) Where (cateID= ?)";
-        String sql="SELECT * FROM Categories WHERE cateID=?";
-   	    Connection con = DaoUtil.getConnection();
-        PreparedStatement pst = con.prepareStatement(sql);
-        pst.setLong(1, categoryId);
-//聂鹏我真服了你
-//        pst.executeUpdate();
-//        con.close();
-        ResultSet rs=pst.executeQuery();
-        if(rs.next()){
-            category=new Category(rs.getInt(1), rs.getString(2));
-        }
-        con.close();
-        return category;
-    	
+    public Category getCategory(int categoryId) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

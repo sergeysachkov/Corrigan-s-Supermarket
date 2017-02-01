@@ -27,8 +27,8 @@ public class AddressServiceImpl implements AddressService{
         return addressDao.addAddress(address);
     }
 
-    public long updateAddress(long customerId, Address address){
-        return addressDao.updateAddress(customerId, address);
+    public long updateAddress(Address address){
+        return addressDao.updateAddress(address);
     }
     public void deleteAddress(long customerId){
         addressDao.deleteAddress(customerId);

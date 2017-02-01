@@ -9,7 +9,7 @@ import java.util.List;
 public interface CustomerService {
 
     long addCustomer(Customer customer);
-    long updateCustomer(long customerId, Customer customer);
+    long updateCustomer(Customer customer);
     void deleteCustomer(long customerId);
     Customer getCustomer(long customerId);
     Customer getCustomerByID(long id);
@@ -17,6 +17,5 @@ public interface CustomerService {
     List<Customer> getCustomers();
 
     void login(String customerLogin, String password);
-    public long getCustomerIdByLogin(String login);
    
 }

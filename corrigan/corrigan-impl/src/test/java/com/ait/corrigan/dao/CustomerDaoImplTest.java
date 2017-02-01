@@ -1,30 +1,44 @@
 package com.ait.corrigan.dao;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.fail;
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import org.junit.Before;
 import org.junit.Ignore;
 
 import org.junit.Test;
 
-import com.ait.corrigan.models.user.Customer;
-import com.ait.corrigan.models.user.PaymentDetails;
-import com.ait.corrigan.services.CustomerService;
-import com.ait.corrigan.services.CustomerServiceImpl;
-import com.ait.corrigan.services.PaymentService;
-import com.ait.corrigan.services.PaymentServiceImpl;
-
 public class CustomerDaoImplTest {
-	
-    
+
+
+	@Ignore
+
+	//========test connection=====
+	//@Test
+	public  void testGetConnection(){
+		Connection con=null;
+		try {
+			con=DaoUtil.getConnection();
+			assertNotNull(con);
+		} catch (SQLException e) {
+			fail("No Exception expected .....");
+			e.printStackTrace();
+		}
+		
+	}
+	@Ignore
+	//======test customer is present=======
+	//@Test
+	public  void testGetCustomer(){
+		CustomerDaoImpl i=new CustomerDaoImpl();
+		try{
+			assertNotNull(i.getCustomerByID(1));
+		}catch (Exception e) {
+			fail("No Exception expected .....");
+			e.printStackTrace();
+		}
+	}
 
 	
 	//=====test get all customers====
