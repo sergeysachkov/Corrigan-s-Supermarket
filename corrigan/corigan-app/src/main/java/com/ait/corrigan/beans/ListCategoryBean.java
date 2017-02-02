@@ -55,10 +55,10 @@ public class ListCategoryBean {
      public void setName(String name) {
     	 category.setCate_name(name);
      }
-     public String deleteCategory(){
+     public String deleteCategory(long id2Del){
     	 CategoryService csery = new CategoryServicesImpl();
-    	// this.category = csery.deleteCategory();
-    	 return "/listCategory.xhtml?id=" + category + "faces-redirect=true";
+    	 csery.deleteCategory(id2Del);
+    	 return "/listCategory.xhtml?faces-redirect=true";
     	 
      }
      
