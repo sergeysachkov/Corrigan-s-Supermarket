@@ -23,52 +23,60 @@ import javax.faces.bean.RequestScoped;
 @RequestScoped
 public class StockManageBean {
 
+    private ItemService isrv;
+    private CategoryService csrv;
     private List<Item> items = null;
     @ManagedProperty(value = "#{param.itemId}")
     private long itemId;
     private Item item = null;
 
-//    private String name=null;
-//    private int quantity=0;
-//    private String unit=null;
-//    private String description=null;
-//    private double price=0;
-//    private String category=null;
+    public StockManageBean() {
+        this.isrv = new ItemServiceImpl();
+        this.csrv = new CategoryServicesImpl();
+    }
+
+    public StockManageBean(ItemService isrv, CategoryService csrv) {
+        this.isrv = isrv;
+        this.csrv = csrv;
+    }
+
     @PostConstruct
     public void populateItem() {
-        ItemService isrv = new ItemServiceImpl();
         this.item = isrv.getItem(itemId);
     }
 
     private void updateDb() {
-        ItemService isrv = new ItemServiceImpl();
         isrv.updateItem(item);
         this.item = isrv.getItem(itemId);
     }
 
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
     public List<Category> getCategoryList() {
-        CategoryService csrv = new CategoryServicesImpl();
         return csrv.getAllCategories();
     }
 
     public Category getCategory() {
         Category category;
-        ItemService isrv = new ItemServiceImpl();
         long cateId = isrv.getItem(itemId).getCateID();
-        CategoryService cserv = new CategoryServicesImpl();
-        category = cserv.getCategory(cateId);
+        category = csrv.getCategory(cateId);
         System.out.println("Category:" + category);
         return category;
     }
 
     public void setCategory(Category category) {
-        System.out.println("CATEGORY SET TO"+category);
+        System.out.println("CATEGORY SET TO" + category);
         this.item.setCateID(category.getCateID());
         this.item.setCate_name(category.getCate_name());
     }
 
     public List<Item> getItems() {
-        ItemService isrv = new ItemServiceImpl();
         items = isrv.getCatalogue();
         return items;
     }
@@ -79,11 +87,11 @@ public class StockManageBean {
 
     public void setItemId(long itemId) {
         this.itemId = itemId;
+//        this.item.setItemID(itemId);
 
     }
 
     public String getName() {
-        ItemService isrv = new ItemServiceImpl();
         this.item = isrv.getItem(itemId);
         return item.getName();
     }
@@ -125,7 +133,6 @@ public class StockManageBean {
     }
 
     public String doUpdate() {
-
         System.out.println("ITEM:" + item);
         updateDb();
         return "manageStock?faces-redirect=true";

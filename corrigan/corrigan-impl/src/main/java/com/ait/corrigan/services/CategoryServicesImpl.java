@@ -6,8 +6,6 @@ import java.util.List;
 
 import com.ait.corrigan.dao.CategoryDAOImpl;
 import com.ait.corrigan.dao.CategoryDao;
-import com.ait.corrigan.dao.CustomerDao;
-import com.ait.corrigan.dao.CustomerDaoImpl;
 import com.ait.corrigan.exception.CorriganException;
 import com.ait.corrigan.models.shop.Category;
 
@@ -23,6 +21,7 @@ public class CategoryServicesImpl implements CategoryService {
         this.categoryDao = categoryDao;
     }
 
+    @Override
     public long addCategory(String name) {
         long newId = 0;
         try {
