@@ -13,8 +13,7 @@ import com.ait.corrigan.models.shop.Category;
 import java.sql.Statement;
 
 public class CategoryDAOImpl implements CategoryDao {
-
-	 @Override
+	   @Override
 	    public long getNewId() throws SQLException {
 	        String sql = "SELECT cateID FROM Categories ORDER BY cateID DESC LIMIT 1";
 	        Connection con = DaoUtil.getConnection();
@@ -29,6 +28,61 @@ public class CategoryDAOImpl implements CategoryDao {
 	            return 1;
 	        }
 	    }
+	   @Override
+	      public void addCategory(long id, String name) throws SQLException {
+	        String sql = "INSERT INTO Categories (cateID, cate_name) VALUES (?,?)";
+	        Connection con = DaoUtil.getConnection();
+	       PreparedStatement pst = con.prepareStatement(sql);
+	       pst.setLong(1, id);
+	       pst.setString(2, name);
+	       pst.executeUpdate();
+	       con.close();
+	    }
+	   
+		@Override
+		public void updateCategory(Category category) throws SQLException {
+			 String sql="UPDATE Categories SET "
+		                + "cateID=?,cate_name=?"
+		                + "WHERE cateID=?";
+		        Connection con=DaoUtil.getConnection();
+		        PreparedStatement pst=con.prepareCall(sql);
+		        pst.setLong(1, category.getCateID());
+		        pst.setString(2, category.getCate_name());
+		        pst.executeUpdate();
+		        con.close();
+		        
+			
+		}
+		
+		  @Override
+		
+	    public void deleteCategory(long categoryId) throws SQLException {
+	    	//String sql = "DELETE FROM Categories (cateID, cate_name) VALUES (?,?) Where (cateID= ?)";
+	    	// Connection con = DaoUtil.getConnection();
+	        // PreparedStatement pst = con.prepareStatement(sql);
+	        // pst.setLong(1, categoryId);       
+	        // pst.executeUpdate();
+	         //con.close();
+	       // Category category = null;
+	   	   // try(Connection connection = DaoUtil.getConnection();
+	 	   // PreparedStatement stmt=connection.prepareStatement("DELETE FROM Categories WHERE cateID=? "
+	 	   //  ,Statement.RETURN_GENERATED_KEYS)){
+	   	   //stmt.setLong(1, categoryId); 
+	       //stmt.executeUpdate();
+	       //} catch (SQLException ex) {
+	       // System.err.println("\nSQLException");
+	       //ex.printStackTrace();
+	       //}
+			    String sql="DELETE FROM Categories WHERE  cateID=?";
+		        Connection con=DaoUtil.getConnection();
+		        PreparedStatement pst=con.prepareCall(sql);
+		        pst.setLong(1, categoryId);
+		        pst.executeUpdate();
+		        con.close();
+	   		  
+	   		  
+	   	  }
+	    
 
 	    @Override
 	    public List<Category> getAllCategories() throws SQLException {
@@ -82,16 +136,7 @@ public class CategoryDAOImpl implements CategoryDao {
 
 
 
-    @Override
-      public void addCategory(long id, String name) throws SQLException {
-        String sql = "INSERT INTO Categories (cateID, cate_name) VALUES (?,?)";
-        Connection con = DaoUtil.getConnection();
-       PreparedStatement pst = con.prepareStatement(sql);
-        pst.setLong(1, id);
-       pst.setString(2, name);
-        pst.executeUpdate();
-        con.close();
-    }
+ 
     @Override
     public void addCategory(Category category ) throws SQLException {
     	 String sql="INSERT INTO Categories (cateID, cate_name) VALUES (?,?)";
@@ -103,29 +148,8 @@ public class CategoryDAOImpl implements CategoryDao {
          con.close();
     }
     
-    @Override
-    public void deleteCategory(long categoryId) throws SQLException {
-    	//String sql = "DELETE FROM Categories (cateID, cate_name) VALUES (?,?) Where (cateID= ?)";
-    	// Connection con = DaoUtil.getConnection();
-        // PreparedStatement pst = con.prepareStatement(sql);
-        // pst.setLong(1, categoryId);       
-        // pst.executeUpdate();
-         //con.close();
-         Category category = null;
-   	  try(Connection connection = DaoUtil.getConnection();
- 	            PreparedStatement stmt=connection.prepareStatement("DELETE FROM Categories WHERE cateID=? "
- 	                    ,Statement.RETURN_GENERATED_KEYS)){
-   		stmt.setLong(1, categoryId); 
-        stmt.executeUpdate();
-      } catch (SQLException ex) {
-        System.err.println("\nSQLException");
-        ex.printStackTrace();
-    }
-
-   		  
-   		  
-   	  }
     
+
 
     @Override
     public void updateCategory(long id, String name) throws SQLException {
@@ -176,6 +200,7 @@ public class CategoryDAOImpl implements CategoryDao {
         return category;
     	
     }
+
 
 }
 

@@ -19,22 +19,23 @@ public class Category {
 		this.cate_name = cate_name;
 	}
 
-	public String getCate_name() {
-		return cate_name;
-	}
 
 	public int getCateID() {
 		return cateID;
+	}
+	public void setCateID(int cateID) {
+		this.cateID = cateID;
+	}
+
+	public String getCate_name() {
+		return cate_name;
 	}
 
 	public void setCate_name(String cate_name) {
 		this.cate_name = cate_name;
 	}
 
-	public void setCateID(int cateID) {
-		this.cateID = cateID;
-	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
