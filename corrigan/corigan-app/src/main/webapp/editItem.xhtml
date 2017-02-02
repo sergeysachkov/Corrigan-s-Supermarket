@@ -14,7 +14,7 @@
                 <li>
                     <h:outputLabel id="itemIdLabel" for="itemId"
                                    value="Item ID"/>
-                    <h:inputText id="itemId" disabled="false" 
+                    <h:inputText id="itemId" disabled="true" 
                                  value="#{stockManageBean.itemId}"
                                  required="true"
                                  requiredMessage="Please enter an ID."
@@ -83,9 +83,9 @@
                     </h:selectOneMenu>
                 </li>
                 <li class="action-links">
-                    <h:link value="&lt; back" outcome="manageStock">
+                    <h:link value="&lt; Back" outcome="manageStock">
                     </h:link>
-                    <h:commandLink value="save &gt;" action="#{stockManageBean.doUpdate()}">
+                    <h:commandLink value="Save &gt;" action="#{stockManageBean.doUpdate()}">
                         <f:param name="itemId" value="#{stockManageBean.itemId}" />
                     </h:commandLink>
                 </li>

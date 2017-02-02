@@ -30,7 +30,7 @@ public class ListCategoryBean {
      
      private void updateDb() {
     	 CategoryService csrv = new CategoryServicesImpl();
-    	 csrv.updateCategory(category);
+    	  csrv.updateCategory(category);
     	  this.category = csrv.getCategory(cateId);
      }
      public List<Category> getCategoryList() {
@@ -55,11 +55,18 @@ public class ListCategoryBean {
      public void setName(String name) {
     	 category.setCate_name(name);
      }
+     public String deleteCategory(){
+    	 CategoryService csery = new CategoryServicesImpl();
+    	// this.category = csery.deleteCategory();
+    	 return "/listCategory.xhtml?id=" + category + "faces-redirect=true";
+    	 
+     }
+     
      
      public String doUpdate() {
 
          System.out.println("CATEGORY:" + category);
          updateDb();
-         return "manageStock?faces-redirect=true";
+         return "listCategory?faces-redirect=true";
      }
 }

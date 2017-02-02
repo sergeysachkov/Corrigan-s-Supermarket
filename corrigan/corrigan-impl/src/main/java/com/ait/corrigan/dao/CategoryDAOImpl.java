@@ -42,12 +42,14 @@ public class CategoryDAOImpl implements CategoryDao {
 		@Override
 		public void updateCategory(Category category) throws SQLException {
 			 String sql="UPDATE Categories SET "
-		                + "cateID=?,cate_name=?"
+		             // + "cateID = ?,cate_name=?"
+					    + "cate_name=?"
 		                + "WHERE cateID=?";
 		        Connection con=DaoUtil.getConnection();
 		        PreparedStatement pst=con.prepareCall(sql);
-		        pst.setLong(1, category.getCateID());
-		        pst.setString(2, category.getCate_name());
+		       // pst.setLong(1, category.getCateID());
+		        pst.setString(1, category.getCate_name());
+		        pst.setLong(2, category.getCateID());
 		        pst.executeUpdate();
 		        con.close();
 		        

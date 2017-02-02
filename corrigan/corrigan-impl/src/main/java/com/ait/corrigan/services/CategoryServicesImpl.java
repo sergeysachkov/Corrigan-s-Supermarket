@@ -10,10 +10,13 @@ import java.util.logging.Logger;
 
 import com.ait.corrigan.dao.CategoryDAOImpl;
 import com.ait.corrigan.dao.CategoryDao;
+
 import com.ait.corrigan.dao.CustomerDao;
 import com.ait.corrigan.dao.DaoUtil;
 import com.ait.corrigan.dao.ItemDao;
 import com.ait.corrigan.dao.ItemDaoImpl;
+
+
 import com.ait.corrigan.exception.CorriganException;
 import com.ait.corrigan.models.shop.Category;
 
@@ -28,6 +31,7 @@ public class CategoryServicesImpl implements CategoryService {
     public CategoryServicesImpl(CategoryDao categoryDao) {
         this.categoryDao = categoryDao;
     }
+
     @Override
     public Category getCategory(long categoryId) {
     	Category category = null;
@@ -45,6 +49,11 @@ public class CategoryServicesImpl implements CategoryService {
     private static final Logger LOG = Logger.getLogger(CategoryDAOImpl.class.getName());
     
    /* public long addCategory(String name) {
+
+
+    @Override
+    public long addCategory(String name) {
+
         long newId = 0;
         try {
             newId = categoryDao.getNewId();
@@ -115,8 +124,9 @@ public class CategoryServicesImpl implements CategoryService {
 	            categoryDao.updateCategory(category);;
 	        } catch (SQLException e) {
 	            // TODO Auto-generated catch block
-	        	LOG.log(Level.SEVERE, "Fail to update category, " + category, e);
-	            throw new CorriganException(e.getMessage());
+	         LOG.log(Level.SEVERE, "Fail to update category, " + category, e);
+	         throw new CorriganException("Fail to update category, " + category, e);
+	        	//  throw new CorriganException(e.getMessage());
 	        }
 	}
 

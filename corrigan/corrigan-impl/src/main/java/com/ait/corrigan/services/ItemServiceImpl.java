@@ -11,12 +11,21 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ItemServiceImpl implements ItemService {
+    
+    private ItemDao idao;
 
+    public ItemServiceImpl() {
+        idao=new ItemDaoImpl();
+    }
+
+    public ItemServiceImpl(ItemDao idao) {
+        this.idao = idao;
+    }
+    
     public Item getItem(long itemId) {
         Item item = null;
-        ItemDao c = new ItemDaoImpl();
         try {
-            item = c.getItem(itemId);
+            item = idao.getItem(itemId);
         } catch (SQLException ex) {
             Logger.getLogger(ItemServiceImpl.class.getName()).log(Level.SEVERE, "Fail to get item " + itemId + " from db", ex);
         }
@@ -26,19 +35,28 @@ public class ItemServiceImpl implements ItemService {
 
     //===========ADRIAN============
     public List<Item> getCatalogue() {
-        ItemDaoImpl c = new ItemDaoImpl();
-        return c.getAllItems();
+        List<Item> items=null;
+        try {
+            items=idao.getAllItems();
+        } catch (SQLException ex) {
+            LOG.log(Level.SEVERE, null, ex);
+        }
+        return items;
     }
 
     //===========ADRIAN============
     public List<Item> getCategory(String category) {
-        ItemDaoImpl c = new ItemDaoImpl();
-        return c.getItemsByCategory(category);
+        List<Item> items=null;
+        try {
+            items= idao.getItemsByCategory(category);
+        } catch (SQLException ex) {
+            LOG.log(Level.SEVERE, null, ex);
+        }
+        return items;
     }
 
     @Override
     public void addItem(Item item) {
-        ItemDao idao = new ItemDaoImpl();
         try {
             idao.addItem(item);
         } catch (SQLException e) {
@@ -49,7 +67,6 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public void updateItem(Item item) {
-        ItemDao idao = new ItemDaoImpl();
         try {
             idao.updateItem(item);
         } catch (SQLException e) {
@@ -60,7 +77,6 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public void deleteItem(long itemId) {
-        ItemDao idao = new ItemDaoImpl();
         try {
             idao.deleteItem(itemId);
         } catch (SQLException e) {

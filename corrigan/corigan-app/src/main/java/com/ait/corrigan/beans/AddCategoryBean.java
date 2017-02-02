@@ -68,7 +68,7 @@ public class AddCategoryBean {
 	        CategoryService csrv= new CategoryServicesImpl();
 	     
 	        csrv.addCategory(category);
-	        return "manageStock?faces-redirect=true";
+	        return "listCategory?faces-redirect=true";
 	    }
 
 }
