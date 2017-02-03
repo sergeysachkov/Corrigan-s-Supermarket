@@ -8,18 +8,18 @@
 <h:body>
    <h:outputStylesheet library="css" name="login.css"  />
  	<h:form>
-		<h3>Welcome To StockControl Login</h3>
-		<h:outputText value="username" />
-		<h:inputText id="stockControlLogin" value="#{stockControl.username}"></h:inputText>
-		<h:message for="stockControlLogin"></h:message>
+		<h3>Welcome To Manager Login</h3>
+		<h:outputText value="Username" />
+		<h:inputText id="ManagerLogin" value="#{manager.loginUsername}"></h:inputText>
+		<h:message for="ManagerLogin"></h:message>
 		<br></br><br></br>
 		
 		<h:outputText value="Password" />
-		<h:inputSecret id="password" value="#{stockControl.password}"></h:inputSecret>
-		<h:message for="password"></h:message>
+		<h:inputSecret id="Managerpassword" value="#{manager.loginPassword}"></h:inputSecret>
+		<h:message for="Managerpassword"></h:message>
 		<br></br><br></br>
 		
-		<h:commandButton action="#{stockControl.checkStockControl()}"
+		<h:commandButton action="#{manager.checkManager()}"
 			value="Login"></h:commandButton>
 	</h:form>
 </h:body>

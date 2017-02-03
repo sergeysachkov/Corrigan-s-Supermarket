@@ -52,4 +52,14 @@ public class ManagerServiceImpl implements ManagerService{
             throw new CorriganException(e.getMessage());
         }
     }
+    
+    public Manager getManagerByUsername(String managerUsername){
+        try {
+            return managerDAO.getManagerByUsername(managerUsername);
+        } catch (SQLException e) {
+            throw new CorriganException(e.getMessage());
+        }
+    }
+    
+    
 }

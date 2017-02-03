@@ -13,5 +13,6 @@ public interface ManagerDAO {
 	    List<Manager> getManagers() throws SQLException;
 	    static boolean checkManager(String login, String password){
 			return true;};
+		Manager getManagerByUsername(String Username) throws SQLException;
 	
 }
