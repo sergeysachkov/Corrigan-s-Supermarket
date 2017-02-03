@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class ManagerDaoImplTest {
-
+/*
 	@Test
 	public void testLoginManager1() {
 		ManagerDaoImpl manager = new ManagerDaoImpl();
@@ -28,4 +28,5 @@ public class ManagerDaoImplTest {
 			e.printStackTrace();
 		}
 	}
+	*/
 }
