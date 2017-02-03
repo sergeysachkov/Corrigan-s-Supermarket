@@ -19,6 +19,7 @@ import javax.faces.bean.RequestScoped;
  * provides CRUD operations for items in stock
  *
  */
+//adrian begin
 @ManagedBean(name = "stockManageBean")
 @RequestScoped
 public class StockManageBean {
@@ -130,5 +131,5 @@ public class StockManageBean {
         updateDb();
         return "manageStock?faces-redirect=true";
     }
-
+//adrian end
 }

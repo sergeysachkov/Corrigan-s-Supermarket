@@ -10,7 +10,7 @@ import com.ait.corrigan.dao.CustomerDao;
 import com.ait.corrigan.dao.CustomerDaoImpl;
 import com.ait.corrigan.exception.CorriganException;
 import com.ait.corrigan.models.shop.Category;
-
+//adrian
 public class CategoryServicesImpl implements CategoryService {
 
     private CategoryDao categoryDao;
