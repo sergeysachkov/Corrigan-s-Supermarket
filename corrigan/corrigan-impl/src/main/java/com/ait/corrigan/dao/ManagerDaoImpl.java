@@ -91,6 +91,44 @@ public class ManagerDaoImpl implements ManagerDAO {
         }
         return managers;
     }
+    
+  
+    public  boolean checkManager (String login, String password) throws SQLException{
+    	try(Connection connection = DaoUtil.getConnection();
+    	 PreparedStatement stmt=connection.prepareStatement("SELECT * FROM management WHERE username = ? AND password = ?")){
+    		 stmt.setString(1, login);
+             stmt.setString(2, password);
+             System.out.println(stmt);
+             ResultSet result = stmt.executeQuery();
+             if(result.next()){
+            	 return true;
+             }
+    	 }
+    	catch (SQLException ex) {
+			System.out.println("Login error -->" + ex.getMessage());
+			return false;
+		      }
+	 return false;
+	 }
+    
+    public Manager getManagerByUsername(String login) throws SQLException {
+        Manager manager = new Manager();
+        try(Connection connection = DaoUtil.getConnection();
+            PreparedStatement stmt=connection.prepareStatement("select * from management where username =?"))
+            		{
+            stmt.setString(1, login);
+            ResultSet resultSet = stmt.executeQuery();
+            while (resultSet.next()){
+            	manager.setManagerID(resultSet.getLong("idstaff"));
+            	manager.setManagerLogin(resultSet.getString("username"));
+            	manager.setManagerPassword(resultSet.getString("password"));
+            	manager.setManagerName(resultSet.getString("firstName"));
+            	manager.setManagerSurname(resultSet.getString("lastName"));
+            }
+        }
+        return manager;
+}
+    
 	
 
 }

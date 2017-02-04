@@ -32,5 +32,16 @@ public class SessionUtils {
 		}
 		return 0;
 	}
+	
+	public static long getManagerId() {
+		HttpSession session = getSession();
+		if (session != null) {
+			Object idManager = session.getAttribute("idmanager");
+			if (idManager != null) {
+				return Long.parseLong(idManager.toString());
+			}
+		}
+		return 0;
+	}
 
 }

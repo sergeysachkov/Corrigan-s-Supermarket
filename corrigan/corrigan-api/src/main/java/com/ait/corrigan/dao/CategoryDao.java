@@ -1,3 +1,4 @@
+
 package com.ait.corrigan.dao;
 
 import com.ait.corrigan.models.shop.Category;
@@ -17,3 +18,4 @@ public interface CategoryDao {
 	
 	
 }
+
