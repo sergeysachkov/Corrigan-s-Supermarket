@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Stock Management</title>
+    </h:head>
+    <h:body>
+        <h1>List of categories in stock</h1>
+        <h:form>
+            <h:dataTable value="#{categoryList.categoryList}" var="c" >
+                <h:column>
+                    <!-- column header -->
+                    <f:facet name="header">Cate ID</f:facet>
+                    <!-- row record -->
+                    #{c.cateID}
+                </h:column>
+             <h:column>
+                    <!-- column header -->
+                    <f:facet name="header">Cate name</f:facet>
+                    <!-- row record -->
+                    #{c.cate_name}
+              </h:column>
+              
+               <h:column>
+                    <f:facet name="header">Action</f:facet>
+                    <h:commandButton value="edit" action="editCategory" >
+                        <f:param name="cateId" value="#{c.cateID}" />
+                    </h:commandButton>
+                </h:column>
+                
+                  <h:column>
+                    <f:facet name="header">Delete</f:facet>
+                    <h:commandButton value="delete" action="#{categoryList.deleteCategory(c.cateID)}" >
+                    </h:commandButton>
+                  </h:column>
+                </h:dataTable>
+                
+                
+            <h:link value="add" outcome="AddCategory"/>
+            
+        </h:form>
+        
+        <h:link value="home" outcome="home"/>
+    </h:body>
+</html>
+                
+                
+                
+                

@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Update Category</title>
+    </h:head>
+    <h:body>
+        <h:outputStylesheet library="css" name="stockmgmt.css" />
+        <h1>Edit Category</h1>
+        <h:form>
+            <ul>
+                <li>
+                    <h:outputLabel id="categoryIdLabel" for="cateId"
+                                   value="Cate ID"/>
+                    <h:inputText id="cateId" disabled="true" 
+                                 value="#{categoryList.cateId}"
+                                 required="true"
+                                 requiredMessage="Please enter an ID."
+                                 converterMessage="Plese enter numbers only."/>
+                    <h:message class="vmsg" for="cateId" />
+                </li>
+                <li>
+                    <h:outputLabel id="categoryNameLable" for="categoryName"
+                                   value="Name"/>
+                    <h:inputText id="categoryName" disabled="false" value="#{categoryList.name}" 
+                                 required="true"
+                                 requiredMessage="Please enter a name."
+                                 validatorMessage="Item name should be no more than 20 characters.">
+                        <f:validateLength maximum="50" />
+                    </h:inputText>
+                    <h:message class="vmsg" for="categoryName" />
+                </li>
+                
+                <li class="action-links">
+                    <h:link value="&lt; Back" outcome="listCategory">
+                    </h:link>
+                    <h:commandLink value="Save &gt;" action="#{categoryList.doUpdate()}">
+                        <f:param name="cateId" value="#{categoryList.cateId}" />
+                    </h:commandLink>
+                </li>
+            </ul>
+        </h:form>
+    </h:body>
+</html>
+
