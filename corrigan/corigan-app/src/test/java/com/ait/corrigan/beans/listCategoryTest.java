@@ -25,7 +25,7 @@ public class listCategoryTest {
 	 private ListCategoryBean bean1;
 	 private  Category category;
 	
-	 @Before
+	/* @Before
 	 public void setup(){
 		 
 		 csrv = mock(CategoryService.class);
@@ -55,7 +55,7 @@ public class listCategoryTest {
 	 
 	 
 		//========test connection=====
-			@Test
+	/*		@Test
 			public  void testGetConnection(){
 				Connection con=null;
 				try {
