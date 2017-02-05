@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Add an category</title>
+    </h:head>
+    <h:body>
+        <h:outputStylesheet library="css" name="stockmgmt.css" />
+        <h1>Add an category</h1>
+        <h:form>
+            <ul>
+                <li>
+                    <h:outputLabel id="categoryIdLabel" value="cateID"/>
+                    <h:inputText id="cateID" value="#{addCategoryBean.cateId}" 
+                                 required="true"
+                                 requiredMessage="Please enter an ID."
+                                 converterMessage="Plese enter numbers only."/>
+                    <h:message class="vmsg" for="cateID" />
+                </li>
+                <li>
+                    <h:outputLabel id="categoryLabel" value="CateName"/>
+                    <h:inputText id="categoryName" value="#{addCategoryBean.name}"
+                                 required="true"
+                                 requiredMessage="Please enter a name."
+                                 validatorMessage="Item name should be no more than 50 characters.">
+                        <f:validateLength maximum="50" />
+                    </h:inputText>
+                    <h:message class="vmsg" for="cateName" />
+                </li>
+                
+                <li class="action-links">
+                    <h:link value="&lt; back" outcome="manageStock">
+                    </h:link>
+                    <h:commandLink value="save &gt;" action="#{addCategoryBean.submit()}">
+                        <f:param name="categoryId" value="#{addCategoryBean.cateId}" />
+                    </h:commandLink>
+                </li>
+            </ul> 
+                                     
+        </h:form>
+             
+    </h:body>
+</html>

@@ -10,5 +10,6 @@ public interface ManagerService {
     long updateManager(Manager manager);
     void deleteManager();
     Manager getManager(long managerId);
+    Manager getManagerByUsername(String managerUsername);
     List<Manager> getManagers();
 }
