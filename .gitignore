@@ -3,3 +3,5 @@
 **/.settings/*
 **/.metadata/
 **/nb-configuration.xml
+/corrigan/corrigan-impl/nbproject/
+/corrigan/corigan-app/nbproject/

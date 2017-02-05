@@ -15,7 +15,6 @@ import com.ait.corrigan.services.ItemServiceImpl;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 
 /**
@@ -26,12 +25,27 @@ import javax.faces.bean.RequestScoped;
 @RequestScoped
 public class AddItemBean {
 
+    private ItemService isrv;
+    private CategoryService csrv;
+
     private Item item;
+
+    public AddItemBean() {
+        this.isrv = new ItemServiceImpl();
+        this.csrv = new CategoryServicesImpl();
+    }
+
+    public AddItemBean(ItemService isrv, CategoryService csrv) {
+        this.isrv = isrv;
+        this.csrv = csrv;
+    }
+
     @PostConstruct
-    public void initItem(){
-        item=new Item();
+    public void initItem() {
+        item = new Item();
         item.setItemID(DaoUtil.getUniqueId());
     }
+
     public Category getCategory() {
         return new Category(this.item.getCateID(), this.item.getCate_name());
     }
@@ -42,7 +56,6 @@ public class AddItemBean {
     }
 
     public List<Category> getCategoryList() {
-        CategoryService csrv = new CategoryServicesImpl();
         return csrv.getAllCategories();
     }
 
@@ -61,34 +74,41 @@ public class AddItemBean {
     public void setName(String name) {
         this.item.setName(name);
     }
-    
-    public int getQuantity(){
+
+    public int getQuantity() {
         return this.item.getStock_q();
     }
-    public void setQuantity(int q){
+
+    public void setQuantity(int q) {
         this.item.setStock_q(q);
     }
-    public String getUnit(){
+
+    public String getUnit() {
         return this.item.getUnit_of_measure();
     }
-    public void setUnit(String u){
+
+    public void setUnit(String u) {
         this.item.setUnit_of_measure(u);
-    } 
-    public String getDescription(){
+    }
+
+    public String getDescription() {
         return this.item.getDescription();
     }
-    public void setDescription(String d){
+
+    public void setDescription(String d) {
         this.item.setDescription(d);
     }
-    public double getPrice(){
+
+    public double getPrice() {
         return this.item.getPrice();
     }
-    public void setPrice(double p){
+
+    public void setPrice(double p) {
         this.item.setPrice(p);
     }
+
     public String submit() {
-        System.out.println("Submit INVOKED! "+item);
-        ItemService isrv=new ItemServiceImpl();
+        System.out.println("Submit INVOKED! " + item);
         isrv.addItem(item);
         return "manageStock?faces-redirect=true";
     }
