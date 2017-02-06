@@ -16,7 +16,7 @@ public class CategoryConverterTest {
     @Test
     public void converterTest(){
         CategoryConverter cc=new CategoryConverter();
-        Category c=new Category(1, "1cate");
+        Category c=new Category(1, "1 cate 1 a");
         System.out.println(cc.getAsObject(null, null, cc.getAsString(null, null, c)));
     }
 }

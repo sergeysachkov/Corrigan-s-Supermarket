@@ -6,11 +6,7 @@
 package com.ait.corrigan.beans;
 
 import com.ait.corrigan.models.shop.Category;
-import com.ait.corrigan.services.CategoryService;
-import com.ait.corrigan.services.CategoryServicesImpl;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -30,8 +26,10 @@ public class CategoryConverter implements Converter {
             return null;
         }
         try {
-            String strId=submittedValue.replaceFirst(": \\w+", "");
+            String strId=submittedValue.replaceFirst(": [\\w ]+", "");
             String name=submittedValue.replaceFirst("\\d+: ", "");
+            System.out.println("id="+strId);
+            System.out.println("name="+name);
             return new Category(Integer.parseInt(strId),name);
         } catch (NumberFormatException e) {
             throw new ConverterException(new FacesMessage(submittedValue + " is not a valid Category ID"), e);
