@@ -119,11 +119,11 @@ public class ManagerDaoImpl implements ManagerDAO {
             stmt.setString(1, login);
             ResultSet resultSet = stmt.executeQuery();
             while (resultSet.next()){
-            	manager.setManagerID(resultSet.getLong("idstaff"));
-            	manager.setManagerLogin(resultSet.getString("username"));
+            	manager.setManagerID(resultSet.getLong("idmanager"));
+            	manager.setManagerLogin(resultSet.getString("manager_login"));
             	manager.setManagerPassword(resultSet.getString("password"));
-            	manager.setManagerName(resultSet.getString("firstName"));
-            	manager.setManagerSurname(resultSet.getString("lastName"));
+            	manager.setManagerName(resultSet.getString("manager_name"));
+            	manager.setManagerSurname(resultSet.getString("manager_surname"));
             }
         }
         return manager;

@@ -103,3 +103,8 @@ insert into stockControl values(1,'chris','admin','0874586756');
 insert into corrigan.customer (customer_name, customer_surname, customer_login, password, phone_number, email, date_of_birth)
 values("Some", "Client", "admin", "admin", "123654", "ss@net.ie", "1988-11-12");
 
+insert into items values ( 101, 'apples', 5, 'KG', '1 bag of apples 1 KG each',2.50, 11); 
+insert into items values ( 102, 'oranges', 10, 'KG', '1 bag of oganges 1 KG each',3.00, 11); 
+insert into items values ( 103, 'lemons', 10, 'KG', '1 bag of lemons 1 KG each', 1.20,11); 
+
+insert into items values ( 106, 'lemons', 10, 'KG', '1 bag of lemons 1 KG each',2.70, 11); 
