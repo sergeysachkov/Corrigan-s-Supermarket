@@ -63,7 +63,7 @@ public class CategoryDAOImplTestIT {
 			assertEquals("fruit", allCat.get(100).getCate_name());
 			fail("Exception expected .....");
 		} catch (IndexOutOfBoundsException e) {
-			e.printStackTrace();
+			//test pass
 		} catch (Exception e) {
 			fail("IndexOutOfBounds should be thrown");
 			e.printStackTrace();

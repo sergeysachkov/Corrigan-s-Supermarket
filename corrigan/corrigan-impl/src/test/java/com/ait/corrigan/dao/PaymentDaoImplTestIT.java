@@ -6,13 +6,13 @@ import com.ait.corrigan.services.CustomerService;
 import com.ait.corrigan.services.CustomerServiceImpl;
 import com.ait.corrigan.services.PaymentService;
 import com.ait.corrigan.services.PaymentServiceImpl;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Date;
 
 import static junit.framework.Assert.assertTrue;
-import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.fail;
 
 /**
@@ -49,5 +49,11 @@ public class PaymentDaoImplTestIT {
         }
     }
 
+    @After
+    public void tearDown(){
+        dao = new PaymentDaoImpl();
+        helper.executeQueryUpdate("table.payment.drop");
+        helper.executeQueryUpdate("table.customer.drop");
+    }
 
 }
