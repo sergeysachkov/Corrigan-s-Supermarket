@@ -88,7 +88,7 @@ public class CustomerBean {
     
     public String checkCustomer(){
     	System.out.println("username="+loginUsername);
-    	boolean login = CustomerDaoImpl.checkCustomer(loginUsername, loginPassword);
+    	boolean login = new CustomerDaoImpl().checkCustomer(loginUsername, loginPassword);
 		if (login) {
 			HttpSession session = SessionUtils.getSession();
 			session.setAttribute("customerLogin", loginUsername);

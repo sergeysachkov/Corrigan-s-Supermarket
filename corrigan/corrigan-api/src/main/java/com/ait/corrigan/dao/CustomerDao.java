@@ -16,7 +16,5 @@ public interface CustomerDao {
     Customer getCustomerByID(long id) throws SQLException;
     public long getCustomerIdByLogin(String login) throws SQLException;
     List<Customer> getCustomers() throws SQLException;
-   // boolean checkCustomer(String customerLogin, String password);
-    static boolean checkCustomer(String customerLogin, String password){
-		return true;};
+    boolean checkCustomer(String customerLogin, String password);
 }
