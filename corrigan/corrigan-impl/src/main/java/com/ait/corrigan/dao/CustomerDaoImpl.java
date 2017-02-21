@@ -156,7 +156,7 @@ public long addCustomer(Customer customer) {
         return customers;
     }
 
-    public  static boolean checkCustomer (String customerLogin, String password){
+    public boolean checkCustomer (String customerLogin, String password){
     	try(Connection connection = DaoUtil.getConnection();
     			
     	 PreparedStatement stmt=connection.prepareStatement("SELECT * FROM CUSTOMER WHERE CUSTOMER_LOGIN = ? AND PASSWORD = ?")){

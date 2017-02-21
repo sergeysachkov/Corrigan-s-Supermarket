@@ -43,7 +43,7 @@ public class CustomerServiceImplTest {
 	 
 	 try {
 
-	       CustomerDao.checkCustomer("A123","loginin");
+		 first.checkCustomer("A123","loginin");
 
           } catch (Exception e) {
 
@@ -56,7 +56,7 @@ public class CustomerServiceImplTest {
 		 
 		 try {
 
-		       CustomerDao.checkCustomer(" ","loginin");
+			 first.checkCustomer(" ","loginin");
 		       fail();
 
 	          } catch (Exception e) {	  
