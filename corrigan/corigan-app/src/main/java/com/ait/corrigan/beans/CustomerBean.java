@@ -96,7 +96,7 @@ public class CustomerBean {
             if(basketId != 0){
                 return "/pay.xhtml?faces-redirect=true&basketId=" + basketId;
             }else {
-                return "/home.xhtml?faces-redirect=true";
+                return "/catalog.xhtml?faces-redirect=true";
             }
 		} else {
 			FacesContext.getCurrentInstance().addMessage(
