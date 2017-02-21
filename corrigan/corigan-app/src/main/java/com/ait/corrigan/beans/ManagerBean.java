@@ -151,7 +151,7 @@ public class ManagerBean {
 					new FacesMessage(FacesMessage.SEVERITY_WARN,
 							"Incorrect Login and Passowrd",
 							"Please enter correct Login and Password"));
-			return "/login.xhtml?faces-redirect=true";
+			return "/home.xhtml?faces-redirect=true";
 		}
 }
 
