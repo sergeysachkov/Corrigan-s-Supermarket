@@ -1,0 +1,13 @@
+.buttons input {
+    margin: 5px;
+    padding: 5px 5px 5px 20px; /* 20px makes room for your background image */
+    border: 1px solid #aaa;
+}
+
+.buttons .login {
+    background: #eee url(images/login.jpg) no-repeat 0 50%;
+} 
+
+.buttons .cross {
+    background: #eee url(images/) no-repeat 0 50%;
+} 

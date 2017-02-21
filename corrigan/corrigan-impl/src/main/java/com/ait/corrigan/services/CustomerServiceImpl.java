@@ -70,7 +70,7 @@ public class CustomerServiceImpl implements CustomerService{
         }
     }
     public void login(String customerLogin, String password){
-        if(CustomerDao.checkCustomer(customerLogin, password)){
+        if(customerDao.checkCustomer(customerLogin, password)){
             throw new SecurityException("User name or Password incorrect ");
         }
     }
