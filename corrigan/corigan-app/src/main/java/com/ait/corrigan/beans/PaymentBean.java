@@ -152,7 +152,7 @@ public class PaymentBean {
         if(basketId != 0){
             return "/payment.xhtml?id=" + id + "&faces-redirect=true&basketId=";
         }else {
-            return "/home.xhtml?id=" + id + "&faces-redirect=true";
+            return "/catalog.xhtml?id=" + id + "&faces-redirect=true";
         }
     }
 
@@ -160,7 +160,7 @@ public class PaymentBean {
         this.disabled =false;
         this.paymentDetails = new PaymentDetails();
         this.id = 0;
-        return "/home.xhtml?faces-redirect=true";
+        return "/catalog.xhtml?faces-redirect=true";
     }
     
 
