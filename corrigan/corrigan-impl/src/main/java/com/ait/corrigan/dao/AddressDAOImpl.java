@@ -19,9 +19,9 @@ public class AddressDAOImpl implements AddressDAO{
     public long addAddress(Address address){
 
     try(Connection connection = DaoUtil.getConnection();
-        PreparedStatement stmt=connection.prepareStatement("INSERT INTO address (adress_id, adress_line_1, adress_line_2, town, county, eircode) " +
+        PreparedStatement stmt=connection.prepareStatement("INSERT INTO address (customer, adress_line_1, adress_line_2, town, county, eircode) " +
                 "VALUES ( ?, ?,?,?,?, ?)", Statement.RETURN_GENERATED_KEYS)) {
-    	stmt.setLong(1, address.getAdressId());
+    	stmt.setLong(1, address.getCustomerId());
     	stmt.setString(2, address.getAdressLine1());
         stmt.setString(3, address.getAdressLine2());
         stmt.setString(4, address.getTown());

@@ -21,16 +21,15 @@ public class CustomerDaoImpl implements CustomerDao{
 public long addCustomer(Customer customer) { 
     	
     	        try(Connection connection = DaoUtil.getConnection();
-    	            PreparedStatement stmt=connection.prepareStatement("INSERT INTO customer (idcustomer, customer_name , customer_surname, customer_login, password, phone_number, email, date_of_birth) " +
-    	                    "VALUES (?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS)) {
-    	            stmt.setLong(1, customer.getCustomerId());
-    	            stmt.setString(2, customer.getCustomerName());
-    	            stmt.setString(3, customer.getCustomerSurname());
-    	            stmt.setString (4, customer.getCustomerLogin());
-    	            stmt.setString(5, customer.getPassword());
-    	            stmt.setString(6, customer.getPhoneNumber());
-    	            stmt.setString(7, customer.getEmail());
-    	            stmt.setDate(8, new Date(customer.getCustomerDateOfBirth().getTime()));
+    	            PreparedStatement stmt=connection.prepareStatement("INSERT INTO customer (customer_name , customer_surname, customer_login, password, phone_number, email, date_of_birth) " +
+    	                    "VALUES (?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS)) {
+    	            stmt.setString(1, customer.getCustomerName());
+    	            stmt.setString(2, customer.getCustomerSurname());
+    	            stmt.setString (3, customer.getCustomerLogin());
+    	            stmt.setString(4, customer.getPassword());
+    	            stmt.setString(5, customer.getPhoneNumber());
+    	            stmt.setString(6, customer.getEmail());
+    	            stmt.setDate(7, new Date(customer.getCustomerDateOfBirth().getTime()));
     	            stmt.executeUpdate();
     	        } catch (SQLException e) {
 					// TODO Auto-generated catch block
@@ -157,7 +156,7 @@ public long addCustomer(Customer customer) {
         return customers;
     }
 
-    public  static boolean checkCustomer (String customerLogin, String password){
+    public boolean checkCustomer (String customerLogin, String password){
     	try(Connection connection = DaoUtil.getConnection();
     			
     	 PreparedStatement stmt=connection.prepareStatement("SELECT * FROM CUSTOMER WHERE CUSTOMER_LOGIN = ? AND PASSWORD = ?")){

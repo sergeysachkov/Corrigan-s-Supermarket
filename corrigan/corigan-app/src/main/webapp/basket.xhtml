@@ -49,7 +49,11 @@
                     <f:facet name="header">Action</f:facet>
                     <h:commandButton value="detete" action="#{basketBean.deleteFromBasket(i)}"></h:commandButton>
                 </h:column>
-                <f:facet name="footer">Total: €#{basketBean.total} </f:facet>
+                <f:facet name="footer">Total: €
+                    <h:outputText value="#{basketBean.total}">
+                        <f:convertNumber minFractionDigits="2"/>
+                    </h:outputText>
+                </f:facet>
             </h:dataTable>
             <h:commandButton value="update basket" action="#{basketBean.update()}"></h:commandButton>
         </h:form>
@@ -63,10 +67,6 @@
                     <f:param name="basketId" value="#{basketBean.basketId}"/>
                 </h:link>
             </li>
-            <li>
-                <h:link value="Home" outcome="home"></h:link>
-            </li>
-
         </ul>
     </h:body>
 </html>

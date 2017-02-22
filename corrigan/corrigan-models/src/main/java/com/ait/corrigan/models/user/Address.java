@@ -8,6 +8,15 @@ public class Address {
     private String town;
     private String county;
     private String eircode;
+    private long customerId;
+
+    public long getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(long customerId) {
+        this.customerId = customerId;
+    }
 
     public long getAdressId() {
         return adressId;
@@ -66,12 +75,12 @@ public class Address {
         Address address = (Address) o;
 
         if (adressId != address.adressId) return false;
+        if (customerId != address.customerId) return false;
         if (adressLine1 != null ? !adressLine1.equals(address.adressLine1) : address.adressLine1 != null) return false;
         if (adressLine2 != null ? !adressLine2.equals(address.adressLine2) : address.adressLine2 != null) return false;
         if (town != null ? !town.equals(address.town) : address.town != null) return false;
         if (county != null ? !county.equals(address.county) : address.county != null) return false;
         return eircode != null ? eircode.equals(address.eircode) : address.eircode == null;
-
     }
 
     @Override
@@ -82,6 +91,7 @@ public class Address {
         result = 31 * result + (town != null ? town.hashCode() : 0);
         result = 31 * result + (county != null ? county.hashCode() : 0);
         result = 31 * result + (eircode != null ? eircode.hashCode() : 0);
+        result = 31 * result + (int) (customerId ^ (customerId >>> 32));
         return result;
     }
 
@@ -94,6 +104,7 @@ public class Address {
                 ", town='" + town + '\'' +
                 ", county='" + county + '\'' +
                 ", eircode='" + eircode + '\'' +
+                ", customerId=" + customerId +
                 '}';
     }
 }

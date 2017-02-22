@@ -198,12 +198,16 @@ insert into corrigan.customer (customer_name, customer_surname, customer_login, 
 values("Some", "Client", "admin", "admin", "123654", "ss@net.ie", "1988-11-12");
 
 insert into corrigan.categories (cateid,cate_name) values
-(1,'fruit'),(2,'drink');
+(11,'fruit'),(2,'drink');
 
 insert into corrigan.items (itemid,`name`,stock_q,unit_of_measure,description,price,category) values
-(1,'Apples',40,'bag(1kg)','fresh apples',4,1),
-(2,'Easy Peelers',60,'bag(300g)','sweet easy peelers',1.99,1),
-(3,'Soda',100,'can(350ml)','a',1.5,2);
+(1,'Apples',40,'bag(1kg)','fresh apples',4,11),
+(2,'Easy Peelers',60,'bag(300g)','sweet easy peelers',1.99,11),
+(3,'Soda',100,'can(350ml)','a',1.5,2),
+( 101, 'apples', 5, 'KG', '1 bag of apples 1 KG each',2.50, 11),
+( 102, 'oranges', 10, 'KG', '1 bag of oganges 1 KG each',3.00, 11),
+( 103, 'lemons', 10, 'KG', '1 bag of lemons 1 KG each', 1.20,11),
+( 106, 'lemons', 10, 'KG', '1 bag of lemons 1 KG each',2.70, 11);
  
 -- requires customer whose id=1 exists
 insert into corrigan.orders (orderid,customerid) values
@@ -211,5 +215,3 @@ insert into corrigan.orders (orderid,customerid) values
 
 insert into corrigan.orderitems (orderid,itemid,quantity) values
 (1,1,2),(1,2,3),(1,3,6);
-
-

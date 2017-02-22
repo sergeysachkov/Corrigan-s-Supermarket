@@ -88,7 +88,7 @@ public class CustomerBean {
     
     public String checkCustomer(){
     	System.out.println("username="+loginUsername);
-    	boolean login = CustomerDaoImpl.checkCustomer(loginUsername, loginPassword);
+    	boolean login = new CustomerDaoImpl().checkCustomer(loginUsername, loginPassword);
 		if (login) {
 			HttpSession session = SessionUtils.getSession();
 			session.setAttribute("customerLogin", loginUsername);
@@ -96,7 +96,7 @@ public class CustomerBean {
             if(basketId != 0){
                 return "/pay.xhtml?faces-redirect=true&basketId=" + basketId;
             }else {
-                return "/home.xhtml?faces-redirect=true";
+                return "/catalog.xhtml?faces-redirect=true";
             }
 		} else {
 			FacesContext.getCurrentInstance().addMessage(
@@ -313,7 +313,7 @@ public class CustomerBean {
             AddressService addressService = new AddressServiceImpl();
             long id  = customerService.addCustomer(customer1);
             long id1 = addressService.addAddress(address);
-            return "/AddCustomer.xhtml?id=" + id + "faces-redirect=true";
+            return "/catalog.xhtml?id=" + id + "faces-redirect=true";
         }
 
         public String update(){
@@ -322,18 +322,24 @@ public class CustomerBean {
             long cus1 = getIdCustomer();
             customerService.updateCustomer(cus1, customer1);
             addressService.updateAddress(cus1, address);
-            return "/home.xhtml?id=" + id + "faces-redirect=true";
+            return "/catalog.xhtml?id=" + id + "faces-redirect=true";
         }
 
 
         public String cancel(){
             this.disabled =false;
             this.customer1 = new Customer();
-            return "/home.xhtml?faces-redirect=true";
+            return "/catalog.xhtml?faces-redirect=true";
         }
 
 
-	        public void getCustomer11(){
+	        public String getCustomer11(){
+	        	if(loginUsername == null){
+	        		return "/catalog.xhtml?faces-redirect=true";
+	        	}
+	        	else{
+	        	this.customer1 = new Customer();
+	        	this.address = new Address();
 	        	CustomerService custServ = new CustomerServiceImpl();
 	        	Customer cus = new Customer();
 	        	long cus1 = getIdCustomer();
@@ -342,7 +348,8 @@ public class CustomerBean {
 	        	AddressService adServ = new AddressServiceImpl();
 	        	Address Ad = new Address();
 	        	Ad = adServ.getAddress(cus1);
-	        	address = Ad;
+	        	address = Ad;}
+	        	return "yes";
 	        }
 
 
