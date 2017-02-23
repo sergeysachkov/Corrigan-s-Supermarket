@@ -86,16 +86,26 @@
 }
 
 body {
+	margin-top:0px;
+	margin-left:10px;
+	margin-right:10px;
+	margin-bottom:10px;
 	background-color: #cde6b5;
+    padding-right: 30px;
+    padding-bottom:100px;
+    padding-left: 30px;
+    border-radius:25px;
+    box-shadow:2px 2px 5px purple;
 }
 
-h1 {
+h1,h4 {
 	text-align: center;
 	font-size: 300%;
 	color: goldenrod;
 	font-family: Times;
 	font-style: oblique;
 }
+
 
 p {
 	text-align: center;
@@ -146,3 +156,48 @@ label{color:#2d2d2d; font-size: 17px; font-family: Arial;  width: 150px; float:l
 input[type=text]{width: 350px; height: 25px;}
 input[type=password]{width: 350px; height: 25px;}
 select[name=dob]{width: 116px;}
+
+#registerLogo{
+	box-shadow: 10px 10px 5px goldenrod;
+	border-radius: 50%;
+	position: relative;
+	bottom:0px;
+	left:250px;
+}
+
+#cardLogo{
+	box-shadow: 10px 10px 5px goldenrod;
+	border-radius: 25px;
+	position: relative;
+	bottom:0px;
+	left:120px;
+}
+
+
+#loginLogo{
+	box-shadow: 10px 10px 5px goldenrod;
+	border-radius: 25px;
+	position: relative;
+	bottom:0px;
+	left:170px;
+}
+#accountDetailsButtoms{
+	text-align:center;
+}
+
+#table_buttons_1{
+	text-align:center;
+}
+#openingHoursDiv{
+	text-align:center;
+}
+#openingHours li{
+	color:blue;
+	font-size:150%;
+}
+#contactLogo{
+	text-align:center;
+}
+#cardDetailsTable{
+	text-align:center;
+}

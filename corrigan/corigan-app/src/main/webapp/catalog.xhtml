@@ -16,6 +16,9 @@
  
         <h1>Welcome to Corrigans!</h1>
         <p >Hello #{customer.customerLogin}</p>
+        
+        <div id="table_links">
+        <div id="table_buttons_1">
                 <h:link value = "login" outcome="login" styleClass="link">
                 <h:graphicImage value="resources\images\login-2.png" width="100" height="50" style="border: none"></h:graphicImage>
                 </h:link>   
@@ -26,7 +29,7 @@
                 <h:graphicImage value="resources\images\User.png" width="100" height="50" style="border: none"></h:graphicImage>
                     <f:param name="customerId" value="#{customer.customerId}"/>
                 </h:link>
-
+</div>
 
             <h:dataTable value="#{catalog.items}" var="c" 
                          styleClass = "catalog-table"
@@ -87,13 +90,15 @@
                     <h:commandButton value="Add to basket" action="#{basketBean.addToBasket(c)}"/>
                 </h:column>
             </h:dataTable>
-       
+       <div id="table_buttons_1">
         <h:panelGroup layout="block" id="container" styleClass="container">
                 <h:link value = "View Cart" outcome="basket" styleClass = "linkbottom">
                 <h:graphicImage value="resources\images\cart.png" width="100" height="50" style="border: none"></h:graphicImage></h:link>
                 <h:link value = "Contact Us" outcome="ContactUs" styleClass = "linkbottom">
                 <h:graphicImage value="resources\images\Contact-Us-PNG.png" width="100" height="50" style="border: none"></h:graphicImage></h:link>
        </h:panelGroup>
+       </div>
+       </div>
     </h:body>
 
 </html>
