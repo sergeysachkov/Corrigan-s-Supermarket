@@ -43,9 +43,7 @@ public class PayServiceImpl implements PayService{
             cardParams.put("name", paymentDetails.getCardHolder());
 
             final Map<String, Object> chargeParams = new HashMap<>();
-            //chargeParams.put("amount", order.getPrice());
-            //todo replace when basket is integrated together with checkout page
-            chargeParams.put("amount", "100");
+            chargeParams.put("amount", order.getPrice()*100);
             chargeParams.put("currency", "usd");
             chargeParams.put("card", cardParams);
             final Charge charge = Charge.create(chargeParams);
