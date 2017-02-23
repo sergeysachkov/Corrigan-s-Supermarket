@@ -110,7 +110,7 @@ public class ManagerBean {
 
 	public String cancel() {
 		this.manager = new Manager();
-		return "/home.xhtml?faces-redirect=true";
+		return "/ManagerHome.xhtml?faces-redirect=true";
 	}
 
 	// -----------Adrian------------
@@ -144,14 +144,14 @@ public class ManagerBean {
 			HttpSession session = SessionUtils.getSession();
 			session.setAttribute("ManagerLogin", loginUsername);
             session.setAttribute("idmanager", new ManagerServiceImpl().getManagerByUsername(loginUsername));
-                return "/home.xhtml?faces-redirect=true";
+                return "/ManagerHome.xhtml?faces-redirect=true";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(
 					null,
 					new FacesMessage(FacesMessage.SEVERITY_WARN,
 							"Incorrect Login and Passowrd",
 							"Please enter correct Login and Password"));
-			return "/home.xhtml?faces-redirect=true";
+			return "/ManagerHome.xhtml?faces-redirect=true";
 		}
 }
 

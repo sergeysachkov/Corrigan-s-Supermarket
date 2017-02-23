@@ -334,24 +334,25 @@ public class CustomerBean {
 
 
 	        public String getCustomer11(){
-	        	if(loginUsername == null){
-	        		return "/catalog.xhtml?faces-redirect=true";
+	        	if(loginUsername != ""){
+		        	this.customer1 = new Customer();
+		        	this.address = new Address();
+		        	CustomerService custServ = new CustomerServiceImpl();
+		        	Customer cus = new Customer();
+		        	long cus1 = getIdCustomer();
+		        	cus = custServ.getCustomerByID(cus1);
+		        	customer1 = cus;
+		        	AddressService adServ = new AddressServiceImpl();
+		        	Address Ad = new Address();
+		        	Ad = adServ.getAddress(cus1);
+		        	address = Ad;
+		        	return "Y";
 	        	}
-	        	else{
-	        	this.customer1 = new Customer();
-	        	this.address = new Address();
-	        	CustomerService custServ = new CustomerServiceImpl();
-	        	Customer cus = new Customer();
-	        	long cus1 = getIdCustomer();
-	        	cus = custServ.getCustomerByID(cus1);
-	        	customer1 = cus;
-	        	AddressService adServ = new AddressServiceImpl();
-	        	Address Ad = new Address();
-	        	Ad = adServ.getAddress(cus1);
-	        	address = Ad;}
-	        	return "yes";
+	        	else{ return "/AddCustomer.xhtml?faces-redirect=true";}
+
+	        
+
+
+
 	        }
-
-
-
 }
