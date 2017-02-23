@@ -231,3 +231,19 @@ select[name=dob]{width: 116px;}
 #basketLogo{
 	text-align:center;
 }
+#payLogo{
+	text-align:center;
+}
+
+#payLogo img{
+	box-shadow: 10px 10px 5px goldenrod;
+	border-radius: 25px;
+}
+#payLogo2 {
+	float: right;
+	
+}
+#payLogo2 img {
+	box-shadow: 10px 10px 5px goldenrod;
+	border-radius: 50%;
+}
