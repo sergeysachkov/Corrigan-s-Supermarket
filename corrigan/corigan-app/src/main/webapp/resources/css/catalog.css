@@ -96,6 +96,14 @@ h1 {
 	font-family: Times;
 	font-style: oblique;
 }
+
+p {
+	text-align: center;
+	font-size: 300%;
+	color: goldenrod;
+	font-family: Times;
+	font-style: oblique;
+}
 #table_links{
 		 display: table;
     margin: 0 auto; 
