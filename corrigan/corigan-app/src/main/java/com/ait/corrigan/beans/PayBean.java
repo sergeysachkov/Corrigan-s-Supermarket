@@ -79,8 +79,9 @@ public class PayBean {
 
     public String submit(){
         PayService service = new PayServiceImpl();
-        long order = service.createOrderAndPay(cardNo, new Order(0,getCustomerId(), basketId, basketBean.getTotal(),
-                "PENDING", new Timestamp(System.currentTimeMillis())));
+        long order = service.createOrderAndPay(cardNo, new Order(
+                0, getCustomerId(), basketBean.getTotal(), "Pending", new Timestamp(System.currentTimeMillis()
+                )));
         return "/home.xhtml?faces-redirect=true&orderId=" + order;
     }
 

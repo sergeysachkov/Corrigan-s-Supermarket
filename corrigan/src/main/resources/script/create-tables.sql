@@ -215,3 +215,6 @@ insert into corrigan.orders (orderid,customerid) values
 
 insert into corrigan.orderitems (orderid,itemid,quantity) values
 (1,1,2),(1,2,3),(1,3,6);
+
+insert into corrigan.orderitems (orderid,itemid,quantity) values
+(1,101,5);

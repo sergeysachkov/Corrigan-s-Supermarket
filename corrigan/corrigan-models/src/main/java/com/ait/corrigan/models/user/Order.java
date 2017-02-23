@@ -1,26 +1,34 @@
 package com.ait.corrigan.models.user;
 
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Objects;
 
 public class Order {
 	private long orderId;
-	private long userId;
-	private long basketId;
+	private long customerId;
         private double price;
         private String status;
         private Timestamp time;
-
+        private List<OrderItem> OrderItems;
     public Order() {
     }
 
-    public Order(long orderId, long userId, long basketId, double price, String status, Timestamp time) {
+    public Order(long orderId, long customerId, double price, String status, Timestamp time) {
         this.orderId = orderId;
-        this.userId = userId;
-        this.basketId = basketId;
+        this.customerId = customerId;
         this.price = price;
         this.status = status;
         this.time = time;
+    }
+
+    public Order(long orderId, long customerId, double price, String status, Timestamp time, List<OrderItem> OrderItems) {
+        this.orderId = orderId;
+        this.customerId = customerId;
+        this.price = price;
+        this.status = status;
+        this.time = time;
+        this.OrderItems = OrderItems;
     }
 
     public long getOrderId() {
@@ -31,20 +39,12 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public long getUserId() {
-        return userId;
+    public long getCustomerId() {
+        return customerId;
     }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
-
-    public long getBasketId() {
-        return basketId;
-    }
-
-    public void setBasketId(long basketId) {
-        this.basketId = basketId;
+    public void setCustomerId(long customerId) {
+        this.customerId = customerId;
     }
 
     public double getPrice() {
@@ -71,15 +71,23 @@ public class Order {
         this.time = time;
     }
 
+    public List<OrderItem> getOrderItems() {
+        return OrderItems;
+    }
+
+    public void setOrderItems(List<OrderItem> OrderItems) {
+        this.OrderItems = OrderItems;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 59 * hash + (int) (this.orderId ^ (this.orderId >>> 32));
-        hash = 59 * hash + (int) (this.userId ^ (this.userId >>> 32));
-        hash = 59 * hash + (int) (this.basketId ^ (this.basketId >>> 32));
-        hash = 59 * hash + (int) (Double.doubleToLongBits(this.price) ^ (Double.doubleToLongBits(this.price) >>> 32));
-        hash = 59 * hash + Objects.hashCode(this.status);
-        hash = 59 * hash + Objects.hashCode(this.time);
+        int hash = 3;
+        hash = 13 * hash + (int) (this.orderId ^ (this.orderId >>> 32));
+        hash = 13 * hash + (int) (this.customerId ^ (this.customerId >>> 32));
+        hash = 13 * hash + (int) (Double.doubleToLongBits(this.price) ^ (Double.doubleToLongBits(this.price) >>> 32));
+        hash = 13 * hash + Objects.hashCode(this.status);
+        hash = 13 * hash + Objects.hashCode(this.time);
+        hash = 13 * hash + Objects.hashCode(this.OrderItems);
         return hash;
     }
 
@@ -98,10 +106,7 @@ public class Order {
         if (this.orderId != other.orderId) {
             return false;
         }
-        if (this.userId != other.userId) {
-            return false;
-        }
-        if (this.basketId != other.basketId) {
+        if (this.customerId != other.customerId) {
             return false;
         }
         if (Double.doubleToLongBits(this.price) != Double.doubleToLongBits(other.price)) {
@@ -113,11 +118,16 @@ public class Order {
         if (!Objects.equals(this.time, other.time)) {
             return false;
         }
+        if (!Objects.equals(this.OrderItems, other.OrderItems)) {
+            return false;
+        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Order{" + "orderId=" + orderId + ", userId=" + userId + ", basketId=" + basketId + ", price=" + price + ", status=" + status + ", time=" + time + '}';
+        return "Order{" + "orderId=" + orderId + ", customerId=" + customerId + ", price=" + price + ", status=" + status + ", time=" + time + ", OrderItems=" + OrderItems + '}';
     }
+    
+    
 }

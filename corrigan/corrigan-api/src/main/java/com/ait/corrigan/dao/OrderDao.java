@@ -9,7 +9,7 @@ import java.sql.SQLException;
  */
 public interface OrderDao {
     long addOrder(Order order) throws SQLException;
-    long updateBasket(long basketIdOld,long itemIdOld, Order order) throws SQLException;
-    long deleteBasket(long orderId) throws SQLException;
     Order getOrder(long orderId) throws SQLException;
+    void updateOrder(Order order) throws SQLException;
+    void deleteOrder(long orderId) throws SQLException;
 }
