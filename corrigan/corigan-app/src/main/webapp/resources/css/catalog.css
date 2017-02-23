@@ -19,6 +19,29 @@
 	text-align: left;
 }
 
+
+.basket-header {
+	padding: 10px 20px;
+	text-align: left;
+	background-color: #4CAF50;
+	color: white;
+}
+
+.basket-table {
+	margin:10px;
+	background-color: white;
+
+}
+
+.basket-row:nth-child(even) {
+	background-color: #00ff80
+}
+
+.basket-column {
+	padding: 10px 20px;
+	text-align: left;
+}
+
 .link {
 	padding: 10px 15px;
 	background: #4479BA;
@@ -117,6 +140,7 @@ p {
 #table_links{
 		 display: table;
     margin: 0 auto; 
+    margin-bottom: 50px;
 }
 
 #mainLogo {
@@ -199,5 +223,11 @@ select[name=dob]{width: 116px;}
 	text-align:center;
 }
 #cardDetailsTable{
+	text-align:center;
+}
+#basket_buttons{
+	text-align:center;
+}
+#basketLogo{
 	text-align:center;
 }
