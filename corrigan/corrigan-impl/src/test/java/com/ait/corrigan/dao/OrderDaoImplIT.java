@@ -5,7 +5,6 @@
  */
 package com.ait.corrigan.dao;
 
-import com.ait.corrigan.services.OrderDaoImpl;
 import org.junit.Before;
 
 /**

@@ -1,4 +1,4 @@
-package com.ait.corrigan.services;
+package com.ait.corrigan.dao;
 
 import com.ait.corrigan.dao.DaoUtil;
 import com.ait.corrigan.dao.OrderDao;
