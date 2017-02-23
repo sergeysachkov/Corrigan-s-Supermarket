@@ -16,7 +16,6 @@
     
         <h1>Welcome to Corrigans!</h1>
         <p >Hello #{customer.customerLogin}</p>
-       <div id="table_links">
                 <h:link value = "login" outcome="login" styleClass="link">
                 <h:graphicImage value="resources\images\login-2.png" width="100" height="50" style="border: none"></h:graphicImage>
                 </h:link>   
@@ -27,6 +26,7 @@
                 <h:graphicImage value="resources\images\User.png" width="100" height="50" style="border: none"></h:graphicImage>
                     <f:param name="customerId" value="#{customer.customerId}"/>
                 </h:link>
+
 
 
         
@@ -96,7 +96,6 @@
                 <h:link value = "Contact Us" outcome="ContactUs" styleClass = "linkbottom">
                 <h:graphicImage value="resources\images\Contact-Us-PNG.png" width="100" height="50" style="border: none"></h:graphicImage></h:link>
        </h:panelGroup>
-</div>
     </h:body>
 
 </html>
