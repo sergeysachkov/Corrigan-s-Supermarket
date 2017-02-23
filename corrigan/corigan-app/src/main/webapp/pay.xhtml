@@ -6,20 +6,30 @@
       xmlns:h="http://java.sun.com/jsf/html">
 <h:head></h:head>
 <h:body>
-    <h:outputStylesheet library="css" name="corrigan.css"  />
+    <h:outputStylesheet library="css" name="corrigan.css"/>
     <h3>Payment</h3>
-<h:form>
-    <h:inputHidden id="basketId" value="#{pay.basketId}" required="true"/>
-
-    <h:outputLabel id="payCardLabel" for="paycard"
-                   value="Card" size="20" rendered="#{not empty pay.paymentDetails}"/>
-    <h:selectOneMenu id="paycard"  value="#{pay.cardNo}" required="true" rendered="#{not empty pay.paymentDetails}">
-        <f:selectItems value="#{pay.paymentDetails}"/>
-    </h:selectOneMenu>
-
-    <h:commandButton value="pay" action="#{pay.submit}" rendered="#{pay.customerId != 0 and not empty pay.paymentDetails}"/>
-    <h:commandButton value="add card" action="#{pay.addCard}" rendered="#{pay.customerId != 0}"/>
-    <h:commandButton value="login" action="#{pay.login}" rendered="#{pay.customerId == 0}"/>
-</h:form>
+    <h:form>
+        <h:inputHidden id="basketId" value="#{pay.basketId}" required="true"/>
+        <ul>
+            <li>
+                <h:outputLabel id="amountlable" for="amount" value="amount" size="20"/>
+                <h:inputText id="amount" value="#{pay.price}" disabled="true"/>
+            </li>
+            <li>
+                <h:outputLabel id="payCardLabel" for="paycard"
+                               value="Card" size="20" rendered="#{not empty pay.paymentDetails}"/>
+                <h:selectOneMenu id="paycard" value="#{pay.cardNo}" required="true"
+                                 rendered="#{not empty pay.paymentDetails}">
+                    <f:selectItems value="#{pay.paymentDetails}"/>
+                </h:selectOneMenu>
+            </li>
+            <li>
+                <h:commandButton value="pay" action="#{pay.submit}"
+                                 rendered="#{pay.customerId != 0 and not empty pay.paymentDetails}"/>
+                <h:commandButton value="add card" action="#{pay.addCard}" rendered="#{pay.customerId != 0}"/>
+                <h:commandButton value="login" action="#{pay.login}" rendered="#{pay.customerId == 0}"/>
+            </li>
+        </ul>
+    </h:form>
 </h:body>
 </html>

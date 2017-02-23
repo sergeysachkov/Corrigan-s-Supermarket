@@ -29,6 +29,7 @@ public class PayBean {
 
     private Set<PaymentDetails> paymentDetails;
     private String cardNo;
+    private double price = 0;
 
     private long payId;
 
@@ -39,6 +40,14 @@ public class PayBean {
         }
         PaymentService service = new PaymentServiceImpl();
         return service.getPaymentCards(customerId);
+    }
+
+    public double getPrice() {
+        return basketBean.getTotal();
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public String getCardNo() {

@@ -42,8 +42,9 @@ public class PayServiceImpl implements PayService{
             cardParams.put("cvc", paymentDetails.getCvv2());
             cardParams.put("name", paymentDetails.getCardHolder());
 
+            int price = (int)(100 * order.getPrice());
             final Map<String, Object> chargeParams = new HashMap<>();
-            chargeParams.put("amount", order.getPrice()*100);
+            chargeParams.put("amount", price);
             chargeParams.put("currency", "usd");
             chargeParams.put("card", cardParams);
             final Charge charge = Charge.create(chargeParams);
