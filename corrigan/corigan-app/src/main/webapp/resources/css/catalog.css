@@ -247,3 +247,9 @@ select[name=dob]{width: 116px;}
 	box-shadow: 10px 10px 5px goldenrod;
 	border-radius: 50%;
 }
+
+.customer-table{
+	margin:10px;
+	background-color: white;
+}
+
