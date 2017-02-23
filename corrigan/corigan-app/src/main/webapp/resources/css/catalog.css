@@ -106,3 +106,37 @@ h1 {
 	height: auto;
 	width: auto\9; /* ie8 */
 }
+	box-shadow: 10px 10px 5px grey;
+}
+
+}
+
+form {
+	text-align:center;
+}
+
+ 
+#loginButton{
+	background-color: #cde6b5;
+}
+
+ html{background-color: silver;
+margin:10px;}
+h3{text-align:center;
+text:blue;
+font-size:300%;
+color: goldenrod;
+font-family: Times;
+font-style: oblique;
+text-shadow:2px 2px 5px purple;}
+input{width: 200px; 
+height: 25px;
+border-radius:25px;
+}
+
+ul{list-style-type: none; margin: 0; padding: 0;}
+li{padding: 8px 0px 8px 25px;}
+label{color:#2d2d2d; font-size: 17px; font-family: Arial;  width: 150px; float:left;}
+input[type=text]{width: 350px; height: 25px;}
+input[type=password]{width: 350px; height: 25px;}
+select[name=dob]{width: 116px;}

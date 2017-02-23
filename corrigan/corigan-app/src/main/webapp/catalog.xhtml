@@ -11,9 +11,9 @@
 </h:head>
    
    
-    <h:body>
+   <h:body>
   <h:graphicImage id="mainLogo" value="resources/images/sup.png" />
-    
+ 
         <h1>Welcome to Corrigans!</h1>
         <p >Hello #{customer.customerLogin}</p>
                 <h:link value = "login" outcome="login" styleClass="link">
@@ -28,8 +28,6 @@
                 </h:link>
 
 
-
-        
             <h:dataTable value="#{catalog.items}" var="c" 
                          styleClass = "catalog-table"
                          headerClass="catalog-header"
