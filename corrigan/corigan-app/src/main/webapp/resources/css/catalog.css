@@ -252,4 +252,7 @@ select[name=dob]{width: 116px;}
 	margin:10px;
 	background-color: white;
 }
+#updateCard{
+	text-align:center;
+}
 
