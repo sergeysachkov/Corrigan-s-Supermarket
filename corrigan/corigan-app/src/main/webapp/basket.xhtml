@@ -3,30 +3,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
-    <h:head>
+ 
+   <h:head>
         <title>Shopping Basket - Corrigan's</title>
+        <h:outputStylesheet library="css" name="catalog.css"></h:outputStylesheet>
+  
     </h:head>
-    <style>
-        .basket-header{
-            padding: 10px 20px;
-            text-align: left;
-        }
-        .basket-column{
-            padding: 10px 20px;
-            text-align: left;
-        }
-        .quantity-msg{
-            position: fixed;
-            left: 14em;
-            top: 0.5em;
-            color: red;
-        }
-    </style>
+   
     <h:body>
+    <div id="basketLogo">
+    <h:graphicImage id="mainLogo" value="resources/images/order.jpg" />
+    </div>
         <h1>Order Summary</h1>
         <!--#{basketBean.getBasketId()}-->
         <h:form>
+        <div id="table_links">
             <h:dataTable value="#{basketBean.basketItems}" var="i"
+            			styleClass="basket-table"
                          headerClass="basket-header"
                          columnClasses="basket-column,basket-column,basket-column">
                 <h:column>
@@ -56,18 +49,16 @@
                 </f:facet>
             </h:dataTable>
             <h:commandButton value="update basket" action="#{basketBean.update()}"></h:commandButton>
+            </div>
         </h:form>
 
-        <ul>
-            <li>
-                <h:link value="Continue Shopping" outcome="catalog"></h:link>
-            </li>
-            <li>
-                <h:link value="Continue to delivery schedule" outcome="deliverySchedule">
+        <div id="basket_buttons">
+                <h:link class ="link" value="Continue Shopping" outcome="catalog"></h:link>
+          
+                <h:link class ="link" value="Continue to delivery schedule" outcome="deliverySchedule">
                     <f:param name="basketId" value="#{basketBean.basketId}"/>
                 </h:link>
-            </li>
-        </ul>
+        </div>
     </h:body>
 </html>
 

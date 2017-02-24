@@ -72,7 +72,7 @@ public class StockControlBean {
 		if (SClogin) {
 			HttpSession session = SessionUtils.getSession();
 			session.setAttribute("StockControlLogin", username);
-			return "/AddCategory.xhtml?faces-redirect=true";
+			return "/StockControlHome.xhtml?faces-redirect=true";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(
 					null,

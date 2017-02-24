@@ -333,11 +333,8 @@ public class CustomerBean {
         }
 
 
-	        public String getCustomer11(){
-	        	if(loginUsername == null){
-	        		return "/catalog.xhtml?faces-redirect=true";
-	        	}
-	        	else{
+        public String getCustomer11(){
+        	if(loginUsername != ""){
 	        	this.customer1 = new Customer();
 	        	this.address = new Address();
 	        	CustomerService custServ = new CustomerServiceImpl();
@@ -348,10 +345,10 @@ public class CustomerBean {
 	        	AddressService adServ = new AddressServiceImpl();
 	        	Address Ad = new Address();
 	        	Ad = adServ.getAddress(cus1);
-	        	address = Ad;}
-	        	return "yes";
-	        }
+	        	address = Ad;
+	        	return "Y";
+        	}
+        	else{ return "/AddCustomer.xhtml?faces-redirect=true";}
 
-
-
+        }
 }
