@@ -40,6 +40,7 @@ public class OrderItemDaoImpl implements OrderItemDao {
         pstmt.setLong(1,oi.getOrderId());
         pstmt.setLong(2,oi.getItemId());
         pstmt.setInt(3,oi.getQuantity());
+        LOG.log(Level.INFO, pstmt.toString());
         pstmt.executeUpdate();
         con.close();
     }

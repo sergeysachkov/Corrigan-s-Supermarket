@@ -1,6 +1,7 @@
 package com.ait.corrigan.models.user;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -10,7 +11,7 @@ public class Order {
         private double price;
         private String status;
         private Timestamp time;
-        private List<OrderItem> OrderItems;
+        private List<OrderItem> orderItems;
     public Order() {
     }
 
@@ -28,8 +29,9 @@ public class Order {
         this.price = price;
         this.status = status;
         this.time = time;
-        this.OrderItems = OrderItems;
+        this.orderItems = OrderItems;
     }
+    
 
     public long getOrderId() {
         return orderId;
@@ -72,13 +74,19 @@ public class Order {
     }
 
     public List<OrderItem> getOrderItems() {
-        return OrderItems;
+        return orderItems;
     }
 
     public void setOrderItems(List<OrderItem> OrderItems) {
-        this.OrderItems = OrderItems;
+        this.orderItems = OrderItems;
     }
-
+    //TODO: Merge OrderItem and BasketItem as one Class
+    public void setOrderItemsFromBasket(List<BasketItem> basketItems){
+        this.orderItems=new ArrayList<>();
+        for(BasketItem bi:basketItems){
+            this.orderItems.add(new OrderItem(this.orderId, bi.getItemId(), bi.getQuantity()));
+        }
+    }
     @Override
     public int hashCode() {
         int hash = 3;
@@ -87,7 +95,7 @@ public class Order {
         hash = 13 * hash + (int) (Double.doubleToLongBits(this.price) ^ (Double.doubleToLongBits(this.price) >>> 32));
         hash = 13 * hash + Objects.hashCode(this.status);
         hash = 13 * hash + Objects.hashCode(this.time);
-        hash = 13 * hash + Objects.hashCode(this.OrderItems);
+        hash = 13 * hash + Objects.hashCode(this.orderItems);
         return hash;
     }
 
@@ -118,7 +126,7 @@ public class Order {
         if (!Objects.equals(this.time, other.time)) {
             return false;
         }
-        if (!Objects.equals(this.OrderItems, other.OrderItems)) {
+        if (!Objects.equals(this.orderItems, other.orderItems)) {
             return false;
         }
         return true;
@@ -126,7 +134,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order{" + "orderId=" + orderId + ", customerId=" + customerId + ", price=" + price + ", status=" + status + ", time=" + time + ", OrderItems=" + OrderItems + '}';
+        return "Order{" + "orderId=" + orderId + ", customerId=" + customerId + ", price=" + price + ", status=" + status + ", time=" + time + ", OrderItems=" + orderItems + '}';
     }
     
     
