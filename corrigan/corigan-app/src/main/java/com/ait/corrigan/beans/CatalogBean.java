@@ -11,9 +11,10 @@ import com.ait.corrigan.models.shop.Category;
 import com.ait.corrigan.models.shop.Item;
 import com.ait.corrigan.services.CategoryServicesImpl;
 import com.ait.corrigan.services.ItemServiceImpl;
+import javax.faces.bean.RequestScoped;
 
 @ManagedBean(name="catalog")
-@ApplicationScoped
+@RequestScoped  
 
 public class CatalogBean {
 	

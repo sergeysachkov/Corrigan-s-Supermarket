@@ -4,9 +4,10 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
 	<title>corrigan</title>
+<h:outputStylesheet library="css" name="catalog.css"></h:outputStylesheet>
 </h:head>
 <h:body>
-   <h:outputStylesheet library="css" name="login.css"  />
+  <h:graphicImage id="loginLogo" value="resources/images/loginLogo.png" />
  	<h:form>
 		<h:inputHidden id="basketId" value="#{customer.basketId}" required="true"/>
 		<h3>Welcome To Login</h3>

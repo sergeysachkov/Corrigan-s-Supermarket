@@ -77,12 +77,19 @@ public class PayBean {
         this.basketId = basketId;
     }
 
+    /**
+     * @author joshua<iyezi@hotmail.com>
+     * @return the total price for the shopping basket
+     */
+    public double getPrice(){
+        return basketBean.getTotal();
+    }
     public String submit(){
         PayService service = new PayServiceImpl();
         Order order=new Order(0, getCustomerId(), basketBean.getTotal(), 
                 "Pending", new Timestamp(System.currentTimeMillis()));
         order.setOrderItemsFromBasket(basketBean.getBasketItems());
-        
+        basketBean.clearBasket();
         long orderId = service.createOrderAndPay(cardNo, order);
         return "/home.xhtml?faces-redirect=true&orderId=" + orderId;
     }

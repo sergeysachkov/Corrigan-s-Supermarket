@@ -3,21 +3,16 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"> 
 
-<h:head></h:head> 
+<h:head>
+<title>Card Details</title>
+<h:outputStylesheet library="css" name="catalog.css"></h:outputStylesheet>
+</h:head>
 <h:body>
-    <style>
-        .catalog-header{
-            padding: 10px 20px;
-            text-align: left;
-        }
-        .catalog-column{
-            padding: 10px 20px;
-            text-align: left;
-        }
-    </style>
+ <h:graphicImage id="cardLogo" value="resources/images/cardlogo.gif" />
+
     <h3>Get Card Details</h3>
-  
 			<h:form>
+			
             <h:dataTable value="#{payment.paymentDetails}" var="a" 
                          headerClass="catalog-header"
                          columnClasses="catalog-column,catalog-column,catalog-column,catalog-column,catalog-column,catalog-column">
@@ -68,6 +63,7 @@
 
     	     </h:column>
             </h:dataTable>
+           
             <h:commandButton value="Get Card Details" action="#{payment.getCustomerPaymentDetails}" />
 				<h:commandButton value="Cancel" action="#{payment.cancel}" />
 				</h:form>

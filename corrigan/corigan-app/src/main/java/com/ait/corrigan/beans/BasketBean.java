@@ -102,5 +102,9 @@ public class BasketBean {
         // just leave this method blank
         // it refreshes the page
     }
+    
+    public void clearBasket(){
+        this.basketItems.removeAll(basketItems);
+    }
 
 }

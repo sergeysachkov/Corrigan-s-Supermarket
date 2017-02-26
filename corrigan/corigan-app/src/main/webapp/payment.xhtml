@@ -4,11 +4,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html">
-<h:head></h:head>
+<h:head>
+<h:outputStylesheet library="css" name="catalog.css"></h:outputStylesheet>
+</h:head>
 <h:body>
-    <h:outputStylesheet library="css" name="corrigan.css"  />
+<div id="payLogo">
+<h:graphicImage value="resources/images/pay.png" />
+</div>
     <h3>Payment Details</h3>
-
+    <div id="payLogo2">
+<h:graphicImage value="resources/images/pay2.jpg" />
+</div>
     <h:form id="payment_form">
         <h:inputHidden id="customerId" value="#{payment.customerId}" required="true"/>
         <ul>

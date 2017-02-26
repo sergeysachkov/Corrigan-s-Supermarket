@@ -155,7 +155,6 @@ update items set stock_q=stock_q+old.quantity where itemid=old.itemid;
 END$$
 DELIMITER ;
 
-
 /**** test data ****/
 insert into stockControl values(1,'chris','admin','0874586756');
 
