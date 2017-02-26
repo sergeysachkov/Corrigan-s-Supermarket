@@ -15,7 +15,9 @@
         <ul>
             <li>
                 <h:outputLabel id="amountlable" for="amount" value="amount" size="20"/>
-                <h:inputText id="amount" value="#{pay.price}" disabled="true"/>
+                <h:inputText id="amount" value="#{pay.price}" disabled="true">
+                    <f:convertNumber minFractionDigits="2"/>
+                </h:inputText>
             </li>
             <li>
                 <h:outputLabel id="payCardLabel" for="paycard"

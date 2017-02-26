@@ -1,5 +1,6 @@
 package com.ait.corrigan.services;
 
+import com.ait.corrigan.dao.OrderDaoImpl;
 import com.ait.corrigan.dao.OrderDao;
 import com.ait.corrigan.dao.PaymentDao;
 import com.ait.corrigan.dao.PaymentDaoImpl;
@@ -22,12 +23,14 @@ import java.util.Map;
  * Created by root on 1/21/2017.
  */
 public class PayServiceImpl implements PayService{
-    private OrderDao orderDao = new OrderDaoImpl();
+    private OrderService orderSrv=new OrderServiceImpl();
     private PaymentDao paymentDao = new PaymentDaoImpl();
     private Logger logger = LoggerFactory.getLogger(CustomerServiceImpl.class);
 
     public long createOrderAndPay(String cardNo, Order order){
         try {
+            long orderId = orderSrv.addOrder(order);
+            
             Stripe.apiKey = "sk_test_BxWD4Cw0CJ4n5GRnMqeSEFPz";
             //todo pay for order here need to decide on payment system.
 
@@ -42,13 +45,16 @@ public class PayServiceImpl implements PayService{
             cardParams.put("cvc", paymentDetails.getCvv2());
             cardParams.put("name", paymentDetails.getCardHolder());
 
-            int price = (int)(100 * order.getPrice());
             final Map<String, Object> chargeParams = new HashMap<>();
-            chargeParams.put("amount", price);
+//            chargeParams.put("amount", "100");
+            int amount=(int)Math.round(order.getPrice()*100);
+            logger.debug("charge amoutn:"+amount);
+            
+            chargeParams.put("amount", amount);
             chargeParams.put("currency", "usd");
             chargeParams.put("card", cardParams);
             final Charge charge = Charge.create(chargeParams);
-            long orderId = orderDao.addOrder(order);
+            
             return orderId;
         } catch (SQLException | APIConnectionException | InvalidRequestException | AuthenticationException | APIException | CardException e) {
             logger.error("Error occurred!", e);

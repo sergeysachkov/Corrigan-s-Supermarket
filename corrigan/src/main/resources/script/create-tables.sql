@@ -110,41 +110,6 @@ create table stockControl(
 );
 
 /**** Triggers ****/
--- calculate order price after inserting an orderitem
-DROP TRIGGER IF EXISTS `corrigan`.`orderitems_AFTER_INSERT`;
-DELIMITER $$
-USE `corrigan`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `corrigan`.`orderitems_AFTER_INSERT` AFTER INSERT ON `orderitems` FOR EACH ROW
-BEGIN
-update corrigan.orders set price=(
-	select sum(price*quantity) from orderitems o join items i on o.itemid=i.itemid where o.orderid=NEW.`orderid`
-) where orderid=NEW.`orderid`;
-END$$
-DELIMITER ;
-
--- calculate order price after updating an orderitem
-DROP TRIGGER IF EXISTS `corrigan`.`orderitems_AFTER_UPDATE`;
-DELIMITER $$
-USE `corrigan`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `corrigan`.`orderitems_AFTER_UPDATE` AFTER UPDATE ON `orderitems` FOR EACH ROW
-BEGIN
-update corrigan.orders set price=(
-	select sum(price*quantity) from orderitems o join items i on o.itemid=i.itemid where o.orderid=NEW.`orderid`
-) where orderid=NEW.`orderid`;
-END$$
-DELIMITER ;
-
--- calculate order price after deleting an orderitem
-DROP TRIGGER IF EXISTS `corrigan`.`orderitems_AFTER_DELETE`;
-DELIMITER $$
-USE `corrigan`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `corrigan`.`orderitems_AFTER_DELETE` AFTER DELETE ON `orderitems` FOR EACH ROW
-BEGIN
-update corrigan.orders set price=(
-	select sum(price*quantity) from orderitems o join items i on o.itemid=i.itemid where o.orderid=OLD.`orderid`
-) where orderid=OLD.`orderid`;
-END$$
-DELIMITER ;
 
 -- decrease stock quantity before inserting an orderitem
 DROP TRIGGER IF EXISTS `corrigan`.`orderitems_BEFORE_INSERT`
@@ -189,7 +154,6 @@ BEGIN
 update items set stock_q=stock_q+old.quantity where itemid=old.itemid;
 END$$
 DELIMITER ;
-
 
 /**** test data ****/
 insert into stockControl values(1,'chris','admin','0874586756');
