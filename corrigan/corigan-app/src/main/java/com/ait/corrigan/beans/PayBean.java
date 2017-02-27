@@ -91,7 +91,7 @@ public class PayBean {
         order.setOrderItemsFromBasket(basketBean.getBasketItems());
         basketBean.clearBasket();
         long orderId = service.createOrderAndPay(cardNo, order);
-        return "/home.xhtml?faces-redirect=true&orderId=" + orderId;
+        return "/catalog.xhtml?faces-redirect=true&orderId=" + orderId;
     }
 
     public String addCard(){
